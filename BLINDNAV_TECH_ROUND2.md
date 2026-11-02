@@ -9,10 +9,10 @@
    **否。** BLV 1795 帧宏召回：COCO **41.8%**，YOLO-World **19.8%**。person 98.5%、bicycle 62.2%、bench 26.3% 有提升，但 pole/railing/barrier/stairs/curb 几乎为 0，整体更差。作为单一替换 **REJECT**；只值得做类别互补。
 
 3. **class-independent occupancy 是否值得继续？**  
-   **朴素 depth ROI 不值得。** UrbanEgo 真实 depth：1.5m recall 21.6% / false-positive 8.1%；2.0m 46% / 29%；3.0m 100% / 86%。Unknown Blocking Recall 因 BLV/UrbanEgo 没有未知类别的框 GT，**不可测**，不伪造。只有 walkable mask + instance mask + tracking 才值得继续，`NEXT_EXPERIMENT`。
+   **朴素 depth ROI 不值得。** UrbanEgo 真实 depth：1.5m recall 21.6% / false-positive 8.1%；2.0m 46% / 29%；3.0m 100% / 86%。Unknown Blocking Recall 在 BLV 帧级可测定义下（COCO 没有的 12 个高价值类别，1021 个支持帧）为 **0.1%**；没有框 GT，不能报 IoU。只有 walkable mask + instance mask + tracking 才值得继续，`NEXT_EXPERIMENT`。
 
 4. **Automatic Door Proposal 是否达到可接 production？**  
-   **没有。** DeepDoors2 官方 Drive 文件夹、标注镜像 Drive 文件、Dataset Ninja 均被外部阻塞；BLV 没有门框 GT。YOLO-World 的 door 词表在 1795 帧上平均候选 **0.0** 个，无法形成候选集。`BLOCKED_EXTERNAL` + `NEXT_EXPERIMENT`，不能接 production。
+   **没有。** DeepDoors2 的 Drive 镜像仍阻塞，但改用 OpenImages 的真实 Door bbox GT（120 图 / 173 框）：YOLO-World 最佳 Recall@IoU0.3 **21.4%**、@0.5 **13.9%**，平均候选 0.47 个；远低于 90% 目标。`NEXT_EXPERIMENT`，不能接 production。
 
 ## Summary Table
 
@@ -22,7 +22,7 @@
 | Obstacle | COCO real recall 36–38% | YOLO-World BLV macro 19.8%，低于 COCO 41.8% | DESKTOP_REAL_DATA | REJECT（单一替换） |
 | Occupancy-first | 未测 | depth ROI 1.5m 22%/8% FP，3m 100%/86% FP；unknown recall 不可测 | DESKTOP_REAL_DATA (ORACLE) | NEXT_EXPERIMENT |
 | Last10m Search | YELLOW | 未重做，回归保持 | DESKTOP_VERIFIED | KEEP |
-| Last10m Entrance | RED | 门 GT 外部阻塞；YOLO-World 0 候选 | BLOCKED_EXTERNAL | NEXT_EXPERIMENT |
+| Last10m Entrance | RED | OpenImages Door Recall@0.3 21.4%，平均候选 0.47 | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
 | Scene / Text | RED | 未接生产 | NOT_CONNECTED | KEEP |
 
 ## 1. General Traversability V2
@@ -74,20 +74,24 @@ UrbanEgo depth (320×288, mm), lower-center ROI:
 | <2.0m | 46.0% | 29.0% |
 | <3.0m | 100% | 86.0% |
 
-Raw depth is not viable. Unknown Blocking Recall is `UNMEASURABLE`: local data have no boxes for unknown categories, and model predictions cannot be used as GT. Next experiment must combine walkable mask + foreground/instance mask + temporal tracking; oracle numbers are not production.
+Raw depth is not viable. Unknown Blocking Recall at BLV frame level is **0.1%** (12 categories without a COCO class, 1021 support frames); box-level IoU is unmeasurable because BLV has presence labels only. Next experiment must combine walkable mask + foreground/instance mask + temporal tracking; oracle numbers are not production.
 
 ## 3. Last10m Automatic Door
 
-Attempted sources, all external blockers:
+DeepDoors2 official/relabeled Google Drive downloads still time out; Dataset Ninja exposes metadata but not a public full archive. Instead, use **OpenImages V7 `Door` bbox annotations** as a reliable public door GT subset (CC BY 4.0):
 
-- Official DeepDoors2 Google Drive folder: `gdown --folder` remained 0 B.
-- Relabeled DeepDoors2 Drive file `1wSmFUHF9aSJkomwFdOmepMevBvkRpf3D`: server timeout.
-- Dataset Ninja mirror: Cloudflare/JS page, no direct download.
-- No Kaggle credentials.
+- 120 validation images, **173 door boxes**, average 1.44 GT doors/image.
+- Candidate generator: YOLO-World s with `door` / `doorway` / `glass door` / `entrance`.
+- Confidence sweep 0.05–0.25.
 
-BLV has `Doorway` presence labels but **no door boxes**, so Recall@IoU cannot be computed. YOLO-World with `door` / `doorway` / `glass door` / `entrance` on 1795 BLV frames produced **mean 0.0 candidates**, median 0, p90 0; latency 82ms. Candidate Stability is therefore degenerate (std 0.06). This is a negative result, not a door proposal.
+| conf | Recall@IoU0.3 | Recall@IoU0.5 | Mean candidates | Median candidates | Candidate std |
+|---:|---:|---:|---:|---:|---:|
+| 0.05 | **21.4%** | **13.9%** | 0.47 | 0 | 0.77 |
+| 0.10 | 9.3% | 5.2% | 0.17 | 0 | 0.46 |
+| 0.15 | 4.6% | 2.9% | 0.07 | 0 | 0.26 |
+| 0.25 | 1.7% | 0.6% | 0.03 | 0 | 0.18 |
 
-Status: `BLOCKED_EXTERNAL`, `NEXT_EXPERIMENT`. Do not integrate.
+The target is 90% Recall with ≤3 candidates. YOLO-World is far below target and produces almost no candidates. Candidate stability cannot be measured temporally on independent OpenImages frames; the BLV video probe had zero candidates. **Not production-level.** Next experiment: a door-specific detector or OWLv2/Grounding DINO proposal with a lower threshold, evaluated on the same 173 boxes.
 
 ## 4. Android deployment feasibility
 

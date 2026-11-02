@@ -1,0 +1,20 @@
+{
+ "definition": "BLV frame-level recall on categories without a COCO class",
+ "categories": [
+  "Pole",
+  "Pillar",
+  "Railing",
+  "Barrier Post",
+  "Foldout Sign",
+  "Stairs",
+  "Curb",
+  "Sloped Curb",
+  "Raised Entryway",
+  "Overhanging Tree Branches",
+  "Trash Bins",
+  "Doorway"
+ ],
+ "support_frames": 1021,
+ "hits": 1,
+ "unknown_blocking_recall": 0.001
+}
