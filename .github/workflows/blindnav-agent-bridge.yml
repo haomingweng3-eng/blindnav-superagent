@@ -1,0 +1,29 @@
+name: BlindNav agent bridge
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  bridge:
+    if: >-
+      github.event.label.name == 'blindnav:agent-task' &&
+      !contains(github.event.issue.labels.*.name, 'needs-human-decision')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post fixed agent trigger comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue.number;
+            const body = `@haomingweng3-eng BlindNav task bridge: evaluate Issue #${issue} according to BLINDNAV_STRATEGY.md, BLINDNAV_EVAL_RULES.md and BLINDNAV_AUTHORIZATION.md.`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue,
+              body
+            });
