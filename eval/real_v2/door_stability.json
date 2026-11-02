@@ -1,0 +1,9 @@
+{
+ "dataset": "OpenImages door, controlled perturbation",
+ "images_with_candidates": 42,
+ "perturbations": "shift +2% x, shift +2% y, scale 0.98x",
+ "matched_candidate_iou_mean": 0.8235,
+ "match_rate": 1.0,
+ "candidate_count_std_over_variants": 0.879,
+ "note": "controlled perturbation stability, not temporal video stability"
+}

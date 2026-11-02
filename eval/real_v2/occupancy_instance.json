@@ -1,0 +1,43 @@
+{
+ "dataset": "UrbanEgo clip 375-400s, 10fps; SegFormer walkable + YOLOv8n-seg instances + depth + tracking",
+ "instance_model": "yolov8n-seg (COCO), conf 0.25",
+ "frames": 250,
+ "walkable_roi_mean": 0.2754,
+ "walkable_corridor_available": 0.488,
+ "counts": {
+  "det_blocking": 1204,
+  "after_corridor": 288,
+  "after_walkable": 12,
+  "depth_valid": 4
+ },
+ "frames_with_depth_valid_instance": 4,
+ "instance_only": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.1136,
+  "precision": 0.4545,
+  "false_positive_rate": 0.0291
+ },
+ "instance_plus_depth": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0682,
+  "precision": 0.75,
+  "false_positive_rate": 0.0049
+ },
+ "instance_plus_temporal": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0227,
+  "precision": 0.5,
+  "false_positive_rate": 0.0049
+ },
+ "instance_plus_depth_temporal": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0227,
+  "precision": 1.0,
+  "false_positive_rate": 0.0
+ },
+ "note": "unknown-object recall not measurable; no GT instances for unlabeled objects"
+}

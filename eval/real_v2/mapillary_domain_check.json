@@ -1,0 +1,6 @@
+{
+ "dataset": "Mapillary Vistas images (unlabeled domain check)",
+ "images": 24,
+ "valid_corridor_rate": 0.9583,
+ "mean_safe_roi_fraction": 0.6271
+}
