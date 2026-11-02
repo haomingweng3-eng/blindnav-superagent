@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  仅 debug 构建生效：把影子链路调试屏放开给 adb，方便真机测试直接拉起
+      adb shell am start -n com.blindnav.nav/com.blindnav.app.shadow.ArShadowActivity
+  release 构建不合并这个文件，调试屏保持 exported=false，不对外暴露入口。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <activity
+            android:name=".shadow.ArShadowActivity"
+            android:exported="true"
+            tools:replace="android:exported" />
+
+        <!-- Demo 屏同样只在 debug 构建里对 adb 开放：明天现场可以
+             adb shell am start -n com.blindnav.nav/com.blindnav.app.shadow.Last10mDemoActivity -->
+        <activity
+            android:name=".shadow.Last10mDemoActivity"
+            android:exported="true"
+            tools:replace="android:exported" />
+    </application>
+</manifest>

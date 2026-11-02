@@ -1,0 +1,39 @@
+# Build outputs
+build/
+app/build/
+.gradle/
+.kotlin/
+*.apk
+*.aab
+
+# Local SDK path and secrets
+local.properties
+.env
+*.env
+*.key
+*.pem
+**/secrets*
+
+# Device logs and captures
+device-test-*/
+*.log
+
+# Model archives / source downloads (app assets are tracked with LFS)
+/asr/
+/tts/
+*.tar.bz2
+
+# Temporary benchmark outputs
+runs/
+/tmp/
+*.tmp
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Superagent working state
+.dsh/
+superagent/

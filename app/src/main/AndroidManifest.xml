@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <!-- ARCore 必需的特性声明。required=false：这台手机上 ARCore 缺席时，
+         生产 CameraX 链路仍然要能用，只有影子调试屏会明确拒绝启动。 -->
+    <uses-feature android:name="android.hardware.camera.ar" android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:label="盲人导航"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Material.NoActionBar"
+        android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ef2088708f564d4342c832c27d551e4c" />
+
+        <!-- optional 而不是 required：没有装 Google Play Services for AR 的设备上
+             App 仍可安装启动，避免影子调试能力把生产包挡在门外。 -->
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="optional" />
+
+        <activity
+            android:name=".CameraActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Material.NoActionBar" />
+
+        <!-- 影子链路调试屏：release 只能从 App 内部进入，debug 构建在
+             src/debug/AndroidManifest.xml 里放开 exported 以便 adb 直接拉起。 -->
+        <activity
+            android:name=".shadow.ArShadowActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Material.NoActionBar" />
+
+        <!-- 最后十米 Demo：回放真实图片 + 真实模型回答，调试入口，release 不对外暴露。 -->
+        <activity
+            android:name=".shadow.Last10mDemoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Material.NoActionBar" />
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name=".ListenService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+        <service
+            android:name=".NavigationService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+    </application>
+</manifest>

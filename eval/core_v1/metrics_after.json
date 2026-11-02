@@ -1,0 +1,28 @@
+{
+  "status": "DESKTOP_SIMULATION",
+  "obstacle": {
+    "baseline_false_stop_cases": 4,
+    "new_false_stop_cases": 0,
+    "negative_cases": 5,
+    "baseline_recall": "4/4",
+    "new_recall": "4/4",
+    "single_frame_noise_stop_frames_baseline": 1,
+    "single_frame_noise_stop_frames_new": 0,
+    "recovery_ms_baseline": 0,
+    "recovery_ms_new": 750
+  },
+  "walking": {
+    "straight_commands": ["KEEP","KEEP","KEEP","KEEP","KEEP","KEEP","KEEP","KEEP"],
+    "true_left_detection_frame_baseline": 0,
+    "true_left_detection_frame_new": 3,
+    "true_right_detection_frame_baseline": 0,
+    "true_right_detection_frame_new": 3,
+    "rotation_only_side_frames_baseline": 2,
+    "rotation_only_side_frames_new": 0,
+    "oscillation_flips_per_min_baseline": 190.0,
+    "oscillation_flips_per_min_new": 0.0,
+    "recovery_to_keep_ms_baseline": 0,
+    "recovery_to_keep_ms_new": 150,
+    "corridor_unavailable_new_command": "REOBSERVE"
+  }
+}

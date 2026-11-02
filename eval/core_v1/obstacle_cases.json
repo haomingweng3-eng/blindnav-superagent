@@ -1,0 +1,11 @@
+[
+ {"id":"O1","name":"chair blocks corridor","corridor":true,"hits":[{"name":"椅子","band":"近","overlap":0.90}],"nearFocus":false,"walking":true,"expectedStop":true},
+ {"id":"O2","name":"left wall very close","corridor":false,"hits":[],"nearFocus":true,"walking":false,"expectedStop":false},
+ {"id":"O3","name":"bicycle outside corridor","corridor":true,"hits":[],"nearFocus":false,"walking":true,"expectedStop":false},
+ {"id":"O4","name":"person crosses corridor","corridor":true,"hits":[{"name":"人","band":"中","overlap":0.70}],"nearFocus":false,"walking":true,"expectedStop":true},
+ {"id":"O5","name":"obstacle approaching","corridor":true,"hits":[{"name":"障碍","band":"中","overlap":0.45}],"nearFocus":false,"walking":true,"expectedStop":true},
+ {"id":"O6","name":"static desk with laptop","corridor":true,"hits":[],"nearFocus":true,"walking":false,"expectedStop":false},
+ {"id":"O7","name":"door/wall close while looking","corridor":false,"hits":[],"nearFocus":true,"walking":false,"expectedStop":false},
+ {"id":"O8","name":"unknown object blocks corridor","corridor":true,"hits":[{"name":"障碍","band":"近","overlap":0.80}],"nearFocus":false,"walking":true,"expectedStop":true},
+ {"id":"N1","name":"single-frame detector noise","corridor":true,"hits":[{"name":"椅子","band":"近","overlap":0.90}],"nearFocus":false,"walking":true,"singleFrame":true,"expectedStop":false}
+]

@@ -1,0 +1,9 @@
+[
+ {"id":"W1","name":"straight center","sides":["center","center","center","center","center","center","center","center"],"rotation":false},
+ {"id":"W2","name":"true drift left","sides":["left","left","left","left","left","left","left","left"],"rotation":false},
+ {"id":"W3","name":"true drift right","sides":["right","right","right","right","right","right","right","right"],"rotation":false},
+ {"id":"W4","name":"phone rotation only","sides":["left","left","center","center","center","center","center","center"],"rotation":true},
+ {"id":"W5","name":"left/right oscillation","sides":["left","left","right","right","left","left","right","right"],"rotation":true},
+ {"id":"W6","name":"recovery to center","sides":["left","left","left","left","center","center","center","center"],"rotation":false},
+ {"id":"W7","name":"corridor unavailable","sides":["unknown","unknown","unknown","unknown","unknown","unknown","unknown","unknown"],"rotation":false}
+]
