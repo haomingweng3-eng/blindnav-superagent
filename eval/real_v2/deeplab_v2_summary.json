@@ -1,0 +1,28 @@
+[
+ {
+  "name": "frozen45_deeplab",
+  "frames": 45,
+  "valid_rate": 1.0,
+  "safe_iou": 0.758,
+  "safe_recall": 0.893,
+  "curb_recall": 0.3414,
+  "sidewalk_as_conditional": 0.0908,
+  "road_false_safe": 0.34,
+  "center_error_median": 0.0314,
+  "center_error_p90": 0.2617,
+  "latency_ms_median": 360.5
+ },
+ {
+  "name": "real_v2_deeplab",
+  "frames": 120,
+  "valid_rate": 1.0,
+  "safe_iou": 0.7827,
+  "safe_recall": 0.9254,
+  "curb_recall": 0.1542,
+  "sidewalk_as_conditional": 0.058,
+  "road_false_safe": 0.4623,
+  "center_error_median": 0.0667,
+  "center_error_p90": 0.3144,
+  "latency_ms_median": 354.4
+ }
+]
