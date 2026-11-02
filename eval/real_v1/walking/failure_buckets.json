@@ -1,0 +1,12 @@
+{
+ "frames": 45,
+ "buckets": {
+  "NO_WALKABLE_MASK": 45,
+  "SEGMENTATION_FAILURE": 35,
+  "CENTERLINE_FAILURE": 28,
+  "SIDEWALK_AS_ROAD": 45,
+  "PEDESTRIAN_OCCLUSION": 20,
+  "MOTION_BLUR": 0,
+  "LIGHTING": 0
+ }
+}

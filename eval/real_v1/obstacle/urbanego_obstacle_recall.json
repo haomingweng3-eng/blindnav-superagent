@@ -1,0 +1,14 @@
+{
+  "dataset": "UrbanEgo run7, 1 s sampling; conf=0.25 need=0.2 person=0.6/0.7",
+  "frames": 958,
+  "frames_with_gt_blocking": 82,
+  "frames_with_model_tp": 38,
+  "frames_with_model_fp": 83,
+  "object_tp": 38,
+  "object_fp": 99,
+  "object_fn": 61,
+  "object_precision": 0.2774,
+  "object_recall": 0.3838,
+  "frame_false_positive_rate": 0.0866,
+  "note": "GT = YOLO11x+BoT-SORT detections filtered to the same 30-70% corridor; not human ground truth. Per-frame, no temporal policy."
+}

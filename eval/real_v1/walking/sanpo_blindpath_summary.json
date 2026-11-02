@@ -1,0 +1,21 @@
+{
+  "dataset": "SANPO-Real, 3 test sessions x 15 frames",
+  "frames": 45,
+  "model_valid_corridor_rate": 0.0,
+  "gt_walkable_available_rate": 1.0,
+  "model_on_path_when_gt_available": 0.0,
+  "model_on_path_when_gt_unavailable": 0.0,
+  "center_error_median": null,
+  "center_error_p90": null,
+  "temporal_jitter_by_session": {
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": null,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": null,
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": null
+  },
+  "side_flips_by_session": {
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0,
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0
+  },
+  "gt_class_note": "strict = sidewalk/paved trail/other walkable/terrain; road excluded"
+}

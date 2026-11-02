@@ -1,0 +1,21 @@
+{
+  "dataset": "SANPO-Real, 3 test sessions x 15 frames",
+  "model": "nvidia/segformer-b2-finetuned-cityscapes-1024-1024",
+  "frames": 45,
+  "gt_walkable_available_rate": 1.0,
+  "pred_valid_corridor_rate": 0.1111,
+  "pred_inclusive_corridor_rate": 1.0,
+  "gt_inclusive_mean": 0.9622,
+  "sidewalk_pixel_recall": 0.0347,
+  "sidewalk_predicted_as_road_rate": 0.943,
+  "pred_valid_when_gt_available": 0.1111,
+  "pred_valid_when_gt_unavailable": 0.0,
+  "strict_iou_median": 0.0702,
+  "center_error_median": 0.7138,
+  "center_error_p90": 0.8509,
+  "temporal_jitter_by_session": {
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0.7126,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0.3648,
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.0229
+  }
+}
