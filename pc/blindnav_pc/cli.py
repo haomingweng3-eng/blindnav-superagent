@@ -145,8 +145,9 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("sim", help="2D 运动学仿真闭环")
     s.add_argument("scenario", nargs="?", default="all")
     s.add_argument("--log", help="保存逐帧日志目录")
-    s.add_argument("--memory", default="full", choices=["oracle", "full", "rot_only", "none"],
-                   help="oracle=只看当前帧；full=陀螺+步伐；rot_only=只陀螺；none=无自运动输入")
+    s.add_argument("--memory", default="rot_only", choices=["oracle", "full", "rot_only", "none"],
+                   help="rot_only=只陀螺（默认：仿真步伐是合成的，不默认信任）；full=陀螺+步伐；"
+                        "oracle=只看当前帧；none=无自运动输入")
     s.add_argument("--blind", type=float, default=0.6, help="相机近场盲区(m)")
     s.set_defaults(fn=_cmd_sim)
     m = sub.add_parser("metrics", help="从日志计算 误停率/漏停率/指令翻转次数/延迟")

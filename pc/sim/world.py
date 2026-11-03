@@ -147,13 +147,16 @@ class SimResult:
 
 
 def run_sim(world: Corridor, cfg: Optional[Config] = None, steps: int = 300, dt: float = 0.1,
-            walker: Optional[Walker] = None, start_x: float = 0.0, memory: str = "oracle",
+            walker: Optional[Walker] = None, start_x: float = 0.0, memory: str = "rot_only",
             gyro_drift_dps: float = 0.0, fov_half_deg: float = 35.0, blind_m: float = 0.6) -> SimResult:
     """Closed-loop simulation.
 
-    memory: 'oracle' - the planner sees the current rendered BEV only (no BEVMemory);
+    memory: 'rot_only' (default) | 'oracle' | 'full' | 'none'.
+            'oracle' - the planner sees the current rendered BEV only (no BEVMemory);
             'full' | 'rot_only' | 'none' - the rendered BEV is fed through BEVMemory with
             gyro+steps / gyro only / no orientation input respectively.
+            The default is 'rot_only': simulated step events are synthetic and quantised, so they
+            must be opted into explicitly with ``memory='full'``.
     gyro_drift_dps: constant heading-sensor drift added to the reported heading.
     """
     cfg = cfg or Config()

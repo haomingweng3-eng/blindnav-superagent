@@ -1,5 +1,6 @@
 import pytest
 
+from blindnav_pc.cli import build_parser
 from blindnav_pc.config import Config
 from sim import Walker, build_scenario, run_scenario, run_sim
 
@@ -29,14 +30,18 @@ def test_bypass_then_recenter(name, side, bias, memory):
     assert max(bias * t["x"] for t in r.trace) > 0.2      # actually went around on the free side
 
 
+def test_sim_memory_defaults_to_rot_only():
+    assert build_parser().parse_args(["sim", "clear"]).memory == "rot_only"
+
+
 def test_state_machine_sequence():
-    r = run_scenario("right_free")
+    r = run_scenario("right_free", memory="oracle")     # the sim default (rot_only) cannot PDR-recentre
     seq = [s for i, s in enumerate(r.states()) if i == 0 or s != r.states()[i - 1]]
     assert seq == ["CRUISE", "AVOID_RIGHT", "PASSING", "RECENTER", "CRUISE"]
 
 
 def test_recenter_is_a_state_not_a_single_frame_command():
-    r = run_scenario("right_free")
+    r = run_scenario("right_free", memory="oracle")
     run = [i for i, s in enumerate(r.states()) if s == "RECENTER"]
     assert len(run) >= 10                                # held for many frames (>1 s), not one-frame flicker
     assert run[-1] - run[0] + 1 >= len(run) * 0.8        # ... and (almost) contiguous

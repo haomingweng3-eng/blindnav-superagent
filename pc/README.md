@@ -44,7 +44,7 @@ python -m blindnav_pc run --webcam 0
 
 # 3) 2D 仿真（7 个场景），可存逐帧日志
 python -m blindnav_pc sim all --log out/sim
-python -m blindnav_pc sim right_free --memory full      # oracle | full | rot_only | none
+python -m blindnav_pc sim right_free --memory full      # oracle | full | rot_only(默认) | none
 python -m blindnav_pc sim right_free --memory none --blind 1.5   # 大盲区+无自运动：已知会撞（见限制）
 
 # 4) 从日志重新算指标
@@ -117,7 +117,8 @@ Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a
 ## 仿真 `pc/sim/`
 2D 运动学（步行 1 m/s，转向 20°，回正 10°，最大偏航角速度 90°/s），走廊里放长方体障碍，每个仿真步渲染一张"传感器视角"的 BEV
 （±35° 视锥、近场盲区 `--blind`、遮挡后为 unknown），喂给**同一个** `VFHPlanner`/`BEVMemory`/`BehaviorMachine`/`WalkingSafetyPolicy`，输出再驱动步行者。
-自运动输入来自仿真的"陀螺航向 + 步伐事件"（`--memory full`），也可降级成 rot_only / none，或 oracle（只看当前帧）。
+自运动输入来自仿真的"陀螺航向 + 步伐事件"。仿真的步伐事件是合成的离散事件，所以默认 `--memory rot_only`（只信任陀螺）；
+显式 `--memory full` 才用步伐平移，`none` 无自运动，`oracle` 只看当前帧。
 
 | 场景 | 期望 | 实测（`python -m blindnav_pc sim all`，memory=full，blind=0.6 m） |
 |---|---|---|
@@ -194,7 +195,7 @@ curl -s "https://storage.googleapis.com/storage/v1/b/gresearch/o?prefix=sanpo_da
 
 公开缓存：本机 HF hub 已有 Depth-Anything-V2-Small 与 SegFormer-B0-Cityscapes 基座。仍缺 UrbanEgo、微调权重(~145MB)、ASR/TTS、自定义 yolo-seg、完整 SANPO/BLV 等（见 `tools/eval/DOWNLOAD_LINKS.md`）。
 
-BEV 记忆：当步伐为仿真/未标定 `L_step` 时，评测与真机应优先 `--memory rot_only`（或 `EgoConfig.use_steps=False`）。`use_steps=True` 仅在真实 STEP_DETECTOR + 标定步长时安全。
+BEV 记忆：当步伐为仿真/未标定 `L_step` 时，评测与真机应优先 `--memory rot_only`（或 `EgoConfig.use_steps=False`）。`use_steps=True` 仅在真实 STEP_DETECTOR + 标定步长时安全；仿真 `sim` 命令因此默认 `rot_only`，`full` 需显式指定。
 
 ## 已知限制（诚实清单）
 - **没有真机数据**：真实验证只有 SANPO 的一个小样本（Synthetic 30 帧 / Real 20 帧，且 Real 那段几乎静止）。误停率/漏停率需要带标注的真实路测。
