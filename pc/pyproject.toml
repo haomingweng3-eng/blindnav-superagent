@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blindnav-pc"
+version = "0.1.0"
+description = "BlindNav PC closed-loop demo (V0.1): segmentation + monocular depth + ground-plane calibration + BEV + VFH planner + debounced guidance"
+requires-python = ">=3.10"
+dependencies = ["numpy", "opencv-python-headless", "pillow", "torch", "transformers"]
+
+[tool.setuptools]
+packages = ["blindnav_pc", "sim"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

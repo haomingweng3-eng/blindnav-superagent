@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pt
+*.onnx
+*.safetensors
+*.bin
+pc/out/
+pc/data/
+.pytest_cache/
