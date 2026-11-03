@@ -3,13 +3,13 @@
 ## 三个问题的直接回答
 
 1. **Walking false-safe 能否压下来？**  
-   **能压到 16.5%，再往下很难，且和 curb 相互拉扯。** road-as-SAFE 惩罚 + Cityscapes decoder 适配把 real_v2 的 road false-safe 从 **36.0% → 16.5%**，翻转型 TTA 再降到 **14.2%**；frozen45 从 10.0% → 1.9%，Cityscapes 从 42.7% → 25.9%。corridor 保持 **95.0%**。curb 专项模型把 curb recall 从 **0 → 31.6%**（与 v5 组成双模型 ensemble，false-safe 仍 16.5%）。但没有任何单一配置同时满足 **false-safe <10% 且 curb 明显起来**；最接近的是 TTA 的 14.2%，仍未过线。
+   **能压到 16.5%，再往下很难，且和 curb 相互拉扯。** road-as-SAFE 惩罚 + Cityscapes decoder 适配把 real_v2 的 road false-safe 从 **36.0% → 16.5%**，翻转型 TTA 再降到 **14.2%**；frozen45 从 10.0% → 1.9%，Cityscapes 从 42.7% → 25.9%。corridor 保持 **95.0%**。curb 专项模型把 curb recall 从 **0 → 31.6%**（与 v5 组成双模型 ensemble，false-safe 仍 16.5%）。但没有任何单一配置同时满足 **false-safe <10% 且 curb 明显起来**；最接近的是 TTA 的 14.2%，仍未过线。共享 backbone 的双 head 原型已搭好，但本机只够跑 80 帧/2 epochs，两个 head 欠拟合（false-safe 36.5%、curb 13.4%），这一轮不能作为多头路线的结论。
 
 2. **Obstacle 的 class-independent occupancy 是否真正提高？**  
-   **是，第一次出现了可用信号，但离 75–80% recall / ≤10% False STOP 还很远。** 放弃“YOLO instance 必须与 walkable mask 重叠”后，改用 ground-plane depth residual（比地面更近即占用）：Blocking Recall **52.3%**、Precision 0.23、False-positive **37.4%**；加 2 帧时序后 **45.5% / 31.1%**。此前 instance 拼法只有 **2.3%**。2D dense depth 和 3D voxel 两种构造都更差（FP 55–100%）。
+   **是，空间几何比时间多数有效。** 放弃 instance 拼法后，ground-plane depth residual 到 **52.3% recall / 37.4% FP**；把深度点投到世界坐标、收紧到人体宽度（|x|<0.3m）和膝上高度（0.4–1.6m）后，单帧 3D 体素达到 **63.6% recall / 18.0% FP**，≥4 cells 为 45.5% / 11.7%。但继续做 8 帧世界累积反而降到 38.6% / 11.2%——pose/深度噪声会形成持久假体素。仍没有点同时满足 recall ≥50%、FP <15%，不能接 WalkingSafetyPolicy。
 
 3. **Door proposal 是否达到可接 production 的水平？**  
-   **域内达到，跨域没有。** 用 3150 张 Roboflow 门数据微调 YOLOv8n 后，held-out test 在 conf 0.05 时 Recall@IoU0.3 **95.7%**、@0.5 **82.1%**、平均候选 **2.72**（≤3）；扰动稳定性 IoU **0.847**、匹配率 99.6%。外部 OpenImages 173 个门框只有 Recall@0.3 **46.8%**；追加重增强后升到 **58.4%**，仍远低于 75% 跨域里程碑。不能直接接 production。
+   **跨域召回接近 70%，候选数仍不合格。** 加入 800 张 OpenImages 真实 storefront 门图做多域训练后，外部 OpenImages 173 个门框在最终模型 conf 0.05 时 Recall@IoU0.3 **69.4%**、@0.5 58.4%，平均候选 6.31；中间 epoch 曾到 **75.1%**，但平均候选 **11.4**。conf 0.15 时外部 53.8% / 2.92 候选。域内 held-out 93.6–96.2%。所以“找得到”接近里程碑，“1–3 个候选且召回 ≥75%”仍未同时满足，不能接 production。
 
 ## Summary Table
 
@@ -17,8 +17,8 @@
 |---|---|---|---|---|
 | Walking / Traversability | real_v2 road FS 36.0%，corridor 100%，SAFE recall 90.1% | road FS **14.2%（TTA）/16.5%（v5）**，corridor **95.0%**，SAFE recall 78–79%；curb **31.6%（v5+v6 ensemble）**；Cityscapes FS 25.9% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
 | Obstacle semantic | COCO 41.8%，YOLO-World 20 词 19.8% | YOLO-World 40 词 **19.97%**，无提升 | DESKTOP_REAL_DATA | REJECT（扩词表） |
-| Obstacle occupancy | instance 拼法 2.3%，depth ROI 0% | ground residual **52.3% recall / 37.4% FP**；时序 45.5% / 31.1% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
-| Last10m Door | YOLO-World Recall@0.3 21.4%，@0.5 13.9% | 微调 YOLOv8n 域内 **95.7% / 82.1%**，平均候选 2.72；外部 **46.8% / 38.7%**，重增强后 **58.4% / 41.6%** | DESKTOP_REAL_DATA | 域内 KEEP，跨域 NEXT_EXPERIMENT |
+| Obstacle occupancy | instance 拼法 2.3%，depth ROI 0% | ground residual **52.3% / 37.4% FP**；世界坐标 3D 体素 **63.6% / 18.0% FP**，≥4 cells 45.5% / 11.7% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
+| Last10m Door | YOLO-World Recall@0.3 21.4%，@0.5 13.9% | 微调 YOLOv8n 域内 **95.7% / 82.1%**，候选 2.72；外部 46.8%→58.4%→**69.4%（最终）/75.1%（中间），候选 6.3–11.4** | DESKTOP_REAL_DATA | 召回 KEEP，候选 NEXT_EXPERIMENT |
 | Last10m Search | YELLOW | 未改 | DESKTOP_VERIFIED | KEEP |
 | Scene / Text | RED | 未接 | NOT_CONNECTED | KEEP |
 
@@ -45,11 +45,14 @@
 | v6 boundary 专项 | real_v2 (120) | 98.3% | 0.767 | 84.1% | 26.5% | 30.3% | 0.034 |
 | **v5 + v6 curb ensemble** | real_v2 (120) | **95.0%** | 0.743 | 79.2% | **16.5%** | **31.6%** | 0.031 |
 | v5 + flip TTA | real_v2 (120) | 95.0% | 0.740 | 78.1% | **14.2%** | 0 | 0.031 |
+| 多 head 原型（80 帧/2 ep，欠拟合） | real_v2 (120) | 91.7% | 0.682 | 77.9% | 36.5% | 13.4% | — |
 | SANPO FT v2 | Cityscapes val (100) | 100% | 0.0875 | 99.99% | 42.7% | — | — |
 | **v5 false-safe + City adapt** | Cityscapes val (100) | **100%** | **0.1105** | 99.85% | 33.3% | — | — |
 | v5 + flip TTA | Cityscapes val (100) | 100% | 0.140 | 98.2% | **25.9%** | — | — |
 
 v6 boundary 的 frozen45 表现：curb recall **37.3%**、road false-safe 3.9%；与 v5 做 curb ensemble 后 frozen45 curb **48.1%**、false-safe 1.9%。
+
+多 head 原型已实现（共享 SegFormer encoder，head A = SAFE/ROAD/OTHER，head B = CURB），但本机 CPU/内存只能跑 **80 帧、2 epochs**，两个 head 都欠拟合：real_v2 false-safe 36.5%、curb 13.4%，frozen45 false-safe 10.8%、curb 0。这个结果**不能用来否定多头路线**，只能说明当前算力下没有完成公平对比；下一轮需要在完整 400 帧上训练到收敛后再判定。
 
 结论：
 
@@ -92,10 +95,16 @@ v6 boundary 的 frozen45 表现：curb recall **37.3%**、road false-safe 3.9%�
 | 同上，不要求与 walkable mask 重叠 | **52.3%** | **0.230** | **37.4%** |
 | 同上 + 像素级 2 帧 AND | 34.1% | 0.211 | 27.2% |
 | 同上 + 像素级 3 帧多数 | 22.7% | 0.217 | **17.5%** |
+| **世界坐标 3D 体素，单帧，≥3 cells** | **63.6%** | **0.431** | **18.0%** |
+| 世界坐标 3D 体素，单帧，≥4 cells | 45.5% | 0.455 | 11.7% |
+| 世界坐标 3D 体素，单帧，≥5 cells | 43.2% | 0.463 | **10.7%** |
+| 世界坐标 3D 体素，2/8 帧持续，≥3 cells | 38.6% | 0.425 | 11.2% |
 
 Ground residual 的做法：用 pose 把深度点变到世界坐标，拟合地面平面，像素深度比该像素对应的地面深度近 0.25m 以上即判为“占据”；不依赖任何类别，也不要求 YOLO instance 先和 walkable mask 重叠。它第一次把 recall 从 2.3% 拉到 52.3%，说明“深度 + 几何 + 时序”方向成立；但 37.4% 的 False-positive 意味着每 3 个非阻断帧就有 1 次误报，不能接 WalkingSafetyPolicy。
 
-进一步把“帧级面积持续”改成“像素级 2/3 帧 AND”：FP 从 31.1% 压到 **17.5%**，但 recall 同时掉到 22.7%。这说明当前 FP 不是随机单帧噪声——很多是持续存在的边界/地面误差，像素级过滤会连同真障碍一起杀掉。目标是 recall ≥50% 时 FP ≤15%，当前没有同时满足的点；下一步必须改地面/深度本身，而不是继续加时间窗口。
+进一步把“帧级面积持续”改成“像素级 2/3 帧 AND”：FP 从 31.1% 压到 **17.5%**，但 recall 同时掉到 22.7%。这说明当前 FP 不是随机单帧噪声——很多是持续存在的边界/地面误差，像素级过滤会连同真障碍一起杀掉。
+
+又按 Mobilio 路线做了**世界坐标 3D 体素**：用 pose 把深度点投到世界坐标，0.15m 体素，只保留“离地 0.4–1.6m、横向 |x|<0.3m、前方 0.4–1.8m”的点，再按体素数判定。结果最好的是 **单帧 ≥3 cells：recall 63.6%、FP 18.0%**；≥4 cells 是 45.5% / 11.7%。继续做 8 帧世界累积反而变差（2/8 帧持续时 38.6% / 11.2%），因为 pose/深度噪声会在世界坐标里形成持久假体素。结论：**真正有效的是收紧到人体宽度+膝上高度的空间几何，而不是时间多数**；FP 已从 37.4% 压到 18.0%，但目标 recall ≥50% 且 FP <15% 仍没有同时满足的点。
 
 Unknown Blocking Recall 仍按 BLV 帧级定义（COCO 没有的 12 个高价值类别，1021 个支持帧）为 **0.1%**；BLV 只有 presence 标签，无法报 box IoU。class-independent 构造从原理上不依赖类别，但缺少 unknown 物体的框 GT，不能宣称已解决。
 
@@ -143,7 +152,25 @@ conf 0.05 同时满足 Recall@0.3 ≥90% 和平均候选 ≤3，达到本轮目�
 | 外部 OpenImages Recall@0.5 @conf0.05 | 38.7% | **41.6%** |
 | 外部 OpenImages Recall@0.3 @conf0.10 | 39.3% | **48.6%** |
 
-重增强把外域召回从 46.8% 提到 **58.4%**，但离第一里程碑 **75%** 仍差 17 个百分点；同时域内低阈值候选数变多。结论：augmentation 只能补一部分域偏移，下一轮必须引入真实 storefront/entrance 多域数据，或 DeepDoors2 的玻璃门/户外门/遮挡子集，而不是继续在 Roboflow 上刷。
+重增强把外域召回从 46.8% 提到 **58.4%**，但离第一里程碑 **75%** 仍差 17 个百分点；同时域内低阈值候选数变多。结论：augmentation 只能补一部分域偏移。
+
+### 真实 storefront 多域训练
+
+从 OpenImages V6 train 的 `Door` 标注里筛出 **793 张图 / 1136 个门框**，下载 800 张作为额外训练域；这些图与外部评测的 120 张 OpenImages val 完全按 split 隔离。用 Roboflow 700 张 + OpenImages 300 张组成 1000 张小多域集，从原门模型微调 3 epochs（imgsz 320，freeze 8）：
+
+| 指标 | 最终模型 | 中间 epoch（最好召回） |
+|---|---:|---:|
+| conf 0.05 Recall@IoU0.3 | **69.4%** | **75.1%** |
+| conf 0.05 Recall@IoU0.5 | 58.4% | 59.0% |
+| conf 0.05 平均候选 | 6.31 | 11.40 |
+| conf 0.15 Recall@IoU0.3 | 53.8% | 60.1% |
+| conf 0.15 平均候选 | **2.92** | 4.34 |
+| conf 0.25 Recall@IoU0.3 | 43.9% | 49.1% |
+| conf 0.25 平均候选 | 1.81 | 2.53 |
+
+域内 Roboflow held-out：最终模型 conf 0.05 为 **93.6%**、平均候选 5.77；conf 0.15 为 90.2% / 3.46。
+
+结论：**多域数据把跨域召回从 58.4% 推到 69–75%，证明“不是 YOLO 不适合门，而是数据域不够”**。但低阈值下候选爆炸，且不同 epoch 的召回波动 6 个百分点，说明下一阶段该做候选排序/relation（按门框尺寸、底部是否落地、与招牌的空间关系重排），而不是继续冲召回。
 
 ### Candidate Stability
 
@@ -175,6 +202,6 @@ conf 0.05 同时满足 Recall@0.3 ≥90% 和平均候选 ≤3，达到本轮目�
 ## 6. 结论与下一步
 
 - **Walking**：false-safe 已从 36.0% 压到 16.5%（TTA 14.2%），curb 通过 v5+v6 ensemble 从 0 拉到 31.6%，但两者不能在同一配置里同时达标；Cityscapes 25.9% 仍是 RED。下一步补真实 curb/boundary 数据和统一训练目标，而不是继续调阈值。
-- **Obstacle**：ground-plane occupancy 是第一条有效路线（52.3% / 37.4% FP），但 False STOP 太高；把时序从“帧级面积持续”改成“像素级 3 帧多数”只能把 FP 压到 17.5%，同时 recall 掉到 22.7%。下一步做深度补全 + 相机高度/平面在线估计，目标是 recall ≥75% 时 FP ≤10%，而不是继续加时间窗。
-- **Door**：域内已过线，跨域 46.8% 不过线。下一步用 DeepDoors2 或更多真实入口数据做域泛化，再谈接 EntranceProposal。
-- **上手机门槛**：Walking corridor ≥75% 且 false-safe 受控（当前 corridor 95%，false-safe 14.2–16.5%，未到 <10%）；Obstacle recall ≥75–80% 且 False STOP ≤10%（当前 52.3% / 37.4%）；Door 域内 Recall ≥90%（已 95.7%，跨域 58.4%）。三项未全部满足，不请求真机测试。
+- **Obstacle**：世界坐标 3D 体素 + 人体宽度/膝上高度是最有效的一版（63.6% / 18.0% FP；≥4 cells 为 45.5% / 11.7%），但世界累积反而制造持久假体素。下一步做深度补全 + 在线相机高度/平面估计，并把体素阈值和 safety mask 联合校准，目标是 recall ≥50% 时 FP <15%。
+- **Door**：多域数据把外部召回做到 **69.4%（最终）/75.1%（中间）**，但平均候选 6.3–11.4；下一步做候选排序/relation（落地、门框比例、招牌关系）把候选压到 ≤3，而不是继续刷召回。DeepDoors2 仍下载阻塞，暂不作为依赖。
+- **上手机门槛**：Walking corridor ≥75% 且 false-safe 受控（当前 corridor 95%，false-safe 14.2–16.5%，未到 <10%）；Obstacle recall ≥75–80% 且 False STOP ≤10%（当前 52.3% / 37.4%）；Door 域内 Recall ≥90%（已 95.7%，跨域 69.4–75.1% 但候选 6.3–11.4，不满足 ≤3）。三项未全部满足，不请求真机测试。

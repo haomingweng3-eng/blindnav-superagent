@@ -1,0 +1,164 @@
+{
+ "frozen45": {
+  "0.3": {
+   "name": "frozen45_0.3",
+   "frames": 45,
+   "valid_rate": 1.0,
+   "safe_iou": 0.7749,
+   "safe_recall": 0.8644,
+   "curb_recall": 0.0002,
+   "sidewalk_as_conditional": 0.0873,
+   "road_false_safe": 0.1082,
+   "center_error_median": 0.0342,
+   "center_error_p90": 0.1496,
+   "temporal_jitter": {
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0.0105,
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.028,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0.1192
+   }
+  },
+  "0.5": {
+   "name": "frozen45_0.5",
+   "frames": 45,
+   "valid_rate": 1.0,
+   "safe_iou": 0.8017,
+   "safe_recall": 0.906,
+   "curb_recall": 0.0,
+   "sidewalk_as_conditional": 0.0936,
+   "road_false_safe": 0.121,
+   "center_error_median": 0.0271,
+   "center_error_p90": 0.1842,
+   "temporal_jitter": {
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0.0,
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.019,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0.1254
+   }
+  },
+  "0.7": {
+   "name": "frozen45_0.7",
+   "frames": 45,
+   "valid_rate": 1.0,
+   "safe_iou": 0.8011,
+   "safe_recall": 0.9061,
+   "curb_recall": 0.0,
+   "sidewalk_as_conditional": 0.0939,
+   "road_false_safe": 0.121,
+   "center_error_median": 0.0271,
+   "center_error_p90": 0.1842,
+   "temporal_jitter": {
+    "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0.0,
+    "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.0188,
+    "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0.1254
+   }
+  }
+ },
+ "real_v2": {
+  "0.3": {
+   "name": "real_v2_0.3",
+   "frames": 120,
+   "valid_rate": 0.9167,
+   "safe_iou": 0.6817,
+   "safe_recall": 0.7787,
+   "curb_recall": 0.1337,
+   "sidewalk_as_conditional": 0.09,
+   "road_false_safe": 0.3652,
+   "center_error_median": 0.0609,
+   "center_error_p90": 0.378,
+   "temporal_jitter": {
+    "wta4PcYCd4Kfjw_DuB8Bd-dO2Du3ZcnN": 0.0445,
+    "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR": 0.0305,
+    "rvi-MNk-cw0yRg8U9ANH8RyDlJdfAjSt": 0.0152,
+    "jpQdnBSdxw0io5Iz0OPNG_Jqr2Xg5ilH": 0.0323,
+    "vJ3GwdSWA251IuTOvV1pAV2e2x98MPmC": 0.256,
+    "vxhQFmxofCOrInw5l9Dm4SQ5KAn1lNr2": 0.1164
+   }
+  },
+  "0.5": {
+   "name": "real_v2_0.5",
+   "frames": 120,
+   "valid_rate": 0.9833,
+   "safe_iou": 0.7368,
+   "safe_recall": 0.8579,
+   "curb_recall": 0.0044,
+   "sidewalk_as_conditional": 0.1293,
+   "road_false_safe": 0.3835,
+   "center_error_median": 0.0442,
+   "center_error_p90": 0.3729,
+   "temporal_jitter": {
+    "wta4PcYCd4Kfjw_DuB8Bd-dO2Du3ZcnN": 0.0322,
+    "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR": 0.029,
+    "rvi-MNk-cw0yRg8U9ANH8RyDlJdfAjSt": 0.0072,
+    "jpQdnBSdxw0io5Iz0OPNG_Jqr2Xg5ilH": 0.0096,
+    "vJ3GwdSWA251IuTOvV1pAV2e2x98MPmC": 0.1832,
+    "vxhQFmxofCOrInw5l9Dm4SQ5KAn1lNr2": 0.1217
+   }
+  },
+  "0.7": {
+   "name": "real_v2_0.7",
+   "frames": 120,
+   "valid_rate": 0.9833,
+   "safe_iou": 0.7432,
+   "safe_recall": 0.8665,
+   "curb_recall": 0.0,
+   "sidewalk_as_conditional": 0.1331,
+   "road_false_safe": 0.3839,
+   "center_error_median": 0.0442,
+   "center_error_p90": 0.3729,
+   "temporal_jitter": {
+    "wta4PcYCd4Kfjw_DuB8Bd-dO2Du3ZcnN": 0.0322,
+    "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR": 0.029,
+    "rvi-MNk-cw0yRg8U9ANH8RyDlJdfAjSt": 0.0072,
+    "jpQdnBSdxw0io5Iz0OPNG_Jqr2Xg5ilH": 0.0095,
+    "vJ3GwdSWA251IuTOvV1pAV2e2x98MPmC": 0.1882,
+    "vxhQFmxofCOrInw5l9Dm4SQ5KAn1lNr2": 0.1217
+   }
+  }
+ },
+ "cityscapes_val": {
+  "0.3": {
+   "name": "city_0.3",
+   "frames": 100,
+   "valid_rate": 1.0,
+   "safe_iou": 0.0842,
+   "safe_recall": 0.9402,
+   "curb_recall": null,
+   "sidewalk_as_conditional": 0.0002,
+   "road_false_safe": 0.4154,
+   "center_error_median": 0.1366,
+   "center_error_p90": 0.1837,
+   "temporal_jitter": {
+    "city": 0.055
+   }
+  },
+  "0.5": {
+   "name": "city_0.5",
+   "frames": 100,
+   "valid_rate": 1.0,
+   "safe_iou": 0.0876,
+   "safe_recall": 0.9998,
+   "curb_recall": null,
+   "sidewalk_as_conditional": 0.0002,
+   "road_false_safe": 0.4261,
+   "center_error_median": 0.1434,
+   "center_error_p90": 0.1607,
+   "temporal_jitter": {
+    "city": 0.0404
+   }
+  },
+  "0.7": {
+   "name": "city_0.7",
+   "frames": 100,
+   "valid_rate": 1.0,
+   "safe_iou": 0.0875,
+   "safe_recall": 0.9998,
+   "curb_recall": null,
+   "sidewalk_as_conditional": 0.0002,
+   "road_false_safe": 0.4262,
+   "center_error_median": 0.1434,
+   "center_error_p90": 0.1589,
+   "temporal_jitter": {
+    "city": 0.0398
+   }
+  }
+ }
+}

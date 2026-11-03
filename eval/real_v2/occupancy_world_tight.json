@@ -1,0 +1,107 @@
+{
+ "dataset": "UrbanEgo 375-400s; world voxel accumulation 0.15m, 8-frame window",
+ "frames": 250,
+ "gt_blocking": 44,
+ "variants": {
+  "k1_cells1": {
+   "recall": 0.8636,
+   "precision": 0.2235,
+   "false_positive_rate": 0.6408
+  },
+  "k1_cells2": {
+   "recall": 0.6364,
+   "precision": 0.3043,
+   "false_positive_rate": 0.3107
+  },
+  "k1_cells3": {
+   "recall": 0.6364,
+   "precision": 0.4308,
+   "false_positive_rate": 0.1796
+  },
+  "k1_cells4": {
+   "recall": 0.4545,
+   "precision": 0.4545,
+   "false_positive_rate": 0.1165
+  },
+  "k1_cells5": {
+   "recall": 0.4318,
+   "precision": 0.4634,
+   "false_positive_rate": 0.1068
+  },
+  "k2_cells1": {
+   "recall": 0.6136,
+   "precision": 0.2143,
+   "false_positive_rate": 0.4806
+  },
+  "k2_cells2": {
+   "recall": 0.4545,
+   "precision": 0.3448,
+   "false_positive_rate": 0.1845
+  },
+  "k2_cells3": {
+   "recall": 0.3864,
+   "precision": 0.425,
+   "false_positive_rate": 0.1117
+  },
+  "k2_cells4": {
+   "recall": 0.2273,
+   "precision": 0.3846,
+   "false_positive_rate": 0.0777
+  },
+  "k2_cells5": {
+   "recall": 0.2045,
+   "precision": 0.3913,
+   "false_positive_rate": 0.068
+  },
+  "k3_cells1": {
+   "recall": 0.2273,
+   "precision": 0.4545,
+   "false_positive_rate": 0.0583
+  },
+  "k3_cells2": {
+   "recall": 0.0682,
+   "precision": 0.3333,
+   "false_positive_rate": 0.0291
+  },
+  "k3_cells3": {
+   "recall": 0.0227,
+   "precision": 0.1667,
+   "false_positive_rate": 0.0243
+  },
+  "k3_cells4": {
+   "recall": 0.0,
+   "precision": 0.0,
+   "false_positive_rate": 0.0146
+  },
+  "k3_cells5": {
+   "recall": 0.0,
+   "precision": 0.0,
+   "false_positive_rate": 0.0146
+  },
+  "k5_cells1": {
+   "recall": 0.0,
+   "precision": null,
+   "false_positive_rate": 0.0
+  },
+  "k5_cells2": {
+   "recall": 0.0,
+   "precision": null,
+   "false_positive_rate": 0.0
+  },
+  "k5_cells3": {
+   "recall": 0.0,
+   "precision": null,
+   "false_positive_rate": 0.0
+  },
+  "k5_cells4": {
+   "recall": 0.0,
+   "precision": null,
+   "false_positive_rate": 0.0
+  },
+  "k5_cells5": {
+   "recall": 0.0,
+   "precision": null,
+   "false_positive_rate": 0.0
+  }
+ }
+}
