@@ -65,10 +65,11 @@ class Pipeline:
         return float(np.clip(d + 0.1, self.cfg.planner.near_unknown_ignore_m, 3.0))
 
     def process(self, frame_bgr: np.ndarray, t_ms: float, gravity_cam, heading_rad: Optional[float] = None,
-                steps_total: Optional[int] = None) -> FrameResult:
+                steps_total: Optional[int] = None, gravity_source: str = "gravity") -> FrameResult:
         """``heading_rad``: yaw (+ = right) from a game-rotation-vector style sensor; ``steps_total``:
         cumulative step count.  Both optional: without a heading the BEV memory keeps only the current
-        frame (+ a very short tail) and the behaviour machine cannot recenter."""
+        frame (+ a very short tail) and the behaviour machine cannot recenter.  ``gravity_source`` is
+        ``gravity`` for TYPE_GRAVITY, ``attitude`` for an orientation-derived vector, or ``fixed``."""
         c = self.cfg
         lat = {}
         t0 = time.perf_counter()
@@ -82,7 +83,7 @@ class Pipeline:
         ego = self.ego.update(t_ms, heading_rad, steps_total)
         yaw_deg = self.behavior.yaw_deg()
         up = up_from_gravity(gravity_cam)
-        fit = self.calib.update(q, mask, self.K, up)
+        fit = self.calib.update(q, mask, self.K, up, up_source=gravity_source)
         up = fit.up if fit.up is not None else up
         depth_m = None
         plan = None

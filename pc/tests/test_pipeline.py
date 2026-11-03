@@ -39,8 +39,10 @@ def test_open_ground_forward_and_logged_fields():
     assert all(r.command == "FORWARD" for r in res)
     log = res[-1].log
     assert abs(log["a"] - 0.8) < 0.05 and abs(log["b"] - 0.05) < 0.02
-    for k in ("confidence", "inlier_ratio", "left_clear_m", "center_clear_m", "right_clear_m", "command", "latency_ms"):
+    for k in ("confidence", "inlier_ratio", "left_clear_m", "center_clear_m", "right_clear_m", "command", "latency_ms",
+              "up_source", "input_up_source", "attitude_visual_deg", "visual_fallback"):
         assert k in log
+    assert log["up_source"] == "gravity" and log["input_up_source"] == "gravity"
     json.dumps(log)                                    # serialisable
 
 

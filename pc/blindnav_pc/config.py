@@ -35,8 +35,11 @@ class GroundConfig:
     max_depth_m: float = 15.0
     seed: int = 0
     enable_visual_up: bool = True
-    max_gravity_tilt_deg: float = 10.0
-    prefer_visual_up_deg: float = 8.0
+    max_gravity_tilt_deg: float = 5.0    # attitude/visual agreement up to this -> fuse them
+    prefer_visual_up_deg: float = 10.0   # attitude/visual disagreement above this -> visual plane + known height
+    plane_tol_m: float = 0.03            # robust plane inlier tolerance (metres)
+    plane_rel_tol: float = 0.02          # plus this fraction of the point's z-depth
+    plane_ransac_iters: int = 150
 
 
 @dataclass

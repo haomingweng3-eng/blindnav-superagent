@@ -84,12 +84,14 @@ def run_eval(session: SanpoSession, indices: Sequence[int], pipe: Pipeline, cfg:
         if depth_oracle is not None:
             depth_oracle.set_gt(gt.depth_m)
         g = inp.gravity_cam
+        g_src = "attitude"                                              # pose-derived IMU proxy
         if gravity == "gtplane":
             g = session.gt_gravity(i)
+            g_src = "gravity"                                           # oracle plane: trust it
             if g is None:
-                g = inp.gravity_cam
-        res = pipe.process(inp.bgr, inp.t_ms, g)                        # RGB + gravity proxy only
-        up = up_from_gravity(g)
+                g, g_src = inp.gravity_cam, "attitude"
+        res = pipe.process(inp.bgr, inp.t_ms, g, gravity_source=g_src)  # RGB + gravity proxy only
+        up = res.fit.up if res.fit.up is not None else up_from_gravity(g)
         row: Dict[str, object] = {"index": i, "ground_ok": bool(res.fit.ok), "confidence": float(res.fit.confidence),
                                   "tracking_ok": inp.tracking_ok}
         blind = pipe._blind_distance(up, inp.bgr.shape)

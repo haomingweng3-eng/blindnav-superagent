@@ -4,7 +4,8 @@ Camera frame = OpenCV convention (x right, y down, z forward).  Gravity vectors 
 Android logger sessions provide ``imu.csv`` (TYPE_GRAVITY and orientation timestamps) and
 ``camera.json``; map them to ``python -m blindnav_pc run --video ... --imu ... --camera ...
 --orientation ... --steps ...``.  Prefer TYPE_GRAVITY (or accel+gyro fusion), never a
-camera-pose Y-up assumption.
+camera-pose Y-up assumption: :func:`resolve_gravity` tries the gravity log first, then the
+orientation-derived attitude, then the fixed pitch/roll fallback.
 """
 from __future__ import annotations
 
@@ -99,21 +100,76 @@ class ImuLog:
         return v / n
 
 
+def android_gravity_to_camera(g_device) -> np.ndarray:
+    """Android sensor frame -> OpenCV camera frame for a rear camera in natural orientation.
+
+    Android sensors use x right, y up, z out of the screen.  A rear camera looks along -z, so
+    the camera frame (x right, y down, z forward) is ``(gx, -gy, -gz)``.
+    """
+    g = np.asarray(g_device, dtype=np.float64).reshape(-1, 3)
+    return np.stack([g[:, 0], -g[:, 1], -g[:, 2]], axis=1)
+
+
+def _is_gravity_sensor(name: str) -> bool:
+    s = str(name).strip().lower()
+    return s == "9" or s.endswith("gravity") or s == "gravity"
+
+
 def load_imu_csv(path: str) -> ImuLog:
-    """CSV with header ``t_ms,gx,gy,gz`` (extra columns ignored)."""
+    """Load gravity directions from either supported CSV layout.
+
+    * ``t_ms,gx,gy,gz``: gravity already in the OpenCV camera frame (extra columns ignored).
+    * Android ``SessionCaptureActivity`` logs, ``t_ns,sensor_type,x,y,z,w``: only TYPE_GRAVITY
+      rows are used, nanoseconds are converted to milliseconds, and the device-frame vector is
+      mapped to the camera frame (:func:`android_gravity_to_camera`).
+    """
     with open(path, "r", newline="", encoding="utf-8-sig") as fh:
         reader = csv.DictReader(fh)
-        need = ("t_ms", "gx", "gy", "gz")
-        missing = [k for k in need if k not in (reader.fieldnames or [])]
-        if missing:
-            raise ValueError(f"IMU csv needs columns t_ms,gx,gy,gz; missing: {missing}")
+        cols = reader.fieldnames or []
         rows = list(reader)
+    if "sensor_type" in cols:
+        t_col = "t_ns" if "t_ns" in cols else "t_ms"
+        if t_col not in cols or not all(k in cols for k in ("x", "y", "z")):
+            raise ValueError("Android IMU csv needs t_ns (or t_ms) and x,y,z columns")
+        grav = [r for r in rows if _is_gravity_sensor(r["sensor_type"])]
+        if not grav:
+            raise ValueError("IMU csv has no TYPE_GRAVITY rows (android.sensor.gravity)")
+        try:
+            scale = 1e-6 if t_col == "t_ns" else 1.0
+            t = [float(r[t_col]) * scale for r in grav]
+            g = android_gravity_to_camera([[float(r["x"]), float(r["y"]), float(r["z"])] for r in grav])
+        except ValueError as e:
+            raise ValueError(f"IMU csv has a non-numeric value: {e}") from e
+        return ImuLog(t, g)
+    need = ("t_ms", "gx", "gy", "gz")
+    missing = [k for k in need if k not in cols]
+    if missing:
+        raise ValueError(f"IMU csv needs columns t_ms,gx,gy,gz; missing: {missing}")
     try:
         t = [float(r["t_ms"]) for r in rows]
         g = [[float(r["gx"]), float(r["gy"]), float(r["gz"])] for r in rows]
     except ValueError as e:
         raise ValueError(f"IMU csv has a non-numeric value: {e}") from e
     return ImuLog(t, g)
+
+
+def resolve_gravity(t_ms: float, imu: Optional["ImuLog"] = None,
+                    orientation: Optional["OrientationLog"] = None,
+                    fallback=None) -> Tuple[Optional[np.ndarray], str]:
+    """Gravity for one frame, in priority order: TYPE_GRAVITY log -> attitude -> fixed fallback.
+
+    Returns ``(unit gravity pointing down in the camera frame, source)`` with source
+    ``"gravity" | "attitude" | "fixed"``.  Keeping the source lets the ground calibrator
+    trust a true gravity sensor while still falling back to the visual plane for an
+    attitude that disagrees with it.
+    """
+    if imu is not None:
+        return imu.gravity_at(t_ms), "gravity"
+    if orientation is not None:
+        g = orientation.gravity_at(t_ms)
+        if g is not None:
+            return g, "attitude"
+    return fallback, "fixed"
 
 
 def gravity_from_pitch_roll(pitch_deg: float, roll_deg: float = 0.0) -> np.ndarray:

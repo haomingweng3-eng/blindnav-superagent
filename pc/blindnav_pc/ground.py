@@ -77,7 +77,10 @@ class GroundFit:
     reused: bool = False                 # (a, b) copied from an earlier frame
     degraded: bool = False               # no usable calibration -> caller should OBSERVE / STOP
     reason: str = ""
-    up_source: str = "imu"
+    up_source: str = "gravity"           # up actually used: gravity | attitude | fixed | fused | visual
+    input_up_source: str = "gravity"     # what the caller supplied: gravity | attitude | fixed
+    attitude_visual_deg: float = float("nan")   # angle between supplied up and the visual ground normal
+    visual_fallback: bool = False        # visual plane + known height replaced the attitude up
     up: Optional[np.ndarray] = None
 
     def to_log(self) -> dict:
@@ -85,7 +88,9 @@ class GroundFit:
                 "inlier_ratio": _f(self.inlier_ratio), "residual": _f(self.residual),
                 "n_ground_px": int(self.n_pixels), "confidence": _f(self.confidence),
                 "reused": bool(self.reused), "degraded": bool(self.degraded), "reason": self.reason}
-        d["up_source"] = self.up_source
+        d.update({"up_source": self.up_source, "input_up_source": self.input_up_source,
+                  "attitude_visual_deg": _f(self.attitude_visual_deg),
+                  "visual_fallback": bool(self.visual_fallback)})
         return d
 
 
@@ -180,13 +185,85 @@ def fit_ground(q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, up: np.nda
     return fit_affine_ransac(qi, wi, cfg)
 
 
+def up_kind(source: str) -> str:
+    """Normalise a caller-supplied gravity source to ``gravity | attitude | fixed``."""
+    s = str(source or "gravity").strip().lower()
+    if s in ("gravity", "imu", "type_gravity") or s.endswith("gravity"):
+        return "gravity"
+    if s in ("fixed", "fallback", "pitch_roll"):
+        return "fixed"
+    return "attitude"
+
+
+def choose_up(up: np.ndarray, visual: Optional[tuple[np.ndarray, float]], source: str,
+              cfg: GroundConfig) -> tuple[np.ndarray, str]:
+    """Pick the up vector for the final affine fit.
+
+    TYPE_GRAVITY (``source="gravity"``) is preferred and never replaced by the visual plane.
+    An attitude- or fixed-pitch-derived up (``attitude``/``fixed``) is fused when it agrees
+    with the visual normal and replaced by the visual plane when the disagreement is large
+    (the refit then uses the known camera height).
+    """
+    kind = up_kind(source)
+    if visual is None:
+        return up, kind
+    vup, angle = visual
+    if kind == "gravity":
+        return up, "gravity"
+    if angle > cfg.prefer_visual_up_deg:
+        return vup, "visual"
+    if angle <= cfg.max_gravity_tilt_deg:
+        fused = np.asarray(up, dtype=np.float64) + vup
+        n = float(np.linalg.norm(fused))
+        if n > 1e-9:
+            return fused / n, "fused"
+    return up, kind
+
+
+def _plane_ransac(P: np.ndarray, tol: np.ndarray, iters: int, min_inliers: int,
+                  seed: int) -> Optional[tuple[np.ndarray, int]]:
+    """Robust plane normal from 3-D points.  Plain SVD is not safe here: a few percent of
+    random inverse-depth outliers tilt the normal by >10 deg."""
+    n = len(P)
+    if n < max(3, min_inliers):
+        return None
+    rng = np.random.default_rng(seed)
+    best_n, best_cnt = None, -1
+    for _ in range(iters):
+        i, j, k = rng.choice(n, 3, replace=False)
+        nrm = np.cross(P[j] - P[i], P[k] - P[i])
+        ln = float(np.linalg.norm(nrm))
+        if ln < 1e-9:                              # collinear sample
+            continue
+        nrm /= ln
+        cnt = int((np.abs((P - P[i]) @ nrm) <= tol).sum())
+        if cnt > best_cnt:
+            best_cnt, best_n = cnt, nrm
+    if best_n is None or best_cnt < min_inliers:
+        return None
+    inl = np.abs((P - P.mean(0)) @ best_n) <= tol
+    for _ in range(3):
+        c = P[inl].mean(0)
+        _, _, vh = np.linalg.svd(P[inl] - c, full_matrices=False)
+        nrm = vh[-1]
+        nrm /= max(float(np.linalg.norm(nrm)), 1e-12)
+        new = np.abs((P - c) @ nrm) <= tol
+        if int(new.sum()) < min_inliers:
+            break
+        inl = new
+    return nrm, int(inl.sum())
+
+
 def visual_plane_up(q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, imu_up: np.ndarray,
                     cfg: GroundConfig, a: Optional[float] = None,
                     b: Optional[float] = None) -> Optional[tuple[np.ndarray, float]]:
     """Estimate a ground normal from mask pixels and relative inverse depth.
 
-    The initial affine fit supplies metric depth.  This is important: directly using
-    ``1/q`` would turn the unknown affine offset into a false plane tilt.
+    The affine fit supplies metric depth.  This is important: directly using ``1/q`` would turn
+    the unknown affine offset into a false plane tilt.  Because q's offset is indistinguishable
+    from a plane pitch, ``a``/``b`` must come from a trusted or previous calibration.  The plane
+    itself is fitted robustly, so depth outliers in the mask do not manufacture a large
+    attitude disagreement.
     """
     if not cfg.enable_visual_up:
         return None
@@ -217,12 +294,15 @@ def visual_plane_up(q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, imu_u
     z = 1.0 / den
     P = np.stack([(xs - K[0, 2]) / K[0, 0] * z,
                   (ys - K[1, 2]) / K[1, 1] * z, z], axis=1)
-    c = P.mean(0)
-    _, _, vh = np.linalg.svd(P - c, full_matrices=False)
-    n = vh[-1]
-    n /= max(np.linalg.norm(n), 1e-12)
+    tol = cfg.plane_tol_m + cfg.plane_rel_tol * z
+    fit = _plane_ransac(P, tol, cfg.plane_ransac_iters,
+                        max(50, cfg.min_pixels // 2), cfg.seed)
+    if fit is None:
+        return None
+    n = fit[0]
     imu = np.asarray(imu_up, dtype=np.float64); imu /= max(np.linalg.norm(imu), 1e-12)
-    if n @ imu < 0: n = -n
+    if n @ imu < 0:
+        n = -n
     angle = float(np.degrees(np.arccos(np.clip(n @ imu, -1.0, 1.0))))
     return n, angle
 
@@ -239,24 +319,20 @@ class GroundCalibrator:
         self._b = None
         self._stale = 0
 
-    def update(self, q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, up: np.ndarray) -> GroundFit:
-        selected = np.asarray(up, dtype=np.float64)
-        source = "imu"
-        # First pass uses gravity.  The resulting affine mapping removes q's
-        # unknown offset before the visual plane is estimated.
-        initial = fit_ground(q, ground_mask, K, selected, self.cfg)
-        vp = visual_plane_up(q, ground_mask, K, selected, self.cfg,
-                             initial.a if initial.ok else None,
-                             initial.b if initial.ok else None)
-        if vp is not None:
-            vup, angle = vp
-            if angle > self.cfg.prefer_visual_up_deg:
-                selected, source = vup, "visual"
-            elif angle <= self.cfg.max_gravity_tilt_deg:
-                selected = (selected + vup); selected /= max(np.linalg.norm(selected), 1e-12)
-                source = "fused"
+    def update(self, q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, up: np.ndarray,
+               up_source: str = "gravity") -> GroundFit:
+        supplied = np.asarray(up, dtype=np.float64)
+        # First pass bootstraps (a, b) for the visual plane.  Prefer the previous trusted
+        # calibration: a bootstrap refitted with a wrong attitude is self-consistent with it,
+        # so it cannot reveal the disagreement we are trying to detect.
+        initial = fit_ground(q, ground_mask, K, supplied, self.cfg)
+        ref_a, ref_b = (self._a, self._b) if self._a is not None else (initial.a, initial.b)
+        vp = visual_plane_up(q, ground_mask, K, supplied, self.cfg, ref_a, ref_b)
+        selected, source = choose_up(supplied, vp, up_source, self.cfg)
         fit = fit_ground(q, ground_mask, K, selected, self.cfg)
-        fit.up_source, fit.up = source, selected
+        fit.up_source, fit.input_up_source, fit.up = source, up_kind(up_source), selected
+        fit.attitude_visual_deg = float("nan") if vp is None else vp[1]
+        fit.visual_fallback = source == "visual"
         if fit.ok:
             if self._a is not None and self.cfg.ema < 1.0:
                 e = self.cfg.ema

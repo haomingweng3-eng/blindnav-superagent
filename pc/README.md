@@ -59,7 +59,8 @@ python -m blindnav_pc metrics out/run1/log.jsonl --labels labels.csv
 ### 输入文件格式
 - `camera.json`：`{"fx":..,"fy":..,"cx":..,"cy":..,"width":1920,"height":1080}`（`width/height` 可选，与视频尺寸不同时自动缩放）。缺省按水平 FOV 70° 估计。
 - `imu.csv`：表头 `t_ms,gx,gy,gz`，**重力方向（指向下）在相机坐标系**（OpenCV：x 右、y 下、z 前）下的向量，按最近时间戳取值，额外列忽略。
-  没有 IMU 时用 `config.camera.pitch_deg`（默认相机向下俯 15°）和 roll=0 构造重力——**俯仰角错了，米制尺度就会错**。
+  也可直接给 Android logger 的原始格式 `t_ns,sensor_type,x,y,z,w`：只取 **TYPE_GRAVITY** 行，ns→ms，并把设备系 (x 右、y 上、z 朝屏幕外) 映射到相机系 `(gx,-gy,-gz)`。
+  重力来源优先级固定为 **TYPE_GRAVITY → orientation 四元数 → `config.camera.pitch_deg`**（默认向下俯 15°）——**俯仰角错了，米制尺度就会错**。
 - `orientation.csv`：`t_ms,qx,qy,qz,qw`（相机→世界，世界 Z 向上，TYPE_GAME_ROTATION_VECTOR 风格）或 `t_ms,heading_deg`（仅航向，右为正）。`--cam-axes opencv|opengl` 指定相机轴约定。
   提供四元数时同时给出重力方向，不必再给 imu.csv。
 - `steps.csv`：`t_ms`，每个步伐事件一行（TYPE_STEP_DETECTOR）。没有则只做旋转 warp。
@@ -69,7 +70,12 @@ python -m blindnav_pc metrics out/run1/log.jsonl --labels labels.csv
 Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a、b：`1/Z = a·q + b`）。已知相机离地高度 h（默认 1.20 m）和重力方向就能解出 a、b：
 1. `up = −normalize(g_cam)`。
 2. 取"腐蚀后的可行走 mask ∩ 图像下部 ROI"里的像素，射线 `r = K⁻¹[u,v,1]`；仅当 `upᵀr < −eps` 时地面深度 `Z = −h/(upᵀr)`（z 深度，非射线长度）。
-3. 对 `a·q + b = 1/Z` 做 RANSAC（2 点采样）+ 内点最小二乘；输出内点比例、相对残差、置信度 `= 内点比 × (1 − 残差rms/rel_tol)`。
+3. 对 `a·q + b = 1/Z` 做 RANSAC（2 点采样）+ 内点最小二乘；输出内点比例、相对残差、置信度
+   `= 内点比 × 1/(1 + 残差rms/rel_tol) × min(n/min_pixels,1)`。残差是 `1/Z` 的相对误差，与逐像素 AbsRel 同量纲；
+   单元测试（`tests/test_ground.py`）验证置信度与 AbsRel 的 Spearman 相关为负（噪声越大、异常值越多，置信度越低）。
+   **TYPE_GRAVITY 输入的 up 不被视觉平面替换**；只有 attitude（姿态四元数 / 固定俯仰）与视觉地面法线夹角
+   `> prefer_visual_up_deg` 时才回退到"视觉平面 + 已知相机高度"，夹角很小时两者融合。视觉平面用 RANSAC 拟合，
+   少量深度异常值不会伪造出大的姿态偏差。
 4. 全图米制深度 `D = 1/(a·q+b)`，分母 ≤ 0 → NaN（**未知，绝不当作自由空间**）；玻璃/无深度同理。
 5. 反投影 → 用重力旋到水平系（forward = 相机 z 轴投影到水平面，right = forward × up）→ 栅格化单帧证据：地面高度≈0 且 mask 可走 = FREE 证据；
    高度 0.15–2.0 m = OCCUPIED；低于 −0.25 m（台阶下沉）= OCCUPIED；其余 UNKNOWN。

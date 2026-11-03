@@ -4,7 +4,8 @@ import numpy as np
 import pytest
 
 from blindnav_pc.depth import DepthEstimator, SyntheticDepth
-from blindnav_pc.io import gravity_from_pitch_roll, load_camera, load_imu_csv
+from blindnav_pc.io import (ImuLog, gravity_from_pitch_roll, load_camera, load_imu_csv,
+                            resolve_gravity)
 from blindnav_pc.segmentation import ConstantSegmenter, make_segmenter, match_label_ids
 
 
@@ -36,6 +37,41 @@ def test_imu_csv(tmp_path):
     p.write_text("t_ms,gx,gy\n0,0,1\n")
     with pytest.raises(ValueError, match="gz"):
         load_imu_csv(str(p))
+
+
+def test_android_imu_csv_prefers_type_gravity_and_maps_axes(tmp_path):
+    p = tmp_path / "imu.csv"
+    p.write_text(
+        "t_ns,sensor_type,x,y,z,w\n"
+        "0,android.sensor.gyroscope,1,2,3,NaN\n"
+        "100000000,android.sensor.gravity,0,-9.81,0,4\n"
+        "200000000,android.sensor.game_rotation_vector,0,0,0,1\n"
+        "300000000,android.sensor.gravity,0,0,-9.81,4\n")
+    log = load_imu_csv(str(p))                       # only the two TYPE_GRAVITY rows survive
+    assert len(log.t) == 2 and log.t[0] == pytest.approx(100.0) and log.t[1] == pytest.approx(300.0)
+    assert np.allclose(log.gravity_at(100), [0, 1, 0])   # device y-up -> camera y-down
+    assert np.allclose(log.gravity_at(300), [0, 0, 1])   # device -z (screen out) -> camera +z
+    p.write_text("t_ns,sensor_type,x,y,z,w\n0,android.sensor.accelerometer,0,0,9.8,NaN\n")
+    with pytest.raises(ValueError, match="TYPE_GRAVITY"):
+        load_imu_csv(str(p))
+
+
+class _Orient:
+    def __init__(self, g):
+        self.g = g
+
+    def gravity_at(self, t_ms):
+        return self.g
+
+
+def test_resolve_gravity_prefers_type_gravity_then_attitude_then_fixed():
+    imu = ImuLog([0.0], [[0.0, 9.81, 0.0]])
+    g, src = resolve_gravity(0, imu, _Orient(np.array([0.0, 0.0, 1.0])), np.array([0.0, -1.0, 0.0]))
+    assert src == "gravity" and np.allclose(g, [0, 1, 0])
+    g, src = resolve_gravity(0, None, _Orient(np.array([0.0, 0.0, 1.0])), np.array([0.0, -1.0, 0.0]))
+    assert src == "attitude" and np.allclose(g, [0, 0, 1])
+    g, src = resolve_gravity(0, None, _Orient(None), np.array([0.0, -1.0, 0.0]))
+    assert src == "fixed" and np.allclose(g, [0, -1, 0])
 
 
 def test_constant_segmenter_and_factory():

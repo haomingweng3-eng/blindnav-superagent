@@ -3,8 +3,10 @@ import numpy as np
 import pytest
 
 from blindnav_pc.config import GroundConfig
-from blindnav_pc.ground import (GroundCalibrator, fit_affine_ransac, fit_ground, flat_ground_depth,
-                                metric_depth, pixel_rays, up_from_gravity)
+from blindnav_pc.ground import (GroundCalibrator, choose_up, fit_affine_ransac, fit_ground,
+                                flat_ground_depth, metric_depth, pixel_rays, up_from_gravity,
+                                visual_plane_up)
+from eval.depth_metrics import confidence_vs_error, spearman
 
 W, H_IMG = 320, 240
 K = np.array([[250.0, 0, 160.0], [0, 250.0, 120.0], [0, 0, 1.0]])
@@ -107,3 +109,80 @@ def test_calibrator_reuses_then_degrades():
     assert (not f.ok) and f.degraded
     f = cal.update(q, mask, K, up)                       # recovers when ground is visible again
     assert f.ok and not f.reused
+
+
+def _absrel(fit, q, z_true, mask):
+    d = metric_depth(q, fit.a, fit.b, max_depth=50)
+    sel = np.isfinite(z_true) & np.isfinite(d) & (z_true < 8.0) & (mask > 0) & (d > 0)
+    return float(np.mean(np.abs(d[sel] - z_true[sel]) / z_true[sel]))
+
+
+def test_choose_up_prefers_type_gravity_and_falls_back_for_attitude():
+    cfg = GroundConfig()
+    gravity_up = up_from_gravity(gravity(0.0))
+    visual_up = up_from_gravity(gravity(15.0))
+    up, src = choose_up(gravity_up, (visual_up, 15.0), "gravity", cfg)
+    assert src == "gravity" and np.allclose(up, gravity_up)          # TYPE_GRAVITY wins
+    up, src = choose_up(gravity_up, (visual_up, 15.0), "attitude", cfg)
+    assert src == "visual" and np.allclose(up, visual_up)            # large disagreement -> visual
+    up, src = choose_up(gravity_up, (visual_up, 3.0), "attitude", cfg)
+    assert src == "fused" and np.isclose(np.linalg.norm(up), 1.0)
+    up, src = choose_up(gravity_up, (visual_up, 7.0), "attitude", cfg)
+    assert src == "attitude" and np.allclose(up, gravity_up)         # middle ground: keep attitude
+
+
+def test_visual_plane_is_robust_to_depth_outliers():
+    cfg = GroundConfig(camera_height_m=CAM_H)
+    q, _, mask, up = synth_scene(noise=0.005, outlier_frac=0.15)
+    f = fit_ground(q, mask, K, up, cfg)
+    assert f.ok
+    vp = visual_plane_up(q, mask, K, up, cfg, f.a, f.b)
+    assert vp is not None and vp[1] < 3.0     # a plain SVD plane is tilted ~15 deg by the same outliers
+
+
+def test_calibrator_keeps_gravity_when_visual_disagrees_only_from_noise():
+    cfg = GroundConfig(camera_height_m=CAM_H)
+    q, _, mask, up = synth_scene(noise=0.005, outlier_frac=0.15)
+    f = GroundCalibrator(cfg).update(q, mask, K, up, up_source="gravity")
+    assert f.ok and f.up_source == "gravity" and not f.visual_fallback
+    assert f.a == pytest.approx(A_TRUE, rel=0.03)
+
+
+def test_calibrator_falls_back_to_visual_plane_for_wrong_attitude():
+    cfg = GroundConfig(camera_height_m=CAM_H)
+    q, _, mask, up = synth_scene(noise=0.005, outlier_frac=0.05)
+    cal = GroundCalibrator(cfg)
+    good = cal.update(q, mask, K, up, up_source="attitude")
+    assert good.ok and good.up_source in ("fused", "attitude")
+    wrong_up = up_from_gravity(gravity(0.0))                   # true pitch is 15 deg
+    f = cal.update(q, mask, K, wrong_up, up_source="attitude")
+    assert f.ok and f.visual_fallback and f.up_source == "visual"
+    assert f.input_up_source == "attitude" and f.attitude_visual_deg > cfg.prefer_visual_up_deg
+    assert f.a == pytest.approx(A_TRUE, rel=0.05) and f.b == pytest.approx(B_TRUE, abs=0.05)
+
+
+def test_confidence_negatively_correlated_with_absrel_on_noise_sweep():
+    cfg = GroundConfig(camera_height_m=CAM_H)
+    confs, errs = [], []
+    for noise in (0.001, 0.002, 0.004, 0.008, 0.016, 0.032, 0.064):
+        q, zt, mask, up = synth_scene(noise=noise, outlier_frac=0.0)
+        f = fit_ground(q, mask, K, up, cfg)
+        assert f.ok, f.reason
+        confs.append(f.confidence)
+        errs.append(_absrel(f, q, zt, mask))
+    r = confidence_vs_error(confs, errs)
+    assert r["n"] == len(confs) and r["spearman"] <= -0.9
+
+
+def test_confidence_negatively_correlated_with_absrel_across_degradations():
+    cfg = GroundConfig(camera_height_m=CAM_H)
+    confs, errs = [], []
+    for noise, out in ((0.002, 0.0), (0.005, 0.05), (0.01, 0.1), (0.02, 0.15), (0.04, 0.2), (0.06, 0.3)):
+        q, zt, mask, up = synth_scene(noise=noise, outlier_frac=out)
+        f = fit_ground(q, mask, K, up, cfg)
+        if not f.ok:
+            continue
+        confs.append(f.confidence)
+        errs.append(_absrel(f, q, zt, mask))
+    assert len(confs) >= 5
+    assert spearman(confs, errs) < -0.5

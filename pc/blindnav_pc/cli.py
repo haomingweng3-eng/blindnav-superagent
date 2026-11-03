@@ -15,7 +15,7 @@ def _cmd_run(a) -> int:
     from .depth import DepthEstimator
     from .ego import CAM_OPENCV, CAM_OPENGL
     from .io import (VideoSource, gravity_from_pitch_roll, load_camera, load_imu_csv, load_orientation_csv,
-                     load_steps_csv)
+                     load_steps_csv, resolve_gravity)
     from .metrics import compute_metrics, format_report, load_labels_csv
     from .pipeline import Pipeline
     from .segmentation import make_segmenter
@@ -46,13 +46,12 @@ def _cmd_run(a) -> int:
             if a.stride > 1 and n % a.stride:
                 n += 1
                 continue
-            g = imu.gravity_at(t_ms) if imu is not None else None
-            if g is None and orient is not None:
-                g = orient.gravity_at(t_ms)
-            g = g_fallback if g is None else g
+            # Prefer TYPE_GRAVITY; only then use the attitude-derived gravity, then the fixed pitch.
+            g, g_src = resolve_gravity(t_ms, imu, orient, g_fallback)
             hd = orient.heading_at(t_ms) if orient is not None else None
             res = pipe.process(frame, t_ms, g, heading_rad=hd,
-                               steps_total=steps.count_at(t_ms) if steps is not None else None)
+                               steps_total=steps.count_at(t_ms) if steps is not None else None,
+                               gravity_source=g_src)
             lf.write(json.dumps(res.log, ensure_ascii=False) + "\n")
             n += 1
             print(f"[{t_ms/1000:6.2f}s] {res.command:<8} {res.text}  "
@@ -124,7 +123,8 @@ def build_parser() -> argparse.ArgumentParser:
     r = sub.add_parser("run", help="在视频/摄像头上运行完整流水线")
     g = r.add_mutually_exclusive_group()
     g.add_argument("--video"), g.add_argument("--webcam", type=int, nargs="?", const=0)
-    r.add_argument("--imu", help="imu.csv (t_ms,gx,gy,gz；相机坐标系下的重力方向)")
+    r.add_argument("--imu", help="imu.csv：t_ms,gx,gy,gz（相机坐标系重力）或 Android 原始 t_ns,sensor_type,x,y,z,w"
+                   "（优先取 TYPE_GRAVITY）")
     r.add_argument("--camera", help="camera.json (fx,fy,cx,cy)；缺省按 FOV 估计")
     r.add_argument("--orientation", help="orientation.csv: t_ms,qx,qy,qz,qw (相机→世界，Z 向上) 或 t_ms,heading_deg；"
                    "用于 BEV 记忆自运动补偿 + RECENTER 的 PDR；缺省则历史被大幅缩短、不做回正")
