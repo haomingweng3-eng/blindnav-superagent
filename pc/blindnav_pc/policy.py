@@ -3,8 +3,8 @@
 Kotlin logic ported (names in brackets): a single frame never stops [stopStreak>=2 and
 stopPersistMs], a stop is held for a while [stopHoldMs], side changes need N frames AND a dwell
 time [sideFrames/sideDwellMs], going back to straight needs [centerFrames], geometry lost for
-[corridorLostMs] -> degraded -> re-observe.  New in V0.1: RECENTER state after a bypass and
-OBSERVE/STOP when the ground calibration is degraded.  Everything is driven by ``now_ms`` that the
+[corridorLostMs] -> degraded -> re-observe.  OBSERVE/STOP when the ground calibration is degraded.
+RECENTER is *not* decided here any more: it is a state of ``behavior.BehaviorMachine``.  Everything is driven by ``now_ms`` that the
 caller passes in (no wall clock) so it is deterministic and testable.
 """
 from __future__ import annotations
@@ -33,7 +33,6 @@ class PolicyInput:
     corridor_min_dist_m: float = float("inf")
     dead_end: bool = False
     desired_side: str = "center"            # 'left' | 'center' | 'right' from the planner
-    lateral_offset_m: Optional[float] = None  # +right of the original line, if known (sim / odometry)
 
 
 @dataclass
@@ -42,9 +41,6 @@ class PolicyDecision:
     text: str
     stop_reason: str
     stable_frames: int
-    offset_est_m: float
-    target_heading_deg: float               # feed back to the planner (non-zero while RECENTER)
-    recenter_dir: str = ""
 
 
 class WalkingSafetyPolicy:
@@ -63,42 +59,17 @@ class WalkingSafetyPolicy:
         self._center_streak = 0
         self._cmd = FORWARD
         self._lost_since = None
-        self._offset = 0.0              # +right
-        self._last_t = None
-        self._forward_since = None
-        self._recenter_dir = ""
 
     @property
     def command(self) -> str:
         return self._cmd
 
-    def _integrate(self, now_ms: float, measured: Optional[float]) -> None:
-        dt = 0.0 if self._last_t is None else max(0.0, (now_ms - self._last_t) / 1000.0)
-        self._last_t = now_ms
-        if measured is not None:
-            self._offset = float(measured)
-            return
-        v = self.cfg.assumed_side_speed_mps
-        if self._cmd == RIGHT:
-            self._offset += v * dt
-        elif self._cmd == LEFT:
-            self._offset -= v * dt
-        elif self._cmd == RECENTER:
-            self._offset += (v * dt) if self._recenter_dir == "right" else (-v * dt)
-
     def _decision(self, stop_reason: str = "", stable: int = 0) -> PolicyDecision:
-        c = self.cfg
-        tgt = 0.0
-        if self._cmd == RECENTER:
-            tgt = c.recenter_heading_deg if self._recenter_dir == "right" else -c.recenter_heading_deg
-        return PolicyDecision(self._cmd, command_text(self._cmd, self._recenter_dir), stop_reason,
-                              stable, self._offset, tgt, self._recenter_dir if self._cmd == RECENTER else "")
+        return PolicyDecision(self._cmd, command_text(self._cmd), stop_reason, stable)
 
     def evaluate(self, inp: PolicyInput) -> PolicyDecision:
         c = self.cfg
         now = inp.now_ms
-        self._integrate(now, inp.lateral_offset_m)
-
         # ---- calibration / geometry lost -> hold, OBSERVE, STOP ----
         if not inp.ground_ok:
             if self._lost_since is None:
@@ -115,7 +86,6 @@ class WalkingSafetyPolicy:
         self._lost_since = None
         if self._cmd == OBSERVE:
             self._cmd = FORWARD
-            self._forward_since = now
 
         # ---- stop evidence with Kotlin debounce ----
         evidence = inp.dead_end or (inp.corridor_blocked and inp.corridor_min_dist_m < c.imminent_dist_m)
@@ -135,24 +105,8 @@ class WalkingSafetyPolicy:
             return self._decision("dead_end" if inp.dead_end else "corridor_obstacle_persistent")
         if self._cmd == STOP:
             self._cmd = FORWARD
-            self._forward_since = now
 
         side = inp.desired_side
-        # ---- RECENTER handling ----
-        if self._cmd == RECENTER:
-            if abs(self._offset) < c.recenter_done_m:
-                self._cmd, self._recenter_dir = FORWARD, ""
-                self._forward_since = now
-                self._reset_side()
-                return self._decision()
-            if side == self._recenter_dir:
-                return self._decision(stable=1)     # planner agrees: keep recentering
-            # planner no longer agrees (blocked / other side): cancel, go straight, retry later
-            self._cmd, self._recenter_dir = FORWARD, ""
-            self._forward_since = now
-            self._reset_side()
-            # fall through to normal processing below
-
         # ---- normal side/center debounce (Kotlin port) ----
         if side in (LEFT.lower(), RIGHT.lower()):
             self._center_streak = 0
@@ -169,12 +123,6 @@ class WalkingSafetyPolicy:
         if self._center_streak >= c.center_frames:
             if self._cmd in (LEFT, RIGHT):
                 self._cmd = FORWARD
-                self._forward_since = now
-            if (self._cmd == FORWARD and abs(self._offset) > c.recenter_thr_m
-                    and self._forward_since is not None
-                    and (now - self._forward_since) >= c.recenter_delay_ms):
-                self._cmd = RECENTER
-                self._recenter_dir = "left" if self._offset > 0 else "right"
         return self._decision(stable=self._center_streak)
 
     def _reset_side(self) -> None:

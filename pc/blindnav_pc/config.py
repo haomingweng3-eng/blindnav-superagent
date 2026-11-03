@@ -41,7 +41,10 @@ class BEVConfig:
     lateral_half_m: float = 1.5
     forward_m: float = 4.0
     cell_m: float = 0.1
-    decay: float = 0.9
+    decay: float = 0.9                   # evidence decay per frame WITH ego-motion compensation
+    decay_no_ego: float = 0.3            # without ego-motion: history is nearly dropped (current frame dominates)
+    footprint_half_m: float = 0.25       # the person's current footprint is known free
+    footprint_len_m: float = 0.35
     ground_tol_m: float = 0.15           # |height| below this = ground surface
     obstacle_min_m: float = 0.15
     obstacle_max_m: float = 2.0          # above head clearance -> ignored
@@ -51,6 +54,7 @@ class BEVConfig:
     occ_thr: float = 0.5
     free_thr: float = 0.5
     free_clears_occ: float = 0.5         # a clear free observation shrinks occupied evidence
+    free_clears_occ_ego: float = 0.2     # same, when old evidence was warped by ego-motion (ghost suppression)
     non_walkable_ground_is_occupied: bool = True   # road / grass / water-like ground = not walkable
 
     @property
@@ -67,8 +71,10 @@ class PlannerConfig:
     heading_max_deg: float = 35.0
     heading_step_deg: float = 5.0
     corridor_len_m: float = 1.5          # collision corridor length ahead
-    body_half_m: float = 0.2
-    margin_m: float = 0.1                # corridor half-width = body_half + margin = 0.3
+    body_width_m: float = 0.5            # human body width
+    margin_m: float = 0.15               # safety margin added on each side (inflation = body_half + margin = 0.4)
+    widen_max_deg: float = 60.0          # if nothing is passable within +-heading_max_deg, widen to this before STOP
+    widen_min_progress_m: float = 1.0    # a widened heading must be seen free to the end of the view with >= this forward progress
     alpha: float = 1.0                   # clear distance (normalised by forward range)
     beta: float = 0.5                    # free width (normalised)
     gamma: float = 0.6                   # heading error vs target (normalised by max heading)
@@ -81,7 +87,12 @@ class PlannerConfig:
     side_deg: float = 7.5                # |heading| below this counts as "center"
 
     @property
+    def body_half_m(self) -> float:
+        return self.body_width_m / 2.0
+
+    @property
     def half_width_m(self) -> float:
+        """Inflation radius: swept half-width of the footprint corridor = body half-width + safety margin."""
         return self.body_half_m + self.margin_m
 
 
@@ -95,11 +106,29 @@ class PolicyConfig:
     lost_ms: int = 500                   # ground/geometry lost: hold, then OBSERVE
     observe_to_stop_ms: int = 2000       # OBSERVE longer than this -> STOP
     imminent_dist_m: float = 0.7         # corridor obstacle closer than this -> stop evidence
-    recenter_delay_ms: int = 1200        # go straight this long after a bypass before recentering
-    recenter_thr_m: float = 0.25
-    recenter_done_m: float = 0.10
-    assumed_side_speed_mps: float = 0.25 # lateral speed assumed while a side command is followed
-    recenter_heading_deg: float = 10.0
+
+
+@dataclass
+class EgoConfig:
+    """Ego-motion (PDR) from an orientation sensor (game-rotation-vector style) + step events."""
+    step_length_m: float = 0.70          # personal step length L_step
+    max_dt_ms: float = 1500.0            # longer gap between frames -> motion unreliable, drop history
+    max_dyaw_deg: float = 60.0           # larger heading jump per frame -> unreliable
+    use_steps: bool = True               # False: rotation-only warp (gyro only)
+
+
+@dataclass
+class BehaviorConfig:
+    """CRUISE -> AVOID_LEFT/RIGHT -> PASSING -> RECENTER -> CRUISE."""
+    lookahead_m: float = 1.5             # RECENTER goal = (0, z_hat + lookahead)
+    pass_len_m: float = 1.3              # PDR progress beyond the obstacle front (assumed depth 0.8 + body 0.5) before RECENTER may start
+    pass_timeout_ms: float = 4500.0      # fallback when no step events exist (PASSING lasts at most this long)
+    recenter_thr_m: float = 0.25         # |x_hat| above this after passing -> RECENTER
+    recenter_done_m: float = 0.10        # |x_hat| below this ...
+    heading_done_deg: float = 6.0        # ... with heading error below this ...
+    center_free_frames: int = 3          # ... and the centre corridor free for N frames -> CRUISE
+    recenter_max_deg: float = 20.0       # clip of the goal bearing
+    recenter_timeout_ms: float = 8000.0  # give up (re-anchor the reference line here) after this long
 
 
 @dataclass
@@ -116,6 +145,8 @@ class Config:
     planner: PlannerConfig = field(default_factory=PlannerConfig)
     policy: PolicyConfig = field(default_factory=PolicyConfig)
     camera: CameraConfig = field(default_factory=CameraConfig)
+    ego: EgoConfig = field(default_factory=EgoConfig)
+    behavior: BehaviorConfig = field(default_factory=BehaviorConfig)
 
     @classmethod
     def from_json(cls, path: Optional[str]) -> "Config":
