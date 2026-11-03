@@ -21,7 +21,7 @@ cd pc
 python -m venv .venv && source .venv/bin/activate        # Python >= 3.10
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
-pytest -q                                                # 100 个测试，不联网、不下载模型、不需要数据集
+pytest -q                                                # 126 个测试，不联网、不下载模型、不需要数据集
 ```
 
 首次 `run` 会从 Hugging Face 下载两个模型（约 100 MB，缓存在 `~/.cache/huggingface`，**不入库**）：
@@ -101,6 +101,20 @@ Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a
 - 退出：`|x_hat| < 0.10 m` 且航向误差 < 6° 且中线连续 3 帧畅通 → CRUISE；8 s 超时则重新锚定参考线。
 - 没有姿态输入（`--orientation` 缺省）→ 不回正（只绕障）。
 
+### 导航安全状态（`safety.py`，P0）
+每帧输出 `CLEAR / BLOCKED / UNKNOWN`。**`UNKNOWN` 表示当前无法确认前方是否可通行，绝不会映射成 FORWARD**
+（输出降级为 OBSERVE/STOP）。触发条件：
+- 输入超时/丢帧：帧间隔 > `safety.input_timeout_ms`（默认 500 ms）或时间戳倒退；
+- 地面标定不可信：`fit.ok=False`、置信度 < `min_confidence`、残差 > `max_residual`，
+  或姿态与视觉地面法线冲突（`visual_fallback` 或夹角 > `max_attitude_visual_deg`）；
+- 前方走廊（`corridor_len_m` × ±`corridor_half_width_m`）已知栅格（FREE/OCCUPIED）占比 < `min_corridor_coverage`。
+
+`UNKNOWN → CLEAR` 需要连续 `unknown_recovery_frames` 个可靠帧（默认 3，迟滞），单帧恢复不会放行。
+`BLOCKED` 是**已确认**的前方障碍，仍允许向空的一侧转。提示语区分障碍与无法确认：
+`前方有障碍，请停下`（/稍向左、稍向右）与 `前方情况无法确认，请暂停并使用盲杖探查`。
+状态切换通过 `logging`（logger `blindnav_pc.safety`）带 `t_ms` 记录；逐帧日志新增
+`safety_state, safety_reasons, corridor_coverage`。
+
 ### 规划器（`planner.py`）
 - 默认 ±35°（5° 步长）；全部不通时依次放宽到 ±50°、±60° 再 STOP。放宽后的航向必须在视野内**整条射线都看得到是 FREE** 且前向进展 ≥ 1.0 m
   （默认 ±1.5 m 的 BEV 里 ±60° 基本不可行，需要加大 `bev.lateral_half_m`，例如 3.0；这是诚实的限制）。
@@ -110,7 +124,7 @@ Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a
 - `score = α·clear + β·free_width − γ·航向误差 − δ·unknown占比`；所有航向通行距离 < 1.5 m = 死路。
 - 策略（移植自 Android `WalkingSafetyPolicy.kt`）：停止证据需连续 ≥2 帧且持续 300 ms 才 STOP，STOP 保持 800 ms；左右转需连续 3 帧且停留 400 ms；回到直行需 2 帧。
 
-每帧日志（`log.jsonl`）含：`a, b, inlier_ratio, residual, n_ground_px, confidence, reused/degraded, left/center/right_clear_m, corridor_blocked, dead_end, command, text, stop_reason, latency_ms(及分阶段)`。
+每帧日志（`log.jsonl`）含：`a, b, inlier_ratio, residual, n_ground_px, confidence, reused/degraded, safety_state, safety_reasons, corridor_coverage, left/center/right_clear_m, corridor_blocked, dead_end, command, text, stop_reason, latency_ms(及分阶段)`。
 
 思路来源：Tian et al., ICRA 2021（arXiv:2101.05995）；DRISHTI 仅作参考，**本实现为独立重写，未复制其代码**。
 

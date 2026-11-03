@@ -14,7 +14,10 @@ from .ego import EgoTracker
 from .bev import level_frame
 from .ground import GroundCalibrator, GroundFit, flat_ground_depth, metric_depth, up_from_gravity
 from .planner import PlanResult, VFHPlanner
-from .policy import OBSERVE, PolicyInput, WalkingSafetyPolicy
+from .policy import (FORWARD, LEFT, OBSERVE, RECENTER, RIGHT, STOP, PolicyDecision, PolicyInput,
+                     WalkingSafetyPolicy)
+from .safety import (BLOCKED, CLEAR, UNKNOWN as SAFETY_UNKNOWN, BLOCKED_TEXT, UNKNOWN_TEXT,
+                     SafetyStateMachine, safety_text)
 
 
 @dataclass
@@ -29,6 +32,7 @@ class FrameResult:
     fit: GroundFit
     log: dict = field(default_factory=dict)
     state: str = "CRUISE"
+    safety_state: str = CLEAR
 
 
 class Pipeline:
@@ -41,6 +45,7 @@ class Pipeline:
         self.memory = BEVMemory(self.cfg.bev)
         self.planner = VFHPlanner(self.cfg.planner, self.cfg.bev)
         self.policy = WalkingSafetyPolicy(self.cfg.policy)
+        self.safety = SafetyStateMachine(self.cfg.safety, self.cfg.bev)
         self.ego = EgoTracker(self.cfg.ego)
         self.behavior = BehaviorMachine(self.cfg, self.ego)
         self._prev_h = 0.0
@@ -49,6 +54,7 @@ class Pipeline:
         self.calib.reset()
         self.memory.reset()
         self.policy.reset()
+        self.safety.reset()
         self.behavior.reset()
         self._prev_h = 0.0
 
@@ -95,26 +101,63 @@ class Pipeline:
             plan = self.planner.plan(states, target_heading_deg=tgt, prev_heading_deg=self._prev_h,
                                      blind_m=self._blind_distance(up, frame_bgr.shape))
             self._prev_h = plan.best_heading_deg
-            inp = PolicyInput(now_ms=t_ms, ground_ok=True, corridor_blocked=plan.corridor_blocked,
-                              corridor_min_dist_m=plan.corridor_min_dist_m, dead_end=plan.dead_end,
-                              desired_side=self.planner.desired_side(plan, yaw_deg, 0.0))
+            desired_side = self.planner.desired_side(plan, yaw_deg, 0.0)
         else:
             # degraded calibration: do NOT trust any geometry; keep warping/decaying memory only and let the policy hold/OBSERVE/STOP
             z = np.zeros_like(self.memory.occ_ev, dtype=np.int32)
             states = self.memory.update(z, z, ego)
+            desired_side = "center"
+        safety = self.safety.update(t_ms, fit, states, plan)
+        if fit.ok and safety.state != SAFETY_UNKNOWN:
+            inp = PolicyInput(now_ms=t_ms, ground_ok=True, corridor_blocked=plan.corridor_blocked,
+                              corridor_min_dist_m=plan.corridor_min_dist_m, dead_end=plan.dead_end,
+                              desired_side=desired_side)
+        else:
             inp = PolicyInput(now_ms=t_ms, ground_ok=False)
-        pdec = self.policy.evaluate(inp)
+        pdec = self._safety_policy_override(self.policy.evaluate(inp), safety)
         dec = self.behavior.step(t_ms, pdec, plan) if plan is not None else self.behavior._out(
             pdec.command, pdec.stop_reason)
+        command, text, stop_reason = self._safety_command(dec, safety)
         lat["geometry"] = time.perf_counter() - t2
         lat["total"] = time.perf_counter() - t0
 
         log = {"t_ms": round(float(t_ms), 1), **fit.to_log()}
         if plan is not None:
             log.update(plan.to_log())
-        log.update({"command": dec.command, "text": dec.text, "stop_reason": dec.stop_reason, "state": dec.state,
+        log.update({"command": command, "text": text, "stop_reason": stop_reason, "state": dec.state,
+                    "safety_state": safety.state, "safety_reasons": list(safety.reasons),
+                    "corridor_coverage": round(float(safety.corridor_coverage), 3),
                     "x_hat_m": round(dec.x_hat_m, 3), "z_hat_m": round(dec.z_hat_m, 3),
                     "yaw_rel_deg": round(yaw_deg, 2), "ego_mode": ego.mode, "ego_reliable": bool(ego.reliable),
                     "latency_ms": round(lat["total"] * 1000, 1),
                     "latency_stage_ms": {k: round(v * 1000, 1) for k, v in lat.items()}})
-        return FrameResult(t_ms, dec.command, dec.text, mask, depth_m, states, plan, fit, log, dec.state)
+        return FrameResult(t_ms, command, text, mask, depth_m, states, plan, fit, log, dec.state,
+                           safety.state)
+
+    @staticmethod
+    def _safety_policy_override(pdec: PolicyDecision, safety) -> PolicyDecision:
+        """Feed UNKNOWN/BLOCKED into the behaviour machine as OBSERVE/STOP so it does not advance state."""
+        if safety.state == SAFETY_UNKNOWN and pdec.command in (FORWARD, LEFT, RIGHT, RECENTER):
+            return PolicyDecision(OBSERVE, UNKNOWN_TEXT, "safety_unknown", pdec.stable_frames)
+        if safety.state == BLOCKED and pdec.command in (FORWARD, RECENTER):
+            return PolicyDecision(STOP, BLOCKED_TEXT, "safety_blocked", pdec.stable_frames)
+        return pdec
+
+    @staticmethod
+    def _safety_command(dec, safety) -> tuple:
+        """Final output guard: UNKNOWN can never become a forward/side instruction."""
+        command, text, reason = dec.command, dec.text, dec.stop_reason
+        if safety.state == SAFETY_UNKNOWN:
+            if command in (FORWARD, LEFT, RIGHT, RECENTER):
+                command = OBSERVE
+            text = UNKNOWN_TEXT
+            reason = "safety_unknown:" + "+".join(safety.reasons)
+        elif safety.state == BLOCKED:
+            if command in (FORWARD, RECENTER):
+                command = STOP
+            if command in (STOP, OBSERVE):
+                text = BLOCKED_TEXT
+            else:
+                text = safety_text(BLOCKED, command)
+            reason = "safety_blocked:" + "+".join(safety.reasons)
+        return command, text, reason

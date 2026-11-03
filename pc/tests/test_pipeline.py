@@ -8,6 +8,7 @@ from blindnav_pc.depth import SyntheticDepth
 from blindnav_pc.ground import flat_ground_depth, pixel_rays, up_from_gravity
 from blindnav_pc.io import gravity_from_pitch_roll
 from blindnav_pc.pipeline import Pipeline
+from blindnav_pc.safety import UNKNOWN_TEXT
 from blindnav_pc.segmentation import ConstantSegmenter
 
 W, H = 320, 240
@@ -59,6 +60,68 @@ def test_no_ground_degrades_to_observe_then_stop():
     assert not res[-1].fit.ok
     assert "OBSERVE" in cmds and cmds[-1] == "STOP"
     assert res[0].command != "FORWARD" or cmds.index("OBSERVE") >= 4   # never confidently FORWARD without ground
+
+
+def test_dropped_frame_is_unknown_never_forward_and_recovers_after_hysteresis():
+    g, q = scene()
+    pipe = Pipeline(ConstantSegmenter(0.45), SyntheticDepth(q), K)
+    frame = np.zeros((H, W, 3), np.uint8)
+    for i in range(3):
+        assert pipe.process(frame, i * 100.0, g).command == "FORWARD"
+    r = pipe.process(frame, 5000.0, g)                        # 4.7 s input gap
+    assert r.safety_state == "UNKNOWN" and r.command != "FORWARD" and r.text == UNKNOWN_TEXT
+    assert "stale_frame" in r.log["safety_reasons"]
+    for t in (5100.0, 5200.0):                                # needs N reliable frames, not one
+        r = pipe.process(frame, t, g)
+        assert r.safety_state == "UNKNOWN" and r.command != "FORWARD"
+    r = pipe.process(frame, 5300.0, g)
+    assert r.safety_state == "CLEAR" and r.command == "FORWARD"
+
+
+def test_attitude_vs_visual_conflict_is_unknown_and_never_forward():
+    g, q = scene()
+    pipe = Pipeline(ConstantSegmenter(0.45), SyntheticDepth(q), K)
+    frame = np.zeros((H, W, 3), np.uint8)
+    for i in range(4):                                        # calibrate with a consistent attitude
+        r = pipe.process(frame, i * 100.0, g, gravity_source="attitude")
+        assert r.safety_state == "CLEAR" and r.command == "FORWARD"
+    wrong = gravity_from_pitch_roll(0.0)                      # true pitch is 15 deg -> conflict
+    for i in range(4, 9):
+        r = pipe.process(frame, i * 100.0, wrong, gravity_source="attitude")
+        assert r.safety_state == "UNKNOWN"
+        assert "attitude_visual_conflict" in r.log["safety_reasons"]
+        assert r.command != "FORWARD" and r.text == UNKNOWN_TEXT
+
+
+def test_distorted_depth_is_unknown_and_never_forward():
+    g, q = scene()
+    rng = np.random.default_rng(0)
+    bad = rng.uniform(-1.0, 2.0, q.shape).astype(np.float32)
+    pipe = Pipeline(ConstantSegmenter(0.45), SyntheticDepth(bad), K)
+    frame = np.zeros((H, W, 3), np.uint8)
+    for i in range(10):
+        r = pipe.process(frame, i * 100.0, g)
+        assert r.safety_state == "UNKNOWN" and r.command != "FORWARD"
+        assert r.text == UNKNOWN_TEXT
+
+
+def test_unseen_corridor_region_is_unknown_and_never_forward():
+    g, q = scene()
+    q_near_nan = q.copy()
+    q_near_nan[150:] = np.nan                                 # far rows still calibrate; the near/forward corridor has no depth
+    pipe = Pipeline(ConstantSegmenter(0.45), SyntheticDepth(q_near_nan), K)
+    frame = np.zeros((H, W, 3), np.uint8)
+    for i in range(8):
+        r = pipe.process(frame, i * 100.0, g)
+        assert r.safety_state == "UNKNOWN" and r.command != "FORWARD"
+        assert "corridor_unseen" in r.log["safety_reasons"]
+
+
+def test_obstacle_ahead_is_blocked_and_never_forward():
+    g, q = scene(obstacle_z=1.2)
+    res = run(q, ConstantSegmenter(0.8), n=6, grav=g)
+    assert all(r.command != "FORWARD" for r in res)
+    assert any(r.safety_state == "BLOCKED" and "障碍" in r.text for r in res)
 
 
 def test_cli_sim_all(capsys):

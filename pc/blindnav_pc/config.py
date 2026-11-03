@@ -115,6 +115,20 @@ class PolicyConfig:
 
 
 @dataclass
+class SafetyConfig:
+    """CLEAR / BLOCKED / UNKNOWN safety state.  UNKNOWN is never safe-to-pass and only clears
+    after ``unknown_recovery_frames`` consecutive reliable frames (hysteresis)."""
+    input_timeout_ms: float = 500.0       # frame gap above this = stale / dropped input
+    min_confidence: float = 0.45          # ground-calibration confidence floor
+    max_residual: float = 0.08            # relative RMS residual of the ground fit (units of 1/Z)
+    max_attitude_visual_deg: float = 15.0  # attitude vs visual ground-normal conflict
+    min_corridor_coverage: float = 0.30   # known-cell fraction of the corridor strip in front
+    corridor_len_m: float = 2.0
+    corridor_half_width_m: float = 0.5
+    unknown_recovery_frames: int = 3      # UNKNOWN -> CLEAR needs this many reliable frames
+
+
+@dataclass
 class EgoConfig:
     """Ego-motion (PDR) from an orientation sensor (game-rotation-vector style) + step events."""
     step_length_m: float = 0.70          # personal step length L_step
@@ -153,6 +167,7 @@ class Config:
     camera: CameraConfig = field(default_factory=CameraConfig)
     ego: EgoConfig = field(default_factory=EgoConfig)
     behavior: BehaviorConfig = field(default_factory=BehaviorConfig)
+    safety: SafetyConfig = field(default_factory=SafetyConfig)
 
     @classmethod
     def from_json(cls, path: Optional[str]) -> "Config":
