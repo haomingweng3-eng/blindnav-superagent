@@ -1,0 +1,146 @@
+{
+  "dataset": "BLV-Road-Nav, YOLO-World s",
+  "frames": 1795,
+  "vocab": [
+    "person",
+    "bicycle",
+    "wheelchair",
+    "dog",
+    "bench",
+    "chair",
+    "table",
+    "bollard",
+    "pole",
+    "pillar",
+    "railing",
+    "barrier",
+    "foldout sign",
+    "stairs",
+    "curb",
+    "raised entryway",
+    "trash bin",
+    "construction object",
+    "overhanging branch",
+    "doorway",
+    "scooter",
+    "stroller",
+    "shopping cart",
+    "fire hydrant",
+    "traffic cone",
+    "construction barrier",
+    "guardrail",
+    "handrail",
+    "tactile paving",
+    "curb ramp",
+    "ramp",
+    "gate",
+    "fence",
+    "street light",
+    "traffic sign",
+    "tree branch",
+    "pothole",
+    "mailbox",
+    "bus stop",
+    "trash can"
+  ],
+  "categories": {
+    "Person": {
+      "support": 615,
+      "recall": 0.9854,
+      "precision": 0.3664
+    },
+    "Bicycle": {
+      "support": 45,
+      "recall": 0.6444,
+      "precision": 0.3718
+    },
+    "Wheelchair": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Dog": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Bench": {
+      "support": 76,
+      "recall": 0.2632,
+      "precision": 0.2439
+    },
+    "Chair": {
+      "support": 4,
+      "recall": 0.5,
+      "precision": 0.0081
+    },
+    "Table": {
+      "support": 9,
+      "recall": 0.0,
+      "precision": 0.0
+    },
+    "Pole": {
+      "support": 253,
+      "recall": 0.0,
+      "precision": 0.0
+    },
+    "Pillar": {
+      "support": 19,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Railing": {
+      "support": 155,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Barrier Post": {
+      "support": 72,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Foldout Sign": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Stairs": {
+      "support": 131,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Curb": {
+      "support": 345,
+      "recall": 0.0029,
+      "precision": 0.3333
+    },
+    "Sloped Curb": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Raised Entryway": {
+      "support": 46,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Trash Bins": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Doorway": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Overhanging Tree Branches": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    }
+  },
+  "macro_recall": 0.1997,
+  "latency_ms_median": 149.8,
+  "model_mb": 25.9
+}

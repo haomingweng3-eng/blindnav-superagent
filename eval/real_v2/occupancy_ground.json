@@ -1,0 +1,146 @@
+{
+ "dataset": "UrbanEgo 375-400s; ground-plane depth residual, no instance model",
+ "ckpt": "segformer_sanpo_b0_v3.pt",
+ "frac_median": 0.0117,
+ "frac_gt_median": 0.0332,
+ "frac_nogt_median": 0.0116,
+ "ground_depth_occ": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.5227,
+  "precision": 0.23,
+  "false_positive_rate": 0.3738
+ },
+ "ground_depth_occ_t2": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.4545,
+  "precision": 0.2381,
+  "false_positive_rate": 0.3107
+ },
+ "ground_depth_safe_occ": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.1136,
+  "precision": 0.1042,
+  "false_positive_rate": 0.2087
+ },
+ "ground_depth_safe_occ_t2": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0909,
+  "precision": 0.1143,
+  "false_positive_rate": 0.1505
+ },
+ "sweep": [
+  {
+   "threshold": 0.01,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.5455,
+   "precision": 0.1832,
+   "false_positive_rate": 0.5194
+  },
+  {
+   "threshold": 0.01,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.1364,
+   "precision": 0.0984,
+   "false_positive_rate": 0.267
+  },
+  {
+   "threshold": 0.02,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.5227,
+   "precision": 0.215,
+   "false_positive_rate": 0.4078
+  },
+  {
+   "threshold": 0.02,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.1136,
+   "precision": 0.0943,
+   "false_positive_rate": 0.233
+  },
+  {
+   "threshold": 0.03,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.5227,
+   "precision": 0.23,
+   "false_positive_rate": 0.3738
+  },
+  {
+   "threshold": 0.03,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.1136,
+   "precision": 0.1042,
+   "false_positive_rate": 0.2087
+  },
+  {
+   "threshold": 0.05,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.3636,
+   "precision": 0.1758,
+   "false_positive_rate": 0.3641
+  },
+  {
+   "threshold": 0.05,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.1136,
+   "precision": 0.1087,
+   "false_positive_rate": 0.199
+  },
+  {
+   "threshold": 0.08,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.2955,
+   "precision": 0.1857,
+   "false_positive_rate": 0.2767
+  },
+  {
+   "threshold": 0.08,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.0909,
+   "precision": 0.125,
+   "false_positive_rate": 0.1359
+  },
+  {
+   "threshold": 0.12,
+   "source": "frac",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.2727,
+   "precision": 0.1905,
+   "false_positive_rate": 0.2476
+  },
+  {
+   "threshold": 0.12,
+   "source": "frac_safe",
+   "frames": 250,
+   "gt_blocking": 44,
+   "recall": 0.0455,
+   "precision": 0.1,
+   "false_positive_rate": 0.0874
+  }
+ ],
+ "note": "class-independent; unknown-object recall not measurable; 3% area a priori"
+}

@@ -1,182 +1,154 @@
-# BlindNav Tech Round 2 — 2026-11-03
+# BlindNav Tech Round 2–3 — 2026-11-03
 
-## 四个问题的直接回答
+## 三个问题的直接回答
 
-1. **General Traversability 是否真正改善？**  
-   是，corridor availability 从 **0/45 → 100%**（frozen SANPO 与 real_v2 都 100%），SAFE recall **89–93%**，SAFE IoU **0.79–0.83**。但 real_v2 的 road false-safe 仍 **36%**，curb recall **0.2%**；DeepLabV3+ MobileNetV3 更慢且 road false-safe 46%，MobilioNet-B 无公开代码/权重。只能 `NEXT_EXPERIMENT`，不能接 production。
+1. **Walking false-safe 能否压下来？**  
+   **能压下来一半，但还不能上线。** 在 SANPO 上加入 road-as-SAFE 惩罚并用 Cityscapes 做 decoder 适配后，real_v2 的 road false-safe 从 **36.0% → 16.5%**，frozen45 从 **10.0% → 1.9%**，Cityscapes 第二域从 **42.7% → 33.3%**；无盲道 corridor 仍保持 **95.0%**（real_v2）。代价是 SAFE recall 从 90.1% 降到 **79.2%**，curb recall 仍为 **0**。方向有效，但没达到“可接生产”。
 
-2. **YOLO-World 是否明显优于 YOLOv8 COCO？**  
-   **否。** BLV 1795 帧宏召回：COCO **41.8%**，YOLO-World **19.8%**。person 98.5%、bicycle 62.2%、bench 26.3% 有提升，但 pole/railing/barrier/stairs/curb 几乎为 0，整体更差。作为单一替换 **REJECT**；只值得做类别互补。
+2. **Obstacle 的 class-independent occupancy 是否真正提高？**  
+   **是，第一次出现了可用信号，但离 75–80% recall / ≤10% False STOP 还很远。** 放弃“YOLO instance 必须与 walkable mask 重叠”后，改用 ground-plane depth residual（比地面更近即占用）：Blocking Recall **52.3%**、Precision 0.23、False-positive **37.4%**；加 2 帧时序后 **45.5% / 31.1%**。此前 instance 拼法只有 **2.3%**。2D dense depth 和 3D voxel 两种构造都更差（FP 55–100%）。
 
-3. **class-independent occupancy 是否值得继续？**  
-   **方向值得，当前的输入不合格。** UrbanEgo 真实 depth：1.5m recall 21.6% / false-positive 8.1%；2.0m 46% / 29%；3.0m 100% / 86%。本轮 375–400s 片段（250 帧、44 个 GT blocking）补上了真实实例 mask 与跟踪：walkable + YOLOv8n-seg + depth<2m + 2 帧持续，recall 仅 **2.3%**、precision 1.0、FP 0；GT track instance 的 ORACLE 变体为 recall **36.4%**、FP 0。逐层诊断显示 1204 个 blocking 实例只剩 12 个与 walkable mask 重叠，depth 有效实例只有 4 个——主因是分割在 UrbanEgo 上指不准人行道、depth 大面积空洞。Unknown Blocking Recall 在 BLV 帧级可测定义下（COCO 没有的 12 个高价值类别，1021 个支持帧）为 **0.1%**；没有框 GT，不能报 IoU。`NEXT_EXPERIMENT`。
-
-4. **Automatic Door Proposal 是否达到可接 production？**  
-   **没有。** DeepDoors2 的 Drive 镜像仍阻塞，但改用 OpenImages 的真实 Door bbox GT（120 图 / 173 框）：YOLO-World 最佳 Recall@IoU0.3 **21.4%**、@0.5 **13.9%**，平均候选 0.47 个；远低于 90% 目标。候选稳定性用受控扰动测得匹配 IoU **0.8235**、候选数标准差 **0.879**，但这是图像扰动不是时序视频；BLV 视频探针零候选。`NEXT_EXPERIMENT`，不能接 production。
+3. **Door proposal 是否达到可接 production 的水平？**  
+   **域内达到，跨域没有。** 用 3150 张 Roboflow 门数据微调 YOLOv8n 后，held-out test 在 conf 0.05 时 Recall@IoU0.3 **95.7%**、@0.5 **82.1%**、平均候选 **2.72**（≤3），达到“正确门进入 1–3 个候选”的目标；扰动稳定性 IoU **0.847**、匹配率 99.6%。但同一模型在外部 OpenImages 173 个门框上只有 Recall@0.3 **46.8%**、@0.5 **38.7%**，说明跨场景泛化不够，不能直接接 production。
 
 ## Summary Table
 
-| Capability | Round 1 | Round 2 | Evidence | Decision |
+| Capability | Before (Round 2) | Round 3 | Evidence | Decision |
 |---|---|---|---|---|
-| Walking / General Traversability | BlindPath 0/45；Cityscapes strict 22.2% | SANPO FT valid 100%，SAFE recall 89–93%，road false-safe 36%，curb recall 0.2%；Cityscapes 第二域 SAFE recall 99.99% 但 IoU 0.0875、road false-safe 42.7% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
-| Obstacle | COCO real recall 36–38% | YOLO-World BLV macro 19.8%，低于 COCO 41.8% | DESKTOP_REAL_DATA | REJECT（单一替换） |
-| Occupancy-first | 未测 | walkable+实例+depth+2帧 recall 2.3% / FP 0；GT instance ORACLE 36.4%；unknown recall 不可测 | DESKTOP_REAL_DATA (ORACLE) | NEXT_EXPERIMENT |
-| Last10m Search | YELLOW | 未重做，回归保持 | DESKTOP_VERIFIED | KEEP |
-| Last10m Entrance | RED | OpenImages Door Recall@0.3 21.4% / @0.5 13.9%，平均候选 0.47；扰动稳定性 IoU 0.8235 | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
-| Scene / Text | RED | 未接生产 | NOT_CONNECTED | KEEP |
+| Walking / Traversability | real_v2 road FS 36.0%，corridor 100%，SAFE recall 90.1% | road FS **16.5%**，corridor **95.0%**，SAFE recall 79.2%，curb 0；Cityscapes FS 33.3% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
+| Obstacle semantic | COCO 41.8%，YOLO-World 20 词 19.8% | YOLO-World 40 词 **19.97%**，无提升 | DESKTOP_REAL_DATA | REJECT（扩词表） |
+| Obstacle occupancy | instance 拼法 2.3%，depth ROI 0% | ground residual **52.3% recall / 37.4% FP**；时序 45.5% / 31.1% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
+| Last10m Door | YOLO-World Recall@0.3 21.4%，@0.5 13.9% | 微调 YOLOv8n 域内 **95.7% / 82.1%**，平均候选 2.72；外部 **46.8% / 38.7%** | DESKTOP_REAL_DATA | 域内 KEEP，跨域 NEXT_EXPERIMENT |
+| Last10m Search | YELLOW | 未改 | DESKTOP_VERIFIED | KEEP |
+| Scene / Text | RED | 未接 | NOT_CONNECTED | KEEP |
 
-## 1. General Traversability V2
+## 1. Walking：针对 road false-safe 的 safety segmentation
 
-标签统一为 5 类：`SAFE_WALKABLE`（sidewalk/crosswalk/paved trail/other walkable）、`BOUNDARY`（curb）、`CONDITIONAL`（road/terrain）、`NON_WALKABLE`、`UNKNOWN`。**Road 不进入 SAFE_WALKABLE。**
+### 改了什么
 
-数据：30 个 SANPO-Real sessions，约 600 帧；21 sessions 训练、6 sessions real_v2 验证、原 45 帧 frozen。同一 SegFormer-B0 架构，Cityscapes 初始化，替换 5 类头，3 epochs，512×288，MPS。
+不是继续调旧阈值，而是改训练目标：
 
-| 模型 | 集 | Valid corridor | SAFE IoU | SAFE recall | Road false-safe | Curb recall | Center median | Latency |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
-| Cityscapes B0 | frozen45 | 4.4% | 0.064 | 0.066 | 1.2% | 0 | 0.599 | 192 ms |
-| SANPO FT v1 | frozen45 | 100% | 0.792 | 0.895 | 18.5% | 0 | 0.030 | — |
-| **SANPO FT v2** | frozen45 | **100%** | **0.828** | **0.895** | **10.0%** | **8.1%** | **0.024** | 116 ms |
-| DeepLabV3+ MBV3 | frozen45 | 100% | 0.758 | 0.893 | 34.0% | 34.1% | 0.031 | 354 ms |
-| Cityscapes B0 | real_v2 (120) | 15.0% | 0.163 | 0.170 | 16.9% | 0 | 0.399 | 192 ms |
-| **SANPO FT v2** | real_v2 (120) | **100%** | **0.786** | **0.901** | **36.0%** | **0.2%** | **0.026** | 116 ms |
-| DeepLabV3+ MBV3 | real_v2 (120) | 100% | 0.783 | 0.925 | 46.2% | 15.4% | 0.067 | 354 ms |
+1. 对 GT road 像素预测成 SAFE 的概率加显式惩罚：`loss += 2.0 * P(SAFE | road)`；
+2. road/terrain 类权重从 1 提高到 8，boundary 权重提高到 15；
+3. 用 426 张 Cityscapes 训练图像做 decoder 适配（encoder 冻结），教模型区分 sidewalk 与 road；Cityscapes 只用于训练/内部验证，官方 val 100 张完全留出。
 
-### 第二城市分割域：Cityscapes 验证集
+数据仍是 SANPO：21 sessions 训练、6 sessions real_v2 验证、45 帧 frozen。所有对比都在同一 frozen set 上。
 
-Mapillary 官方数据需登录、SideGuide/sidewalk-semantic 是 gated，无法在本轮拿到合法可用的 pedestrian-view 分割 GT。改用 Cityscapes 验证集 100 张（`test0.parquet`）做第二个 urban 分割域检查，并明确：**Cityscapes 是车载视角，不是盲人步行视角**，只能验证“换城市后模型还认不认路”，不能替代人行道数据。
+### Before / After
 
-| 模型 | 图像 | Valid corridor | SAFE IoU | SAFE recall | Road false-safe |
-|---|---|---:|---:|---:|---:|
-| Cityscapes B0 | 100 | **0.0%** | 0.0001 | 0.02% | 3.5% |
-| SANPO FT v2 | 100 | **100%** | 0.0875 | **99.99%** | **42.7%** |
+| 模型 | 集 | Valid corridor | SAFE IoU | SAFE recall | Road false-safe | Curb recall | Center err |
+|---|---|---:|---:|---:|---:|---:|---:|
+| SANPO FT v2 | frozen45 | 100% | 0.828 | 89.5% | 10.0% | 8.1% | 0.024 |
+| **v5 false-safe + City adapt** | frozen45 | **100%** | **0.827** | 86.0% | **1.9%** | 0 | **0.008** |
+| SANPO FT v2 | real_v2 (120) | 100% | 0.786 | 90.1% | 36.0% | 0.2% | 0.026 |
+| **v5 false-safe + City adapt** | real_v2 (120) | **95.0%** | 0.743 | 79.2% | **16.5%** | 0 | 0.031 |
+| SANPO FT v2 | Cityscapes val (100) | 100% | 0.0875 | 99.99% | 42.7% | — | — |
+| **v5 false-safe + City adapt** | Cityscapes val (100) | **100%** | **0.1105** | 99.85% | **33.3%** | — | — |
 
-Cityscapes 原模型在盲道语义上几乎不输出 SAFE（IoU 0.0001），所以它 3.5% 的 road false-safe 没有意义——它把 99.98% 的 sidewalk 都判成了 CONDITIONAL/UNKNOWN。SANPO 微调后 corridor 恢复，但把大量 road 当成 SAFE（42.7%），IoU 只有 0.0875。两个域结论一致：**当前分割能“找到路”，但分不清“人行道”和“车道”**，这正是不能上生产的原因。
+结论：
 
-### Mapillary 图片域检查（无标签）
+- **False-safe 确实降了**：real_v2 相对下降 54%，frozen45 相对下降 81%，Cityscapes 下降 9.4 个百分点。
+- **代价明确**：SAFE recall 从 90.1% 掉到 79.2%，IoU 从 0.786 掉到 0.743。这是“宁可少报可走”的保守化，不是免费提升。
+- **Curb recall 仍为 0**：SANPO 的 curb 像素极少，当前 loss 权重不足以让模型输出 boundary 类。Boundary 是下一个 RED。
+- **Cityscapes 仍不达标**：33.3% road false-safe 意味着车载视角下每 3 个 road 像素仍有 1 个被判 SAFE，不能上线。
 
-通过 Hugging Face 镜像取到 Mapillary Vistas 测试图片 24 张（官方站点需登录，这里只用图像、不用标签），跑 SANPO FT v2 看输出是否还有可用走廊：
+### 外部研究对照
 
-- 有效走廊率 **95.8%**（23/24 帧 ROI 中 SAFE 占比 ≥25%）
-- ROI 平均 SAFE 占比 **62.7%**
+2026 年的 safety-oriented sidewalk/road segmentation 工作（arXiv:2607.21137）把 **Road-as-Sidewalk Error Rate** 单独作为核心指标；其 DeepLabV3Plus-MobileNetV3 的 road-as-sidewalk error 为 0.079，Android 约 7.38 FPS（512×384）。本项目当前 16.5% 仍差一倍以上，且 curb recall 为 0。Mobilio（Nature Biomedical Engineering 2026）把语义分割用于 2D walkable grid，而不是直接给移动许可；这与本项目“分割只提供走廊、不单独授权移动”的边界一致。
 
-这只能说明模型在不同城市、不同相机下仍能产出走廊，不能说明走廊是否正确；没有 GT，所以本轮不报 IoU、不报 road false-safe，也不把它算作精度证据。
+## 2. Obstacle：语义召回与 class-independent occupancy
 
-### MobilioNet-B feasibility
+### 2.1 YOLO-World 扩词表
 
-Web/GitHub search found only news coverage of Harvard Mobilio; **no public MobilioNet-B code or weights**. It cannot be reproduced locally without the authors' release. The closest lightweight proxy tested is DeepLabV3+ MobileNetV3 above: 42MB checkpoint, 354ms/frame, road false-safe 34–46%, curb recall 15–34%. Verdict: `NOT_AVAILABLE` for MobilioNet-B; lightweight proxy `RESEARCH_CANDIDATE`, not better than SANPO SegFormer.
+把 BLV 词表从 20 个扩到 40 个（加入 scooter、stroller、traffic cone、guardrail、tactile paving、curb ramp、gate、fence 等），在同样 1795 帧 BLV 上重跑：
 
-### Decision
-
-`NEXT_EXPERIMENT`: corridor availability is solved in prototype, but boundary/road safety is not. Required before integration: road false-safe <5%, curb recall >70%. No production change.
-
-## 2. Obstacle V2
-
-YOLO-World BLV 20-class vocabulary on 1795 frames:
-
-| 指标 | COCO YOLOv8n | YOLO-World s |
-|---|---:|---:|
-| BLV macro recall | **41.8%** | **19.8%** |
-| Person | 96.4% | 98.5% |
-| Bicycle | 31.1% | **62.2%** |
-| Bench | 13.2% | **26.3%** |
-| Pole / Railing / Barrier / Stairs | 0 | 0 |
-| Curb | 0 | 0.3% |
-
-YOLO-World 25.9MB, Mac CPU 75.7ms/frame. It helps person/bicycle/bench but not thin/ground structures; macro is worse. **REJECT as single replacement**; possible class-specific ensemble is `NEXT_EXPERIMENT`.
-
-### Occupancy-first oracle
-
-UrbanEgo depth (320×288, mm), lower-center ROI:
-
-| 近距阈值 | Blocking recall | False-positive rate |
-|---|---:|---:|
-| <1.5m | 21.6% | 8.1% |
-| <2.0m | 46.0% | 29.0% |
-| <3.0m | 100% | 86.0% |
-
-Raw depth is not viable. Unknown Blocking Recall at BLV frame level is **0.1%** (12 categories without a COCO class, 1021 support frames); box-level IoU is unmeasurable because BLV has presence labels only.
-
-### Occupancy-first 原型（walkable mask + instance mask + depth + 时序）
-
-在 UrbanEgo clip 375–400s（250 帧，10fps，44 个 GT blocking）上按“先判可走、再看占用”的顺序实现四层：
-
-1. SANPO FT v2 分割出 walkable mask；
-2. YOLOv8n-seg（COCO，conf 0.25）给出真实实例 mask，不用 GT 替身；
-3. 实例 mask 必须落在走廊内且与 walkable mask 重叠；
-4. 取实例内的 depth 中位数，要求 <2m，并做相邻帧 bbox IoU>0.3 的跟踪持续性。
-
-| 变体 | Blocking recall | Precision | False-positive rate |
+| 指标 | COCO YOLOv8n | YOLO-World 20 词 | YOLO-World 40 词 |
 |---|---:|---:|---:|
-| 仅实例 | 11.4% | 0.455 | 2.9% |
-| 实例 + depth | 6.8% | 0.75 | 0.5% |
-| 实例 + 时序 | 2.3% | 0.50 | 0.5% |
-| 实例 + depth + 时序 | **2.3%** | **1.0** | **0.0%** |
-| 仅 depth + 时序（无实例） | 0.0% | — | 0.0% |
-| GT track instance（ORACLE） | 36.4% | 1.0 | 0.0% |
+| BLV macro recall | **41.8%** | 19.8% | **19.97%** |
+| Person | 96.4% | 98.5% | 98.5% |
+| Bicycle | 31.1% | 62.2% | 64.4% |
+| Bench | 13.2% | 26.3% | 26.3% |
+| Pole / railing / barrier / stairs | 0 | 0 | 0 |
+| Curb | 0 | 0.3% | 0.3% |
 
-逐层诊断给出了失败位置，而不是一句“效果不好”：
+扩词表只提升 0.17 个百分点，薄/地面结构仍然全 0。**REJECT 作为替换方案**；YOLO-World 只能做 person/bicycle 的类别补充。
 
-- 250 帧里 YOLOv8n-seg 共检出 **1204** 个 blocking 类实例，落在走廊内的有 **288** 个；
-- 再要求与 walkable mask 重叠后只剩 **12** 个，**walkable mask 是主瓶颈**；
-- 12 个里 depth 有效（mask 内有效深度 ≥5%）的只有 **4** 个，**depth 空洞是第二瓶颈**；
-- 全片段 walkable ROI 平均占比 0.275，达到“有效走廊”（≥25%）的帧只有 **48.8%**。
+### 2.2 class-independent occupancy：四种构造对比
 
-结论：occupancy-first 的方向没错，但当前两个输入都不合格——分割模型在 UrbanEgo 上指不准人行道，depth 又大面积缺失。改阈值救不回来；ORACLE 变体的 36.4% 说明“实例先验 + 时序”本身可行。Unknown Blocking Recall 在该原型中仍不可测（GT 只覆盖已知 track）。`NEXT_EXPERIMENT`，下一步是补 UrbanEgo/步行视角的分割监督与 depth 补全，而不是继续调阈值。
+同一 UrbanEgo clip 375–400s（250 帧，44 个 GT blocking）：
 
+| 构造 | Blocking recall | Precision | False-positive |
+|---|---:|---:|---:|
+| walkable + YOLOv8n-seg instance + depth + 时序（Round 2） | 2.3% | 1.00 | 0.0% |
+| 2D dense depth + walkable mask + 时序 | 68.2% | 0.148 | 84.0% |
+| 3D sparse depth voxel + ground removal + 时序 | 43.2% | 0.128 | 62.6% |
+| **Ground-plane depth residual（无 instance）+ 时序** | **45.5%** | **0.238** | **31.1%** |
+| 同上，不要求与 walkable mask 重叠 | **52.3%** | **0.230** | **37.4%** |
 
+Ground residual 的做法：用 pose 把深度点变到世界坐标，拟合地面平面，像素深度比该像素对应的地面深度近 0.25m 以上即判为“占据”；不依赖任何类别，也不要求 YOLO instance 先和 walkable mask 重叠。它第一次把 recall 从 2.3% 拉到 52.3%，说明“深度 + 几何 + 时序”方向成立；但 37.4% 的 False-positive 意味着每 3 个非阻断帧就有 1 次误报，不能接 WalkingSafetyPolicy。
 
-## 3. Last10m Automatic Door
+Unknown Blocking Recall 仍按 BLV 帧级定义（COCO 没有的 12 个高价值类别，1021 个支持帧）为 **0.1%**；BLV 只有 presence 标签，无法报 box IoU。class-independent 构造从原理上不依赖类别，但缺少 unknown 物体的框 GT，不能宣称已解决。
 
-DeepDoors2 official/relabeled Google Drive downloads still time out; Dataset Ninja exposes metadata but not a public full archive. Instead, use **OpenImages V7 `Door` bbox annotations** as a reliable public door GT subset (CC BY 4.0):
+## 3. Last10m：门检测专项训练
 
-- 120 validation images, **173 door boxes**, average 1.44 GT doors/image.
-- Candidate generator: YOLO-World s with `door` / `doorway` / `glass door` / `entrance`.
-- Confidence sweep 0.05–0.25.
+### 数据与模型
 
-| conf | Recall@IoU0.3 | Recall@IoU0.5 | Mean candidates | Median candidates | Candidate std |
-|---:|---:|---:|---:|---:|---:|
-| 0.05 | **21.4%** | **13.9%** | 0.47 | 0 | 0.77 |
-| 0.10 | 9.3% | 5.2% | 0.17 | 0 | 0.46 |
-| 0.15 | 4.6% | 2.9% | 0.07 | 0 | 0.26 |
-| 0.25 | 1.7% | 0.6% | 0.03 | 0 | 0.18 |
+DeepDoors2 官方 Google Drive 仍无法稳定下载。改用公开 CC BY 4.0 的 Roboflow door_detection 数据集：**3150 train / 225 val / 225 test**，单类 `Door`，已转换为 YOLO bbox。训练/测试按原始图像去重检查：train 与 test 的 base image 交集为 **0**，无增强泄漏。
 
-The target is 90% Recall with ≤3 candidates. YOLO-World is far below target and produces almost no candidates.
+模型：YOLOv8n，6.5MB，imgsz 384，CPU 训练 12 epochs；MPS 在当前机器上不稳定，未使用。Mobilio 的参考实现也是把门/入口作为独立感知候选，而不是让通用 VLM 直接给结论。
+
+### Held-out test（225 图 / 235 框）
+
+| conf | Recall@IoU0.3 | Recall@IoU0.5 | Mean candidates | Median |
+|---:|---:|---:|---:|---:|
+| 0.01 | 98.3% | 85.5% | 4.26 | 4 |
+| 0.03 | 97.0% | 84.3% | 3.13 | 3 |
+| **0.05** | **95.7%** | **82.1%** | **2.72** | **2** |
+| 0.10 | 91.9% | 78.7% | 2.28 | 2 |
+| 0.25 | 84.3% | 72.3% | 1.70 | 2 |
+
+conf 0.05 同时满足 Recall@0.3 ≥90% 和平均候选 ≤3，达到本轮目标。
+
+### 外部域 OpenImages（120 图 / 173 框）
+
+| conf | Recall@IoU0.3 | Recall@IoU0.5 | Mean candidates |
+|---:|---:|---:|---:|
+| 0.01 | 57.2% | 48.0% | 4.99 |
+| 0.05 | 46.8% | 38.7% | 2.78 |
+| 0.10 | 39.3% | 33.5% | 1.96 |
+
+域外掉到 46.8%，说明模型学到了 Roboflow 数据集的视角/外观偏置。**不能因为 held-out test 95.7% 就宣称门检测已可生产。**
 
 ### Candidate Stability
 
-OpenImages 是独立帧，无法做真实时序稳定性，因此做受控扰动稳定性：对 42 张有候选的图分别做 x 平移 2%、y 平移 2%、0.98× 缩放，检查同一候选是否仍被匹配及数量是否漂移。
+对 222 张有候选的 test 图做受控扰动（x/y 平移 2%、0.98× 缩放）：
 
-| 指标 | 结果 |
-|---|---:|
-| 匹配候选 IoU 均值 | **0.8235** |
-| 匹配率 | 100% |
-| 候选数标准差（跨扰动） | **0.879** |
+- 匹配候选 IoU 均值 **0.8471**
+- 匹配率 **99.55%**
+- 候选数标准差 **1.258**
 
-位置稳定性尚可（IoU 0.82），但候选数在扰动下明显漂移（std 0.879），这对“门附近只报一个入口”的交互不够稳。该结果只能算图像级受控扰动，**不是视频时序稳定性**；BLV 视频探针零候选，无法补测。**Not production-level.** Next experiment: a door-specific detector or OWLv2/Grounding DINO proposal with a lower threshold, evaluated on the same 173 boxes, plus a real video clip for temporal stability.
+位置稳定，但候选数在扰动下漂移比 Round 2 的通用 proposal（0.879）更大，因为低阈值下多出了弱候选。该结果仍是图像扰动，不是视频时序稳定性。
 
-## 4. Android deployment feasibility
+## 4. Android 部署可行性
 
-| Model | Size | Mac CPU latency | ONNX status | Android verdict |
-|---|---:|---:|---|---|
-| SANPO SegFormer-B0 FT | 14.9MB | 116ms PyTorch / **46.8ms ORT** | Exported (external data 14MB) | `FEASIBLE_PROTOTYPE`; needs single-file ONNX + Android ORT test |
-| DeepLabV3+ MBV3 | 42MB | 354ms | Not exported | `RESEARCH_CANDIDATE` |
-| YOLO-World s | 25.9MB | 75.7ms | Not exported | `RESEARCH_CANDIDATE`; open-vocab text encoder adds deployment cost |
+| 模型 | 大小 | Mac CPU 延迟 | Android 判断 |
+|---|---:|---:|---|
+| SegFormer-B0 v5 | 14.9MB | 46.8ms ORT（Round 2 导出） | `FEASIBLE_PROTOTYPE`，未真机 |
+| 门检测 YOLOv8n | 6.5MB | 56.7ms 推理（640 输入，CPU） | `FEASIBLE_PROTOTYPE`，未真机 |
+| YOLO-World 40 词 | 25.9MB | 149.8ms（CPU） | `RESEARCH_CANDIDATE`，文本编码器成本高 |
 
-SegFormer ONNX export succeeded with `onnxscript`; output is 432 nodes, 14.9MB weights, ORT 46.8ms on Mac CPU. No Android device test was performed.
+没有上手机，没有 Android 设备实测。
 
-## 5. Threshold discipline
+## 5. 规则遵守情况
 
-One UrbanEgo diagnostic sweep (0.30/0.25, 0.25/0.20, 0.35/0.30) was run only to test whether the old detector could reach 90% recall. It could not (max 38.4%); the sweep was stopped and **no threshold was changed in production**. This is not a tuning loop.
+- 所有 Before/After 使用同一 frozen real_v2 / frozen45 / Cityscapes val / BLV / UrbanEgo clip。
+- 没有修改生产阈值；WalkingSafetyPolicy、MotionAuthority、ArrivalAuthority 均未改。
+- ORACLE 数字单独标注，未当生产结果。
+- 单测 173 个仍通过；没有因为单测通过宣称功能完成。
 
-## 6. What changed
+## 6. 结论与下一步
 
-- No production algorithm or threshold change.
-- Added offline SANPO safety-segmentation training/eval and real_v2 evidence.
-- Added second urban segmentation domain (Cityscapes validation, 100 images) and an unlabeled Mapillary image-domain check (24 images).
-- Added occupancy-first prototype with real YOLOv8n-seg instances, depth gating, temporal tracking, plus a clearly separated GT-instance ORACLE variant.
-- Added YOLO-World BLV baseline, depth occupancy oracle, door candidate probe, and controlled-perturbation door stability.
-- 173 JVM tests / 0 failures remain.
-
-## 7. Next most valuable experiment
-
-Boundary-aware walkable segmentation on SANPO plus pedestrian-view video, with explicit curb/boundary supervision and road-safe suppression; gate on **road false-safe <5%** and **curb recall >70%** on real_v2 before any Android integration. In parallel, fix the occupancy inputs: collect or label UrbanEgo-style walking frames for segmentation, and add depth-hole filling. Mapillary labels remain login-gated, so they cannot serve as the next benchmark without an access path.
+- **Walking**：false-safe 已从 36.0% 压到 16.5%，但 curb recall 0、Cityscapes 33.3%，仍是 RED。下一步不是再调阈值，而是补 curb/boundary 监督和步行视角数据；Cityscapes 只作第二域参考。
+- **Obstacle**：ground-plane occupancy 是第一条有效路线（52.3% / 37.4% FP），但 False STOP 太高。下一步做深度补全 + 相机高度/平面在线估计 + 多帧占据累积，目标 recall ≥75%、FP ≤10%。
+- **Door**：域内已过线，跨域 46.8% 不过线。下一步用 DeepDoors2 或更多真实入口数据做域泛化，再谈接 EntranceProposal。
+- **上手机门槛**：Walking corridor ≥75% 且 false-safe 受控（当前 corridor 95%，false-safe 16.5%）；Obstacle recall ≥75–80% 且 False STOP ≤10%（当前 52.3% / 37.4%）；Door 域内 Recall ≥90%（已 95.7%，跨域未达）。三项未全部满足，不请求真机测试。

@@ -1,0 +1,76 @@
+[
+ {
+  "name": "frozen45_cityscapes",
+  "frames": 45,
+  "valid_rate": 0.0444,
+  "safe_iou": 0.0642,
+  "safe_recall": 0.066,
+  "curb_recall": 0.0,
+  "sidewalk_as_conditional": 0.934,
+  "road_false_safe": 0.0122,
+  "center_error_median": 0.5988,
+  "center_error_p90": 0.8231,
+  "temporal_jitter": {
+   "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 1.8449,
+   "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.1577,
+   "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": null
+  }
+ },
+ {
+  "name": "frozen45_sanpo_finetune",
+  "frames": 45,
+  "valid_rate": 1.0,
+  "safe_iou": 0.8272,
+  "safe_recall": 0.8595,
+  "curb_recall": 0.0,
+  "sidewalk_as_conditional": 0.1405,
+  "road_false_safe": 0.0191,
+  "center_error_median": 0.0079,
+  "center_error_p90": 0.0719,
+  "temporal_jitter": {
+   "972O8sd5HpUbGeEE_UAb1g0z1OZUtfHl": 0.0549,
+   "GxMb4zhAvoM5jbF54kfcs8wxTL4fqNnT": 0.0176,
+   "5LlqRK-hWoDLSW5MmoLjKj6uQtZMKjb9": 0.0
+  }
+ },
+ {
+  "name": "real_v2_cityscapes",
+  "frames": 120,
+  "valid_rate": 0.15,
+  "safe_iou": 0.1633,
+  "safe_recall": 0.1698,
+  "curb_recall": 0.0,
+  "sidewalk_as_conditional": 0.8302,
+  "road_false_safe": 0.1692,
+  "center_error_median": 0.3989,
+  "center_error_p90": 0.8297,
+  "temporal_jitter": {
+   "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR": 0.0963,
+   "vJ3GwdSWA251IuTOvV1pAV2e2x98MPmC": null,
+   "jpQdnBSdxw0io5Iz0OPNG_Jqr2Xg5ilH": 0.0226,
+   "wta4PcYCd4Kfjw_DuB8Bd-dO2Du3ZcnN": 0.1583,
+   "vxhQFmxofCOrInw5l9Dm4SQ5KAn1lNr2": 0.5812,
+   "rvi-MNk-cw0yRg8U9ANH8RyDlJdfAjSt": null
+  }
+ },
+ {
+  "name": "real_v2_sanpo_finetune",
+  "frames": 120,
+  "valid_rate": 0.95,
+  "safe_iou": 0.7432,
+  "safe_recall": 0.7921,
+  "curb_recall": 0.0,
+  "sidewalk_as_conditional": 0.2079,
+  "road_false_safe": 0.1649,
+  "center_error_median": 0.0314,
+  "center_error_p90": 0.2132,
+  "temporal_jitter": {
+   "pLx7nHA3heIzjrIMBy4AVjuT6GnwneSR": 0.0297,
+   "vJ3GwdSWA251IuTOvV1pAV2e2x98MPmC": 0.1531,
+   "jpQdnBSdxw0io5Iz0OPNG_Jqr2Xg5ilH": 0.0138,
+   "wta4PcYCd4Kfjw_DuB8Bd-dO2Du3ZcnN": 0.0462,
+   "vxhQFmxofCOrInw5l9Dm4SQ5KAn1lNr2": 0.0664,
+   "rvi-MNk-cw0yRg8U9ANH8RyDlJdfAjSt": 0.0152
+  }
+ }
+]

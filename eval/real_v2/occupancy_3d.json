@@ -1,0 +1,42 @@
+{
+ "dataset": "UrbanEgo clip 375-400s; metric depth -> 3D world points, ground removal, corridor voxels 0.1m",
+ "ckpt": "segformer_sanpo_b0_v3.pt",
+ "mean_valid_depth": 0.1056,
+ "cells_median": 6.0,
+ "cells_p90": 11.1,
+ "cells_gt_median": 4.0,
+ "cells_nogt_median": 7.0,
+ "ground_p10_p90": [
+  -0.94,
+  -0.46
+ ],
+ "corridor_3d": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.4773,
+  "precision": 0.1329,
+  "false_positive_rate": 0.665
+ },
+ "corridor_3d_temporal": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.4318,
+  "precision": 0.1284,
+  "false_positive_rate": 0.6262
+ },
+ "safe_corridor_3d": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0227,
+  "precision": 0.011,
+  "false_positive_rate": 0.4369
+ },
+ "safe_corridor_3d_temporal": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0682,
+  "precision": 0.0319,
+  "false_positive_rate": 0.4417
+ },
+ "note": "class-independent; unknown-object recall not measurable; voxel counts 3 cells a priori"
+}
