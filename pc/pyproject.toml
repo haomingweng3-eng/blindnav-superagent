@@ -10,7 +10,7 @@ requires-python = ">=3.10"
 dependencies = ["numpy", "opencv-python-headless", "pillow", "torch", "transformers"]
 
 [tool.setuptools]
-packages = ["blindnav_pc", "sim"]
+packages = ["blindnav_pc", "sim", "eval"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

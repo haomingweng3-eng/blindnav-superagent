@@ -31,6 +31,32 @@ def test_metrics_false_and_missed_stop(tmp_path):
         assert k in rep
 
 
+def test_metrics_action_labels_unsafe_forward_wrong_side_oscillation(tmp_path):
+    cmds = ["FORWARD", "FORWARD", "RIGHT", "LEFT", "STOP", "FORWARD", "RECENTER", "STOP"]
+    gt = ["FORWARD", "STOP", "RIGHT", "RIGHT", "STOP", "STOP", "FORWARD", "FORWARD"]
+    side = ["", "", "right", "right", "", "", "", ""]
+    labels = [{"t_ms": i * 100, "action": a, "should_stop": int(a == "STOP"), "preferred_side": s}
+              for i, (a, s) in enumerate(zip(gt, side))]
+    m = compute_metrics(recs(cmds), labels)
+    assert m["unsafe_forward_rate"] == pytest.approx(2 / 5)       # label wants STOP/side at frames 1-5; forward at 1, 5
+    assert m["unsafe_forward_stop_rate"] == pytest.approx(2 / 3)  # label STOP at 1, 4, 5
+    assert m["false_stop_rate"] == pytest.approx(1 / 5)           # STOP at 7 where the label is FORWARD
+    assert m["wrong_side_rate"] == pytest.approx(1 / 2)           # LEFT at 3 vs preferred right
+    assert m["side_reversals"] == 1
+    p = tmp_path / "l.csv"
+    p.write_text("t_ms,action,preferred_side\n0,FORWARD,\n100,LEFT,left\n200,stop,\n")
+    ls = load_labels_csv(str(p))
+    assert [l["action"] for l in ls] == ["FORWARD", "LEFT", "STOP"] and ls[2]["should_stop"] == 1
+    assert ls[1]["preferred_side"] == "left"
+    rep = format_report(m)
+    for k in ("危险前进", "选错侧", "来回切换"):
+        assert k in rep
+    bad = tmp_path / "b.csv"
+    bad.write_text("t_ms,action\n0,JUMP\n")
+    with pytest.raises(ValueError):
+        load_labels_csv(str(bad))
+
+
 def test_viz_shapes_and_text():
     b = BEVConfig()
     states = np.zeros((b.nz, b.nx), np.uint8)

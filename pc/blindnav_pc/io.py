@@ -119,3 +119,70 @@ def gravity_from_pitch_roll(pitch_deg: float, roll_deg: float = 0.0) -> np.ndarr
     v = np.array([0.0, math.cos(p), math.sin(p)])
     c, s = math.cos(r), math.sin(r)
     return np.array([c * v[0] - s * v[1], s * v[0] + c * v[1], v[2]])
+
+
+class OrientationLog:
+    """Time-stamped orientation (game-rotation-vector style).  Gives gravity (camera frame) and heading (+ = right).
+    CSV: ``t_ms,qx,qy,qz,qw`` (camera -> world, world Z up) **or** ``t_ms,heading_deg`` (heading only; gravity then
+    comes from the separate gravity log / fixed pitch)."""
+
+    def __init__(self, t_ms, quats=None, heading_rad=None, cam_axes=None):
+        from .ego import CAM_OPENCV, orientation_to_gravity_heading
+        t = np.asarray(t_ms, dtype=np.float64)
+        order = np.argsort(t)
+        self.t = t[order]
+        cam_axes = CAM_OPENCV if cam_axes is None else cam_axes
+        if quats is not None:
+            q = np.asarray(quats, dtype=np.float64).reshape(-1, 4)[order]
+            gh = [orientation_to_gravity_heading(x, cam_axes=cam_axes) for x in q]
+            self.g = np.array([x[0] for x in gh])
+            self.h = np.array([x[1] for x in gh])
+        else:
+            self.g = None
+            self.h = np.asarray(heading_rad, dtype=np.float64)[order]
+
+    def _i(self, t_ms: float) -> int:
+        i = int(np.searchsorted(self.t, t_ms))
+        if i >= len(self.t) or (i > 0 and abs(self.t[i - 1] - t_ms) <= abs(self.t[i] - t_ms)):
+            i -= 1
+        return i
+
+    def heading_at(self, t_ms: float) -> float:
+        return float(self.h[self._i(t_ms)])
+
+    def gravity_at(self, t_ms: float) -> Optional[np.ndarray]:
+        return None if self.g is None else self.g[self._i(t_ms)]
+
+
+def load_orientation_csv(path: str, cam_axes=None) -> OrientationLog:
+    with open(path, "r", newline="", encoding="utf-8-sig") as fh:
+        reader = csv.DictReader(fh)
+        cols = reader.fieldnames or []
+        rows = list(reader)
+    if "t_ms" not in cols:
+        raise ValueError("orientation csv needs a t_ms column")
+    t = [float(r["t_ms"]) for r in rows]
+    if all(k in cols for k in ("qx", "qy", "qz", "qw")):
+        return OrientationLog(t, quats=[[float(r[k]) for k in ("qx", "qy", "qz", "qw")] for r in rows], cam_axes=cam_axes)
+    if "heading_deg" in cols:
+        return OrientationLog(t, heading_rad=[math.radians(float(r["heading_deg"])) for r in rows])
+    raise ValueError("orientation csv needs qx,qy,qz,qw or heading_deg")
+
+
+class StepLog:
+    """Step events (TYPE_STEP_DETECTOR style); ``count_at(t)`` = cumulative number of steps up to t."""
+
+    def __init__(self, step_times_ms):
+        self.t = np.sort(np.asarray(step_times_ms, dtype=np.float64))
+
+    def count_at(self, t_ms: float) -> int:
+        return int(np.searchsorted(self.t, t_ms, side="right"))
+
+
+def load_steps_csv(path: str) -> StepLog:
+    """CSV with a ``t_ms`` column: one row per detected step."""
+    with open(path, "r", newline="", encoding="utf-8-sig") as fh:
+        reader = csv.DictReader(fh)
+        if "t_ms" not in (reader.fieldnames or []):
+            raise ValueError("steps csv needs a t_ms column")
+        return StepLog([float(r["t_ms"]) for r in reader])

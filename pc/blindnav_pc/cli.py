@@ -13,7 +13,9 @@ def _cmd_run(a) -> int:
 
     from .config import Config
     from .depth import DepthEstimator
-    from .io import VideoSource, gravity_from_pitch_roll, load_camera, load_imu_csv
+    from .ego import CAM_OPENCV, CAM_OPENGL
+    from .io import (VideoSource, gravity_from_pitch_roll, load_camera, load_imu_csv, load_orientation_csv,
+                     load_steps_csv)
     from .metrics import compute_metrics, format_report, load_labels_csv
     from .pipeline import Pipeline
     from .segmentation import make_segmenter
@@ -26,6 +28,9 @@ def _cmd_run(a) -> int:
         print("需要 --video 或 --webcam", file=sys.stderr)
         return 2
     imu = load_imu_csv(a.imu) if a.imu else None
+    orient = load_orientation_csv(a.orientation, CAM_OPENGL if a.cam_axes == "opengl" else CAM_OPENCV) \
+        if a.orientation else None
+    steps = load_steps_csv(a.steps) if a.steps else None
     seg = make_segmenter(a.seg)
     depth = DepthEstimator(input_size=a.depth_size)
     os.makedirs(a.out, exist_ok=True)
@@ -41,8 +46,13 @@ def _cmd_run(a) -> int:
             if a.stride > 1 and n % a.stride:
                 n += 1
                 continue
-            g = imu.gravity_at(t_ms) if imu is not None else g_fallback
-            res = pipe.process(frame, t_ms, g)
+            g = imu.gravity_at(t_ms) if imu is not None else None
+            if g is None and orient is not None:
+                g = orient.gravity_at(t_ms)
+            g = g_fallback if g is None else g
+            hd = orient.heading_at(t_ms) if orient is not None else None
+            res = pipe.process(frame, t_ms, g, heading_rad=hd,
+                               steps_total=steps.count_at(t_ms) if steps is not None else None)
             lf.write(json.dumps(res.log, ensure_ascii=False) + "\n")
             n += 1
             print(f"[{t_ms/1000:6.2f}s] {res.command:<8} {res.text}  "
@@ -87,7 +97,7 @@ def _cmd_sim(a) -> int:
     names = list(SCENARIOS) if a.scenario == "all" else [a.scenario]
     ok = True
     for n in names:
-        r = run_scenario(n)
+        r = run_scenario(n, memory=a.memory, blind_m=a.blind)
         print(f"== {n}: " + " -> ".join(f"{c}×{k}" for c, k in r.timeline()) +
               f" | 碰撞={r.collided} 最小净空={r.min_clearance_m:.2f}m 终点x={r.final_x:+.2f}m z={r.final_z:.1f}m")
         ok &= not r.collided
@@ -116,6 +126,11 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--video"), g.add_argument("--webcam", type=int, nargs="?", const=0)
     r.add_argument("--imu", help="imu.csv (t_ms,gx,gy,gz；相机坐标系下的重力方向)")
     r.add_argument("--camera", help="camera.json (fx,fy,cx,cy)；缺省按 FOV 估计")
+    r.add_argument("--orientation", help="orientation.csv: t_ms,qx,qy,qz,qw (相机→世界，Z 向上) 或 t_ms,heading_deg；"
+                   "用于 BEV 记忆自运动补偿 + RECENTER 的 PDR；缺省则历史被大幅缩短、不做回正")
+    r.add_argument("--steps", help="steps.csv: 每个步伐事件一行 t_ms（TYPE_STEP_DETECTOR）；缺省则只旋转不平移")
+    r.add_argument("--cam-axes", choices=["opencv", "opengl"], default="opencv", dest="cam_axes",
+                   help="orientation.csv 的相机轴约定；Android/ARCore 后置摄像头用 opengl")
     r.add_argument("--height", type=float, help="相机离地高度(m)，默认 1.20")
     r.add_argument("--config", help="覆盖默认参数的 JSON")
     r.add_argument("--seg", default="hf", help="hf | hf:<model_id> | onnx:<path> | torchscript:<path> | const")
@@ -130,6 +145,9 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("sim", help="2D 运动学仿真闭环")
     s.add_argument("scenario", nargs="?", default="all")
     s.add_argument("--log", help="保存逐帧日志目录")
+    s.add_argument("--memory", default="full", choices=["oracle", "full", "rot_only", "none"],
+                   help="oracle=只看当前帧；full=陀螺+步伐；rot_only=只陀螺；none=无自运动输入")
+    s.add_argument("--blind", type=float, default=0.6, help="相机近场盲区(m)")
     s.set_defaults(fn=_cmd_sim)
     m = sub.add_parser("metrics", help="从日志计算 误停率/漏停率/指令翻转次数/延迟")
     m.add_argument("log"), m.add_argument("--labels"), m.add_argument("--json", action="store_true")
