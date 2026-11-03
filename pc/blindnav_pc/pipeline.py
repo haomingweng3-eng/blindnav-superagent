@@ -13,6 +13,7 @@ from .config import Config
 from .ego import EgoTracker
 from .bev import level_frame
 from .ground import GroundCalibrator, GroundFit, flat_ground_depth, metric_depth, up_from_gravity
+from .layers import HazardAssessment, HeightLayerAnalyzer, empty_hazards_log
 from .planner import PlanResult, VFHPlanner
 from .policy import (FORWARD, LEFT, OBSERVE, RECENTER, RIGHT, STOP, PolicyDecision, PolicyInput,
                      WalkingSafetyPolicy)
@@ -33,6 +34,7 @@ class FrameResult:
     log: dict = field(default_factory=dict)
     state: str = "CRUISE"
     safety_state: str = CLEAR
+    hazards: Optional[HazardAssessment] = None
 
 
 class Pipeline:
@@ -46,6 +48,7 @@ class Pipeline:
         self.planner = VFHPlanner(self.cfg.planner, self.cfg.bev)
         self.policy = WalkingSafetyPolicy(self.cfg.policy)
         self.safety = SafetyStateMachine(self.cfg.safety, self.cfg.bev)
+        self.layers = HeightLayerAnalyzer(self.cfg.layers, self.cfg.bev)
         self.ego = EgoTracker(self.cfg.ego)
         self.behavior = BehaviorMachine(self.cfg, self.ego)
         self._prev_h = 0.0
@@ -55,6 +58,7 @@ class Pipeline:
         self.memory.reset()
         self.policy.reset()
         self.safety.reset()
+        self.layers.reset()
         self.behavior.reset()
         self._prev_h = 0.0
 
@@ -93,8 +97,10 @@ class Pipeline:
         up = fit.up if fit.up is not None else up
         depth_m = None
         plan = None
+        hazards = None
         if fit.ok:
             depth_m = metric_depth(q, fit.a, fit.b, c.ground.max_depth_m)
+            hazards = self.layers.update(depth_m, mask, self.K, up, c.ground.camera_height_m)
             free, occ = build_bev_frame(depth_m, mask, self.K, up, c.ground.camera_height_m, c.bev)
             states = self.memory.update(free, occ, ego)
             tgt = self.planner.planner_target(yaw_deg, self.behavior.target_axis_deg())
@@ -104,10 +110,11 @@ class Pipeline:
             desired_side = self.planner.desired_side(plan, yaw_deg, 0.0)
         else:
             # degraded calibration: do NOT trust any geometry; keep warping/decaying memory only and let the policy hold/OBSERVE/STOP
+            self.layers.reset()                   # drop evidence must be consecutive frames
             z = np.zeros_like(self.memory.occ_ev, dtype=np.int32)
             states = self.memory.update(z, z, ego)
             desired_side = "center"
-        safety = self.safety.update(t_ms, fit, states, plan)
+        safety = self.safety.update(t_ms, fit, states, plan, hazards=hazards)
         if fit.ok and safety.state != SAFETY_UNKNOWN:
             inp = PolicyInput(now_ms=t_ms, ground_ok=True, corridor_blocked=plan.corridor_blocked,
                               corridor_min_dist_m=plan.corridor_min_dist_m, dead_end=plan.dead_end,
@@ -124,6 +131,7 @@ class Pipeline:
         log = {"t_ms": round(float(t_ms), 1), **fit.to_log()}
         if plan is not None:
             log.update(plan.to_log())
+        log.update(hazards.to_log() if hazards is not None else empty_hazards_log())
         log.update({"command": command, "text": text, "stop_reason": stop_reason, "state": dec.state,
                     "safety_state": safety.state, "safety_reasons": list(safety.reasons),
                     "corridor_coverage": round(float(safety.corridor_coverage), 3),
@@ -132,7 +140,7 @@ class Pipeline:
                     "latency_ms": round(lat["total"] * 1000, 1),
                     "latency_stage_ms": {k: round(v * 1000, 1) for k, v in lat.items()}})
         return FrameResult(t_ms, command, text, mask, depth_m, states, plan, fit, log, dec.state,
-                           safety.state)
+                           safety.state, hazards)
 
     @staticmethod
     def _safety_policy_override(pdec: PolicyDecision, safety) -> PolicyDecision:

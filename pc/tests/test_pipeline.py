@@ -3,6 +3,7 @@ import json
 
 import numpy as np
 
+from blindnav_pc.bev import level_frame
 from blindnav_pc.cli import main
 from blindnav_pc.depth import SyntheticDepth
 from blindnav_pc.ground import flat_ground_depth, pixel_rays, up_from_gravity
@@ -25,6 +26,25 @@ def scene(obstacle_z=None):
     return g, q.astype(np.float32)
 
 
+def step_scene(edge_z=1.3, drop_m=0.30, pitch_deg=25.0):
+    """Walkable ground up to ``edge_z``, then a lower ground plane (a step down).  The mask only
+    covers the near ground so the affine calibration still fits the height-0 plane."""
+    g = gravity_from_pitch_roll(pitch_deg)
+    up = up_from_gravity(g)
+    rays = pixel_rays(K, W, H)
+    f, _ = level_frame(up)
+    d_up, zc = rays @ up, rays @ f
+    near = -1.2 / d_up                       # z-depth of the height-0 ground plane
+    far = -(1.2 + drop_m) / d_up             # z-depth of the lower plane
+    z_near, z_far = near * zc, far * zc
+    ok = d_up < -0.02
+    take_near = ok & (z_near > 0) & (z_near < edge_z)
+    take_far = ok & (z_far >= edge_z)
+    d = np.where(take_near, near, np.where(take_far, far, np.nan))
+    q = (1.0 / d - 0.05) / 0.8
+    return g, np.where(np.isfinite(d), q, np.nan).astype(np.float32)
+
+
 def run(depth_q, seg, n=15, grav=None):
     pipe = Pipeline(seg, SyntheticDepth(depth_q), K)
     frame = np.zeros((H, W, 3), np.uint8)
@@ -41,9 +61,12 @@ def test_open_ground_forward_and_logged_fields():
     log = res[-1].log
     assert abs(log["a"] - 0.8) < 0.05 and abs(log["b"] - 0.05) < 0.02
     for k in ("confidence", "inlier_ratio", "left_clear_m", "center_clear_m", "right_clear_m", "command", "latency_ms",
-              "up_source", "input_up_source", "attitude_visual_deg", "visual_fallback"):
+              "up_source", "input_up_source", "attitude_visual_deg", "visual_fallback",
+              "layer_low_cells", "layer_body_cells", "layer_head_cells", "drop_risk_cells",
+              "drop_unconfirmed_cells", "drop_unobserved_cells", "hazard_reasons"):
         assert k in log
     assert log["up_source"] == "gravity" and log["input_up_source"] == "gravity"
+    assert log["hazard_reasons"] == []                 # open flat ground: no layer/drop hazard
     json.dumps(log)                                    # serialisable
 
 
@@ -122,6 +145,23 @@ def test_obstacle_ahead_is_blocked_and_never_forward():
     res = run(q, ConstantSegmenter(0.8), n=6, grav=g)
     assert all(r.command != "FORWARD" for r in res)
     assert any(r.safety_state == "BLOCKED" and "障碍" in r.text for r in res)
+    assert res[-1].log["layer_body_cells"] > 0 and res[-1].log["layer_head_cells"] > 0
+    assert {"body_obstacle", "head_obstacle"} <= set(res[-1].log["hazard_reasons"])
+
+
+def test_step_down_is_unknown_then_drop_risk_never_forward():
+    g, q = step_scene()
+    pipe = Pipeline(ConstantSegmenter(0.9), SyntheticDepth(q), K)
+    frame = np.zeros((H, W, 3), np.uint8)
+    reasons, states = [], []
+    for i in range(6):
+        r = pipe.process(frame, i * 100.0, g)
+        assert r.command != "FORWARD"                  # never forward across a possible drop
+        reasons.append(set(r.log["hazard_reasons"]))
+        states.append(r.safety_state)
+    assert "drop_unconfirmed" in reasons[0] and "drop_risk" not in reasons[0]
+    assert "drop_risk" in reasons[-1] and r.log["drop_risk_cells"] > 0
+    assert states[0] == "UNKNOWN" and states[-1] == "BLOCKED"
 
 
 def test_cli_sim_all(capsys):

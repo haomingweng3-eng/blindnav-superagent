@@ -4,7 +4,9 @@ UNKNOWN means the system cannot vouch for the space in front of the walker (stal
 unreliable ground calibration, attitude/visual conflict, or an unseen corridor).  It is never
 safe-to-pass: callers must map it to OBSERVE/STOP, never FORWARD.  Leaving UNKNOWN requires
 ``unknown_recovery_frames`` consecutive reliable frames, so a single good frame cannot clear it.
-BLOCKED is a *known* obstacle in the forward corridor; a turn away from it remains allowed.
+BLOCKED is a *known* obstacle in the forward corridor (planner occupancy, or a head/body/low
+height-layer obstacle / confirmed drop risk from ``layers.py``); a turn away from it remains
+allowed.  Unconfirmed drop evidence and a ground edge with no depth beyond are UNKNOWN.
 """
 from __future__ import annotations
 
@@ -17,6 +19,7 @@ import numpy as np
 
 from .config import BEVConfig, SafetyConfig, UNKNOWN as CELL_UNKNOWN
 from .ground import GroundFit
+from .layers import BLOCK_REASONS, UNKNOWN_REASONS
 
 CLEAR, BLOCKED, UNKNOWN = "CLEAR", "BLOCKED", "UNKNOWN"
 
@@ -108,12 +111,16 @@ class SafetyStateMachine:
         return tuple(dict.fromkeys(reasons)), stale_ms, coverage
 
     def update(self, now_ms: float, fit: Optional[GroundFit] = None,
-               states: Optional[np.ndarray] = None, plan=None) -> SafetyDecision:
+               states: Optional[np.ndarray] = None, plan=None, hazards=None) -> SafetyDecision:
         reasons, stale_ms, coverage = self._unknown_reasons(now_ms, fit, states, self._last_t)
         self._last_t = now_ms
-        if reasons:
+        hazard_reasons = tuple(getattr(hazards, "reasons", ()) or ())
+        hazard_unknown = tuple(r for r in hazard_reasons if r in UNKNOWN_REASONS)
+        hazard_blocked = tuple(r for r in hazard_reasons if r in BLOCK_REASONS)
+        unknown_reasons = reasons + hazard_unknown
+        if unknown_reasons:
             state, self._reliable_streak = UNKNOWN, 0
-        elif plan is not None and (plan.dead_end or plan.corridor_blocked):
+        elif hazard_blocked or (plan is not None and (plan.dead_end or plan.corridor_blocked)):
             state, self._reliable_streak = BLOCKED, 0
         elif self.state == UNKNOWN:
             self._reliable_streak += 1
@@ -121,11 +128,12 @@ class SafetyStateMachine:
         else:
             state, self._reliable_streak = CLEAR, 0
         blocked = plan is not None and (plan.dead_end or plan.corridor_blocked)
-        log_reasons = reasons + (("dead_end",) if blocked and plan.dead_end else
-                                 ("corridor_blocked",) if blocked else ())
+        log_reasons = unknown_reasons + hazard_blocked + (
+            ("dead_end",) if blocked and plan.dead_end else
+            ("corridor_blocked",) if blocked else ())
         if state != self.state:
             logger.info("safety transition %s -> %s at t_ms=%.1f reasons=%s",
                         self.state, state, float(now_ms), ",".join(log_reasons) or "ok")
             self.transitions.append((float(now_ms), self.state, state, log_reasons))
             self.state = state
-        return SafetyDecision(state, tuple(log_reasons), not reasons, coverage, stale_ms)
+        return SafetyDecision(state, tuple(log_reasons), not unknown_reasons, coverage, stale_ms)

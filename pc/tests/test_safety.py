@@ -89,6 +89,23 @@ def test_unknown_to_clear_needs_n_consecutive_reliable_frames():
     assert m.update(700, fit(), states()).state == CLEAR
 
 
+def test_hazard_reasons_feed_the_state_machine():
+    hazards = SimpleNamespace(reasons=("body_obstacle",))
+    d = SafetyStateMachine().update(0, fit(), states(), plan(), hazards)
+    assert d.state == BLOCKED and "body_obstacle" in d.reasons and d.reliable
+    hazards = SimpleNamespace(reasons=("drop_edge_unobserved",))       # unreliable evidence
+    d = SafetyStateMachine().update(100, fit(), states(), plan(), hazards)
+    assert d.state == UNKNOWN and not d.reliable
+    assert "drop_edge_unobserved" in d.reasons
+
+
+def test_confirmed_drop_risk_blocks_and_unseen_edge_wins():
+    blocked = SimpleNamespace(reasons=("drop_risk",))
+    assert SafetyStateMachine().update(0, fit(), states(), plan(), blocked).state == BLOCKED
+    mixed = SimpleNamespace(reasons=("drop_risk", "drop_unconfirmed"))
+    assert SafetyStateMachine().update(100, fit(), states(), plan(), mixed).state == UNKNOWN
+
+
 def test_transitions_are_logged_with_timestamps(caplog):
     m = SafetyStateMachine()
     with caplog.at_level(logging.INFO, logger="blindnav_pc.safety"):

@@ -21,7 +21,7 @@ cd pc
 python -m venv .venv && source .venv/bin/activate        # Python >= 3.10
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
-pytest -q                                                # 126 个测试，不联网、不下载模型、不需要数据集
+pytest -q                                                # 137 个测试，不联网、不下载模型、不需要数据集
 ```
 
 首次 `run` 会从 Hugging Face 下载两个模型（约 100 MB，缓存在 `~/.cache/huggingface`，**不入库**）：
@@ -115,6 +115,21 @@ Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a
 状态切换通过 `logging`（logger `blindnav_pc.safety`）带 `t_ms` 记录；逐帧日志新增
 `safety_state, safety_reasons, corridor_coverage`。
 
+### 高度分层 + 跌落脚点（`layers.py`，P0）
+每帧把水平系点云按**相对局部地面**的高度分层：ground（|h|≤0.05 m）、low（0.05–0.15 m）、
+body（0.15–0.8 m）、head（0.8–2.0 m）；地面以下 `h < -drop_depth_m`（默认 −0.20 m）是跌落证据。
+各层占用保留在 BEV 栅格上（`BEVMemory` 的三态栅格不变）。安全状态机只看前方可行走走廊
+（默认 2.0 m × ±0.5 m）：
+- **head / body 层有点** → `BLOCKED`；**low 层"大"**（≥3 格或横向 ≥0.30 m）→ `BLOCKED`；小的 low 障碍
+  只有在其前方地面确实被看到时才忽略，否则 `UNKNOWN`（不静默当作安全）。
+- **DROP_RISK**（台阶下沉/坑洞）需要同时满足：可行走地面边界 + 局部平面残差（低于局部地面 ≥0.20 m）
+  + 深度不连续（或台阶下方地面在遮挡缺口之后仍被看到），且连续 `drop_confirm_frames`（默认 3）帧。
+  **确认前一律 `UNKNOWN`**；确认后在证据短暂丢失时保持 `drop_hold_frames` 帧，避免闪烁。
+- **地面边界之后没有可靠深度** → `UNKNOWN`（`drop_edge_unobserved`）：绝不断言成坑洞，也绝不放行。
+`UNKNOWN`/`BLOCKED` 仍然永远不会映射成 `FORWARD`。逐帧日志新增
+`layer_low_cells, layer_body_cells, layer_head_cells, drop_risk_cells, drop_unconfirmed_cells,
+drop_unobserved_cells, hazard_reasons`。
+
 ### 规划器（`planner.py`）
 - 默认 ±35°（5° 步长）；全部不通时依次放宽到 ±50°、±60° 再 STOP。放宽后的航向必须在视野内**整条射线都看得到是 FREE** 且前向进展 ≥ 1.0 m
   （默认 ±1.5 m 的 BEV 里 ±60° 基本不可行，需要加大 `bev.lateral_half_m`，例如 3.0；这是诚实的限制）。
@@ -124,7 +139,7 @@ Depth-Anything 输出的是**仿射不变逆深度** q（只差一个未知的 a
 - `score = α·clear + β·free_width − γ·航向误差 − δ·unknown占比`；所有航向通行距离 < 1.5 m = 死路。
 - 策略（移植自 Android `WalkingSafetyPolicy.kt`）：停止证据需连续 ≥2 帧且持续 300 ms 才 STOP，STOP 保持 800 ms；左右转需连续 3 帧且停留 400 ms；回到直行需 2 帧。
 
-每帧日志（`log.jsonl`）含：`a, b, inlier_ratio, residual, n_ground_px, confidence, reused/degraded, safety_state, safety_reasons, corridor_coverage, left/center/right_clear_m, corridor_blocked, dead_end, command, text, stop_reason, latency_ms(及分阶段)`。
+每帧日志（`log.jsonl`）含：`a, b, inlier_ratio, residual, n_ground_px, confidence, reused/degraded, safety_state, safety_reasons, corridor_coverage, layer_low_cells, layer_body_cells, layer_head_cells, drop_risk_cells, drop_unconfirmed_cells, drop_unobserved_cells, hazard_reasons, left/center/right_clear_m, corridor_blocked, dead_end, command, text, stop_reason, latency_ms(及分阶段)`。
 
 思路来源：Tian et al., ICRA 2021（arXiv:2101.05995）；DRISHTI 仅作参考，**本实现为独立重写，未复制其代码**。
 
@@ -215,6 +230,9 @@ BEV 记忆：当步伐为仿真/未标定 `L_step` 时，评测与真机应优�
 - **没有真机数据**：真实验证只有 SANPO 的一个小样本（Synthetic 30 帧 / Real 20 帧，且 Real 那段几乎静止）。误停率/漏停率需要带标注的真实路测。
 - **Real 数据上姿态派生的重力偏差 12–14°，地面标定 20/20 帧失败（系统正确降级为 STOP，但说明依赖手机 IMU 的重力必须准）**；改用 GT 地面重力后 20/20 成功。仅 1 个 Real session，结论不可外推。
 - 平地假设：台阶/坡道/路肩会让地面拟合偏掉；相机高度/俯仰角错 10% 直接带来同量级距离误差。
+- 高度分层与跌落脚点检测仍是栅格级 P0：多帧跌落证据**没有做自运动补偿**（走路时格子会移动，可能延后确认）；
+  相机近场盲区/地面可见边界附近会保守地报 `UNKNOWN`；单帧深度噪声不会确认 DROP_RISK，但会造成短暂 `UNKNOWN`。
+  low 层与地面噪声的区分依赖 `ground_band_m` 和每格最少点数，真实深度噪声下需要标定。
 - 记忆预测评测里 `full`（步伐离散）在 Synthetic 上的障碍召回低于 `rot_only`，且幽灵率更高：步伐是 0.7 m 一跳的离散事件，帧间平移和真实连续运动不一致。BEV 记忆的平移精度受 PDR 限制，不要高估。
 - 陀螺漂移会让回正参考线漂移（仿真 1°/s → 终点偏离 0.67–0.8 m）；大盲区 + 无步伐/姿态输入会撞（仿真已记录）。
 - 加宽到 ±60° 在默认 ±1.5 m 的 BEV 里基本不可行；需要更宽的 BEV。

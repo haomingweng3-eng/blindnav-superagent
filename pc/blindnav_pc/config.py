@@ -129,6 +129,41 @@ class SafetyConfig:
 
 
 @dataclass
+class LayerConfig:
+    """Height layering + conservative drop-risk detection (P0).
+
+    Layers are measured relative to the estimated ground plane: ground band |h| <= ground_band_m,
+    low (ground_band_m, low_max_m], body (low_max_m, body_max_m], head (body_max_m, head_max_m].
+    Points below -ground_band_m are below the ground plane and count as drop evidence.
+
+    Conservative by construction: a step-down/pothole only becomes DROP_RISK after
+    ``drop_confirm_frames`` consecutive frames of evidence; earlier frames are UNKNOWN.  A ground
+    edge with no reliable depth beyond is UNKNOWN - never safe, never asserted as a pothole.
+    A low-layer obstacle is ignored only when it is small AND fully observed; large or
+    partly-unobserved low obstacles block (or are unknown).
+    """
+    ground_band_m: float = 0.05
+    low_max_m: float = 0.15
+    body_max_m: float = 0.80
+    head_max_m: float = 2.00
+    min_points: int = 2                   # points per BEV cell to mark a layer cell present
+    min_ground_points: int = 2            # points per BEV cell to mark walkable ground support
+    corridor_len_m: float = 2.0           # hazard corridor (keep in sync with SafetyConfig)
+    corridor_half_width_m: float = 0.5
+    low_block_cells: int = 3              # low-layer cells = "large" low obstacle
+    low_block_width_m: float = 0.30       # ... or a lateral run at least this wide
+    drop_depth_m: float = 0.20            # below the local ground plane = step-down evidence
+    depth_jump_m: float = 0.15            # metric-depth discontinuity across the edge
+    plane_tol_m: float = 0.08             # local ground-plane residual tolerance
+    drop_edge_gap_m: float = 0.80         # occlusion gap between the ground edge and the lower ground
+    drop_confirm_frames: int = 3          # consecutive drop frames -> DROP_RISK
+    drop_hold_frames: int = 2             # keep a confirmed DROP_RISK after evidence drops out
+    edge_probe_m: float = 1.00            # look ahead this far for depth beyond a ground edge
+    edge_unknown_frames: int = 1          # ground edge with no depth beyond -> UNKNOWN
+    max_edge_depth_m: float = 6.0         # only trust ground edges closer than this
+
+
+@dataclass
 class EgoConfig:
     """Ego-motion (PDR) from an orientation sensor (game-rotation-vector style) + step events."""
     step_length_m: float = 0.70          # personal step length L_step
@@ -168,6 +203,7 @@ class Config:
     ego: EgoConfig = field(default_factory=EgoConfig)
     behavior: BehaviorConfig = field(default_factory=BehaviorConfig)
     safety: SafetyConfig = field(default_factory=SafetyConfig)
+    layers: LayerConfig = field(default_factory=LayerConfig)
 
     @classmethod
     def from_json(cls, path: Optional[str]) -> "Config":
