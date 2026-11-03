@@ -1,6 +1,10 @@
 """Inputs: video / webcam frames, camera intrinsics, optional IMU gravity log.
 
 Camera frame = OpenCV convention (x right, y down, z forward).  Gravity vectors point DOWN.
+Android logger sessions provide ``imu.csv`` (TYPE_GRAVITY and orientation timestamps) and
+``camera.json``; map them to ``python -m blindnav_pc run --video ... --imu ... --camera ...
+--orientation ... --steps ...``.  Prefer TYPE_GRAVITY (or accel+gyro fusion), never a
+camera-pose Y-up assumption.
 """
 from __future__ import annotations
 

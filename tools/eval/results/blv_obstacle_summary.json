@@ -1,0 +1,92 @@
+{
+  "dataset": "BLV-Road-Nav-Accessibility, 21 videos / 31 segments / 1795 frames",
+  "frames": 1795,
+  "categories": {
+    "Bench": {
+      "support_frames": 76,
+      "recall": 0.1316,
+      "precision": 0.2041
+    },
+    "Bicycle": {
+      "support_frames": 45,
+      "recall": 0.3111,
+      "precision": 0.3256
+    },
+    "Bus": {
+      "support_frames": 38,
+      "recall": 0.7632,
+      "precision": 0.4328
+    },
+    "Car": {
+      "support_frames": 274,
+      "recall": 0.781,
+      "precision": 0.4263
+    },
+    "Chair": {
+      "support_frames": 4,
+      "recall": 0.0,
+      "precision": 0.0
+    },
+    "Dog": {
+      "support_frames": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Fire hydrant": {
+      "support_frames": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Motorcycle": {
+      "support_frames": 12,
+      "recall": 0.4167,
+      "precision": 0.7143
+    },
+    "Person": {
+      "support_frames": 615,
+      "recall": 0.9642,
+      "precision": 0.372
+    },
+    "Stop Sign": {
+      "support_frames": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Table": {
+      "support_frames": 9,
+      "recall": 0.0,
+      "precision": 0.0
+    },
+    "Traffic Signals": {
+      "support_frames": 69,
+      "recall": 0.3913,
+      "precision": 0.6
+    }
+  },
+  "not_covered": [
+    "Foldout Sign",
+    "Raised Entryway",
+    "Overhanging Tree Branches",
+    "Sidewalk Pits",
+    "Curb",
+    "Sloped Curb",
+    "Stairs",
+    "Uneven Stairs",
+    "Doorway",
+    "Pillar",
+    "Pole",
+    "Barrier Post",
+    "Fence",
+    "Railing",
+    "Trash Bins",
+    "Wheelchair",
+    "White Cane",
+    "Tactile Paving",
+    "Wet Surface",
+    "Clear Ice",
+    "Puddle",
+    "Snow",
+    "Closed Sidewalk"
+  ],
+  "macro_recall": 0.4177
+}

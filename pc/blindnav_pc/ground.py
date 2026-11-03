@@ -77,12 +77,16 @@ class GroundFit:
     reused: bool = False                 # (a, b) copied from an earlier frame
     degraded: bool = False               # no usable calibration -> caller should OBSERVE / STOP
     reason: str = ""
+    up_source: str = "imu"
+    up: Optional[np.ndarray] = None
 
     def to_log(self) -> dict:
-        return {"a": _f(self.a), "b": _f(self.b), "ground_ok": bool(self.ok),
+        d = {"a": _f(self.a), "b": _f(self.b), "ground_ok": bool(self.ok),
                 "inlier_ratio": _f(self.inlier_ratio), "residual": _f(self.residual),
                 "n_ground_px": int(self.n_pixels), "confidence": _f(self.confidence),
                 "reused": bool(self.reused), "degraded": bool(self.degraded), "reason": self.reason}
+        d["up_source"] = self.up_source
+        return d
 
 
 def _f(x: float) -> Optional[float]:
@@ -157,7 +161,10 @@ def fit_affine_ransac(q: np.ndarray, w: np.ndarray, cfg: GroundConfig) -> Ground
     rms = float(np.sqrt(np.mean(res ** 2)))
     ratio = float(inl.sum()) / n
     fit.a, fit.b, fit.inlier_ratio, fit.residual = a, b, ratio, rms
-    fit.confidence = float(ratio * max(0.0, 1.0 - rms / cfg.rel_tol))
+    # Confidence must increase with inlier support and decrease monotonically with fit error.
+    fit.confidence = float(np.clip(ratio, 0.0, 1.0) *
+                          (1.0 / (1.0 + rms / max(cfg.rel_tol, 1e-9))) *
+                          np.clip(n / max(cfg.min_pixels, 1), 0.0, 1.0))
     fit.ok = bool(a > 0 and fit.confidence >= cfg.min_confidence)
     if a <= 0:
         fit.reason = "non_positive_scale"
@@ -173,6 +180,53 @@ def fit_ground(q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, up: np.nda
     return fit_affine_ransac(qi, wi, cfg)
 
 
+def visual_plane_up(q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, imu_up: np.ndarray,
+                    cfg: GroundConfig, a: Optional[float] = None,
+                    b: Optional[float] = None) -> Optional[tuple[np.ndarray, float]]:
+    """Estimate a ground normal from mask pixels and relative inverse depth.
+
+    The initial affine fit supplies metric depth.  This is important: directly using
+    ``1/q`` would turn the unknown affine offset into a false plane tilt.
+    """
+    if not cfg.enable_visual_up:
+        return None
+    H, W = q.shape[:2]
+    m = (ground_mask > 0).astype(np.uint8)
+    if cfg.erode_px > 1:
+        m = cv2.erode(m, np.ones((cfg.erode_px, cfg.erode_px), np.uint8))
+    m[: int(H * cfg.roi_top_frac)] = 0
+    ys, xs = np.nonzero(m)
+    if len(ys) < max(50, cfg.min_pixels // 2):
+        return None
+    qi = q[ys, xs].astype(np.float64)
+    valid = np.isfinite(qi) & (qi > 1e-5)
+    ys, xs, qi = ys[valid], xs[valid], qi[valid]
+    if len(qi) < max(50, cfg.min_pixels // 2):
+        return None
+    if len(qi) > cfg.max_samples:
+        rng = np.random.default_rng(cfg.seed)
+        ix = rng.choice(len(qi), cfg.max_samples, replace=False)
+        ys, xs, qi = ys[ix], xs[ix], qi[ix]
+    if a is None or b is None or a <= 0:
+        return None
+    den = a * qi + b
+    valid = den > 1e-5
+    ys, xs, den = ys[valid], xs[valid], den[valid]
+    if len(den) < max(50, cfg.min_pixels // 2):
+        return None
+    z = 1.0 / den
+    P = np.stack([(xs - K[0, 2]) / K[0, 0] * z,
+                  (ys - K[1, 2]) / K[1, 1] * z, z], axis=1)
+    c = P.mean(0)
+    _, _, vh = np.linalg.svd(P - c, full_matrices=False)
+    n = vh[-1]
+    n /= max(np.linalg.norm(n), 1e-12)
+    imu = np.asarray(imu_up, dtype=np.float64); imu /= max(np.linalg.norm(imu), 1e-12)
+    if n @ imu < 0: n = -n
+    angle = float(np.degrees(np.arccos(np.clip(n @ imu, -1.0, 1.0))))
+    return n, angle
+
+
 class GroundCalibrator:
     """Stateful per-frame calibration: smoothing, short reuse, then degraded."""
 
@@ -186,7 +240,23 @@ class GroundCalibrator:
         self._stale = 0
 
     def update(self, q: np.ndarray, ground_mask: np.ndarray, K: np.ndarray, up: np.ndarray) -> GroundFit:
-        fit = fit_ground(q, ground_mask, K, up, self.cfg)
+        selected = np.asarray(up, dtype=np.float64)
+        source = "imu"
+        # First pass uses gravity.  The resulting affine mapping removes q's
+        # unknown offset before the visual plane is estimated.
+        initial = fit_ground(q, ground_mask, K, selected, self.cfg)
+        vp = visual_plane_up(q, ground_mask, K, selected, self.cfg,
+                             initial.a if initial.ok else None,
+                             initial.b if initial.ok else None)
+        if vp is not None:
+            vup, angle = vp
+            if angle > self.cfg.prefer_visual_up_deg:
+                selected, source = vup, "visual"
+            elif angle <= self.cfg.max_gravity_tilt_deg:
+                selected = (selected + vup); selected /= max(np.linalg.norm(selected), 1e-12)
+                source = "fused"
+        fit = fit_ground(q, ground_mask, K, selected, self.cfg)
+        fit.up_source, fit.up = source, selected
         if fit.ok:
             if self._a is not None and self.cfg.ema < 1.0:
                 e = self.cfg.ema

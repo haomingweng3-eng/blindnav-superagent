@@ -1,0 +1,1796 @@
+frame,present,detected
+video-1-segment-1-frame-0.jpeg,,人|长椅
+video-1-segment-1-frame-1.jpeg,,人|长椅
+video-1-segment-1-frame-2.jpeg,,人|长椅
+video-1-segment-2-frame-0.jpeg,,人
+video-1-segment-2-frame-1.jpeg,,人
+video-1-segment-2-frame-2.jpeg,,人
+video-1-segment-2-frame-3.jpeg,,人
+video-1-segment-2-frame-4.jpeg,,人
+video-1-segment-3-frame-0.jpeg,,人|自行车
+video-1-segment-3-frame-1.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-2.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-3.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-4.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-5.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-6.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-7.jpeg,,人|汽车|自行车
+video-1-segment-3-frame-8.jpeg,,人|汽车
+video-1-segment-3-frame-9.jpeg,,人|汽车
+video-1-segment-4-frame-0.jpeg,Building|Car|Gate|Lamp Post|Person|Person with a disability|Retaining Wall|Roadside Parking|Sidewalk|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-1.jpeg,Building|Car|Gate|Lamp Post|Person|Person with a disability|Retaining Wall|Roadside Parking|Sidewalk|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-10.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-11.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-12.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-13.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-14.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-15.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-16.jpeg,Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-17.jpeg,Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-18.jpeg,Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-19.jpeg,Building|Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-2.jpeg,Building|Car|Gate|Lamp Post|Person|Person with a disability|Retaining Wall|Roadside Parking|Sidewalk|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-20.jpeg,Building|Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-21.jpeg,Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-22.jpeg,Building|Car|Person|Person with a disability|Railing|Sidewalk|Tactile Paving|Tree|Vegetation,人
+video-1-segment-4-frame-23.jpeg,Building|Car|Person|Person with a disability|Sidewalk|Tactile Paving|Tree|Vegetation,
+video-1-segment-4-frame-24.jpeg,Crosswalk|Gate|Pedestrian Crossing|Person|Person with a disability|Road|Sidewalk|Tactile Paving|Vegetation|White Cane,人
+video-1-segment-4-frame-25.jpeg,Crosswalk|Gate|Pedestrian Crossing|Person|Person with a disability|Road|Sidewalk|Tactile Paving|Vegetation|White Cane,人
+video-1-segment-4-frame-3.jpeg,Building|Car|Gate|Lamp Post|Person|Person with a disability|Retaining Wall|Roadside Parking|Sidewalk|Tree|Vegetation|White Cane,人|汽车
+video-1-segment-4-frame-4.jpeg,Building|Car|Gate|Lamp Post|Person|Person with a disability|Roadside Parking|Sidewalk|Tree|Vegetation,人
+video-1-segment-4-frame-5.jpeg,Building|Gate|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-6.jpeg,Building|Gate|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-7.jpeg,Building|Gate|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-8.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人
+video-1-segment-4-frame-9.jpeg,Bicycle|Building|Gate|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tree|Vegetation|White Cane,人|自行车
+video-1-segment-5-frame-0.jpeg,Bicycle|Curb|Motorcycle|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|White Cane,人|摩托车
+video-1-segment-5-frame-1.jpeg,Bicycle|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|White Cane,人|自行车
+video-1-segment-5-frame-10.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|汽车|自行车
+video-1-segment-5-frame-11.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs,汽车|自行车
+video-1-segment-5-frame-12.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs,汽车|自行车
+video-1-segment-5-frame-13.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs,
+video-1-segment-5-frame-2.jpeg,Bicycle|Curb|Gutter|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|White Cane,人
+video-1-segment-5-frame-3.jpeg,Barrier Post|Bicycle|Building|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|自行车
+video-1-segment-5-frame-4.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|自行车
+video-1-segment-5-frame-5.jpeg,Barrier Post|Bicycle|Building|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs,人|自行车
+video-1-segment-5-frame-6.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|汽车|自行车
+video-1-segment-5-frame-7.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|汽车|自行车
+video-1-segment-5-frame-8.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|汽车|自行车
+video-1-segment-5-frame-9.jpeg,Barrier Post|Bicycle|Building|Car|Curb|Person|Person with a disability|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|White Cane,人|汽车|自行车
+video-10-segment-1-frame-0.jpeg,,人
+video-10-segment-1-frame-1.jpeg,,人
+video-10-segment-1-frame-10.jpeg,,人
+video-10-segment-1-frame-11.jpeg,,人
+video-10-segment-1-frame-12.jpeg,,人
+video-10-segment-1-frame-13.jpeg,,人
+video-10-segment-1-frame-14.jpeg,,
+video-10-segment-1-frame-15.jpeg,,人
+video-10-segment-1-frame-16.jpeg,,人
+video-10-segment-1-frame-17.jpeg,,人
+video-10-segment-1-frame-18.jpeg,,人
+video-10-segment-1-frame-19.jpeg,,人|椅子
+video-10-segment-1-frame-2.jpeg,,
+video-10-segment-1-frame-20.jpeg,,人
+video-10-segment-1-frame-21.jpeg,,人|椅子
+video-10-segment-1-frame-22.jpeg,,人
+video-10-segment-1-frame-23.jpeg,,人
+video-10-segment-1-frame-24.jpeg,,人
+video-10-segment-1-frame-25.jpeg,,人
+video-10-segment-1-frame-26.jpeg,,人
+video-10-segment-1-frame-27.jpeg,,人
+video-10-segment-1-frame-28.jpeg,,人
+video-10-segment-1-frame-29.jpeg,,人
+video-10-segment-1-frame-3.jpeg,,
+video-10-segment-1-frame-30.jpeg,,人
+video-10-segment-1-frame-31.jpeg,,人
+video-10-segment-1-frame-32.jpeg,,人
+video-10-segment-1-frame-33.jpeg,,人
+video-10-segment-1-frame-34.jpeg,,人
+video-10-segment-1-frame-35.jpeg,,
+video-10-segment-1-frame-36.jpeg,,人
+video-10-segment-1-frame-37.jpeg,,人
+video-10-segment-1-frame-38.jpeg,,人
+video-10-segment-1-frame-39.jpeg,,人
+video-10-segment-1-frame-4.jpeg,,人
+video-10-segment-1-frame-40.jpeg,,
+video-10-segment-1-frame-41.jpeg,,人
+video-10-segment-1-frame-42.jpeg,,
+video-10-segment-1-frame-43.jpeg,,
+video-10-segment-1-frame-44.jpeg,,
+video-10-segment-1-frame-45.jpeg,,
+video-10-segment-1-frame-46.jpeg,,
+video-10-segment-1-frame-47.jpeg,,
+video-10-segment-1-frame-48.jpeg,,人
+video-10-segment-1-frame-49.jpeg,,
+video-10-segment-1-frame-5.jpeg,,人
+video-10-segment-1-frame-50.jpeg,,
+video-10-segment-1-frame-51.jpeg,,
+video-10-segment-1-frame-52.jpeg,Person|Person with a disability|Stairs|White Cane,
+video-10-segment-1-frame-53.jpeg,Person|Person with a disability|Stairs|White Cane,
+video-10-segment-1-frame-54.jpeg,Person|Person with a disability|Stairs|White Cane,
+video-10-segment-1-frame-55.jpeg,Person|Person with a disability|Stairs|White Cane,
+video-10-segment-1-frame-56.jpeg,Stairs|White Cane,
+video-10-segment-1-frame-57.jpeg,Accent Paving|Railing|Sidewalk|Stairs|Wall,
+video-10-segment-1-frame-58.jpeg,Building|Railing|Sidewalk|Wall,
+video-10-segment-1-frame-59.jpeg,Accent Paving|Building|Railing|Sidewalk|Stairs|Wall|White Cane,
+video-10-segment-1-frame-6.jpeg,,人
+video-10-segment-1-frame-60.jpeg,Accent Paving|Building|Railing|Sidewalk|Stairs|Wall|White Cane,
+video-10-segment-1-frame-61.jpeg,Accent Paving|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall|White Cane,人
+video-10-segment-1-frame-62.jpeg,Accent Paving|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall|White Cane,
+video-10-segment-1-frame-63.jpeg,Accent Paving|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall|White Cane,
+video-10-segment-1-frame-64.jpeg,Building|Railing|Wall,
+video-10-segment-1-frame-65.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,人
+video-10-segment-1-frame-66.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,人
+video-10-segment-1-frame-67.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,
+video-10-segment-1-frame-68.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,人
+video-10-segment-1-frame-69.jpeg,Accent Paving|Building|Gate|Railing|Sidewalk|Turnstile|Wall,
+video-10-segment-1-frame-7.jpeg,,人
+video-10-segment-1-frame-70.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,
+video-10-segment-1-frame-71.jpeg,Accent Paving|Building|Gate|Person|Person with a disability|Railing|Sidewalk|Turnstile|Wall,人
+video-10-segment-1-frame-72.jpeg,,
+video-10-segment-1-frame-73.jpeg,,
+video-10-segment-1-frame-74.jpeg,,
+video-10-segment-1-frame-75.jpeg,,
+video-10-segment-1-frame-76.jpeg,,
+video-10-segment-1-frame-77.jpeg,,人
+video-10-segment-1-frame-8.jpeg,,人
+video-10-segment-1-frame-9.jpeg,,人
+video-11-segment-1-frame-0.jpeg,Accent Paving|Building|Bus|Car|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-11-segment-1-frame-1.jpeg,Accent Paving|Building|Bus|Car|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-11-segment-1-frame-10.jpeg,Accent Paving|Building|Bus Stop|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall|White Cane,人|汽车
+video-11-segment-1-frame-11.jpeg,Accent Paving|Building|Bus Stop|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall|White Cane,人|汽车
+video-11-segment-1-frame-12.jpeg,Accent Paving|Building|Bus Stop|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall|White Cane,人|汽车
+video-11-segment-1-frame-13.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-14.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-15.jpeg,Building|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Wall|White Cane,人
+video-11-segment-1-frame-16.jpeg,Building|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Wall|White Cane,人
+video-11-segment-1-frame-17.jpeg,Building|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Wall|White Cane,人|汽车|红绿灯
+video-11-segment-1-frame-18.jpeg,Building|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Wall|White Cane,人|汽车
+video-11-segment-1-frame-19.jpeg,Building|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Wall|White Cane,人
+video-11-segment-1-frame-2.jpeg,Accent Paving|Building|Bus|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Wall|White Cane|paratransit vehicle,人|公交车
+video-11-segment-1-frame-3.jpeg,Accent Paving|Building|Bus|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Wall|paratransit vehicle,人|汽车
+video-11-segment-1-frame-4.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Wall,人|汽车
+video-11-segment-1-frame-5.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-6.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-7.jpeg,Accent Paving|Building|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-8.jpeg,Accent Paving|Building|Bus Stop|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall,人|汽车
+video-11-segment-1-frame-9.jpeg,Accent Paving|Building|Bus Stop|Car|Curb|Gutter|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Sign|Sign Post|Trash bins|Uncontrolled Crossing|Vegetation|Wall|White Cane,人|汽车
+video-11-segment-2-frame-0.jpeg,,人|汽车
+video-11-segment-2-frame-1.jpeg,,人|汽车
+video-11-segment-2-frame-2.jpeg,,人|公交车|汽车
+video-11-segment-2-frame-3.jpeg,,人|汽车
+video-11-segment-2-frame-4.jpeg,,人
+video-11-segment-2-frame-5.jpeg,,人|汽车
+video-11-segment-2-frame-6.jpeg,,人|公交车|汽车|红绿灯
+video-11-segment-2-frame-7.jpeg,,人|公交车|汽车
+video-11-segment-2-frame-8.jpeg,,人|公交车|汽车
+video-11-segment-2-frame-9.jpeg,,人|公交车|汽车
+video-11-segment-3-frame-0.jpeg,,人
+video-11-segment-3-frame-1.jpeg,,人|汽车
+video-11-segment-3-frame-10.jpeg,,人
+video-11-segment-3-frame-11.jpeg,,人
+video-11-segment-3-frame-12.jpeg,,人
+video-11-segment-3-frame-13.jpeg,,人|椅子
+video-11-segment-3-frame-14.jpeg,,人|椅子
+video-11-segment-3-frame-15.jpeg,,人|椅子
+video-11-segment-3-frame-16.jpeg,,人|椅子
+video-11-segment-3-frame-17.jpeg,,人|椅子
+video-11-segment-3-frame-18.jpeg,,人
+video-11-segment-3-frame-19.jpeg,,人
+video-11-segment-3-frame-2.jpeg,,人
+video-11-segment-3-frame-20.jpeg,,人
+video-11-segment-3-frame-21.jpeg,,人
+video-11-segment-3-frame-22.jpeg,,人
+video-11-segment-3-frame-23.jpeg,,人
+video-11-segment-3-frame-24.jpeg,,人
+video-11-segment-3-frame-25.jpeg,,人
+video-11-segment-3-frame-26.jpeg,,人
+video-11-segment-3-frame-27.jpeg,,人
+video-11-segment-3-frame-28.jpeg,,人
+video-11-segment-3-frame-29.jpeg,,人
+video-11-segment-3-frame-3.jpeg,,人
+video-11-segment-3-frame-30.jpeg,,人
+video-11-segment-3-frame-4.jpeg,,人|汽车
+video-11-segment-3-frame-5.jpeg,,人|汽车
+video-11-segment-3-frame-6.jpeg,,人|公交车|汽车
+video-11-segment-3-frame-7.jpeg,,人
+video-11-segment-3-frame-8.jpeg,,人
+video-11-segment-3-frame-9.jpeg,,人
+video-12-segment-1-frame-0.jpeg,,人
+video-12-segment-1-frame-1.jpeg,,人|汽车
+video-12-segment-1-frame-2.jpeg,,人|椅子
+video-12-segment-1-frame-3.jpeg,,人|椅子
+video-12-segment-2-frame-0.jpeg,,人|椅子
+video-12-segment-2-frame-1.jpeg,,人|椅子
+video-12-segment-2-frame-2.jpeg,,人|椅子
+video-12-segment-2-frame-3.jpeg,,人|椅子
+video-12-segment-3-frame-0.jpeg,,
+video-12-segment-3-frame-1.jpeg,,
+video-12-segment-3-frame-10.jpeg,,人|汽车
+video-12-segment-3-frame-11.jpeg,,人|汽车
+video-12-segment-3-frame-12.jpeg,,人|汽车
+video-12-segment-3-frame-13.jpeg,,人|汽车
+video-12-segment-3-frame-14.jpeg,,人|汽车
+video-12-segment-3-frame-15.jpeg,,人|汽车
+video-12-segment-3-frame-16.jpeg,,人|汽车
+video-12-segment-3-frame-17.jpeg,,人|汽车
+video-12-segment-3-frame-18.jpeg,,人|汽车
+video-12-segment-3-frame-19.jpeg,,人|汽车
+video-12-segment-3-frame-2.jpeg,,
+video-12-segment-3-frame-20.jpeg,,人|汽车
+video-12-segment-3-frame-21.jpeg,,
+video-12-segment-3-frame-3.jpeg,,人
+video-12-segment-3-frame-4.jpeg,,人
+video-12-segment-3-frame-5.jpeg,,人|汽车
+video-12-segment-3-frame-6.jpeg,,人|汽车
+video-12-segment-3-frame-7.jpeg,,人|汽车
+video-12-segment-3-frame-8.jpeg,,人|汽车
+video-12-segment-3-frame-9.jpeg,,人|汽车
+video-12-segment-4-frame-0.jpeg,Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-1.jpeg,Building|Car|Crosswalk|Curb|Fence|Mail box|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-10.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-11.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车|自行车
+video-12-segment-4-frame-12.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-13.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-14.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-15.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-16.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-17.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-18.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tree|Vegetation|Wall|White Cane|stop sign,人|汽车
+video-12-segment-4-frame-19.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-2.jpeg,Building|Car|Crosswalk|Curb|Fence|Mail box|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-20.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-21.jpeg,,
+video-12-segment-4-frame-22.jpeg,,
+video-12-segment-4-frame-23.jpeg,,
+video-12-segment-4-frame-3.jpeg,Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-4.jpeg,Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-5.jpeg,Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-6.jpeg,Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-7.jpeg,Building|Car|Crosswalk|Curb|Fence|Mail box|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人
+video-12-segment-4-frame-8.jpeg,Building|Car|Crosswalk|Curb|Fence|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-12-segment-4-frame-9.jpeg,Building|Car|Crosswalk|Curb|Fence|Gutter|Mail box|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人|汽车
+video-13-segment-1-frame-0.jpeg,,人
+video-13-segment-1-frame-1.jpeg,,人
+video-13-segment-1-frame-10.jpeg,,人|汽车
+video-13-segment-1-frame-11.jpeg,,人|狗
+video-13-segment-1-frame-12.jpeg,,人|狗
+video-13-segment-1-frame-13.jpeg,,人|狗
+video-13-segment-1-frame-14.jpeg,,人|狗
+video-13-segment-1-frame-15.jpeg,,人|狗
+video-13-segment-1-frame-16.jpeg,,人|狗
+video-13-segment-1-frame-2.jpeg,,人
+video-13-segment-1-frame-3.jpeg,,人
+video-13-segment-1-frame-4.jpeg,,人|汽车
+video-13-segment-1-frame-5.jpeg,,人|汽车
+video-13-segment-1-frame-6.jpeg,,人|汽车
+video-13-segment-1-frame-7.jpeg,,人|汽车
+video-13-segment-1-frame-8.jpeg,,人|汽车
+video-13-segment-1-frame-9.jpeg,,人|汽车
+video-13-segment-2-frame-0.jpeg,Curb|Vegetation|White Cane,
+video-13-segment-2-frame-1.jpeg,Curb|Vegetation|White Cane,人
+video-13-segment-2-frame-10.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-11.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-12.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-13.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-14.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车
+video-13-segment-2-frame-15.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-16.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-17.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-18.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车
+video-13-segment-2-frame-19.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车
+video-13-segment-2-frame-2.jpeg,Curb|Vegetation|White Cane,人
+video-13-segment-2-frame-20.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-21.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-22.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-23.jpeg,Building|Car|Crosswalk|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-24.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Road Divider|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-25.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Road Divider|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-26.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Road Divider|Traffic Signals|Vegetation|White Cane,人
+video-13-segment-2-frame-3.jpeg,Lamp Post|Person|Person with a disability|Sign,人
+video-13-segment-2-frame-4.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Slopped Curb|Tactile Paving|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-5.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Traffic Signals|Vegetation|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-6.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-7.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-8.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-2-frame-9.jpeg,Building|Car|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Traffic Signals|White Cane,人|汽车|红绿灯
+video-13-segment-3-frame-0.jpeg,,
+video-13-segment-3-frame-1.jpeg,,人
+video-13-segment-3-frame-10.jpeg,,人
+video-13-segment-3-frame-11.jpeg,,人
+video-13-segment-3-frame-12.jpeg,,人
+video-13-segment-3-frame-13.jpeg,,人
+video-13-segment-3-frame-2.jpeg,,
+video-13-segment-3-frame-3.jpeg,,
+video-13-segment-3-frame-4.jpeg,,
+video-13-segment-3-frame-5.jpeg,,
+video-13-segment-3-frame-6.jpeg,,汽车
+video-13-segment-3-frame-7.jpeg,,
+video-13-segment-3-frame-8.jpeg,,
+video-13-segment-3-frame-9.jpeg,,
+video-14-segment-1-frame-0.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Tree|Vegetation|Wall,人
+video-14-segment-1-frame-1.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-10.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-11.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-12.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车|长椅
+video-14-segment-1-frame-13.jpeg,Accent Paving|Building|Flush Door|Person|Person with a disability|Sidewalk|White Cane,人
+video-14-segment-1-frame-14.jpeg,Accent Paving|Building|Flush Door|Person|Person with a disability|Sidewalk|White Cane,人
+video-14-segment-1-frame-2.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车|长椅
+video-14-segment-1-frame-3.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车|长椅
+video-14-segment-1-frame-4.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-5.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-6.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-7.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-8.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-1-frame-9.jpeg,Bench|Car|Person|Person with a disability|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|汽车
+video-14-segment-2-frame-0.jpeg,,人
+video-14-segment-2-frame-1.jpeg,,人|汽车
+video-14-segment-2-frame-10.jpeg,,人|汽车
+video-14-segment-2-frame-11.jpeg,,人
+video-14-segment-2-frame-12.jpeg,,人|汽车
+video-14-segment-2-frame-13.jpeg,,人|汽车
+video-14-segment-2-frame-14.jpeg,,人|汽车
+video-14-segment-2-frame-15.jpeg,,人|汽车
+video-14-segment-2-frame-16.jpeg,,人|汽车
+video-14-segment-2-frame-17.jpeg,,人
+video-14-segment-2-frame-18.jpeg,,人
+video-14-segment-2-frame-19.jpeg,,人
+video-14-segment-2-frame-2.jpeg,,人
+video-14-segment-2-frame-20.jpeg,,人
+video-14-segment-2-frame-21.jpeg,,人
+video-14-segment-2-frame-22.jpeg,,人
+video-14-segment-2-frame-23.jpeg,,人
+video-14-segment-2-frame-24.jpeg,,人
+video-14-segment-2-frame-25.jpeg,,人|汽车
+video-14-segment-2-frame-26.jpeg,,人
+video-14-segment-2-frame-27.jpeg,,人
+video-14-segment-2-frame-28.jpeg,,人
+video-14-segment-2-frame-29.jpeg,,人
+video-14-segment-2-frame-3.jpeg,,人|汽车
+video-14-segment-2-frame-30.jpeg,,人
+video-14-segment-2-frame-31.jpeg,,人
+video-14-segment-2-frame-32.jpeg,,人
+video-14-segment-2-frame-33.jpeg,,人
+video-14-segment-2-frame-34.jpeg,,人|汽车
+video-14-segment-2-frame-35.jpeg,,人
+video-14-segment-2-frame-36.jpeg,,人
+video-14-segment-2-frame-4.jpeg,,人|汽车
+video-14-segment-2-frame-5.jpeg,,人|汽车
+video-14-segment-2-frame-6.jpeg,,人
+video-14-segment-2-frame-7.jpeg,,人
+video-14-segment-2-frame-8.jpeg,,人
+video-14-segment-2-frame-9.jpeg,,人|汽车
+video-14-segment-3-frame-0.jpeg,,人
+video-14-segment-3-frame-1.jpeg,,人
+video-14-segment-3-frame-2.jpeg,,人
+video-14-segment-3-frame-3.jpeg,,人
+video-14-segment-3-frame-4.jpeg,,stop sign|人
+video-14-segment-3-frame-5.jpeg,,stop sign|人
+video-14-segment-3-frame-6.jpeg,,stop sign|人
+video-14-segment-4-frame-0.jpeg,Elevator|Person|Person with a disability|Sign|Wall|White Cane,人
+video-14-segment-4-frame-1.jpeg,,
+video-14-segment-4-frame-10.jpeg,Curb|Fence|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-11.jpeg,Building|Curb|Fence|Gate|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-2.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-3.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-4.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Maintenance Vehicle|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-5.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Maintenance Vehicle|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Sign|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-6.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Maintenance Vehicle|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Sign|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-7.jpeg,Bench|Building|Curb|Fence|Gate|Lamp Post|Maintenance Vehicle|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Sign|Slopped Curb|Tree|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-8.jpeg,Curb|Fence|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Vegetation|Wall|White Cane,人
+video-14-segment-4-frame-9.jpeg,Curb|Fence|Person|Person with a disability|Road|Road Shoulder|Sidewalk|Slopped Curb|Vegetation|Wall|White Cane,人
+video-14-segment-5-frame-0.jpeg,,人
+video-14-segment-5-frame-1.jpeg,,人
+video-14-segment-5-frame-10.jpeg,,人|汽车
+video-14-segment-5-frame-11.jpeg,,人|汽车|消防栓
+video-14-segment-5-frame-12.jpeg,,人|汽车
+video-14-segment-5-frame-13.jpeg,,人|汽车
+video-14-segment-5-frame-14.jpeg,,人|汽车
+video-14-segment-5-frame-15.jpeg,,人|汽车
+video-14-segment-5-frame-16.jpeg,,人|汽车
+video-14-segment-5-frame-17.jpeg,,人|汽车
+video-14-segment-5-frame-18.jpeg,,人|汽车
+video-14-segment-5-frame-19.jpeg,,人|汽车
+video-14-segment-5-frame-2.jpeg,,人
+video-14-segment-5-frame-20.jpeg,,人|汽车
+video-14-segment-5-frame-21.jpeg,,人|汽车
+video-14-segment-5-frame-22.jpeg,,人|汽车
+video-14-segment-5-frame-23.jpeg,,人|汽车
+video-14-segment-5-frame-24.jpeg,,人|汽车
+video-14-segment-5-frame-25.jpeg,,人|汽车
+video-14-segment-5-frame-26.jpeg,,人|汽车
+video-14-segment-5-frame-27.jpeg,,人|汽车
+video-14-segment-5-frame-28.jpeg,,人|汽车
+video-14-segment-5-frame-29.jpeg,,人|汽车
+video-14-segment-5-frame-3.jpeg,,人
+video-14-segment-5-frame-30.jpeg,,人|汽车
+video-14-segment-5-frame-31.jpeg,,人|汽车
+video-14-segment-5-frame-32.jpeg,,人|汽车
+video-14-segment-5-frame-4.jpeg,,人
+video-14-segment-5-frame-5.jpeg,,人
+video-14-segment-5-frame-6.jpeg,,人
+video-14-segment-5-frame-7.jpeg,,人|汽车
+video-14-segment-5-frame-8.jpeg,,人|汽车
+video-14-segment-5-frame-9.jpeg,,人|汽车
+video-15-segment-1-frame-0.jpeg,,人|汽车
+video-15-segment-1-frame-1.jpeg,,人|汽车
+video-15-segment-1-frame-10.jpeg,,人
+video-15-segment-1-frame-11.jpeg,,人
+video-15-segment-1-frame-12.jpeg,,人
+video-15-segment-1-frame-13.jpeg,,人
+video-15-segment-1-frame-14.jpeg,,人|椅子
+video-15-segment-1-frame-15.jpeg,,人
+video-15-segment-1-frame-16.jpeg,,人
+video-15-segment-1-frame-17.jpeg,,人
+video-15-segment-1-frame-18.jpeg,,人
+video-15-segment-1-frame-19.jpeg,,人|汽车
+video-15-segment-1-frame-2.jpeg,,人|公交车|汽车
+video-15-segment-1-frame-20.jpeg,,人
+video-15-segment-1-frame-21.jpeg,,人|公交车
+video-15-segment-1-frame-22.jpeg,,人|公交车|汽车
+video-15-segment-1-frame-23.jpeg,,人|汽车
+video-15-segment-1-frame-24.jpeg,,人
+video-15-segment-1-frame-25.jpeg,,人
+video-15-segment-1-frame-26.jpeg,,人|公交车|汽车
+video-15-segment-1-frame-27.jpeg,,人|公交车|汽车
+video-15-segment-1-frame-28.jpeg,,人
+video-15-segment-1-frame-29.jpeg,,人|汽车
+video-15-segment-1-frame-3.jpeg,,人|公交车|汽车
+video-15-segment-1-frame-30.jpeg,,人|公交车
+video-15-segment-1-frame-31.jpeg,,人|汽车
+video-15-segment-1-frame-32.jpeg,,
+video-15-segment-1-frame-33.jpeg,,
+video-15-segment-1-frame-34.jpeg,,
+video-15-segment-1-frame-35.jpeg,,人
+video-15-segment-1-frame-36.jpeg,,人
+video-15-segment-1-frame-37.jpeg,,人
+video-15-segment-1-frame-38.jpeg,,人
+video-15-segment-1-frame-39.jpeg,,人
+video-15-segment-1-frame-4.jpeg,,人
+video-15-segment-1-frame-40.jpeg,,人
+video-15-segment-1-frame-41.jpeg,,人
+video-15-segment-1-frame-42.jpeg,,人
+video-15-segment-1-frame-43.jpeg,,人
+video-15-segment-1-frame-44.jpeg,,人
+video-15-segment-1-frame-45.jpeg,,人
+video-15-segment-1-frame-46.jpeg,,人
+video-15-segment-1-frame-47.jpeg,,人
+video-15-segment-1-frame-48.jpeg,,人
+video-15-segment-1-frame-5.jpeg,,人|汽车
+video-15-segment-1-frame-6.jpeg,,人|汽车
+video-15-segment-1-frame-7.jpeg,,人|汽车
+video-15-segment-1-frame-8.jpeg,,人|汽车
+video-15-segment-1-frame-9.jpeg,,人|汽车
+video-15-segment-2-frame-0.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-1.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-10.jpeg,,人|公交车
+video-15-segment-2-frame-11.jpeg,,人|公交车
+video-15-segment-2-frame-12.jpeg,,人
+video-15-segment-2-frame-2.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-3.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-4.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-5.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-6.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-7.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-8.jpeg,,人|公交车|汽车
+video-15-segment-2-frame-9.jpeg,,人|公交车
+video-15-segment-3-frame-0.jpeg,Bicycle|Building|Car|Curb|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Sloped Driveway|Slopped Curb|Trash on roads|Tree|Vegetation|Wall|Yard Waste|wet surface,人
+video-15-segment-3-frame-1.jpeg,Bicycle|Building|Car|Curb|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Sloped Driveway|Slopped Curb|Trash on roads|Tree|Vegetation|Wall|Yard Waste|wet surface,人
+video-15-segment-3-frame-10.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-11.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-12.jpeg,Accent Paving|Building|Car|Driveway(flat)|Gate|Person|Person with a disability|Pole|Raised Entryway|Road|Road Shoulder|Roadside Parking|Sloped Driveway|Trash on roads|Tree|Vegetation|Wall|White Cane|Yard Waste,人|汽车
+video-15-segment-3-frame-13.jpeg,Accent Paving|Building|Car|Driveway(flat)|Gate|Person|Person with a disability|Pole|Raised Entryway|Road|Road Shoulder|Roadside Parking|Sloped Driveway|Trash on roads|Tree|Vegetation|Wall|White Cane|Yard Waste,人|汽车
+video-15-segment-3-frame-14.jpeg,Accent Paving|Building|Car|Driveway(flat)|Gate|Person|Person with a disability|Pole|Raised Entryway|Road|Road Shoulder|Roadside Parking|Sign|Sloped Driveway|Trash on roads|Tree|Vegetation|Wall|White Cane|Yard Waste,人|汽车
+video-15-segment-3-frame-2.jpeg,Bicycle|Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-3.jpeg,Bicycle|Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash bins|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-4.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash bins|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-5.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash bins|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-6.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash bins|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-7.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash bins|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-8.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash on roads|Tree|Vegetation|Wall|Yard Waste,人|汽车
+video-15-segment-3-frame-9.jpeg,Building|Car|Fence|Gate|Person|Puddle|Raised Entryway|Road|Road Shoulder|Roadside Parking|Trash on roads|Tree|Vegetation|Wall|Yard Waste,stop sign|人|汽车
+video-16-segment-1-frame-0.jpeg,,人
+video-16-segment-1-frame-1.jpeg,,人
+video-16-segment-1-frame-10.jpeg,,人
+video-16-segment-1-frame-11.jpeg,,人
+video-16-segment-1-frame-12.jpeg,,人
+video-16-segment-1-frame-13.jpeg,,人
+video-16-segment-1-frame-14.jpeg,,人
+video-16-segment-1-frame-15.jpeg,,人
+video-16-segment-1-frame-16.jpeg,,人
+video-16-segment-1-frame-17.jpeg,,人|汽车
+video-16-segment-1-frame-18.jpeg,,人
+video-16-segment-1-frame-19.jpeg,,人
+video-16-segment-1-frame-2.jpeg,,人
+video-16-segment-1-frame-20.jpeg,,人
+video-16-segment-1-frame-21.jpeg,,人
+video-16-segment-1-frame-22.jpeg,,人|汽车
+video-16-segment-1-frame-23.jpeg,,人|椅子
+video-16-segment-1-frame-24.jpeg,,人|椅子
+video-16-segment-1-frame-25.jpeg,,人
+video-16-segment-1-frame-26.jpeg,,人
+video-16-segment-1-frame-27.jpeg,,人
+video-16-segment-1-frame-28.jpeg,,人|汽车
+video-16-segment-1-frame-29.jpeg,,人|汽车
+video-16-segment-1-frame-3.jpeg,,人
+video-16-segment-1-frame-30.jpeg,,人|汽车
+video-16-segment-1-frame-31.jpeg,,人|汽车
+video-16-segment-1-frame-32.jpeg,,人
+video-16-segment-1-frame-33.jpeg,,人|椅子
+video-16-segment-1-frame-34.jpeg,,人
+video-16-segment-1-frame-35.jpeg,,人
+video-16-segment-1-frame-4.jpeg,,人
+video-16-segment-1-frame-5.jpeg,,人
+video-16-segment-1-frame-6.jpeg,,人
+video-16-segment-1-frame-7.jpeg,,人
+video-16-segment-1-frame-8.jpeg,,人
+video-16-segment-1-frame-9.jpeg,,人
+video-16-segment-2-frame-0.jpeg,,人|椅子
+video-16-segment-2-frame-1.jpeg,,人|汽车
+video-16-segment-2-frame-10.jpeg,,人|公交车|汽车
+video-16-segment-2-frame-11.jpeg,,人
+video-16-segment-2-frame-12.jpeg,,人|汽车
+video-16-segment-2-frame-13.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-14.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-15.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-16.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-17.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-18.jpeg,,人|汽车|红绿灯
+video-16-segment-2-frame-19.jpeg,,人|公交车|汽车
+video-16-segment-2-frame-2.jpeg,,人
+video-16-segment-2-frame-20.jpeg,,人|公交车|汽车
+video-16-segment-2-frame-21.jpeg,,人|公交车|汽车
+video-16-segment-2-frame-22.jpeg,,人|公交车|汽车
+video-16-segment-2-frame-23.jpeg,,人|汽车
+video-16-segment-2-frame-24.jpeg,,人|汽车
+video-16-segment-2-frame-25.jpeg,,人|汽车
+video-16-segment-2-frame-26.jpeg,,人|汽车
+video-16-segment-2-frame-27.jpeg,,人|汽车
+video-16-segment-2-frame-28.jpeg,,人|汽车
+video-16-segment-2-frame-29.jpeg,,人|汽车
+video-16-segment-2-frame-3.jpeg,,人
+video-16-segment-2-frame-30.jpeg,,人|汽车
+video-16-segment-2-frame-31.jpeg,,人
+video-16-segment-2-frame-32.jpeg,,人
+video-16-segment-2-frame-33.jpeg,,人
+video-16-segment-2-frame-4.jpeg,,人|汽车
+video-16-segment-2-frame-5.jpeg,,人|汽车
+video-16-segment-2-frame-6.jpeg,,人|汽车
+video-16-segment-2-frame-7.jpeg,,人|汽车
+video-16-segment-2-frame-8.jpeg,,人|汽车
+video-16-segment-2-frame-9.jpeg,,人|汽车|长椅
+video-16-segment-3-frame-0.jpeg,Barrier Post|Bicycle|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-1.jpeg,Barrier Post|Bicycle|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-10.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-16-segment-3-frame-11.jpeg,Bicycle|Building|Car|Closed Sidewalk|Curb|Gate|Parallel Parking Spot|Person|Person with a disability|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Street Vendor|Trash bins|Tree|Wall|White Cane,人|公交车|汽车
+video-16-segment-3-frame-2.jpeg,Barrier Post|Bicycle|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-3.jpeg,Barrier Post|Bicycle|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-4.jpeg,Barrier Post|Bicycle|Building|Closed Sidewalk|Curb|Gate|Lamp Post|Person|Person with a disability|Pole|Road|Road Shoulder|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人
+video-16-segment-3-frame-5.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-6.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-16-segment-3-frame-7.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-16-segment-3-frame-8.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-16-segment-3-frame-9.jpeg,Barrier Post|Building|Car|Closed Sidewalk|Curb|Gate|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Road Shoulder|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-16-segment-4-frame-0.jpeg,,人
+video-16-segment-4-frame-1.jpeg,,人
+video-16-segment-4-frame-10.jpeg,,人|汽车
+video-16-segment-4-frame-11.jpeg,,人|汽车
+video-16-segment-4-frame-12.jpeg,,人|汽车
+video-16-segment-4-frame-13.jpeg,,人|汽车
+video-16-segment-4-frame-14.jpeg,,人|汽车
+video-16-segment-4-frame-15.jpeg,,人|汽车
+video-16-segment-4-frame-16.jpeg,,
+video-16-segment-4-frame-17.jpeg,,
+video-16-segment-4-frame-18.jpeg,,
+video-16-segment-4-frame-19.jpeg,,人
+video-16-segment-4-frame-2.jpeg,,人|汽车
+video-16-segment-4-frame-20.jpeg,,人|汽车
+video-16-segment-4-frame-21.jpeg,,人|汽车
+video-16-segment-4-frame-22.jpeg,,人|汽车
+video-16-segment-4-frame-23.jpeg,,人|汽车|自行车
+video-16-segment-4-frame-24.jpeg,,人|汽车
+video-16-segment-4-frame-25.jpeg,,人|汽车
+video-16-segment-4-frame-26.jpeg,,人|汽车
+video-16-segment-4-frame-27.jpeg,,人
+video-16-segment-4-frame-28.jpeg,,人
+video-16-segment-4-frame-29.jpeg,,人
+video-16-segment-4-frame-3.jpeg,,人|公交车|汽车
+video-16-segment-4-frame-30.jpeg,,人
+video-16-segment-4-frame-31.jpeg,,人
+video-16-segment-4-frame-32.jpeg,,人|摩托车|汽车|自行车
+video-16-segment-4-frame-33.jpeg,,人
+video-16-segment-4-frame-34.jpeg,,人
+video-16-segment-4-frame-35.jpeg,,人
+video-16-segment-4-frame-36.jpeg,,人
+video-16-segment-4-frame-37.jpeg,,人
+video-16-segment-4-frame-38.jpeg,,人
+video-16-segment-4-frame-39.jpeg,,人
+video-16-segment-4-frame-4.jpeg,,人|汽车
+video-16-segment-4-frame-40.jpeg,,人
+video-16-segment-4-frame-41.jpeg,,人
+video-16-segment-4-frame-42.jpeg,,人
+video-16-segment-4-frame-43.jpeg,,人
+video-16-segment-4-frame-44.jpeg,,人
+video-16-segment-4-frame-45.jpeg,,人
+video-16-segment-4-frame-46.jpeg,,人
+video-16-segment-4-frame-5.jpeg,,人|汽车
+video-16-segment-4-frame-6.jpeg,,人|汽车
+video-16-segment-4-frame-7.jpeg,,人|汽车
+video-16-segment-4-frame-8.jpeg,,人|汽车
+video-16-segment-4-frame-9.jpeg,,人|汽车
+video-17-segment-1-frame-0.jpeg,Barrier Post|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane,人|汽车
+video-17-segment-1-frame-1.jpeg,Barrier Post|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane,人|汽车
+video-17-segment-1-frame-10.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|汽车
+video-17-segment-1-frame-2.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-3.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|汽车
+video-17-segment-1-frame-4.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-5.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-6.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-7.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-8.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-1-frame-9.jpeg,Barrier Post|Building|Bus|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sidewalk pits|Tree|Vegetation|Wall|White Cane|paratransit vehicle,人|公交车|汽车
+video-17-segment-2-frame-0.jpeg,,人|狗
+video-17-segment-2-frame-1.jpeg,,人|狗
+video-17-segment-2-frame-10.jpeg,,人
+video-17-segment-2-frame-11.jpeg,,人|狗
+video-17-segment-2-frame-12.jpeg,,人|狗
+video-17-segment-2-frame-2.jpeg,,人
+video-17-segment-2-frame-3.jpeg,,人|消防栓
+video-17-segment-2-frame-4.jpeg,,人
+video-17-segment-2-frame-5.jpeg,,人
+video-17-segment-2-frame-6.jpeg,,人
+video-17-segment-2-frame-7.jpeg,,人
+video-17-segment-2-frame-8.jpeg,,人|狗
+video-17-segment-2-frame-9.jpeg,,人|狗
+video-17-segment-3-frame-0.jpeg,Barrier Post|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-1.jpeg,Barrier Post|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-10.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-11.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-12.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-13.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-14.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-15.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,
+video-17-segment-3-frame-16.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-17.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,
+video-17-segment-3-frame-18.jpeg,Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,消防栓
+video-17-segment-3-frame-19.jpeg,Person|Person with a disability|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-2.jpeg,Barrier Post|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-20.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-21.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-22.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-23.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-24.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-25.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-26.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-27.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-28.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-29.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-3.jpeg,Barrier Post|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-30.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-31.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-32.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Sign|Sign Post|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-4.jpeg,Barrier Post|Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-5.jpeg,Barrier Post|Person|Person with a disability|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-6.jpeg,Barrier Post|Person|Person with a disability|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人|长椅
+video-17-segment-3-frame-7.jpeg,Barrier Post|Person|Person with a disability|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-8.jpeg,Person|Person with a disability|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-17-segment-3-frame-9.jpeg,Lamp Post|Person|Person with a disability|Pole|Railing|Sidewalk|Stairs|Tree|Vegetation|White Cane,人
+video-18-segment-1-frame-0.jpeg,Building|Car|Curb|Driveway(flat)|Fence|Person|Person with a disability|Sidewalk|Snow|Tree|Vegetation|Wall|White Cane|wet surface,人|汽车
+video-18-segment-1-frame-1.jpeg,Building|Fence|Person|Person with a disability|Snow|Trash bins|Tree|Vegetation|Wall,人
+video-18-segment-1-frame-10.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-11.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-12.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-13.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-14.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-15.jpeg,Building|Car|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Snow|Wall|White Cane,汽车
+video-18-segment-1-frame-16.jpeg,Car|Parallel Parking Spot|Road|Roadside Parking|Snow|White Cane,
+video-18-segment-1-frame-17.jpeg,Building|Bus|Curb|Parallel Parking Spot|Person|Person with a disability|Road|Road Shoulder|Roadside Parking|Snow|Tree|Vegetation|Wall|paratransit vehicle,人
+video-18-segment-1-frame-18.jpeg,Bus|Bus Stop|Car|Curb|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|White Cane|paratransit vehicle|wet surface,人
+video-18-segment-1-frame-19.jpeg,Building|Bus|Bus Stop|Curb|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall|White Cane|paratransit vehicle|wet surface,人
+video-18-segment-1-frame-2.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Snow|Trash bins|Tree|Vegetation|Wall,人|汽车|自行车
+video-18-segment-1-frame-20.jpeg,Building|Bus|Bus Stop|Car|Curb|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Wall|paratransit vehicle|wet surface,人
+video-18-segment-1-frame-3.jpeg,Building|Car|Curb|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-4.jpeg,Building|Car|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-5.jpeg,Building|Car|Fence|Lamp Post|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-1-frame-6.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall|White Cane,人
+video-18-segment-1-frame-7.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall|White Cane,人|汽车
+video-18-segment-1-frame-8.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall|White Cane,人
+video-18-segment-1-frame-9.jpeg,Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Snow|Tree|Vegetation|Wall,人|汽车
+video-18-segment-2-frame-0.jpeg,,人
+video-18-segment-2-frame-1.jpeg,,人
+video-18-segment-2-frame-2.jpeg,,人
+video-18-segment-2-frame-3.jpeg,,人
+video-18-segment-2-frame-4.jpeg,,人|汽车
+video-18-segment-2-frame-5.jpeg,,人
+video-18-segment-2-frame-6.jpeg,,人
+video-18-segment-3-frame-0.jpeg,,人
+video-18-segment-3-frame-1.jpeg,,人
+video-18-segment-3-frame-2.jpeg,,人
+video-18-segment-3-frame-3.jpeg,,人
+video-18-segment-3-frame-4.jpeg,,人
+video-18-segment-3-frame-5.jpeg,,人
+video-18-segment-3-frame-6.jpeg,,人
+video-18-segment-4-frame-0.jpeg,,人
+video-18-segment-4-frame-1.jpeg,,人
+video-18-segment-4-frame-10.jpeg,,人
+video-18-segment-4-frame-11.jpeg,,人
+video-18-segment-4-frame-12.jpeg,,人
+video-18-segment-4-frame-13.jpeg,,人
+video-18-segment-4-frame-14.jpeg,,人
+video-18-segment-4-frame-2.jpeg,,人
+video-18-segment-4-frame-3.jpeg,,人
+video-18-segment-4-frame-4.jpeg,,人
+video-18-segment-4-frame-5.jpeg,,人
+video-18-segment-4-frame-6.jpeg,,人
+video-18-segment-4-frame-7.jpeg,,人
+video-18-segment-4-frame-8.jpeg,,人
+video-18-segment-4-frame-9.jpeg,,人
+video-18-segment-5-frame-0.jpeg,,人
+video-18-segment-5-frame-1.jpeg,,人|汽车
+video-18-segment-5-frame-2.jpeg,,人|汽车
+video-18-segment-5-frame-3.jpeg,,人|汽车
+video-18-segment-5-frame-4.jpeg,,人|汽车
+video-18-segment-5-frame-5.jpeg,,人|汽车
+video-18-segment-5-frame-6.jpeg,,人|汽车
+video-18-segment-5-frame-7.jpeg,,人|汽车
+video-18-segment-5-frame-8.jpeg,,人|汽车
+video-18-segment-5-frame-9.jpeg,,人|汽车
+video-18-segment-6-frame-0.jpeg,Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Retaining Wall|Road|Tree|Vegetation|Wall|White Cane,人|汽车
+video-18-segment-6-frame-1.jpeg,Building|Car|Person|Person with a disability|Pole|Railing|Retaining Wall|Road|Sidewalk|Stairs|Tree|Vegetation|Wall|White Cane,人|汽车
+video-18-segment-6-frame-10.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall,人
+video-18-segment-6-frame-11.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall,人
+video-18-segment-6-frame-12.jpeg,Building|Person|Person with a disability|Railing|Retaining Wall|Sidewalk|Stairs|Tactile Paving|Wall|White Cane,人|长椅
+video-18-segment-6-frame-13.jpeg,Building|Person|Person with a disability|Railing|Retaining Wall|Sidewalk|Stairs|Tactile Paving|Wall|White Cane,人|长椅
+video-18-segment-6-frame-2.jpeg,Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-3.jpeg,Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-4.jpeg,Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-5.jpeg,Accent Paving|Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-6.jpeg,Accent Paving|Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-7.jpeg,Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-8.jpeg,Building|Person|Person with a disability|Sidewalk|Wall,人
+video-18-segment-6-frame-9.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall,人
+video-19-segment-1-frame-0.jpeg,,人
+video-19-segment-1-frame-1.jpeg,,人
+video-19-segment-1-frame-2.jpeg,,人
+video-19-segment-2-frame-0.jpeg,Accent Paving|Car|Closed Sidewalk|Curb|Parallel Parking Spot|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tactile Paving|Trash on roads|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-2-frame-1.jpeg,Closed Sidewalk|Person|Person with a disability|Pole|Wall,人
+video-19-segment-2-frame-10.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-2-frame-11.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-2-frame-12.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-2-frame-13.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-2-frame-14.jpeg,Accent Paving|Car|Closed Sidewalk|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tactile Paving|Trash on roads|Tree|Vegetation|Wall|White Cane,人
+video-19-segment-2-frame-15.jpeg,Accent Paving|Closed Sidewalk|Curb|Person|Person with a disability|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Tactile Paving|Trash on roads|Tree|Vegetation|Wall|White Cane,人
+video-19-segment-2-frame-16.jpeg,Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Trash on roads|Tree|Vegetation|Wall|White Cane,人
+video-19-segment-2-frame-2.jpeg,Closed Sidewalk|Person|Person with a disability|Pole|Wall,人
+video-19-segment-2-frame-3.jpeg,Closed Sidewalk|Person|Person with a disability|Pole|Wall|White Cane,人
+video-19-segment-2-frame-4.jpeg,Person|Person with a disability|Wall|White Cane,人
+video-19-segment-2-frame-5.jpeg,Closed Sidewalk|Person|Person with a disability|Pole|Wall|White Cane,人
+video-19-segment-2-frame-6.jpeg,Accent Paving|Car|Closed Sidewalk|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tactile Paving|Trash on roads|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-2-frame-7.jpeg,Accent Paving|Car|Closed Sidewalk|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Sign|Sign Post|Slopped Curb|Tactile Paving|Trash on roads|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-2-frame-8.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-2-frame-9.jpeg,Accent Paving|Closed Sidewalk|Person|Person with a disability|Pole|Sidewalk|Tactile Paving|Wall|White Cane,人
+video-19-segment-3-frame-0.jpeg,,人
+video-19-segment-3-frame-1.jpeg,,人
+video-19-segment-3-frame-10.jpeg,,人
+video-19-segment-3-frame-11.jpeg,,人
+video-19-segment-3-frame-12.jpeg,,人
+video-19-segment-3-frame-13.jpeg,,人
+video-19-segment-3-frame-2.jpeg,,人
+video-19-segment-3-frame-3.jpeg,,人
+video-19-segment-3-frame-4.jpeg,,人
+video-19-segment-3-frame-5.jpeg,,人
+video-19-segment-3-frame-6.jpeg,,人
+video-19-segment-3-frame-7.jpeg,,人
+video-19-segment-3-frame-8.jpeg,,人|汽车
+video-19-segment-3-frame-9.jpeg,,人
+video-19-segment-4-frame-0.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|红绿灯
+video-19-segment-4-frame-1.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Slopped Curb|Table|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-4-frame-2.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车|红绿灯
+video-19-segment-4-frame-3.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车|红绿灯
+video-19-segment-4-frame-4.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-4-frame-5.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-19-segment-4-frame-6.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车|红绿灯
+video-19-segment-4-frame-7.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车|红绿灯
+video-19-segment-4-frame-8.jpeg,Accent Paving|Building|Car|Crosswalk|Curb|Fence|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Table|Traffic Signals|Tree|Vegetation|Wall,人|汽车|红绿灯
+video-19-segment-5-frame-0.jpeg,,人|椅子
+video-19-segment-5-frame-1.jpeg,,人|椅子
+video-19-segment-5-frame-2.jpeg,,人|椅子
+video-19-segment-5-frame-3.jpeg,,人|椅子
+video-19-segment-5-frame-4.jpeg,,人
+video-19-segment-5-frame-5.jpeg,,人
+video-19-segment-6-frame-0.jpeg,,人
+video-2-segment-1-frame-0.jpeg,Accent Paving|Barrier Post|Bridge|Building|Car|Crosswalk|Curb|Lamp Post|Maintenance Vehicle|Pedestrian Crossing|Person|Pillar|Pole|Road|Road Divider|Sidewalk|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-1.jpeg,Accent Paving|Barrier Post|Bridge|Building|Car|Crosswalk|Curb|Lamp Post|Maintenance Vehicle|Pedestrian Crossing|Person|Pillar|Pole|Road|Road Divider|Sidewalk|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-10.jpeg,Person|Person with a disability|Pole|Road Divider|Tree|Vegetation,人
+video-2-segment-1-frame-11.jpeg,Person|Person with a disability|Pole|Road Divider|Tree|Vegetation,人
+video-2-segment-1-frame-12.jpeg,Person|Person with a disability|Pole|Road Divider|Tree|Vegetation,人
+video-2-segment-1-frame-13.jpeg,Building|Person|Person with a disability|Pole|Road Divider|Tree|Vegetation,人
+video-2-segment-1-frame-14.jpeg,Barrier Post|Bicycle|Building|Car|Chair|Curb|Lamp Post|Motorcycle|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Traffic Signals|Tree|Vegetation,人|汽车|红绿灯|自行车
+video-2-segment-1-frame-15.jpeg,Barrier Post|Bicycle|Building|Car|Chair|Curb|Lamp Post|Motorcycle|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Traffic Signals|Tree|Vegetation,人|摩托车|汽车|自行车
+video-2-segment-1-frame-16.jpeg,Bicycle|Building|Car|Chair|Curb|Lamp Post|Motorcycle|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Tactile Paving|Tree|Vegetation,人|摩托车|汽车
+video-2-segment-1-frame-17.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人
+video-2-segment-1-frame-18.jpeg,Curb|Person|Person with a disability|Sidewalk|Tactile Paving|Tree|Vegetation,人
+video-2-segment-1-frame-19.jpeg,Building|Car|Chair|Curb|Lamp Post|Motorcycle|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|摩托车|汽车
+video-2-segment-1-frame-2.jpeg,Accent Paving|Barrier Post|Bridge|Building|Car|Crosswalk|Curb|Lamp Post|Maintenance Vehicle|Pedestrian Crossing|Person|Pillar|Pole|Road|Road Divider|Sidewalk|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-20.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人
+video-2-segment-1-frame-21.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Tree|Vegetation,人
+video-2-segment-1-frame-22.jpeg,Bicycle|Building|Car|Curb|Lamp Post|Motorcycle|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,汽车
+video-2-segment-1-frame-23.jpeg,Accent Paving|Car|Curb|Person|Person with a disability|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-24.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-25.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-26.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Street Vendor|Tactile Paving|Tree|Vegetation,人|公交车|汽车
+video-2-segment-1-frame-27.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Street Vendor|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-28.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-29.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-3.jpeg,Bridge|Building|Car|Lamp Post|Maintenance Vehicle|Person|Road|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-30.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Street Vendor|Tactile Paving|Tree|Vegetation,人|公交车|汽车
+video-2-segment-1-frame-31.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Street Vendor|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-32.jpeg,Accent Paving|Bicycle|Building|Car|Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Tactile Paving|Tree|Vegetation,人|汽车
+video-2-segment-1-frame-33.jpeg,Person,人
+video-2-segment-1-frame-34.jpeg,Person,人
+video-2-segment-1-frame-35.jpeg,Person,人
+video-2-segment-1-frame-36.jpeg,Person,人
+video-2-segment-1-frame-37.jpeg,Person,人
+video-2-segment-1-frame-38.jpeg,Person,人
+video-2-segment-1-frame-39.jpeg,Person,人
+video-2-segment-1-frame-4.jpeg,Person|Person with a disability|Tree|Vegetation,人
+video-2-segment-1-frame-40.jpeg,Person,人
+video-2-segment-1-frame-41.jpeg,Person,人
+video-2-segment-1-frame-42.jpeg,Building|Crosswalk|Curb|Lamp Post|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Street Vendor|Traffic Signals|Tree|Vegetation,人
+video-2-segment-1-frame-43.jpeg,Building|Crosswalk|Curb|Lamp Post|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Street Vendor|Traffic Signals|Tree|Vegetation,人
+video-2-segment-1-frame-44.jpeg,Building|Crosswalk|Curb|Lamp Post|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Street Vendor|Traffic Signals|Tree|Vegetation,人
+video-2-segment-1-frame-45.jpeg,Building|Crosswalk|Curb|Lamp Post|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Street Vendor|Traffic Signals|Tree|Vegetation,人
+video-2-segment-1-frame-46.jpeg,Accent Paving|Barrier Post|Crosswalk|Curb|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Tactile Paving|Tree|Vegetation,人
+video-2-segment-1-frame-47.jpeg,Accent Paving|Barrier Post|Building|Crosswalk|Curb|Motorcycle|Pedestrian Crossing|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Tactile Paving|Tree|Vegetation,人|摩托车
+video-2-segment-1-frame-5.jpeg,Building|Person|Person with a disability|Tree|Vegetation,人
+video-2-segment-1-frame-6.jpeg,Person|Person with a disability|Tree|Vegetation,人
+video-2-segment-1-frame-7.jpeg,Accent Paving|Barrier Stump|Person|Person with a disability|Sidewalk,人
+video-2-segment-1-frame-8.jpeg,Accent Paving|Barrier Stump|Person|Person with a disability|Sidewalk|Vegetation,人
+video-2-segment-1-frame-9.jpeg,Accent Paving|Person|Person with a disability|Pole|Road Divider|Sidewalk|Tree|Vegetation,人
+video-20-segment-1-frame-0.jpeg,Accent Paving|Building|Car|Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-20-segment-1-frame-1.jpeg,Accent Paving|Building|Car|Curb|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-20-segment-1-frame-2.jpeg,Accent Paving|Building|Car|Curb|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-20-segment-1-frame-3.jpeg,Accent Paving|Building|Car|Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-20-segment-1-frame-4.jpeg,Accent Paving|Building|Car|Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车
+video-20-segment-1-frame-5.jpeg,Accent Paving|Building|Car|Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|汽车|红绿灯
+video-20-segment-1-frame-6.jpeg,Accent Paving|Building|Car|Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Traffic Signals|Tree|Vegetation|Wall,人|汽车
+video-20-segment-2-frame-0.jpeg,,人
+video-20-segment-2-frame-1.jpeg,,人
+video-20-segment-2-frame-2.jpeg,,人
+video-20-segment-2-frame-3.jpeg,,人
+video-20-segment-3-frame-0.jpeg,,人|汽车
+video-20-segment-3-frame-1.jpeg,,人
+video-20-segment-3-frame-2.jpeg,,人|汽车|消防栓
+video-20-segment-3-frame-3.jpeg,,人|汽车|消防栓
+video-20-segment-3-frame-4.jpeg,,人|汽车
+video-20-segment-4-frame-0.jpeg,,汽车
+video-20-segment-4-frame-1.jpeg,,汽车
+video-20-segment-4-frame-2.jpeg,,汽车
+video-20-segment-4-frame-3.jpeg,,汽车
+video-20-segment-4-frame-4.jpeg,,汽车
+video-20-segment-5-frame-0.jpeg,Accent Paving|Bench|Building|Crosswalk|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|长椅
+video-20-segment-5-frame-1.jpeg,Accent Paving|Bench|Building|Crosswalk|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Traffic Signals|Tree|Vegetation|Wall,人|长椅
+video-20-segment-5-frame-2.jpeg,Accent Paving|Bench|Building|Crosswalk|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Traffic Signals|Tree|Vegetation|Wall,人|长椅
+video-20-segment-5-frame-3.jpeg,Accent Paving|Bench|Building|Crosswalk|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|长椅
+video-20-segment-5-frame-4.jpeg,Accent Paving|Bench|Building|Crosswalk|Curb|Lamp Post|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Traffic Signals|Tree|Vegetation|Wall|White Cane,人|长椅
+video-21-segment-1-frame-0.jpeg,Building|Curb|Person|Person with a disability|Pole|Road|Sidewalk|Wall|White Cane|Yard Waste,人
+video-21-segment-1-frame-1.jpeg,Building|Curb|Person|Person with a disability|Road|Sidewalk|Wall|White Cane|Yard Waste,人
+video-21-segment-1-frame-2.jpeg,Building|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-21-segment-1-frame-3.jpeg,Building|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-21-segment-1-frame-4.jpeg,Building|Person|Person with a disability|Sidewalk|Wall|White Cane|Yard Waste,人
+video-21-segment-1-frame-5.jpeg,Building|Person|Person with a disability|Sidewalk|Wall|White Cane|Yard Waste,人
+video-21-segment-2-frame-0.jpeg,,人
+video-21-segment-2-frame-1.jpeg,,人
+video-21-segment-2-frame-2.jpeg,,人
+video-21-segment-2-frame-3.jpeg,,人
+video-21-segment-3-frame-0.jpeg,,人|汽车
+video-21-segment-4-frame-0.jpeg,,人|汽车
+video-21-segment-4-frame-1.jpeg,,人|汽车
+video-21-segment-4-frame-2.jpeg,,人|汽车
+video-21-segment-4-frame-3.jpeg,,人
+video-21-segment-4-frame-4.jpeg,,人|长椅
+video-21-segment-5-frame-0.jpeg,Accent Paving|Barrier Post|Bench|Building|Bus|Bus Stop|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Wall|paratransit vehicle,人|公交车
+video-21-segment-5-frame-1.jpeg,Accent Paving|Barrier Post|Bench|Building|Bus|Bus Stop|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Wall|paratransit vehicle,人|公交车|自行车
+video-21-segment-5-frame-10.jpeg,Barrier Post|Bench|Building|Bus|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane|paratransit vehicle,人|公交车|长椅
+video-21-segment-5-frame-11.jpeg,Barrier Post|Bench|Building|Bus|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane|paratransit vehicle,人|公交车
+video-21-segment-5-frame-12.jpeg,Barrier Post|Bench|Building|Bus|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane|paratransit vehicle,人|公交车
+video-21-segment-5-frame-13.jpeg,Barrier Post|Bench|Building|Bus|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane|paratransit vehicle,人|公交车|长椅
+video-21-segment-5-frame-14.jpeg,Barrier Post|Bench|Building|Bus|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane|paratransit vehicle,人|公交车
+video-21-segment-5-frame-2.jpeg,Accent Paving|Barrier Post|Bench|Building|Bus|Bus Stop|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Wall|paratransit vehicle,人|公交车
+video-21-segment-5-frame-3.jpeg,Accent Paving|Barrier Post|Bench|Building|Bus|Bus Stop|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Wall|paratransit vehicle,人|公交车
+video-21-segment-5-frame-4.jpeg,Accent Paving|Barrier Post|Bench|Building|Bus|Bus Stop|Crosswalk|Curb|Lamp Post|Pedestrian Crossing|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Sign Post|Slopped Curb|Wall|paratransit vehicle,人|公交车
+video-21-segment-5-frame-5.jpeg,Barrier Post|Bench|Building|Bus|Bus Stop|Curb|Pedestrian Crossing|Person|Person with a disability|Pole|Railing|Raised Entryway|Road|Sidewalk|Slopped Curb|Stairs|Wall|paratransit vehicle,人
+video-21-segment-5-frame-6.jpeg,Barrier Post|Bench|Building|Bus|Person|Person with a disability|Railing|Raised Entryway|Road|Sidewalk|Slopped Curb|Stairs|Vegetation|Wall|White Cane,人|公交车|自行车
+video-21-segment-5-frame-7.jpeg,Barrier Post|Bench|Building|Bus|Person|Person with a disability|Railing|Raised Entryway|Road|Sidewalk|Slopped Curb|Stairs|Vegetation|Wall|White Cane,人|公交车|自行车
+video-21-segment-5-frame-8.jpeg,Barrier Post|Bench|Building|Bus|Person|Person with a disability|Railing|Raised Entryway|Road|Sidewalk|Slopped Curb|Stairs|Vegetation|Wall|White Cane,人|公交车|自行车
+video-21-segment-5-frame-9.jpeg,Barrier Post|Bench|Building|Bus|Person|Person with a disability|Railing|Raised Entryway|Road|Sidewalk|Slopped Curb|Stairs|Vegetation|Wall|White Cane,人|公交车|自行车
+video-21-segment-6-frame-0.jpeg,,人
+video-21-segment-6-frame-1.jpeg,,人
+video-21-segment-6-frame-2.jpeg,,人
+video-21-segment-6-frame-3.jpeg,,人
+video-21-segment-6-frame-4.jpeg,,人
+video-21-segment-7-frame-0.jpeg,,人|椅子
+video-21-segment-7-frame-1.jpeg,,人|椅子
+video-21-segment-7-frame-2.jpeg,,人|椅子
+video-3-segment-1-frame-0.jpeg,,人
+video-3-segment-1-frame-1.jpeg,,
+video-3-segment-1-frame-2.jpeg,,人
+video-3-segment-1-frame-3.jpeg,,人
+video-3-segment-1-frame-4.jpeg,,人
+video-3-segment-2-frame-0.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Pole|Roadside Parking|Sidewalk|Sloped Driveway|White Cane,人|汽车
+video-3-segment-2-frame-1.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Pole|Roadside Parking|Sidewalk|Sloped Driveway|Vegetation|White Cane,人|汽车
+video-3-segment-2-frame-10.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|White Cane|wet surface,人|汽车
+video-3-segment-2-frame-11.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|Trash on roads,人|汽车
+video-3-segment-2-frame-2.jpeg,Building|Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Pole|Roadside Parking|Sidewalk|Sloped Driveway,人|汽车
+video-3-segment-2-frame-3.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Sidewalk|Sloped Driveway|White Cane,人
+video-3-segment-2-frame-4.jpeg,Building|Car|Fence|Parallel Parking Spot|Person|Person with a disability|Roadside Parking|Sidewalk|Sloped Driveway|White Cane,人
+video-3-segment-2-frame-5.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|White Cane|wet surface,人|汽车
+video-3-segment-2-frame-6.jpeg,Car|Curb|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|White Cane|wet surface,人
+video-3-segment-2-frame-7.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|wet surface,人|汽车
+video-3-segment-2-frame-8.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Trash on roads|White Cane,人|汽车
+video-3-segment-2-frame-9.jpeg,Car|Curb|Fence|Parallel Parking Spot|Person|Person with a disability|Puddle|Road|Roadside Parking|Sidewalk|wet surface,人|汽车
+video-3-segment-3-frame-0.jpeg,Car|Curb|Driveway(flat)|Fence|Gate|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|Trash on roads|Tree|Vegetation|White Cane,人|汽车
+video-3-segment-3-frame-1.jpeg,Car|Curb|Driveway(flat)|Fence|Gate|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|Trash on roads|Tree|Vegetation,人|汽车
+video-3-segment-3-frame-10.jpeg,Car|Driveway(flat)|Person|Person with a disability|Roadside Parking|Sidewalk|Sidewalk pits|Trash bins|White Cane,人
+video-3-segment-3-frame-11.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|White Cane,人|汽车
+video-3-segment-3-frame-12.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|White Cane,人|汽车
+video-3-segment-3-frame-13.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|White Cane,人|汽车
+video-3-segment-3-frame-14.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb,人|汽车
+video-3-segment-3-frame-15.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb,人|汽车
+video-3-segment-3-frame-16.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb,人
+video-3-segment-3-frame-17.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|White Cane,人|汽车
+video-3-segment-3-frame-18.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb|White Cane,人|汽车
+video-3-segment-3-frame-19.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Slopped Curb,人|汽车
+video-3-segment-3-frame-2.jpeg,Car|Curb|Driveway(flat)|Fence|Gate|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Vegetation,人|汽车
+video-3-segment-3-frame-20.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk,人|汽车
+video-3-segment-3-frame-21.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk,人|汽车
+video-3-segment-3-frame-22.jpeg,Building|Car|Driveway(flat)|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-3-segment-3-frame-23.jpeg,Building|Car|Driveway(flat)|Person|Person with a disability|Sidewalk|Wall|White Cane,人|汽车
+video-3-segment-3-frame-24.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk|White Cane,人
+video-3-segment-3-frame-25.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk|White Cane,人|汽车
+video-3-segment-3-frame-26.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-3-segment-3-frame-27.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-3-segment-3-frame-28.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-3-segment-3-frame-29.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk,人|汽车
+video-3-segment-3-frame-3.jpeg,Car|Curb|Driveway(flat)|Fence|Gate|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Tree|Vegetation,人|汽车
+video-3-segment-3-frame-30.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk,人
+video-3-segment-3-frame-31.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk,人|汽车
+video-3-segment-3-frame-32.jpeg,Building|Car|Driveway(flat)|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-3-segment-3-frame-33.jpeg,Building|Car|Driveway(flat)|Person|Person with a disability|Sidewalk|Wall|White Cane,人|汽车
+video-3-segment-3-frame-34.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk|White Cane,人
+video-3-segment-3-frame-35.jpeg,Car|Driveway(flat)|Person|Person with a disability|Sidewalk|White Cane,人|汽车
+video-3-segment-3-frame-36.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|White Cane,人
+video-3-segment-3-frame-37.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|White Cane,人
+video-3-segment-3-frame-38.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|White Cane,人
+video-3-segment-3-frame-39.jpeg,Car|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road,人|汽车
+video-3-segment-3-frame-4.jpeg,Car|Curb|Driveway(flat)|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Trash bins|Vegetation,人|汽车
+video-3-segment-3-frame-40.jpeg,Car|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road,人
+video-3-segment-3-frame-41.jpeg,Car|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road,人
+video-3-segment-3-frame-42.jpeg,Car|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road,人|汽车
+video-3-segment-3-frame-43.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-3-segment-3-frame-44.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Vegetation,人
+video-3-segment-3-frame-45.jpeg,Car|Curb|Driveway(flat)|Parallel Parking Spot|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Vegetation,人
+video-3-segment-3-frame-46.jpeg,Building|Driveway(flat)|Fence|Person|Person with a disability|Puddle|Sidewalk|Vegetation|Wall|wet surface,人
+video-3-segment-3-frame-47.jpeg,Barrier Post|Building|Person|Person with a disability|Puddle|Railing|Sidewalk|Stairs|Vegetation|Wall|wet surface,人
+video-3-segment-3-frame-48.jpeg,Barrier Post|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Vegetation|Wall,人
+video-3-segment-3-frame-49.jpeg,Building|Person|Person with a disability|Sidewalk|Stairs|Vegetation|Wall|White Cane,人
+video-3-segment-3-frame-5.jpeg,Car|Curb|Driveway(flat)|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Trash bins|Vegetation,人|汽车
+video-3-segment-3-frame-50.jpeg,Barrier Post|Building|Person|Person with a disability|Sidewalk|Stairs|Vegetation|Wall|White Cane,人
+video-3-segment-3-frame-51.jpeg,Barrier Post|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Vegetation|Wall,人
+video-3-segment-3-frame-52.jpeg,Barrier Post|Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Vegetation|Wall,人
+video-3-segment-3-frame-53.jpeg,Barrier Post|Building|Fence|Person|Person with a disability|Puddle|Sidewalk|Vegetation|Wall|White Cane|wet surface,人
+video-3-segment-3-frame-54.jpeg,Barrier Post|Building|Fence|Person|Person with a disability|Puddle|Sidewalk|Vegetation|Wall|White Cane|wet surface,人
+video-3-segment-3-frame-55.jpeg,Barrier Post|Building|Fence|Person|Person with a disability|Puddle|Sidewalk|Vegetation|Wall|White Cane|wet surface,人
+video-3-segment-3-frame-6.jpeg,Car|Curb|Driveway(flat)|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Trash bins|Trash on roads|Vegetation,人|椅子
+video-3-segment-3-frame-7.jpeg,Car|Curb|Driveway(flat)|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Trash bins|Trash on roads,人|椅子|汽车
+video-3-segment-3-frame-8.jpeg,Car|Curb|Driveway(flat)|Fence|Parallel Parking Spot|Person|Person with a disability|Road|Roadside Parking|Sidewalk|Sidewalk pits|Slopped Curb|Trash bins,人|汽车
+video-3-segment-3-frame-9.jpeg,Car|Driveway(flat)|Fence|Person|Person with a disability|Roadside Parking|Sidewalk|Sidewalk pits|Trash bins|White Cane,人|汽车
+video-3-segment-4-frame-0.jpeg,,人|汽车
+video-3-segment-4-frame-1.jpeg,,人|汽车
+video-3-segment-4-frame-10.jpeg,,人
+video-3-segment-4-frame-11.jpeg,,人
+video-3-segment-4-frame-12.jpeg,,人
+video-3-segment-4-frame-13.jpeg,,人
+video-3-segment-4-frame-14.jpeg,,人
+video-3-segment-4-frame-15.jpeg,,人
+video-3-segment-4-frame-16.jpeg,,人
+video-3-segment-4-frame-17.jpeg,,人
+video-3-segment-4-frame-18.jpeg,,人
+video-3-segment-4-frame-19.jpeg,,人
+video-3-segment-4-frame-2.jpeg,,人
+video-3-segment-4-frame-20.jpeg,,人
+video-3-segment-4-frame-21.jpeg,,人|汽车
+video-3-segment-4-frame-3.jpeg,,人
+video-3-segment-4-frame-4.jpeg,,人
+video-3-segment-4-frame-5.jpeg,,人
+video-3-segment-4-frame-6.jpeg,,人
+video-3-segment-4-frame-7.jpeg,,人
+video-3-segment-4-frame-8.jpeg,,人
+video-3-segment-4-frame-9.jpeg,,人
+video-3-segment-5-frame-0.jpeg,,人
+video-3-segment-5-frame-1.jpeg,,人
+video-3-segment-5-frame-10.jpeg,,人
+video-3-segment-5-frame-11.jpeg,,人
+video-3-segment-5-frame-12.jpeg,,人|汽车
+video-3-segment-5-frame-13.jpeg,,人
+video-3-segment-5-frame-14.jpeg,,人|汽车
+video-3-segment-5-frame-15.jpeg,,人|汽车
+video-3-segment-5-frame-16.jpeg,,人|汽车
+video-3-segment-5-frame-17.jpeg,,人|汽车
+video-3-segment-5-frame-18.jpeg,,人|汽车
+video-3-segment-5-frame-19.jpeg,,人
+video-3-segment-5-frame-2.jpeg,,人
+video-3-segment-5-frame-20.jpeg,,人|汽车
+video-3-segment-5-frame-21.jpeg,,人|汽车
+video-3-segment-5-frame-22.jpeg,,人|汽车
+video-3-segment-5-frame-23.jpeg,,人|汽车
+video-3-segment-5-frame-24.jpeg,,人|汽车
+video-3-segment-5-frame-25.jpeg,,人|汽车
+video-3-segment-5-frame-26.jpeg,,人|汽车
+video-3-segment-5-frame-27.jpeg,,人|汽车
+video-3-segment-5-frame-28.jpeg,,人|汽车
+video-3-segment-5-frame-29.jpeg,,人|汽车
+video-3-segment-5-frame-3.jpeg,,人
+video-3-segment-5-frame-30.jpeg,,人|汽车
+video-3-segment-5-frame-4.jpeg,,人
+video-3-segment-5-frame-5.jpeg,,人
+video-3-segment-5-frame-6.jpeg,,人
+video-3-segment-5-frame-7.jpeg,,人
+video-3-segment-5-frame-8.jpeg,,人
+video-3-segment-5-frame-9.jpeg,,人
+video-3-segment-6-frame-0.jpeg,,人|汽车|红绿灯
+video-3-segment-6-frame-1.jpeg,,人|汽车
+video-3-segment-6-frame-10.jpeg,,人|汽车|消防栓
+video-3-segment-6-frame-11.jpeg,,人|汽车
+video-3-segment-6-frame-12.jpeg,,人|汽车
+video-3-segment-6-frame-13.jpeg,,人|汽车
+video-3-segment-6-frame-14.jpeg,,人
+video-3-segment-6-frame-15.jpeg,,人
+video-3-segment-6-frame-16.jpeg,,人
+video-3-segment-6-frame-17.jpeg,,人
+video-3-segment-6-frame-18.jpeg,,人
+video-3-segment-6-frame-19.jpeg,,人
+video-3-segment-6-frame-2.jpeg,,人|汽车
+video-3-segment-6-frame-20.jpeg,,人
+video-3-segment-6-frame-3.jpeg,,人|汽车
+video-3-segment-6-frame-4.jpeg,,人|汽车
+video-3-segment-6-frame-5.jpeg,,人|汽车
+video-3-segment-6-frame-6.jpeg,,人|汽车
+video-3-segment-6-frame-7.jpeg,,人|汽车
+video-3-segment-6-frame-8.jpeg,,人|汽车|消防栓
+video-3-segment-6-frame-9.jpeg,,人|汽车|消防栓
+video-3-segment-7-frame-0.jpeg,,人|自行车
+video-3-segment-7-frame-1.jpeg,,人|自行车
+video-3-segment-7-frame-10.jpeg,,人|汽车
+video-3-segment-7-frame-11.jpeg,,人|自行车
+video-3-segment-7-frame-12.jpeg,,人
+video-3-segment-7-frame-13.jpeg,,人
+video-3-segment-7-frame-14.jpeg,,人
+video-3-segment-7-frame-15.jpeg,,人
+video-3-segment-7-frame-16.jpeg,,人
+video-3-segment-7-frame-17.jpeg,,人
+video-3-segment-7-frame-18.jpeg,,人
+video-3-segment-7-frame-19.jpeg,,人
+video-3-segment-7-frame-2.jpeg,,人
+video-3-segment-7-frame-20.jpeg,,人
+video-3-segment-7-frame-21.jpeg,,人
+video-3-segment-7-frame-22.jpeg,,人
+video-3-segment-7-frame-23.jpeg,,人
+video-3-segment-7-frame-24.jpeg,,人
+video-3-segment-7-frame-25.jpeg,,人|自行车
+video-3-segment-7-frame-26.jpeg,,人|自行车
+video-3-segment-7-frame-27.jpeg,,人
+video-3-segment-7-frame-28.jpeg,,人
+video-3-segment-7-frame-29.jpeg,,人
+video-3-segment-7-frame-3.jpeg,,人
+video-3-segment-7-frame-30.jpeg,,人
+video-3-segment-7-frame-31.jpeg,,人
+video-3-segment-7-frame-32.jpeg,,人
+video-3-segment-7-frame-33.jpeg,,人
+video-3-segment-7-frame-34.jpeg,,人|自行车
+video-3-segment-7-frame-35.jpeg,,人|自行车
+video-3-segment-7-frame-36.jpeg,,人|自行车
+video-3-segment-7-frame-37.jpeg,,人|自行车
+video-3-segment-7-frame-38.jpeg,,人
+video-3-segment-7-frame-39.jpeg,,人
+video-3-segment-7-frame-4.jpeg,,人
+video-3-segment-7-frame-40.jpeg,,人|汽车
+video-3-segment-7-frame-41.jpeg,,人|汽车
+video-3-segment-7-frame-42.jpeg,,人|公交车
+video-3-segment-7-frame-43.jpeg,,人|公交车
+video-3-segment-7-frame-44.jpeg,,人|汽车
+video-3-segment-7-frame-5.jpeg,,人
+video-3-segment-7-frame-6.jpeg,,人
+video-3-segment-7-frame-7.jpeg,,人|自行车
+video-3-segment-7-frame-8.jpeg,,人
+video-3-segment-7-frame-9.jpeg,,人
+video-3-segment-8-frame-0.jpeg,,
+video-3-segment-8-frame-1.jpeg,,
+video-3-segment-8-frame-10.jpeg,,人
+video-3-segment-8-frame-11.jpeg,,人
+video-3-segment-8-frame-12.jpeg,,人
+video-3-segment-8-frame-13.jpeg,,人
+video-3-segment-8-frame-14.jpeg,,人
+video-3-segment-8-frame-15.jpeg,,人
+video-3-segment-8-frame-16.jpeg,,人
+video-3-segment-8-frame-17.jpeg,,
+video-3-segment-8-frame-18.jpeg,,
+video-3-segment-8-frame-19.jpeg,,
+video-3-segment-8-frame-2.jpeg,,
+video-3-segment-8-frame-20.jpeg,,人
+video-3-segment-8-frame-21.jpeg,,人
+video-3-segment-8-frame-22.jpeg,,人
+video-3-segment-8-frame-23.jpeg,,人
+video-3-segment-8-frame-24.jpeg,,人|汽车
+video-3-segment-8-frame-25.jpeg,,人
+video-3-segment-8-frame-26.jpeg,,人
+video-3-segment-8-frame-27.jpeg,,人
+video-3-segment-8-frame-28.jpeg,,人
+video-3-segment-8-frame-29.jpeg,,
+video-3-segment-8-frame-3.jpeg,,
+video-3-segment-8-frame-30.jpeg,,人
+video-3-segment-8-frame-31.jpeg,,人|汽车
+video-3-segment-8-frame-32.jpeg,,人
+video-3-segment-8-frame-33.jpeg,,人
+video-3-segment-8-frame-34.jpeg,,人
+video-3-segment-8-frame-35.jpeg,,人|长椅
+video-3-segment-8-frame-36.jpeg,,长椅
+video-3-segment-8-frame-4.jpeg,,
+video-3-segment-8-frame-5.jpeg,,人
+video-3-segment-8-frame-6.jpeg,,人
+video-3-segment-8-frame-7.jpeg,,
+video-3-segment-8-frame-8.jpeg,,
+video-3-segment-8-frame-9.jpeg,,人
+video-4-segment-1-frame-0.jpeg,Bench|Bus|Bus Stop|Car|Curb|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|White Cane,公交车
+video-4-segment-1-frame-1.jpeg,Bench|Bus|Bus Stop|Car|Curb|Person|Person with a disability|Road|Sidewalk|Slopped Curb|White Cane,人|公交车
+video-4-segment-1-frame-10.jpeg,Bench|Fence|Person|Person with a disability|Road|Sidewalk|Trash bins|Trash on roads|Vegetation|White Cane,人
+video-4-segment-1-frame-11.jpeg,Bench|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Trash bins|Trash on roads|Vegetation|White Cane,人
+video-4-segment-1-frame-12.jpeg,Bench|Car|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Trash bins|Trash on roads|Vegetation|White Cane,人|汽车
+video-4-segment-1-frame-13.jpeg,Bench|Bus|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Trash bins|Trash on roads|Vegetation|White Cane,人|公交车|汽车
+video-4-segment-1-frame-2.jpeg,Bench|Bus|Bus Stop|Car|Curb|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|White Cane,人|公交车
+video-4-segment-1-frame-3.jpeg,Bench|Bus|Bus Stop|Car|Curb|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|White Cane,人|汽车
+video-4-segment-1-frame-4.jpeg,Bench|Curb|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|White Cane,人
+video-4-segment-1-frame-5.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Trash bins|Trash on roads|White Cane,人
+video-4-segment-1-frame-6.jpeg,Bench|Building|Car|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|Trash on roads|Vegetation|White Cane,人
+video-4-segment-1-frame-7.jpeg,Bench|Building|Car|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|Trash on roads|Vegetation|White Cane,人|汽车
+video-4-segment-1-frame-8.jpeg,Bench|Building|Car|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Trash bins|Trash on roads|Vegetation|White Cane,人|汽车
+video-4-segment-1-frame-9.jpeg,Bench|Fence|Person|Person with a disability|Road|Sidewalk|Trash bins|Trash on roads|Vegetation|White Cane,人
+video-4-segment-2-frame-0.jpeg,,人
+video-4-segment-2-frame-1.jpeg,,人
+video-4-segment-2-frame-10.jpeg,,人
+video-4-segment-2-frame-11.jpeg,,人
+video-4-segment-2-frame-12.jpeg,,人
+video-4-segment-2-frame-13.jpeg,,人|长椅
+video-4-segment-2-frame-14.jpeg,,人|长椅
+video-4-segment-2-frame-15.jpeg,,人|长椅
+video-4-segment-2-frame-16.jpeg,,人|长椅
+video-4-segment-2-frame-17.jpeg,,人|长椅
+video-4-segment-2-frame-18.jpeg,,人|长椅
+video-4-segment-2-frame-19.jpeg,,人|长椅
+video-4-segment-2-frame-2.jpeg,,人
+video-4-segment-2-frame-20.jpeg,,人
+video-4-segment-2-frame-21.jpeg,,人
+video-4-segment-2-frame-22.jpeg,,人|长椅
+video-4-segment-2-frame-23.jpeg,,人|长椅
+video-4-segment-2-frame-24.jpeg,,人
+video-4-segment-2-frame-25.jpeg,,人|长椅
+video-4-segment-2-frame-26.jpeg,,人|长椅
+video-4-segment-2-frame-27.jpeg,,人
+video-4-segment-2-frame-28.jpeg,,人|摩托车
+video-4-segment-2-frame-29.jpeg,,人
+video-4-segment-2-frame-3.jpeg,,人
+video-4-segment-2-frame-30.jpeg,,人
+video-4-segment-2-frame-31.jpeg,,人
+video-4-segment-2-frame-4.jpeg,,人|汽车
+video-4-segment-2-frame-5.jpeg,,人
+video-4-segment-2-frame-6.jpeg,,人
+video-4-segment-2-frame-7.jpeg,,人
+video-4-segment-2-frame-8.jpeg,,人
+video-4-segment-2-frame-9.jpeg,,人
+video-4-segment-3-frame-0.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-1.jpeg,Car|Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-10.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-4-segment-3-frame-11.jpeg,Car|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-4-segment-3-frame-12.jpeg,Car|Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation,人
+video-4-segment-3-frame-13.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-14.jpeg,Car|Curb|Fence|Person|Person with a disability|Road|Sidewalk|Slopped Curb|Vegetation,人
+video-4-segment-3-frame-15.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-16.jpeg,Curb|Fence|Person|Person with a disability|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-17.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-18.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-19.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-2.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-20.jpeg,Curb|Fence|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb,人
+video-4-segment-3-frame-21.jpeg,Curb|Fence|Person|Person with a disability|Road|Sidewalk|Slopped Curb|White Cane,人
+video-4-segment-3-frame-3.jpeg,Car|Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-4.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-5.jpeg,Car|Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-6.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-7.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Vegetation|White Cane,人
+video-4-segment-3-frame-8.jpeg,Curb|Fence|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-4-segment-3-frame-9.jpeg,Curb|Fence|Person|Person with a disability|Pole|Push button|Road|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-4-segment-4-frame-0.jpeg,Person|Person with a disability|Sidewalk|Vegetation,人
+video-4-segment-4-frame-1.jpeg,Person|Person with a disability|Sidewalk|Vegetation,人
+video-4-segment-4-frame-10.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-11.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-12.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-13.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-14.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-15.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-16.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-17.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-18.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-19.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|Trash on roads|White Cane,人
+video-4-segment-4-frame-2.jpeg,Person|Person with a disability|Sidewalk|Vegetation,人
+video-4-segment-4-frame-20.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Sign|Trash on roads,人
+video-4-segment-4-frame-21.jpeg,Curb|Lamp Post|Person|Person with a disability|Pole|Road|Sidewalk|Sidewalk pits|Stairs|Trash on roads|Tree|White Cane,人
+video-4-segment-4-frame-22.jpeg,Curb|Person|Person with a disability|Railing|Road|Sidewalk|Sidewalk pits|Stairs|White Cane,人
+video-4-segment-4-frame-23.jpeg,Curb|Lamp Post|Person|Person with a disability|Railing|Road|Sidewalk|Sidewalk pits|Stairs|Trash on roads|Tree|White Cane,人
+video-4-segment-4-frame-24.jpeg,Curb|Lamp Post|Railing|Road|Sidewalk|Sidewalk pits|Stairs|Trash on roads|Tree|White Cane,人
+video-4-segment-4-frame-25.jpeg,Curb|Lamp Post|Person|Person with a disability|Road|Sidewalk|Trash on roads|Tree|White Cane,人
+video-4-segment-4-frame-26.jpeg,Curb|Person|Person with a disability|Pole|Road|Sidewalk|Sidewalk pits|White Cane,人|红绿灯
+video-4-segment-4-frame-27.jpeg,Curb|Person|Person with a disability|Railing|Road|Sidewalk|Sidewalk pits,人
+video-4-segment-4-frame-28.jpeg,Curb|Person|Person with a disability|Pole|Road|Sidewalk|Sidewalk pits|White Cane,人
+video-4-segment-4-frame-29.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-3.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-30.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-31.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-32.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-33.jpeg,Curb|Person|Person with a disability|Road|Sidewalk,人
+video-4-segment-4-frame-34.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-35.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-36.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-37.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-38.jpeg,Curb|Person|Person with a disability|Road|Sidewalk,人
+video-4-segment-4-frame-39.jpeg,Curb|Person|Person with a disability|Road|Sidewalk,人
+video-4-segment-4-frame-4.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-40.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-41.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-42.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-43.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-44.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Trash on roads|White Cane,人
+video-4-segment-4-frame-45.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Sidewalk pits|Trash on roads|White Cane,人
+video-4-segment-4-frame-46.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Trash on roads|White Cane,人
+video-4-segment-4-frame-47.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-48.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-49.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|White Cane,人
+video-4-segment-4-frame-5.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-50.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-51.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-52.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-53.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-54.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-55.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation,人
+video-4-segment-4-frame-56.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation,人
+video-4-segment-4-frame-57.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation,人
+video-4-segment-4-frame-58.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-59.jpeg,Bench|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-6.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb,人
+video-4-segment-4-frame-60.jpeg,Bench|Car|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-61.jpeg,Bench|Car|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-62.jpeg,Bench|Car|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-63.jpeg,Bench|Car|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-64.jpeg,Bench|Car|Curb|Person|Person with a disability|Road|Sidewalk|Vegetation|White Cane,人
+video-4-segment-4-frame-65.jpeg,Bus|Bus Stop|Car|Curb|Gate|Lamp Post|Pillar|Pole|Road|Sidewalk|Sign Post|Slopped Curb|Tree|Vegetation|paratransit vehicle,公交车|汽车
+video-4-segment-4-frame-7.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,狗
+video-4-segment-4-frame-8.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-4-segment-4-frame-9.jpeg,Curb|Person|Person with a disability|Road|Sidewalk|Sloped Driveway|Slopped Curb|White Cane,人
+video-5-segment-1-frame-0.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-1.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-10.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-11.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-12.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-13.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-14.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-15.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-16.jpeg,Building|Person|Person with a disability|Pillar|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-17.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-18.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-19.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall|White Cane,人
+video-5-segment-1-frame-2.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-20.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall,
+video-5-segment-1-frame-21.jpeg,Building|Raised Entryway|Sidewalk|Sign|Wall,
+video-5-segment-1-frame-22.jpeg,Barrier Post|Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Stairs|Wall,
+video-5-segment-1-frame-23.jpeg,Building|Railing|Sidewalk|Stairs|Wall,
+video-5-segment-1-frame-24.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Stairs|Wall,人
+video-5-segment-1-frame-3.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-4.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-5.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-6.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-7.jpeg,Building|Person|Person with a disability|Railing|Raised Entryway|Sidewalk|Wall,人
+video-5-segment-1-frame-8.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall,人
+video-5-segment-1-frame-9.jpeg,Building|Person|Person with a disability|Railing|Sidewalk|Wall|White Cane,人
+video-5-segment-2-frame-0.jpeg,,人
+video-5-segment-2-frame-1.jpeg,,人|椅子
+video-5-segment-2-frame-10.jpeg,,人|椅子
+video-5-segment-2-frame-11.jpeg,,人|椅子
+video-5-segment-2-frame-12.jpeg,,人|椅子
+video-5-segment-2-frame-13.jpeg,,人|椅子
+video-5-segment-2-frame-14.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-15.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-16.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-17.jpeg,,人|椅子
+video-5-segment-2-frame-18.jpeg,,人|椅子
+video-5-segment-2-frame-19.jpeg,,人|椅子
+video-5-segment-2-frame-2.jpeg,,人|椅子
+video-5-segment-2-frame-20.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-21.jpeg,,人|椅子
+video-5-segment-2-frame-22.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-23.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-24.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-25.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-26.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-27.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-2-frame-28.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-29.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-3.jpeg,,人|椅子
+video-5-segment-2-frame-30.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-31.jpeg,,人|椅子
+video-5-segment-2-frame-32.jpeg,,人|椅子
+video-5-segment-2-frame-33.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-34.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-35.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-36.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-37.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-38.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-39.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-4.jpeg,,人
+video-5-segment-2-frame-40.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-41.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-42.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-43.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-44.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-45.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-46.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-47.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-48.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-49.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-5.jpeg,,人
+video-5-segment-2-frame-50.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-51.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-52.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-53.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-54.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-55.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-56.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-57.jpeg,,椅子|餐桌
+video-5-segment-2-frame-58.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-59.jpeg,,椅子|餐桌
+video-5-segment-2-frame-6.jpeg,,人
+video-5-segment-2-frame-60.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-61.jpeg,,椅子
+video-5-segment-2-frame-62.jpeg,,人|椅子
+video-5-segment-2-frame-63.jpeg,,人|椅子
+video-5-segment-2-frame-64.jpeg,,人|椅子
+video-5-segment-2-frame-65.jpeg,,人
+video-5-segment-2-frame-66.jpeg,,人
+video-5-segment-2-frame-67.jpeg,,人
+video-5-segment-2-frame-68.jpeg,,人
+video-5-segment-2-frame-69.jpeg,,人
+video-5-segment-2-frame-7.jpeg,,人|椅子
+video-5-segment-2-frame-70.jpeg,,人
+video-5-segment-2-frame-71.jpeg,,人
+video-5-segment-2-frame-72.jpeg,,人
+video-5-segment-2-frame-73.jpeg,,人
+video-5-segment-2-frame-74.jpeg,,人
+video-5-segment-2-frame-75.jpeg,,人
+video-5-segment-2-frame-76.jpeg,,人|椅子
+video-5-segment-2-frame-77.jpeg,,人
+video-5-segment-2-frame-78.jpeg,,
+video-5-segment-2-frame-79.jpeg,,
+video-5-segment-2-frame-8.jpeg,,人|椅子|餐桌
+video-5-segment-2-frame-80.jpeg,,人
+video-5-segment-2-frame-81.jpeg,,人
+video-5-segment-2-frame-82.jpeg,,人
+video-5-segment-2-frame-9.jpeg,,人|椅子
+video-5-segment-3-frame-0.jpeg,,人
+video-5-segment-3-frame-1.jpeg,,人
+video-5-segment-3-frame-10.jpeg,,人
+video-5-segment-3-frame-11.jpeg,,人
+video-5-segment-3-frame-12.jpeg,,人
+video-5-segment-3-frame-13.jpeg,,人
+video-5-segment-3-frame-14.jpeg,,人
+video-5-segment-3-frame-15.jpeg,,人
+video-5-segment-3-frame-16.jpeg,,人|椅子
+video-5-segment-3-frame-17.jpeg,,人|椅子
+video-5-segment-3-frame-18.jpeg,,人|椅子
+video-5-segment-3-frame-19.jpeg,,
+video-5-segment-3-frame-2.jpeg,,人
+video-5-segment-3-frame-20.jpeg,,人
+video-5-segment-3-frame-21.jpeg,,人
+video-5-segment-3-frame-22.jpeg,,人
+video-5-segment-3-frame-23.jpeg,,人
+video-5-segment-3-frame-24.jpeg,,人
+video-5-segment-3-frame-25.jpeg,,人|椅子
+video-5-segment-3-frame-26.jpeg,,人|椅子
+video-5-segment-3-frame-27.jpeg,,人|椅子
+video-5-segment-3-frame-28.jpeg,,人|椅子
+video-5-segment-3-frame-29.jpeg,,人|椅子
+video-5-segment-3-frame-3.jpeg,,人
+video-5-segment-3-frame-30.jpeg,,人|椅子
+video-5-segment-3-frame-31.jpeg,,人|椅子
+video-5-segment-3-frame-32.jpeg,,人|椅子
+video-5-segment-3-frame-33.jpeg,,人|椅子
+video-5-segment-3-frame-34.jpeg,,人|椅子
+video-5-segment-3-frame-35.jpeg,,stop sign|人|椅子
+video-5-segment-3-frame-36.jpeg,,stop sign|人|椅子
+video-5-segment-3-frame-37.jpeg,,stop sign|人|椅子
+video-5-segment-3-frame-38.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-39.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-4.jpeg,,人
+video-5-segment-3-frame-40.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-41.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-42.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-43.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-44.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-45.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-46.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-47.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-48.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-49.jpeg,,stop sign|人|椅子|餐桌
+video-5-segment-3-frame-5.jpeg,,人
+video-5-segment-3-frame-50.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-51.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-52.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-53.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-54.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-55.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-56.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-57.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-58.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-59.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-6.jpeg,,人
+video-5-segment-3-frame-60.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-61.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-62.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-63.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-64.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-65.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-66.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-67.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-68.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-69.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-7.jpeg,,人
+video-5-segment-3-frame-70.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-71.jpeg,,人|椅子|汽车|餐桌
+video-5-segment-3-frame-72.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-73.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-74.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-75.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-76.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-77.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-78.jpeg,,椅子|餐桌
+video-5-segment-3-frame-79.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-8.jpeg,,人
+video-5-segment-3-frame-80.jpeg,,人|椅子|餐桌
+video-5-segment-3-frame-81.jpeg,,人|椅子
+video-5-segment-3-frame-82.jpeg,,椅子|餐桌
+video-5-segment-3-frame-9.jpeg,,人
+video-6-segment-1-frame-0.jpeg,,人
+video-6-segment-1-frame-1.jpeg,,人
+video-6-segment-1-frame-10.jpeg,,人|长椅
+video-6-segment-1-frame-11.jpeg,,人
+video-6-segment-1-frame-2.jpeg,,人
+video-6-segment-1-frame-3.jpeg,,人
+video-6-segment-1-frame-4.jpeg,,人
+video-6-segment-1-frame-5.jpeg,,人
+video-6-segment-1-frame-6.jpeg,,人
+video-6-segment-1-frame-7.jpeg,,人|长椅
+video-6-segment-1-frame-8.jpeg,,人
+video-6-segment-1-frame-9.jpeg,,人
+video-6-segment-2-frame-0.jpeg,Accent Paving|Person|Person with a disability|Railing|Retaining Wall|Sidewalk|Stairs|White Cane,人|长椅
+video-6-segment-2-frame-1.jpeg,Accent Paving|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pillar|Railing|Retaining Wall|Road|Roadside Parking|Sidewalk|Stairs|Vegetation|Wall|White Cane,人|汽车|长椅
+video-6-segment-2-frame-10.jpeg,Accent Paving|Building|Person|Person with a disability|Pillar|Railing|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-11.jpeg,Accent Paving|Building|Person|Person with a disability|Pillar|Railing|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-12.jpeg,Accent Paving|Building|Person|Person with a disability|Pillar|Railing|Raised Entryway|Wall|White Cane,人
+video-6-segment-2-frame-13.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-14.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-15.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall,人
+video-6-segment-2-frame-16.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-17.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-18.jpeg,Accent Paving|Building|Person|Person with a disability|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-2.jpeg,Person|Person with a disability|Railing|Retaining Wall|Sidewalk|Stairs|White Cane,人
+video-6-segment-2-frame-3.jpeg,Person|Person with a disability|Railing|Sidewalk|Stairs|White Cane,人
+video-6-segment-2-frame-4.jpeg,Person|Person with a disability|Railing|Sidewalk|Stairs|White Cane,人
+video-6-segment-2-frame-5.jpeg,Person|Person with a disability|Railing|Sidewalk|Stairs|White Cane,人
+video-6-segment-2-frame-6.jpeg,Accent Paving|Person|Person with a disability|Pillar|Railing|Retaining Wall|Sidewalk|Stairs|White Cane,人
+video-6-segment-2-frame-7.jpeg,Accent Paving|Person|Person with a disability|Pillar|Railing|Retaining Wall|Stairs|White Cane,人
+video-6-segment-2-frame-8.jpeg,Accent Paving|Building|Person|Person with a disability|Pillar|Railing|Raised Entryway|Stairs|Wall|White Cane,人
+video-6-segment-2-frame-9.jpeg,Accent Paving|Building|Person|Person with a disability|Pillar|Railing|Raised Entryway|Wall|White Cane,人
+video-7-segment-1-frame-0.jpeg,,人
+video-7-segment-1-frame-1.jpeg,,人
+video-7-segment-1-frame-2.jpeg,,
+video-7-segment-1-frame-3.jpeg,,人|汽车
+video-7-segment-1-frame-4.jpeg,,人|汽车
+video-7-segment-1-frame-5.jpeg,,人|汽车
+video-7-segment-1-frame-6.jpeg,,
+video-7-segment-1-frame-7.jpeg,,
+video-7-segment-1-frame-8.jpeg,,
+video-7-segment-1-frame-9.jpeg,,人
+video-7-segment-2-frame-0.jpeg,Building|Curb|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-7-segment-2-frame-1.jpeg,Accent Paving|Building|Curb|Person|Person with a disability|Sidewalk|Wall,人
+video-7-segment-2-frame-10.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-7-segment-2-frame-11.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-7-segment-2-frame-12.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-7-segment-2-frame-13.jpeg,Accent Paving|Curb|Person|Person with a disability|Sidewalk|Slopped Curb|Tactile Paving|Vegetation,人|汽车
+video-7-segment-2-frame-14.jpeg,Accent Paving|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人|汽车
+video-7-segment-2-frame-15.jpeg,Building|Curb|Person|Person with a disability|Sidewalk|Wall|White Cane,人
+video-7-segment-2-frame-16.jpeg,Building|Curb|Person|Person with a disability|Sidewalk|Sign|Wall,人
+video-7-segment-2-frame-2.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane,人
+video-7-segment-2-frame-3.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane,人
+video-7-segment-2-frame-4.jpeg,Accent Paving|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Wall|White Cane,人|汽车
+video-7-segment-2-frame-5.jpeg,Accent Paving|Building|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Wall,人|汽车
+video-7-segment-2-frame-6.jpeg,Accent Paving|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人|汽车
+video-7-segment-2-frame-7.jpeg,Accent Paving|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人|汽车
+video-7-segment-2-frame-8.jpeg,Accent Paving|Car|Curb|Parallel Parking Spot|Person|Person with a disability|Pole|Road|Roadside Parking|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人|汽车
+video-7-segment-2-frame-9.jpeg,Accent Paving|Curb|Person|Person with a disability|Pole|Sidewalk|Slopped Curb|Tactile Paving|Vegetation|White Cane,人
+video-7-segment-3-frame-0.jpeg,,人
+video-7-segment-3-frame-1.jpeg,,人
+video-7-segment-3-frame-10.jpeg,,
+video-7-segment-3-frame-11.jpeg,,
+video-7-segment-3-frame-2.jpeg,,人
+video-7-segment-3-frame-3.jpeg,,
+video-7-segment-3-frame-4.jpeg,,人
+video-7-segment-3-frame-5.jpeg,,人
+video-7-segment-3-frame-6.jpeg,,人
+video-7-segment-3-frame-7.jpeg,,
+video-7-segment-3-frame-8.jpeg,,人
+video-7-segment-3-frame-9.jpeg,,人
+video-7-segment-4-frame-0.jpeg,,
+video-7-segment-4-frame-1.jpeg,,人
+video-7-segment-4-frame-2.jpeg,,人
+video-7-segment-4-frame-3.jpeg,,
+video-7-segment-4-frame-4.jpeg,,
+video-8-segment-1-frame-0.jpeg,,
+video-8-segment-1-frame-1.jpeg,,
+video-8-segment-1-frame-10.jpeg,,人
+video-8-segment-1-frame-11.jpeg,,人
+video-8-segment-1-frame-12.jpeg,,
+video-8-segment-1-frame-13.jpeg,,人
+video-8-segment-1-frame-14.jpeg,,
+video-8-segment-1-frame-15.jpeg,,人
+video-8-segment-1-frame-16.jpeg,,人
+video-8-segment-1-frame-17.jpeg,,人
+video-8-segment-1-frame-18.jpeg,,人
+video-8-segment-1-frame-19.jpeg,,人
+video-8-segment-1-frame-2.jpeg,,
+video-8-segment-1-frame-20.jpeg,,人
+video-8-segment-1-frame-3.jpeg,,
+video-8-segment-1-frame-4.jpeg,,
+video-8-segment-1-frame-5.jpeg,,
+video-8-segment-1-frame-6.jpeg,,
+video-8-segment-1-frame-7.jpeg,,
+video-8-segment-1-frame-8.jpeg,,
+video-8-segment-1-frame-9.jpeg,,人
+video-8-segment-2-frame-0.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,
+video-8-segment-2-frame-1.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,
+video-8-segment-2-frame-10.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-11.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-12.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,
+video-8-segment-2-frame-13.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-14.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-15.jpeg,Person|Person with a disability|Unpaved Sidewalk,人
+video-8-segment-2-frame-16.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-17.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-18.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-19.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-2.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-20.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-21.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-22.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,
+video-8-segment-2-frame-23.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人|椅子
+video-8-segment-2-frame-24.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-25.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-26.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-27.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-28.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-29.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-3.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-30.jpeg,Building|Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-31.jpeg,Person|Person with a disability|Railing|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-32.jpeg,Person|Person with a disability|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-33.jpeg,Person|Person with a disability|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-34.jpeg,Person|Person with a disability|Trash bins|Unpaved Sidewalk,人
+video-8-segment-2-frame-4.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-5.jpeg,Building|Person|Person with a disability|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-6.jpeg,Building|Person|Person with a disability|Railing|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-7.jpeg,Building|Person|Person with a disability|Railing|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-8.jpeg,Building|Person|Person with a disability|Railing|Unpaved Sidewalk|Wall,人
+video-8-segment-2-frame-9.jpeg,Person|Person with a disability|Railing|Unpaved Sidewalk,人
+video-9-segment-1-frame-0.jpeg,,人|汽车
+video-9-segment-1-frame-1.jpeg,,人|汽车
+video-9-segment-1-frame-10.jpeg,,
+video-9-segment-1-frame-11.jpeg,,长椅
+video-9-segment-1-frame-12.jpeg,,
+video-9-segment-1-frame-13.jpeg,,长椅
+video-9-segment-1-frame-14.jpeg,,长椅
+video-9-segment-1-frame-15.jpeg,,
+video-9-segment-1-frame-16.jpeg,,
+video-9-segment-1-frame-17.jpeg,,
+video-9-segment-1-frame-18.jpeg,,人
+video-9-segment-1-frame-19.jpeg,,
+video-9-segment-1-frame-2.jpeg,,人|汽车
+video-9-segment-1-frame-20.jpeg,,人
+video-9-segment-1-frame-21.jpeg,,
+video-9-segment-1-frame-22.jpeg,,
+video-9-segment-1-frame-23.jpeg,,
+video-9-segment-1-frame-24.jpeg,,
+video-9-segment-1-frame-25.jpeg,,
+video-9-segment-1-frame-26.jpeg,,
+video-9-segment-1-frame-27.jpeg,,
+video-9-segment-1-frame-28.jpeg,,
+video-9-segment-1-frame-29.jpeg,,
+video-9-segment-1-frame-3.jpeg,,
+video-9-segment-1-frame-30.jpeg,,
+video-9-segment-1-frame-31.jpeg,,
+video-9-segment-1-frame-32.jpeg,,人
+video-9-segment-1-frame-33.jpeg,,人
+video-9-segment-1-frame-34.jpeg,,
+video-9-segment-1-frame-35.jpeg,,
+video-9-segment-1-frame-36.jpeg,,
+video-9-segment-1-frame-37.jpeg,,
+video-9-segment-1-frame-38.jpeg,,人
+video-9-segment-1-frame-4.jpeg,,
+video-9-segment-1-frame-5.jpeg,,
+video-9-segment-1-frame-6.jpeg,,
+video-9-segment-1-frame-7.jpeg,,
+video-9-segment-1-frame-8.jpeg,,
+video-9-segment-1-frame-9.jpeg,,
+video-9-segment-2-frame-0.jpeg,Sidewalk|Tactile Paving|Train Platform,人
+video-9-segment-2-frame-1.jpeg,Sidewalk|Stairs|White Cane,
+video-9-segment-2-frame-10.jpeg,Sidewalk|Stairs|Wall,
+video-9-segment-2-frame-11.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-12.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-13.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-14.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-15.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-16.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-17.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-18.jpeg,Accent Paving|Sidewalk|Stairs|Tactile Paving,
+video-9-segment-2-frame-19.jpeg,Accent Paving|Sidewalk|Tactile Paving,
+video-9-segment-2-frame-2.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-20.jpeg,Accent Paving|Sidewalk|Tactile Paving,
+video-9-segment-2-frame-21.jpeg,Accent Paving|Sidewalk|Tactile Paving,
+video-9-segment-2-frame-22.jpeg,Accent Paving|Sidewalk,
+video-9-segment-2-frame-23.jpeg,Accent Paving|Sidewalk|Tactile Paving,
+video-9-segment-2-frame-24.jpeg,Accent Paving|Sidewalk,
+video-9-segment-2-frame-25.jpeg,Accent Paving|Sidewalk,
+video-9-segment-2-frame-26.jpeg,Accent Paving|Sidewalk|Tactile Paving,
+video-9-segment-2-frame-27.jpeg,Accent Paving|Sidewalk|Tactile Paving,人
+video-9-segment-2-frame-28.jpeg,Accent Paving|Sidewalk|Tactile Paving|White Cane,
+video-9-segment-2-frame-29.jpeg,Sidewalk|Stairs|Tactile Paving|Wall|White Cane,
+video-9-segment-2-frame-3.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-30.jpeg,Sidewalk|Stairs|Wall,
+video-9-segment-2-frame-31.jpeg,Sidewalk|Stairs|Wall,人
+video-9-segment-2-frame-32.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-33.jpeg,Sidewalk|Stairs|Wall,
+video-9-segment-2-frame-4.jpeg,Sidewalk|Stairs,长椅
+video-9-segment-2-frame-5.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-6.jpeg,Sidewalk|Stairs|Wall|White Cane,
+video-9-segment-2-frame-7.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-8.jpeg,Sidewalk|Stairs,
+video-9-segment-2-frame-9.jpeg,Sidewalk|Stairs,
+video-9-segment-3-frame-0.jpeg,,人
+video-9-segment-3-frame-1.jpeg,,人
+video-9-segment-3-frame-10.jpeg,,
+video-9-segment-3-frame-11.jpeg,,
+video-9-segment-3-frame-12.jpeg,,长椅
+video-9-segment-3-frame-13.jpeg,,
+video-9-segment-3-frame-14.jpeg,,人
+video-9-segment-3-frame-15.jpeg,,人
+video-9-segment-3-frame-16.jpeg,,人
+video-9-segment-3-frame-17.jpeg,,人
+video-9-segment-3-frame-18.jpeg,,
+video-9-segment-3-frame-19.jpeg,,
+video-9-segment-3-frame-2.jpeg,,人
+video-9-segment-3-frame-20.jpeg,,长椅
+video-9-segment-3-frame-21.jpeg,,长椅
+video-9-segment-3-frame-22.jpeg,,
+video-9-segment-3-frame-23.jpeg,,人
+video-9-segment-3-frame-24.jpeg,,人
+video-9-segment-3-frame-25.jpeg,,人
+video-9-segment-3-frame-26.jpeg,,人
+video-9-segment-3-frame-27.jpeg,,人
+video-9-segment-3-frame-28.jpeg,,人
+video-9-segment-3-frame-29.jpeg,,
+video-9-segment-3-frame-3.jpeg,,人
+video-9-segment-3-frame-4.jpeg,,人
+video-9-segment-3-frame-5.jpeg,,人
+video-9-segment-3-frame-6.jpeg,,人|长椅
+video-9-segment-3-frame-7.jpeg,,人
+video-9-segment-3-frame-8.jpeg,,人
+video-9-segment-3-frame-9.jpeg,,
+video-9-segment-4-frame-0.jpeg,,人
+video-9-segment-4-frame-1.jpeg,,人
+video-9-segment-4-frame-10.jpeg,,
+video-9-segment-4-frame-11.jpeg,,人|汽车
+video-9-segment-4-frame-12.jpeg,,人
+video-9-segment-4-frame-13.jpeg,,人
+video-9-segment-4-frame-14.jpeg,,人
+video-9-segment-4-frame-15.jpeg,,人
+video-9-segment-4-frame-16.jpeg,,人
+video-9-segment-4-frame-17.jpeg,,人
+video-9-segment-4-frame-18.jpeg,,人
+video-9-segment-4-frame-19.jpeg,,人
+video-9-segment-4-frame-2.jpeg,,人
+video-9-segment-4-frame-20.jpeg,,人
+video-9-segment-4-frame-21.jpeg,,人
+video-9-segment-4-frame-22.jpeg,,人
+video-9-segment-4-frame-23.jpeg,,人
+video-9-segment-4-frame-24.jpeg,,人|椅子
+video-9-segment-4-frame-25.jpeg,,人|自行车
+video-9-segment-4-frame-26.jpeg,,人
+video-9-segment-4-frame-27.jpeg,,人
+video-9-segment-4-frame-28.jpeg,,人
+video-9-segment-4-frame-29.jpeg,,人|椅子
+video-9-segment-4-frame-3.jpeg,,人
+video-9-segment-4-frame-30.jpeg,,人|自行车
+video-9-segment-4-frame-31.jpeg,,人
+video-9-segment-4-frame-32.jpeg,,人
+video-9-segment-4-frame-33.jpeg,,人
+video-9-segment-4-frame-34.jpeg,,人
+video-9-segment-4-frame-35.jpeg,,人
+video-9-segment-4-frame-36.jpeg,,人
+video-9-segment-4-frame-37.jpeg,,人|汽车
+video-9-segment-4-frame-38.jpeg,,人|汽车
+video-9-segment-4-frame-39.jpeg,,人|汽车
+video-9-segment-4-frame-4.jpeg,,人
+video-9-segment-4-frame-40.jpeg,,人|汽车
+video-9-segment-4-frame-41.jpeg,,人|汽车
+video-9-segment-4-frame-42.jpeg,,人|汽车
+video-9-segment-4-frame-43.jpeg,,人|汽车
+video-9-segment-4-frame-44.jpeg,,人|汽车
+video-9-segment-4-frame-45.jpeg,,人
+video-9-segment-4-frame-46.jpeg,,人
+video-9-segment-4-frame-47.jpeg,,人
+video-9-segment-4-frame-48.jpeg,,人|汽车
+video-9-segment-4-frame-49.jpeg,,人|公交车|椅子|汽车
+video-9-segment-4-frame-5.jpeg,,人
+video-9-segment-4-frame-50.jpeg,,人|公交车|汽车
+video-9-segment-4-frame-51.jpeg,,人|汽车
+video-9-segment-4-frame-52.jpeg,,人|椅子|汽车
+video-9-segment-4-frame-53.jpeg,,人|汽车
+video-9-segment-4-frame-54.jpeg,,人|椅子|汽车
+video-9-segment-4-frame-55.jpeg,,人|汽车
+video-9-segment-4-frame-56.jpeg,,人|椅子|汽车
+video-9-segment-4-frame-57.jpeg,,人|汽车
+video-9-segment-4-frame-58.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-59.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-6.jpeg,,人
+video-9-segment-4-frame-60.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-61.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-62.jpeg,,人|汽车
+video-9-segment-4-frame-63.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-64.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-65.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-66.jpeg,,人|汽车
+video-9-segment-4-frame-67.jpeg,,人|汽车|红绿灯
+video-9-segment-4-frame-68.jpeg,,人|汽车
+video-9-segment-4-frame-69.jpeg,,人|汽车
+video-9-segment-4-frame-7.jpeg,,人|汽车
+video-9-segment-4-frame-70.jpeg,,人|汽车
+video-9-segment-4-frame-71.jpeg,,人|汽车
+video-9-segment-4-frame-72.jpeg,,人|汽车
+video-9-segment-4-frame-73.jpeg,,人|汽车
+video-9-segment-4-frame-74.jpeg,,人|汽车
+video-9-segment-4-frame-75.jpeg,,人|汽车
+video-9-segment-4-frame-76.jpeg,,人|汽车
+video-9-segment-4-frame-77.jpeg,,人|汽车
+video-9-segment-4-frame-78.jpeg,,人|汽车
+video-9-segment-4-frame-79.jpeg,,人|汽车
+video-9-segment-4-frame-8.jpeg,,人
+video-9-segment-4-frame-80.jpeg,,人|汽车
+video-9-segment-4-frame-81.jpeg,,人|汽车
+video-9-segment-4-frame-82.jpeg,,人|汽车
+video-9-segment-4-frame-83.jpeg,,人|汽车
+video-9-segment-4-frame-84.jpeg,,人
+video-9-segment-4-frame-85.jpeg,,人
+video-9-segment-4-frame-86.jpeg,,人
+video-9-segment-4-frame-87.jpeg,,人
+video-9-segment-4-frame-88.jpeg,,人
+video-9-segment-4-frame-89.jpeg,,人
+video-9-segment-4-frame-9.jpeg,,人
+video-9-segment-4-frame-90.jpeg,,人
+video-9-segment-4-frame-91.jpeg,,人
+video-9-segment-4-frame-92.jpeg,,人
+video-9-segment-4-frame-93.jpeg,,人

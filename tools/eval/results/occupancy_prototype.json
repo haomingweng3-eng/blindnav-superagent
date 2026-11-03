@@ -1,0 +1,18 @@
+{
+ "dataset": "UrbanEgo clip 375-400s, 10fps; SegFormer SANPO FT v2 walkable + depth<2m + 2-frame persistence",
+ "depth_only_temporal": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.0,
+  "precision": 0.0,
+  "false_positive_rate": 0.0
+ },
+ "depth_plus_gt_instance_oracle": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.3636,
+  "precision": 1.0,
+  "false_positive_rate": 0.0
+ },
+ "note": "instance variant uses GT tracks; unknown-object recall unmeasured; ORACLE not production"
+}

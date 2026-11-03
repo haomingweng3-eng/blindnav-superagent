@@ -1,0 +1,10 @@
+{
+ "dataset": "BLV doorway frames",
+ "frames": 1795,
+ "mean_candidates": 0.0,
+ "median_candidates": 0,
+ "p90_candidates": 0,
+ "candidate_count_std": 0.06,
+ "latency_ms_median": 82.0,
+ "recall_iou": "UNAVAILABLE: no per-door bounding boxes in BLV labels"
+}

@@ -182,6 +182,14 @@ curl -s "https://storage.googleapis.com/storage/v1/b/gresearch/o?prefix=sanpo_da
 | YOLOv8（AGPL-3.0） | — | 本骨架**没有**使用 |
 | 示例视频 | CC BY-SA 4.0 | Wikimedia Commons "Harlow Museum & Walled Gardens, walking tour video"（截取前几秒做冒烟测试，**未入库**） |
 
+## 包集成 / 离线评测脚本
+
+历史 real-eval 已合并到仓库根 `tools/eval/`（见该目录 README）。`pc/eval/` 仍是闭环 PC harness。
+
+公开缓存：本机 HF hub 已有 Depth-Anything-V2-Small 与 SegFormer-B0-Cityscapes 基座。仍缺 UrbanEgo、微调权重(~145MB)、ASR/TTS、自定义 yolo-seg、完整 SANPO/BLV 等（见 `tools/eval/DOWNLOAD_LINKS.md`）。
+
+BEV 记忆：当步伐为仿真/未标定 `L_step` 时，评测与真机应优先 `--memory rot_only`（或 `EgoConfig.use_steps=False`）。`use_steps=True` 仅在真实 STEP_DETECTOR + 标定步长时安全。
+
 ## 已知限制（诚实清单）
 - **没有真机数据**：真实验证只有 SANPO 的一个小样本（Synthetic 30 帧 / Real 20 帧，且 Real 那段几乎静止）。误停率/漏停率需要带标注的真实路测。
 - **Real 数据上姿态派生的重力偏差 12–14°，地面标定 20/20 帧失败（系统正确降级为 STOP，但说明依赖手机 IMU 的重力必须准）**；改用 GT 地面重力后 20/20 成功。仅 1 个 Real session，结论不可外推。

@@ -1,0 +1,23 @@
+{
+  "dataset": "UrbanEgo run7 clip 375.0-400.0s, 10fps",
+  "frames": 250,
+  "gt_blocking_frames": 44,
+  "model_stop_frames": 73,
+  "frame_tp": 43,
+  "frame_fp": 30,
+  "frame_fn": 1,
+  "time_to_stop_ms": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "recovery_ms": [
+    800,
+    100,
+    4300,
+    1000,
+    800
+  ],
+  "stop_flaps": 6
+}

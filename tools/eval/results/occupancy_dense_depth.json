@@ -1,0 +1,50 @@
+{
+ "dataset": "UrbanEgo clip 375-400s, 10fps; Depth-Anything-V2-Small dense depth + SANPO safety seg + temporal",
+ "ckpt": "segformer_sanpo_b0_v3.pt",
+ "depth_scale_frames": 250,
+ "mean_sparse_depth_coverage": 0.1051,
+ "mean_safe_frac": 0.1415,
+ "corridor_occ_now": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 1.0,
+  "precision": 0.1547,
+  "false_positive_rate": 0.6833
+ },
+ "corridor_occ_t2": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 1.0,
+  "precision": 0.176,
+  "false_positive_rate": 1.0
+ },
+ "corridor_occ_t3": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 1.0,
+  "precision": 0.1767,
+  "false_positive_rate": 0.9951
+ },
+ "safe_occ_now": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.6291,
+  "precision": 0.1413,
+  "false_positive_rate": 0.5507
+ },
+ "safe_occ_t2": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.5909,
+  "precision": 0.1421,
+  "false_positive_rate": 0.7621
+ },
+ "safe_occ_t3": {
+  "frames": 250,
+  "gt_blocking": 44,
+  "recall": 0.6818,
+  "precision": 0.1478,
+  "false_positive_rate": 0.8398
+ },
+ "note": "class-independent; unknown-object recall not measurable without object GT; thresholds fixed a priori at 5% area, 2m"
+}

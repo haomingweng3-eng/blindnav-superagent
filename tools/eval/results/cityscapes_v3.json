@@ -1,0 +1,22 @@
+[
+ {
+  "name": "cityscapes_city",
+  "model": "Cityscapes B0",
+  "images": 100,
+  "valid_rate": 0.0,
+  "safe_iou": 0.0001,
+  "safe_recall": 0.0002,
+  "sidewalk_as_conditional": 0.9998,
+  "road_false_safe": 0.0347
+ },
+ {
+  "name": "cityscapes_ft_v3",
+  "model": "SANPO FT v3 false-safe",
+  "images": 100,
+  "valid_rate": 1.0,
+  "safe_iou": 0.0979,
+  "safe_recall": 0.9992,
+  "sidewalk_as_conditional": 0.0008,
+  "road_false_safe": 0.3787
+ }
+]

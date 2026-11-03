@@ -34,6 +34,9 @@ class GroundConfig:
     ema: float = 0.5                     # weight of the new fit when smoothing (1 = no smoothing)
     max_depth_m: float = 15.0
     seed: int = 0
+    enable_visual_up: bool = True
+    max_gravity_tilt_deg: float = 10.0
+    prefer_visual_up_deg: float = 8.0
 
 
 @dataclass
@@ -114,7 +117,7 @@ class EgoConfig:
     step_length_m: float = 0.70          # personal step length L_step
     max_dt_ms: float = 1500.0            # longer gap between frames -> motion unreliable, drop history
     max_dyaw_deg: float = 60.0           # larger heading jump per frame -> unreliable
-    use_steps: bool = True               # False: rotation-only warp (gyro only)
+    use_steps: bool = True               # prefer False/rot_only unless steps are real + L_step calibrated (see README)
 
 
 @dataclass

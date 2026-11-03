@@ -1,0 +1,22 @@
+[
+ {
+  "name": "openimages_val",
+  "images": 120,
+  "gt_boxes": 173,
+  "mean_candidates": 6.31,
+  "top1_recall": 0.3237,
+  "top2_recall": 0.474,
+  "top3_recall": 0.5607,
+  "top5_recall": 0.6301
+ },
+ {
+  "name": "roboflow_test",
+  "images": 225,
+  "gt_boxes": 235,
+  "mean_candidates": 5.77,
+  "top1_recall": 0.8,
+  "top2_recall": 0.8809,
+  "top3_recall": 0.9064,
+  "top5_recall": 0.9234
+ }
+]

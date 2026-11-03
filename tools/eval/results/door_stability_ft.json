@@ -1,0 +1,9 @@
+{
+ "dataset": "fine-tuned door detector, held-out test, controlled perturbation",
+ "images_with_candidates": 222,
+ "conf": 0.05,
+ "matched_candidate_iou_mean": 0.8471,
+ "match_rate": 0.9955,
+ "candidate_count_std_over_variants": 1.258,
+ "note": "controlled perturbation, not temporal video stability"
+}

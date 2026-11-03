@@ -1,0 +1,9 @@
+blindnav-real-eval/models/segformer_multihead_v1.pt 18126537
+blindnav-real-eval/models/segformer_sanpo_b0_v6.pt 14947603
+blindnav-real-eval/models/segformer_sanpo_b0.onnx.data 14849536
+blindnav-real-eval/models/segformer_sanpo_b0_v2.pt 14947603
+blindnav-real-eval/models/segformer_sanpo_b0_v3.pt 14947603
+blindnav-real-eval/models/segformer_sanpo_b0.onnx 112427
+blindnav-real-eval/models/segformer_sanpo_b0.pt 14946961
+blindnav-real-eval/models/deeplab_mbv3_sanpo.pt 44335657
+blindnav-real-eval/models/segformer_sanpo_b0_v5.pt 14947603

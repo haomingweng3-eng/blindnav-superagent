@@ -1,0 +1,126 @@
+{
+  "dataset": "BLV-Road-Nav, YOLO-World s",
+  "frames": 100,
+  "vocab": [
+    "person",
+    "bicycle",
+    "wheelchair",
+    "dog",
+    "bench",
+    "chair",
+    "table",
+    "bollard",
+    "pole",
+    "pillar",
+    "railing",
+    "barrier",
+    "foldout sign",
+    "stairs",
+    "curb",
+    "raised entryway",
+    "trash bin",
+    "construction object",
+    "overhanging branch",
+    "doorway"
+  ],
+  "categories": {
+    "Person": {
+      "support": 37,
+      "recall": 1.0,
+      "precision": 0.4022
+    },
+    "Bicycle": {
+      "support": 22,
+      "recall": 0.8636,
+      "precision": 0.7037
+    },
+    "Wheelchair": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Dog": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Bench": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Chair": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Table": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Pole": {
+      "support": 8,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Pillar": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Railing": {
+      "support": 7,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Barrier Post": {
+      "support": 11,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Foldout Sign": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Stairs": {
+      "support": 11,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Curb": {
+      "support": 14,
+      "recall": 0.0,
+      "precision": null
+    },
+    "Sloped Curb": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Raised Entryway": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Trash Bins": {
+      "support": 0,
+      "recall": null,
+      "precision": 0.0
+    },
+    "Doorway": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    },
+    "Overhanging Tree Branches": {
+      "support": 0,
+      "recall": null,
+      "precision": null
+    }
+  },
+  "macro_recall": 0.2662,
+  "latency_ms_median": 84.2,
+  "model_mb": 25.9
+}

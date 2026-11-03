@@ -83,6 +83,7 @@ class Pipeline:
         yaw_deg = self.behavior.yaw_deg()
         up = up_from_gravity(gravity_cam)
         fit = self.calib.update(q, mask, self.K, up)
+        up = fit.up if fit.up is not None else up
         depth_m = None
         plan = None
         if fit.ok:
