@@ -3,22 +3,22 @@
 ## 三个问题的直接回答
 
 1. **Walking false-safe 能否压下来？**  
-   **能压下来一半，但还不能上线。** 在 SANPO 上加入 road-as-SAFE 惩罚并用 Cityscapes 做 decoder 适配后，real_v2 的 road false-safe 从 **36.0% → 16.5%**，frozen45 从 **10.0% → 1.9%**，Cityscapes 第二域从 **42.7% → 33.3%**；无盲道 corridor 仍保持 **95.0%**（real_v2）。代价是 SAFE recall 从 90.1% 降到 **79.2%**，curb recall 仍为 **0**。方向有效，但没达到“可接生产”。
+   **能压到 16.5%，再往下很难，且和 curb 相互拉扯。** road-as-SAFE 惩罚 + Cityscapes decoder 适配把 real_v2 的 road false-safe 从 **36.0% → 16.5%**，翻转型 TTA 再降到 **14.2%**；frozen45 从 10.0% → 1.9%，Cityscapes 从 42.7% → 25.9%。corridor 保持 **95.0%**。curb 专项模型把 curb recall 从 **0 → 31.6%**（与 v5 组成双模型 ensemble，false-safe 仍 16.5%）。但没有任何单一配置同时满足 **false-safe <10% 且 curb 明显起来**；最接近的是 TTA 的 14.2%，仍未过线。
 
 2. **Obstacle 的 class-independent occupancy 是否真正提高？**  
    **是，第一次出现了可用信号，但离 75–80% recall / ≤10% False STOP 还很远。** 放弃“YOLO instance 必须与 walkable mask 重叠”后，改用 ground-plane depth residual（比地面更近即占用）：Blocking Recall **52.3%**、Precision 0.23、False-positive **37.4%**；加 2 帧时序后 **45.5% / 31.1%**。此前 instance 拼法只有 **2.3%**。2D dense depth 和 3D voxel 两种构造都更差（FP 55–100%）。
 
 3. **Door proposal 是否达到可接 production 的水平？**  
-   **域内达到，跨域没有。** 用 3150 张 Roboflow 门数据微调 YOLOv8n 后，held-out test 在 conf 0.05 时 Recall@IoU0.3 **95.7%**、@0.5 **82.1%**、平均候选 **2.72**（≤3），达到“正确门进入 1–3 个候选”的目标；扰动稳定性 IoU **0.847**、匹配率 99.6%。但同一模型在外部 OpenImages 173 个门框上只有 Recall@0.3 **46.8%**、@0.5 **38.7%**，说明跨场景泛化不够，不能直接接 production。
+   **域内达到，跨域没有。** 用 3150 张 Roboflow 门数据微调 YOLOv8n 后，held-out test 在 conf 0.05 时 Recall@IoU0.3 **95.7%**、@0.5 **82.1%**、平均候选 **2.72**（≤3）；扰动稳定性 IoU **0.847**、匹配率 99.6%。外部 OpenImages 173 个门框只有 Recall@0.3 **46.8%**；追加重增强后升到 **58.4%**，仍远低于 75% 跨域里程碑。不能直接接 production。
 
 ## Summary Table
 
 | Capability | Before (Round 2) | Round 3 | Evidence | Decision |
 |---|---|---|---|---|
-| Walking / Traversability | real_v2 road FS 36.0%，corridor 100%，SAFE recall 90.1% | road FS **16.5%**，corridor **95.0%**，SAFE recall 79.2%，curb 0；Cityscapes FS 33.3% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
+| Walking / Traversability | real_v2 road FS 36.0%，corridor 100%，SAFE recall 90.1% | road FS **14.2%（TTA）/16.5%（v5）**，corridor **95.0%**，SAFE recall 78–79%；curb **31.6%（v5+v6 ensemble）**；Cityscapes FS 25.9% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
 | Obstacle semantic | COCO 41.8%，YOLO-World 20 词 19.8% | YOLO-World 40 词 **19.97%**，无提升 | DESKTOP_REAL_DATA | REJECT（扩词表） |
 | Obstacle occupancy | instance 拼法 2.3%，depth ROI 0% | ground residual **52.3% recall / 37.4% FP**；时序 45.5% / 31.1% | DESKTOP_REAL_DATA | NEXT_EXPERIMENT |
-| Last10m Door | YOLO-World Recall@0.3 21.4%，@0.5 13.9% | 微调 YOLOv8n 域内 **95.7% / 82.1%**，平均候选 2.72；外部 **46.8% / 38.7%** | DESKTOP_REAL_DATA | 域内 KEEP，跨域 NEXT_EXPERIMENT |
+| Last10m Door | YOLO-World Recall@0.3 21.4%，@0.5 13.9% | 微调 YOLOv8n 域内 **95.7% / 82.1%**，平均候选 2.72；外部 **46.8% / 38.7%**，重增强后 **58.4% / 41.6%** | DESKTOP_REAL_DATA | 域内 KEEP，跨域 NEXT_EXPERIMENT |
 | Last10m Search | YELLOW | 未改 | DESKTOP_VERIFIED | KEEP |
 | Scene / Text | RED | 未接 | NOT_CONNECTED | KEEP |
 
@@ -42,15 +42,21 @@
 | **v5 false-safe + City adapt** | frozen45 | **100%** | **0.827** | 86.0% | **1.9%** | 0 | **0.008** |
 | SANPO FT v2 | real_v2 (120) | 100% | 0.786 | 90.1% | 36.0% | 0.2% | 0.026 |
 | **v5 false-safe + City adapt** | real_v2 (120) | **95.0%** | 0.743 | 79.2% | **16.5%** | 0 | 0.031 |
+| v6 boundary 专项 | real_v2 (120) | 98.3% | 0.767 | 84.1% | 26.5% | 30.3% | 0.034 |
+| **v5 + v6 curb ensemble** | real_v2 (120) | **95.0%** | 0.743 | 79.2% | **16.5%** | **31.6%** | 0.031 |
+| v5 + flip TTA | real_v2 (120) | 95.0% | 0.740 | 78.1% | **14.2%** | 0 | 0.031 |
 | SANPO FT v2 | Cityscapes val (100) | 100% | 0.0875 | 99.99% | 42.7% | — | — |
-| **v5 false-safe + City adapt** | Cityscapes val (100) | **100%** | **0.1105** | 99.85% | **33.3%** | — | — |
+| **v5 false-safe + City adapt** | Cityscapes val (100) | **100%** | **0.1105** | 99.85% | 33.3% | — | — |
+| v5 + flip TTA | Cityscapes val (100) | 100% | 0.140 | 98.2% | **25.9%** | — | — |
+
+v6 boundary 的 frozen45 表现：curb recall **37.3%**、road false-safe 3.9%；与 v5 做 curb ensemble 后 frozen45 curb **48.1%**、false-safe 1.9%。
 
 结论：
 
-- **False-safe 确实降了**：real_v2 相对下降 54%，frozen45 相对下降 81%，Cityscapes 下降 9.4 个百分点。
-- **代价明确**：SAFE recall 从 90.1% 掉到 79.2%，IoU 从 0.786 掉到 0.743。这是“宁可少报可走”的保守化，不是免费提升。
-- **Curb recall 仍为 0**：SANPO 的 curb 像素极少，当前 loss 权重不足以让模型输出 boundary 类。Boundary 是下一个 RED。
-- **Cityscapes 仍不达标**：33.3% road false-safe 意味着车载视角下每 3 个 road 像素仍有 1 个被判 SAFE，不能上线。
+- **False-safe 确实降了**：v5 real_v2 相对下降 54%，frozen45 相对下降 81%；TTA 再降到 14.2%，Cityscapes 从 42.7% 降到 25.9%。
+- **代价明确**：SAFE recall 从 90.1% 掉到 79.2%（TTA 78.1%），IoU 从 0.786 掉到 0.743。这是“宁可少报可走”的保守化，不是免费提升。
+- **Curb 专项有效但会反噬**：v6 把 curb recall 拉到 30.3%，但 road false-safe 回到 26.5%；与 v5 做 ensemble 可以保留 v5 的 16.5% false-safe，同时拿到 **31.6% curb recall**。
+- **没有单一配置同时达标**：false-safe <10% 仍没做到（最好 14.2%），curb 最好 31.6% 也远低于可用边界感知；Cityscapes 25.9% 仍不能上线。
 
 ### 外部研究对照
 
@@ -84,8 +90,12 @@
 | 3D sparse depth voxel + ground removal + 时序 | 43.2% | 0.128 | 62.6% |
 | **Ground-plane depth residual（无 instance）+ 时序** | **45.5%** | **0.238** | **31.1%** |
 | 同上，不要求与 walkable mask 重叠 | **52.3%** | **0.230** | **37.4%** |
+| 同上 + 像素级 2 帧 AND | 34.1% | 0.211 | 27.2% |
+| 同上 + 像素级 3 帧多数 | 22.7% | 0.217 | **17.5%** |
 
 Ground residual 的做法：用 pose 把深度点变到世界坐标，拟合地面平面，像素深度比该像素对应的地面深度近 0.25m 以上即判为“占据”；不依赖任何类别，也不要求 YOLO instance 先和 walkable mask 重叠。它第一次把 recall 从 2.3% 拉到 52.3%，说明“深度 + 几何 + 时序”方向成立；但 37.4% 的 False-positive 意味着每 3 个非阻断帧就有 1 次误报，不能接 WalkingSafetyPolicy。
+
+进一步把“帧级面积持续”改成“像素级 2/3 帧 AND”：FP 从 31.1% 压到 **17.5%**，但 recall 同时掉到 22.7%。这说明当前 FP 不是随机单帧噪声——很多是持续存在的边界/地面误差，像素级过滤会连同真障碍一起杀掉。目标是 recall ≥50% 时 FP ≤15%，当前没有同时满足的点；下一步必须改地面/深度本身，而不是继续加时间窗口。
 
 Unknown Blocking Recall 仍按 BLV 帧级定义（COCO 没有的 12 个高价值类别，1021 个支持帧）为 **0.1%**；BLV 只有 presence 标签，无法报 box IoU。class-independent 构造从原理上不依赖类别，但缺少 unknown 物体的框 GT，不能宣称已解决。
 
@@ -119,6 +129,22 @@ conf 0.05 同时满足 Recall@0.3 ≥90% 和平均候选 ≤3，达到本轮目�
 
 域外掉到 46.8%，说明模型学到了 Roboflow 数据集的视角/外观偏置。**不能因为 held-out test 95.7% 就宣称门检测已可生产。**
 
+### 跨域泛化尝试：重增强
+
+在原模型上追加 6 epochs 重增强（旋转 ±20°、平移 0.2、缩放 0.6、剪切、透视、HSV、mosaic、mixup、erasing、RandAugment），不加入任何 OpenImages 图像：
+
+| 指标 | 原模型 | 重增强 |
+|---|---:|---:|
+| 域内 Recall@0.3 @conf0.05 | 95.7% | 95.7% |
+| 域内平均候选 @conf0.05 | 2.72 | 3.84 |
+| 域内 Recall@0.3 @conf0.10 | 91.9% | 91.9% |
+| 域内平均候选 @conf0.10 | 2.28 | **2.87** |
+| 外部 OpenImages Recall@0.3 @conf0.05 | 46.8% | **58.4%** |
+| 外部 OpenImages Recall@0.5 @conf0.05 | 38.7% | **41.6%** |
+| 外部 OpenImages Recall@0.3 @conf0.10 | 39.3% | **48.6%** |
+
+重增强把外域召回从 46.8% 提到 **58.4%**，但离第一里程碑 **75%** 仍差 17 个百分点；同时域内低阈值候选数变多。结论：augmentation 只能补一部分域偏移，下一轮必须引入真实 storefront/entrance 多域数据，或 DeepDoors2 的玻璃门/户外门/遮挡子集，而不是继续在 Roboflow 上刷。
+
 ### Candidate Stability
 
 对 222 张有候选的 test 图做受控扰动（x/y 平移 2%、0.98× 缩放）：
@@ -148,7 +174,7 @@ conf 0.05 同时满足 Recall@0.3 ≥90% 和平均候选 ≤3，达到本轮目�
 
 ## 6. 结论与下一步
 
-- **Walking**：false-safe 已从 36.0% 压到 16.5%，但 curb recall 0、Cityscapes 33.3%，仍是 RED。下一步不是再调阈值，而是补 curb/boundary 监督和步行视角数据；Cityscapes 只作第二域参考。
-- **Obstacle**：ground-plane occupancy 是第一条有效路线（52.3% / 37.4% FP），但 False STOP 太高。下一步做深度补全 + 相机高度/平面在线估计 + 多帧占据累积，目标 recall ≥75%、FP ≤10%。
+- **Walking**：false-safe 已从 36.0% 压到 16.5%（TTA 14.2%），curb 通过 v5+v6 ensemble 从 0 拉到 31.6%，但两者不能在同一配置里同时达标；Cityscapes 25.9% 仍是 RED。下一步补真实 curb/boundary 数据和统一训练目标，而不是继续调阈值。
+- **Obstacle**：ground-plane occupancy 是第一条有效路线（52.3% / 37.4% FP），但 False STOP 太高；把时序从“帧级面积持续”改成“像素级 3 帧多数”只能把 FP 压到 17.5%，同时 recall 掉到 22.7%。下一步做深度补全 + 相机高度/平面在线估计，目标是 recall ≥75% 时 FP ≤10%，而不是继续加时间窗。
 - **Door**：域内已过线，跨域 46.8% 不过线。下一步用 DeepDoors2 或更多真实入口数据做域泛化，再谈接 EntranceProposal。
-- **上手机门槛**：Walking corridor ≥75% 且 false-safe 受控（当前 corridor 95%，false-safe 16.5%）；Obstacle recall ≥75–80% 且 False STOP ≤10%（当前 52.3% / 37.4%）；Door 域内 Recall ≥90%（已 95.7%，跨域未达）。三项未全部满足，不请求真机测试。
+- **上手机门槛**：Walking corridor ≥75% 且 false-safe 受控（当前 corridor 95%，false-safe 14.2–16.5%，未到 <10%）；Obstacle recall ≥75–80% 且 False STOP ≤10%（当前 52.3% / 37.4%）；Door 域内 Recall ≥90%（已 95.7%，跨域 58.4%）。三项未全部满足，不请求真机测试。
