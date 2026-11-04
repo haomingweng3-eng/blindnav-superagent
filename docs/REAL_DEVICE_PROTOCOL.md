@@ -75,7 +75,9 @@
   不构成过街许可；过街决定权始终在人。
 - `red` 与 `uncertain` 都按“等待/停下”处理；模型没看清、遮挡、逆光、距离过远一律 `uncertain`。
 - 红绿灯结论**不得**覆盖 `safety.py` 的状态：即使灯是 `green`，只要 `UNKNOWN/BLOCKED`，仍然 `STOP/OBSERVE`。
-- 当前 `pc` 链路**还没有**红绿灯模块；未接入前，设备端必须输出 `uncertain` 或保持静默，
+- 当前实现：`pc/blindnav_pc/traffic_light.py`（三态 + 连续帧确认，`auto_go` 恒为 false；ImVisible
+  `mode` 0=red、1/2=green、3/4=uncertain），冒烟 `pc/tools/traffic_light_demo.py`。
+  **尚未接入主 pipeline**；接入前设备端仍必须输出 `uncertain` 或保持静默，
   不得用任何启发式“看起来像绿灯”的提示代替。
 
 ## 6. ShadowWalk 虚拟走廊 stub 的定位
