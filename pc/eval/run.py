@@ -72,11 +72,25 @@ def _nanmean(v):
 
 def run_eval(session: SanpoSession, indices: Sequence[int], pipe: Pipeline, cfg: Config,
              seg_oracle: Optional[OracleSegmenter] = None, depth_oracle: Optional[OracleInverseDepth] = None,
-             gravity: str = "pose") -> Dict[str, object]:
+             gravity: str = "pose", oracle_height_m: Optional[float] = None,
+             save_failures: Optional[str] = None, ego_mode: str = "none",
+             step_length_m: float = 0.7) -> Dict[str, object]:
     """``gravity``: 'pose' = pose-derived IMU proxy (the honest system input); 'gtplane' = ORACLE gravity from the
-    GT ground plane (diagnostic: separates a gravity error from a depth/segmentation error)."""
+    GT ground plane (diagnostic: separates a gravity error from a depth/segmentation error).
+
+    The Oracle BEV is scored against GT geometry only: its up comes from the GT ground-plane normal and its
+    camera height from the fitted GT plane (``oracle_height_m``), never from the system's calibration.  Passing
+    the system's own (tilted) attitude into the Oracle would turn flat ground into phantom obstacles.
+    """
     planner = pipe.planner
     per, o_act, p_act = [], [], []
+    if save_failures:
+        os.makedirs(save_failures, exist_ok=True)
+    saved: Dict[str, int] = {}
+    oracle_h = float(oracle_height_m if oracle_height_m is not None else session.camera_height_m)
+    if ego_mode not in ("none", "heading", "full"):
+        raise ValueError(f"unknown ego_mode {ego_mode!r}")
+    step_times = session.step_times_ms(indices, step_length_m) if ego_mode == "full" else np.empty(0)
     for i in indices:
         inp, gt = session.inputs(i), session.gt(i)
         if seg_oracle is not None:
@@ -90,12 +104,23 @@ def run_eval(session: SanpoSession, indices: Sequence[int], pipe: Pipeline, cfg:
             g_src = "gravity"                                           # oracle plane: trust it
             if g is None:
                 g, g_src = inp.gravity_cam, "attitude"
-        res = pipe.process(inp.bgr, inp.t_ms, g, gravity_source=g_src)  # RGB + gravity proxy only
+        heading = inp.heading_rad if ego_mode in ("heading", "full") else None
+        steps_total = int(np.searchsorted(step_times, inp.t_ms, side="right")) if ego_mode == "full" else None
+        res = pipe.process(inp.bgr, inp.t_ms, g, heading_rad=heading, steps_total=steps_total,
+                           gravity_source=g_src)  # RGB + pose-derived gravity/heading/steps
         up = res.fit.up if res.fit.up is not None else up_from_gravity(g)
         row: Dict[str, object] = {"index": i, "ground_ok": bool(res.fit.ok), "confidence": float(res.fit.confidence),
-                                  "tracking_ok": inp.tracking_ok}
+                                  "tracking_ok": inp.tracking_ok, "command": res.command,
+                                  "safety_state": res.safety_state,
+                                  "safety_reasons": list(res.log.get("safety_reasons") or []),
+                                  "corridor_coverage": res.log.get("corridor_coverage"),
+                                  "ground_reason": res.fit.reason, "up_source": res.fit.up_source,
+                                  "attitude_visual_deg": _fin(res.fit.attitude_visual_deg)}
         blind = pipe._blind_distance(up, inp.bgr.shape)
-        ostates = oracle_states(gt.depth_m, gt.seg, session.K, up, session.camera_height_m, cfg)
+        oracle_up = session.gt_gravity(i, gt=gt)
+        if oracle_up is None:
+            oracle_up = up
+        ostates = oracle_states(gt.depth_m, gt.seg, session.K, oracle_up, oracle_h, cfg)
         oplan = planner.plan(ostates, blind_m=blind)
         o_act.append(plan_action(oplan, cfg))
         if res.depth_metric is not None and res.plan is not None:
@@ -108,6 +133,25 @@ def run_eval(session: SanpoSession, indices: Sequence[int], pipe: Pipeline, cfg:
         row["clearance_after_inflation_m"] = {
             "oracle": _fin(oplan.clearance_after_inflation_m),
             "pred": _fin(res.plan.clearance_after_inflation_m) if res.plan is not None else None}
+        if save_failures:
+            near = (row.get("bev") or {}).get("nearest_oracle_m")
+            kinds = []
+            if o_act[-1] != "FORWARD" and res.command == "FORWARD":
+                kinds.append("false_clear")
+            if o_act[-1] != "FORWARD" and p_act[-1] == "FORWARD":
+                kinds.append("planner_unsafe_forward")
+            if res.safety_state == "CLEAR" and near is not None and np.isfinite(near) and near <= 2.0:
+                kinds.append("hazard_clear")
+            if not res.fit.ok:
+                kinds.append("calib_fail")
+            if res.safety_state == "UNKNOWN" and "corridor_unseen" in (res.log.get("safety_reasons") or []):
+                kinds.append("corridor_unseen")
+            for kind in kinds:
+                if saved.get(kind, 0) >= 3:
+                    continue
+                saved[kind] = saved.get(kind, 0) + 1
+                _save_failure(os.path.join(save_failures, f"{kind}_{i:06d}.jpg"), inp.bgr, res, i,
+                              o_act[-1], row, cfg)
         per.append(row)
     ok = [r for r in per if "depth" in r]
     summary: Dict[str, object] = {
@@ -121,12 +165,61 @@ def run_eval(session: SanpoSession, indices: Sequence[int], pipe: Pipeline, cfg:
         "bev_nearest_miss_frames": int(sum(r["bev"]["nearest_miss"] for r in ok)),
         "bev_frames_with_corridor_obstacle_in_oracle": int(sum(np.isfinite(r["bev"]["nearest_oracle_m"]) for r in ok)),
         "actions": action_comparison(o_act, p_act),
+        "output": output_summary(per),
     }
     return {"summary": summary, "per_frame": per}
 
 
 def _fin(x):
-    return round(float(x), 3) if np.isfinite(x) else None
+    return round(float(x), 3) if x is not None and np.isfinite(x) else None
+
+
+def _save_failure(path: str, bgr, res, index: int, oracle_action: str, row: Dict[str, object], cfg: Config) -> None:
+    import cv2
+    from blindnav_pc import viz
+    near = (row.get("bev") or {}).get("nearest_oracle_m")
+    lines = [f"#{index} oracle={oracle_action} cmd={res.command} safety={res.safety_state}",
+             f"ground_ok={res.fit.ok} conf={res.fit.confidence:.2f} up={res.fit.up_source}",
+             f"oracle_nearest={near:.2f}m" if near is not None else "oracle_nearest=n/a"]
+    frame = viz.overlay_frame(bgr, res.mask, res.depth_metric, lines)
+    bev_img = viz.render_bev(res.states, cfg.bev.cell_m, cfg.bev.lateral_half_m, plan=res.plan)
+    cv2.imwrite(path, viz.compose(frame, bev_img))
+
+
+def output_summary(per: Sequence[Dict[str, object]]) -> Dict[str, object]:
+    """System-output-level safety metrics (final command / safety state, not the raw planner action).
+
+    * ``false_clear_action_rate``: of frames where the Oracle needs something other than FORWARD, the share
+      where the system still commands FORWARD (the dangerous miss);
+    * ``hazard_says_clear_rate``: of frames with an Oracle corridor obstacle within ``hazard_m``, the share
+      where the system reports safety_state=CLEAR;
+    * ``safe_coverage``: of Oracle-FORWARD frames, the share where the system reports CLEAR and allows motion;
+    * ``calib_fail_safe_rate``: of frames without a usable ground fit, the share that does not command motion.
+    """
+    from collections import Counter
+    n = len(per)
+    cmds = Counter(str(r.get("command")) for r in per)
+    states = Counter(str(r.get("safety_state")) for r in per)
+    need = [r for r in per if r.get("oracle_action") != "FORWARD"]
+    move = {"FORWARD", "LEFT", "RIGHT"}
+    hazard_m = 2.0
+    haz = [r for r in per if (r.get("bev") or {}).get("nearest_oracle_m") is not None
+           and np.isfinite(r["bev"]["nearest_oracle_m"]) and r["bev"]["nearest_oracle_m"] <= hazard_m]
+    fwd = [r for r in per if r.get("oracle_action") == "FORWARD"]
+    bad_cal = [r for r in per if not r.get("ground_ok")]
+    return {
+        "commands": dict(cmds), "safety_states": dict(states),
+        "unknown_share": float(states.get("UNKNOWN", 0) / n) if n else None,
+        "false_clear_action_rate": float(np.mean([r.get("command") == "FORWARD" for r in need])) if need else None,
+        "false_clear_action_n": len(need),
+        "hazard_m": hazard_m, "hazard_frames": len(haz),
+        "hazard_says_clear_rate": float(np.mean([r.get("safety_state") == "CLEAR" for r in haz])) if haz else None,
+        "safe_coverage": float(np.mean([r.get("safety_state") == "CLEAR" and r.get("command") in move
+                                        for r in fwd])) if fwd else None,
+        "safe_coverage_n": len(fwd),
+        "calib_fail_frames": len(bad_cal),
+        "calib_fail_safe_rate": float(np.mean([r.get("command") not in move for r in bad_cal])) if bad_cal else None,
+    }
 
 
 def ego_eval(session: SanpoSession, indices: Sequence[int], cfg: Config, step_length_m: float = 0.7) -> Dict[str, object]:
@@ -145,7 +238,7 @@ def format_report_zh(res: Dict[str, object], meta: Dict[str, object]) -> str:
     s = res["summary"]
     f = lambda x, p=3: "n/a" if x is None else f"{x:.{p}f}"
     L = [f"== 评测：{meta.get('session')}  相机={meta.get('camera')}  帧数={s['frames']}（地面标定成功 {s['frames_ground_ok']}）",
-         f"   被测来源：seg={meta.get('seg')} depth={meta.get('depth')} gravity={meta.get('gravity')} BEV深度={meta.get('bev_forward_m')}m；相机高度={meta.get('camera_height_m')} m",
+         f"   被测来源：seg={meta.get('seg')} depth={meta.get('depth')} gravity={meta.get('gravity')} ego={meta.get('ego', 'none')} BEV深度={meta.get('bev_forward_m')}m；相机高度={meta.get('camera_height_m')} m",
          f"深度(全范围)：AbsRel={f(s['depth_all']['absrel'])} RMSE={f(s['depth_all']['rmse'], 2)}m "
          f"delta1={f(s['depth_all']['delta1'])} 尺度比中位数={f(s['depth_all']['scale_ratio'])}",
          f"深度(0.3–5m 近场)：AbsRel={f(s['depth_near_0_5m']['absrel'])} RMSE={f(s['depth_near_0_5m']['rmse'], 2)}m "
@@ -158,6 +251,12 @@ def format_report_zh(res: Dict[str, object], meta: Dict[str, object]) -> str:
     a = s["actions"]
     L.append(f"规划动作 Oracle vs Pred：一致率={f(a['agreement'])} 危险前进率={f(a['unsafe_forward_rate'])} "
              f"误停率={f(a['false_stop_rate'])} 选错侧率={f(a['wrong_side_rate'])}")
+    o = s["output"]
+    L.append(f"系统输出：指令={o['commands']} 安全态={o['safety_states']} UNKNOWN占比={f(o['unknown_share'])} "
+             f"SAFE覆盖={f(o['safe_coverage'])}（n={o['safe_coverage_n']}）")
+    L.append(f"输出级危险漏报：Oracle需动作帧 n={o['false_clear_action_n']} 仍 FORWARD={f(o['false_clear_action_rate'])}；"
+             f"Oracle {o['hazard_m']:.0f}m 内走廊障碍帧 n={o['hazard_frames']} 仍判 CLEAR={f(o['hazard_says_clear_rate'])}")
+    L.append(f"标定失败：{o['calib_fail_frames']} 帧，其中未指令移动={f(o['calib_fail_safe_rate'])}")
     if "ego" in res:
         for r in res["ego"]["pdr"]:
             L.append(f"自运动 PDR [{r['mode']}, 陀螺偏置 {r['gyro_bias_deg_per_s']}°/s]：路径 {r['path_len_m']:.1f}m，"
@@ -199,7 +298,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--height", type=float, help="camera height (m); default per camera type")
     ap.add_argument("--max-width", type=int, default=640)
     ap.add_argument("--step-length", type=float, default=0.7)
+    ap.add_argument("--ego", default="none", choices=["none", "heading", "full"],
+                    help="IMU proxy fed to the system: none | heading | full (heading + pose-synthesised steps)")
     ap.add_argument("--no-ego", action="store_true")
+    ap.add_argument("--save-failures", action="store_true", help="save up to 3 overlay images per failure kind")
     ap.add_argument("--out", default="out/eval")
     a = ap.parse_args(argv)
     if a.fixture:
@@ -218,11 +320,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     cfg = Config()
     cfg.bev.forward_m = a.bev_forward
     pipe, seg_o, dep_o = build_pipeline(session, a.seg, a.depth, cfg)
-    res = run_eval(session, idx, pipe, cfg, seg_o, dep_o, a.gravity)
-    res["gravity_check"] = session.gravity_check(idx[:: max(1, len(idx) // 6)])
+    chk = session.gravity_check(idx[:: max(1, len(idx) // 6)])
+    res = run_eval(session, idx, pipe, cfg, seg_o, dep_o, a.gravity,
+                   oracle_height_m=chk.get("gt_camera_height_m"),
+                   save_failures=os.path.join(a.out, "failures") if a.save_failures else None,
+                   ego_mode=a.ego, step_length_m=a.step_length)
+    res["gravity_check"] = chk
     if not a.no_ego:
         res["ego"] = ego_eval(session, idx, cfg, a.step_length)
-    meta = {"session": os.path.basename(a.session.rstrip("/")), "camera": session.camera, "seg": a.seg, "depth": a.depth, "gravity": a.gravity, "bev_forward_m": a.bev_forward,
+    meta = {"session": os.path.basename(a.session.rstrip("/")), "camera": session.camera, "seg": a.seg, "depth": a.depth, "gravity": a.gravity, "ego": a.ego, "bev_forward_m": a.bev_forward,
             "camera_height_m": session.camera_height_m, "frames": idx, "pose_file": os.path.basename(session.pose_file),
             "kind": session.kind}
     res["meta"] = meta

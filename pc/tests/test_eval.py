@@ -66,6 +66,21 @@ def test_action_comparison():
     assert a["wrong_side_rate"] == 1.0                          # RIGHT vs LEFT
 
 
+def test_output_summary_metrics():
+    per = [
+        {"oracle_action": "FORWARD", "command": "FORWARD", "safety_state": "CLEAR", "ground_ok": True,
+         "bev": {"nearest_oracle_m": 1.5}},
+        {"oracle_action": "STOP", "command": "FORWARD", "safety_state": "CLEAR", "ground_ok": False,
+         "bev": {"nearest_oracle_m": 0.8}},
+    ]
+    o = erun.output_summary(per)
+    assert o["unknown_share"] == 0.0
+    assert o["false_clear_action_rate"] == 1.0 and o["false_clear_action_n"] == 1
+    assert o["hazard_says_clear_rate"] == 1.0 and o["hazard_frames"] == 2
+    assert o["safe_coverage"] == 1.0 and o["safe_coverage_n"] == 1
+    assert o["calib_fail_frames"] == 1 and o["calib_fail_safe_rate"] == 0.0
+
+
 def test_fixture_session_conventions(session):
     assert session.available_frames() == list(range(10)) and session.has_gt
     inp, gt = session.inputs(2), session.gt(2)

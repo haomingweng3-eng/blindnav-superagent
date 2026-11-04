@@ -243,6 +243,8 @@ def _plane_ransac(P: np.ndarray, tol: np.ndarray, iters: int, min_inliers: int,
         return None
     inl = np.abs((P - P.mean(0)) @ best_n) <= tol
     for _ in range(3):
+        if int(inl.sum()) < 3:                      # mean-centred plane can reject all sampled points
+            return best_n, int(best_cnt)
         c = P[inl].mean(0)
         _, _, vh = np.linalg.svd(P[inl] - c, full_matrices=False)
         nrm = vh[-1]

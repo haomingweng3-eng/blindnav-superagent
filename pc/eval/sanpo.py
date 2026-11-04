@@ -167,14 +167,16 @@ class SanpoSession:
             acc += seg
         return np.array(out)
 
-    def gt_gravity(self, i: int, max_depth_m: float = 12.0, stride: int = 6) -> Optional[np.ndarray]:
+    def gt_gravity(self, i: int, max_depth_m: float = 12.0, stride: int = 6,
+                   gt: Optional[SanpoGT] = None) -> Optional[np.ndarray]:
         """ORACLE gravity (unit, pointing down, camera frame) from a plane fitted to GT depth on GT walkable pixels,
         plus the plane height as second return of ``_gt_plane``.  Diagnostic only - never a system input."""
-        r = self._gt_plane(i, max_depth_m, stride)
+        r = self._gt_plane(i, max_depth_m, stride, gt=gt)
         return None if r is None else -r[0]
 
-    def _gt_plane(self, i: int, max_depth_m: float = 12.0, stride: int = 6):
-        gt = self.gt(i)
+    def _gt_plane(self, i: int, max_depth_m: float = 12.0, stride: int = 6,
+                  gt: Optional[SanpoGT] = None):
+        gt = self.gt(i) if gt is None else gt
         sel = np.isin(gt.seg, WALKABLE_IDS) & (gt.depth_m > 0.5) & (gt.depth_m < max_depth_m)
         ys, xs = np.nonzero(sel)
         ys, xs = ys[::stride], xs[::stride]

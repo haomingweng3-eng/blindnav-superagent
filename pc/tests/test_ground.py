@@ -161,6 +161,13 @@ def test_calibrator_falls_back_to_visual_plane_for_wrong_attitude():
     assert f.a == pytest.approx(A_TRUE, rel=0.05) and f.b == pytest.approx(B_TRUE, abs=0.05)
 
 
+def test_plane_ransac_survives_empty_inlier_refit():
+    from blindnav_pc.ground import _plane_ransac
+    P = np.array([[0.0, 0.0, 0.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 10.0]])
+    n, cnt = _plane_ransac(P, np.zeros(len(P)), iters=100, min_inliers=3, seed=0)
+    assert cnt >= 3 and np.isfinite(n).all()
+
+
 def test_confidence_negatively_correlated_with_absrel_on_noise_sweep():
     cfg = GroundConfig(camera_height_m=CAM_H)
     confs, errs = [], []
