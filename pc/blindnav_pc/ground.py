@@ -55,6 +55,12 @@ def flat_ground_depth(rays: np.ndarray, up: np.ndarray, h: float, eps: float = 0
     return z
 
 
+def flat_ground_depth_map(K: np.ndarray, width: int, height: int, up: np.ndarray,
+                          h: float) -> np.ndarray:
+    """Full-image z-depth of a flat ground plane (mask-only inputs, no depth network)."""
+    return flat_ground_depth(pixel_rays(K, width, height), up, h).astype(np.float32)
+
+
 def metric_depth(q: np.ndarray, a: float, b: float, max_depth: float = 15.0, eps: float = 1e-4) -> np.ndarray:
     """D = 1 / (a*q + b); NaN where a*q + b <= eps (beyond infinity / invalid) or D > max_depth."""
     den = a * q.astype(np.float64) + b

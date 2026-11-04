@@ -34,6 +34,28 @@ class ConstantSegmenter(Segmenter):
         return m
 
 
+class PrecomputedMaskSegmenter(Segmenter):
+    """Return a stored mask (GT label or cached offline-model output) through the Segmenter interface."""
+
+    def __init__(self, mask: np.ndarray):
+        self.mask = (np.asarray(mask) > 0).astype(np.uint8)
+
+    def predict(self, frame_bgr: np.ndarray) -> np.ndarray:
+        if self.mask.shape[:2] != frame_bgr.shape[:2]:
+            raise ValueError(f"precomputed mask {self.mask.shape[:2]} does not match frame "
+                             f"{frame_bgr.shape[:2]}")
+        return self.mask
+
+
+def label_map_to_walkable(label_rgb: np.ndarray, background_rgb=(0, 0, 0)) -> np.ndarray:
+    """uint8 walkable mask from a colour-coded label map: every non-background class is walkable."""
+    labels = np.asarray(label_rgb)
+    if labels.ndim == 2:
+        return (labels != int(np.asarray(background_rgb).reshape(-1)[0])).astype(np.uint8)
+    background = np.asarray(background_rgb)
+    return np.any(labels != background, axis=-1).astype(np.uint8)
+
+
 def match_label_ids(id2label: dict, names: Sequence[str]) -> list:
     """Label ids whose comma-separated synonyms (e.g. 'floor, flooring') contain one of ``names``."""
     wanted = {n.strip().lower() for n in names}
