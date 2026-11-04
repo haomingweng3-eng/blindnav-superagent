@@ -65,6 +65,34 @@ python -m blindnav_pc metrics out/run1/log.jsonl --labels labels.csv
 .venv/bin/python -m pytest tests/test_shadowwalk.py -q
 ```
 
+真实分割 mask（Blind-road GT label）离线冒烟：无深度网络时用平地面几何生成米制深度，外部位姿默认合成；
+逐帧打印 `STRAIGHT/LEFT/RIGHT/STOP/UNKNOWN`，可接 `--pose-csv`：
+
+```bash
+.venv/bin/python tools/shadowwalk_real_eval.py --limit 6
+.venv/bin/python -m pytest tests/test_shadowwalk_real.py -q
+```
+
+### 红绿灯 3 态 stub（`traffic_light.py`）
+输出域只有 `green / red / uncertain`；连续 `min_confirm_frames` 帧一致才确认，单帧/低置信/倒计时空白一律
+`uncertain`。**`auto_go` 恒为 false**：绿灯也只提示“由您决定”，不构成过街许可。
+
+```bash
+.venv/bin/python tools/traffic_light_demo.py --limit 12
+.venv/bin/python -m pytest tests/test_traffic_light.py -q
+```
+
+ImVisible 标签映射：`mode` 0=red、1/2=green、3/4=uncertain。
+
+### Last10m 门候选 stub（`last10m.py`）
+解析 Entrances YOLO 标签（`class cx cy w h`），按框底与平地面估计距离，只保留 10 m 内候选并按距离排序，
+**最多选 3 个**；无候选/低置信/超距/截断处难分先后时直接拒答。不做接近控制。
+
+```bash
+.venv/bin/python tools/last10m_demo.py --limit 15
+.venv/bin/python -m pytest tests/test_last10m.py -q
+```
+
 边界与真机门槛见 `../docs/REAL_DEVICE_PROTOCOL.md`：受控 demo，不是独立安全导航。
 
 ### 输入文件格式

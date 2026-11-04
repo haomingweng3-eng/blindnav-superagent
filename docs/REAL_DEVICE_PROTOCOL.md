@@ -96,8 +96,16 @@
 ```bash
 cd pc
 .venv/bin/python tools/shadowwalk_demo.py --corridor straight60 --frames 12 --drift 0.9
-.venv/bin/python -m pytest tests/test_shadowwalk.py -q
+.venv/bin/python tools/shadowwalk_real_eval.py --limit 6   # 真实 Blind-road mask + 平地面深度
+.venv/bin/python -m pytest tests/test_shadowwalk.py tests/test_shadowwalk_real.py -q
 ```
+
+### 6.1 Last10m 门候选 stub
+
+- 实现：`pc/blindnav_pc/last10m.py`，冒烟入口 `pc/tools/last10m_demo.py`。
+- 输入：Entrances YOLO 框（归一化 `class cx cy w h`）+ 相机内参/重力/高度；框底按平地面反投影估计距离。
+- 输出：10 m 内候选计数与最多 3 个候选；无候选、低置信、全部超距、或截断处距离/面积难分先后时**拒答**。
+- 明确边界：只做候选提议，不规划接近路径、不控制、不宣称门可通行；拒答时不得用旧候选延续。
 
 ## 7. 当前诚实状态（2026-11-04）
 
