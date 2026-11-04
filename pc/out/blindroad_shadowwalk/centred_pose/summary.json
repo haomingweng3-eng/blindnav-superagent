@@ -1,0 +1,176 @@
+{
+  "inputs": {
+    "dataset": "/Users/mima0000/blindnav-app/pc/data/eval/blind_road_crosswalk/extracted/Blind road and crosswalk dataset",
+    "splits": [
+      "test",
+      "train",
+      "val"
+    ],
+    "frames": 200,
+    "frames_by_split": {
+      "train": 150,
+      "val": 25,
+      "test": 25
+    },
+    "corridor": "straight60",
+    "corridor_length_m": 60.0,
+    "corridor_width_m": 2.5,
+    "offsets_m": "0",
+    "pose_source": "synthetic",
+    "start_s": 2.0,
+    "step_m": 0.5,
+    "yaw_error_deg": 0.0,
+    "camera_height_m": 1.2,
+    "pitch_deg": 15.0,
+    "fov_deg": 70.0,
+    "mask_ok_frac": 0.3
+  },
+  "commands": {
+    "overall": {
+      "frames": 200,
+      "counts": {
+        "STRAIGHT": 87,
+        "LEFT": 36,
+        "RIGHT": 61,
+        "STOP": 0,
+        "UNKNOWN": 16
+      },
+      "percent": {
+        "STRAIGHT": 43.5,
+        "LEFT": 18.0,
+        "RIGHT": 30.5,
+        "STOP": 0.0,
+        "UNKNOWN": 8.0
+      }
+    },
+    "by_split": {
+      "test": {
+        "frames": 25,
+        "counts": {
+          "STRAIGHT": 10,
+          "LEFT": 5,
+          "RIGHT": 8,
+          "STOP": 0,
+          "UNKNOWN": 2
+        },
+        "percent": {
+          "STRAIGHT": 40.0,
+          "LEFT": 20.0,
+          "RIGHT": 32.0,
+          "STOP": 0.0,
+          "UNKNOWN": 8.0
+        }
+      },
+      "train": {
+        "frames": 150,
+        "counts": {
+          "STRAIGHT": 65,
+          "LEFT": 26,
+          "RIGHT": 47,
+          "STOP": 0,
+          "UNKNOWN": 12
+        },
+        "percent": {
+          "STRAIGHT": 43.333333333333336,
+          "LEFT": 17.333333333333332,
+          "RIGHT": 31.333333333333332,
+          "STOP": 0.0,
+          "UNKNOWN": 8.0
+        }
+      },
+      "val": {
+        "frames": 25,
+        "counts": {
+          "STRAIGHT": 12,
+          "LEFT": 5,
+          "RIGHT": 6,
+          "STOP": 0,
+          "UNKNOWN": 2
+        },
+        "percent": {
+          "STRAIGHT": 48.0,
+          "LEFT": 20.0,
+          "RIGHT": 24.0,
+          "STOP": 0.0,
+          "UNKNOWN": 8.0
+        }
+      }
+    }
+  },
+  "failures": {
+    "stop_on_open_walkable": 0,
+    "unknown_when_mask_ok": 1,
+    "spurious_turn": 0,
+    "intended_off_corridor_stop": 0,
+    "yaw_stop": 0,
+    "stop_reasons": {},
+    "unknown_reasons": {
+      "corridor_unseen": 11,
+      "walkable_unseen": 5
+    },
+    "oscillation": {
+      "adjacent_pairs": 197,
+      "consecutive_id_pairs": 113,
+      "consecutive_id_pairs_by_split": {
+        "train": 112,
+        "val": 1
+      },
+      "all_left_right_flips": 13,
+      "left_right_flips_on_consecutive_ids": 3,
+      "stable_pose_oscillation_failures": 3,
+      "stable_pose_oscillation_rate": 0.02654867256637168,
+      "note": "val/test ids are not temporally contiguous (only train has a meaningful share of id_gap==1 pairs), so oscillation is reported per split and only gap==1 pairs count"
+    },
+    "criteria": {
+      "stop_on_open_walkable": "STOP and pose inside corridor (|offset|<=stop threshold, |yaw|<=max) and raw walkable ROI fraction >= mask-ok threshold",
+      "unknown_when_mask_ok": "UNKNOWN and raw walkable ROI fraction >= mask-ok threshold",
+      "spurious_turn": "LEFT/RIGHT with walker offset, visible band offset and yaw error all inside deadbands",
+      "left_right_oscillation": "consecutive-id pair flips LEFT<->RIGHT with |delta offset|<=0.2 m and |delta yaw|<=2 deg",
+      "mask_ok": "walkable-pixel fraction in rows 50-100%, cols 20-80% >= 0.3"
+    }
+  },
+  "mask_ok_sensitivity": [
+    {
+      "mask_ok_frac": 0.15,
+      "mask_ok_frames": 151,
+      "unknown_when_mask_ok": 3,
+      "stop_on_open_walkable": 0
+    },
+    {
+      "mask_ok_frac": 0.2,
+      "mask_ok_frames": 131,
+      "unknown_when_mask_ok": 1,
+      "stop_on_open_walkable": 0
+    },
+    {
+      "mask_ok_frac": 0.25,
+      "mask_ok_frames": 111,
+      "unknown_when_mask_ok": 1,
+      "stop_on_open_walkable": 0
+    },
+    {
+      "mask_ok_frac": 0.3,
+      "mask_ok_frames": 90,
+      "unknown_when_mask_ok": 1,
+      "stop_on_open_walkable": 0
+    },
+    {
+      "mask_ok_frac": 0.35,
+      "mask_ok_frames": 62,
+      "unknown_when_mask_ok": 1,
+      "stop_on_open_walkable": 0
+    },
+    {
+      "mask_ok_frac": 0.4,
+      "mask_ok_frames": 35,
+      "unknown_when_mask_ok": 1,
+      "stop_on_open_walkable": 0
+    }
+  ],
+  "notes": [
+    "Depth is a flat-ground plane, not a depth network; pose is synthetic unless --pose-csv is given",
+    "The blind-road images are not a certified continuous trajectory; train ids are mostly contiguous, val/test are not",
+    "UNKNOWN is deliberately conservative; a frame can have walkable pixels outside the predefined corridor band",
+    "The stub never emits a 'go' instruction"
+  ]
+}

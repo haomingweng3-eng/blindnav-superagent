@@ -1,0 +1,10 @@
+gt_state,predicted,count
+green,green,739
+green,red,0
+green,uncertain,0
+red,green,0
+red,red,461
+red,uncertain,0
+uncertain,green,0
+uncertain,red,0
+uncertain,uncertain,403

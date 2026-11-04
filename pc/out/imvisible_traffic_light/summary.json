@@ -1,0 +1,533 @@
+{
+  "inputs": {
+    "splits": [
+      "testing",
+      "validation"
+    ],
+    "rows": 1603,
+    "rows_by_split": {
+      "testing": 739,
+      "validation": 864
+    },
+    "label_files": [
+      "/Users/mima0000/blindnav-app/pc/data/eval/imvisible/validation_file.csv",
+      "/Users/mima0000/blindnav-app/pc/data/eval/imvisible/testing_file.csv"
+    ],
+    "images_root": "/Users/mima0000/blindnav-app/pc/data/eval/imvisible/extracted/PTL_Dataset_876x657",
+    "images_present": 1603,
+    "images_missing": 0
+  },
+  "sequences": {
+    "count": 9,
+    "length_histogram": {
+      "2": 1,
+      "70": 1,
+      "79": 1,
+      "163": 1,
+      "187": 1,
+      "231": 1,
+      "273": 1,
+      "275": 1,
+      "323": 1
+    },
+    "note": "grouped by split + filename series and sorted by the first numeric image id; ImVisible CSVs do not certify contiguous video order, so filter numbers are an order-proxy stress test, not deployment accuracy"
+  },
+  "label_mapping": {
+    "states": [
+      "green",
+      "red",
+      "uncertain"
+    ],
+    "mode_to_state": {
+      "0": "red",
+      "1": "green",
+      "2": "green",
+      "3": "uncertain",
+      "4": "uncertain"
+    },
+    "mode_counts": {
+      "0": 461,
+      "1": 424,
+      "2": 315,
+      "3": 283,
+      "4": 120
+    },
+    "mode_state_confusion": {
+      "0": {
+        "green": 0,
+        "red": 461,
+        "uncertain": 0
+      },
+      "1": {
+        "green": 424,
+        "red": 0,
+        "uncertain": 0
+      },
+      "2": {
+        "green": 315,
+        "red": 0,
+        "uncertain": 0
+      },
+      "3": {
+        "green": 0,
+        "red": 0,
+        "uncertain": 283
+      },
+      "4": {
+        "green": 0,
+        "red": 0,
+        "uncertain": 120
+      }
+    },
+    "accuracy": 1.0,
+    "confusion": {
+      "green": {
+        "green": 739,
+        "red": 0,
+        "uncertain": 0
+      },
+      "red": {
+        "green": 0,
+        "red": 461,
+        "uncertain": 0
+      },
+      "uncertain": {
+        "green": 0,
+        "red": 0,
+        "uncertain": 403
+      }
+    }
+  },
+  "filtered": {
+    "min_confirm": 3,
+    "min_confidence": 0.6,
+    "frames": 1603,
+    "accuracy": 0.38116032439176545,
+    "confusion": {
+      "green": {
+        "green": 164,
+        "red": 0,
+        "uncertain": 575
+      },
+      "red": {
+        "green": 0,
+        "red": 44,
+        "uncertain": 417
+      },
+      "uncertain": {
+        "green": 0,
+        "red": 0,
+        "uncertain": 403
+      }
+    },
+    "per_class": {
+      "green": {
+        "support": 739,
+        "predicted": 164,
+        "true_positive": 164,
+        "precision": 1.0,
+        "recall": 0.2219215155615697,
+        "f1": 0.36323366555924697
+      },
+      "red": {
+        "support": 461,
+        "predicted": 44,
+        "true_positive": 44,
+        "precision": 1.0,
+        "recall": 0.09544468546637744,
+        "f1": 0.17425742574257425
+      },
+      "uncertain": {
+        "support": 403,
+        "predicted": 1395,
+        "true_positive": 403,
+        "precision": 0.28888888888888886,
+        "recall": 1.0,
+        "f1": 0.4482758620689655
+      }
+    },
+    "unsafe_green": 0,
+    "conservative_abstention": 992,
+    "abstention_rate": 0.6188396756082346,
+    "stable_rate": 0.12975670617592014
+  },
+  "filtered_by_split": {
+    "testing": {
+      "min_confirm": 3,
+      "min_confidence": 0.6,
+      "frames": 739,
+      "accuracy": 0.38565629228687415,
+      "confusion": {
+        "green": {
+          "green": 73,
+          "red": 0,
+          "uncertain": 256
+        },
+        "red": {
+          "green": 0,
+          "red": 28,
+          "uncertain": 198
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 184
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 329,
+          "predicted": 73,
+          "true_positive": 73,
+          "precision": 1.0,
+          "recall": 0.22188449848024316,
+          "f1": 0.36318407960199006
+        },
+        "red": {
+          "support": 226,
+          "predicted": 28,
+          "true_positive": 28,
+          "precision": 1.0,
+          "recall": 0.12389380530973451,
+          "f1": 0.2204724409448819
+        },
+        "uncertain": {
+          "support": 184,
+          "predicted": 638,
+          "true_positive": 184,
+          "precision": 0.2884012539184953,
+          "recall": 1.0,
+          "f1": 0.44768856447688565
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 454,
+      "abstention_rate": 0.6143437077131259,
+      "stable_rate": 0.13667117726657646
+    },
+    "validation": {
+      "min_confirm": 3,
+      "min_confidence": 0.6,
+      "frames": 864,
+      "accuracy": 0.3773148148148148,
+      "confusion": {
+        "green": {
+          "green": 91,
+          "red": 0,
+          "uncertain": 319
+        },
+        "red": {
+          "green": 0,
+          "red": 16,
+          "uncertain": 219
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 219
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 410,
+          "predicted": 91,
+          "true_positive": 91,
+          "precision": 1.0,
+          "recall": 0.22195121951219512,
+          "f1": 0.36327345309381237
+        },
+        "red": {
+          "support": 235,
+          "predicted": 16,
+          "true_positive": 16,
+          "precision": 1.0,
+          "recall": 0.06808510638297872,
+          "f1": 0.12749003984063745
+        },
+        "uncertain": {
+          "support": 219,
+          "predicted": 757,
+          "true_positive": 219,
+          "precision": 0.2892998678996037,
+          "recall": 1.0,
+          "f1": 0.4487704918032787
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 538,
+      "abstention_rate": 0.6226851851851852,
+      "stable_rate": 0.12384259259259259
+    }
+  },
+  "confirmation_sweep": [
+    {
+      "min_confirm": 1,
+      "min_confidence": 0.6,
+      "frames": 1603,
+      "accuracy": 1.0,
+      "confusion": {
+        "green": {
+          "green": 739,
+          "red": 0,
+          "uncertain": 0
+        },
+        "red": {
+          "green": 0,
+          "red": 461,
+          "uncertain": 0
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 403
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 739,
+          "predicted": 739,
+          "true_positive": 739,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "red": {
+          "support": 461,
+          "predicted": 461,
+          "true_positive": 461,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "uncertain": {
+          "support": 403,
+          "predicted": 403,
+          "true_positive": 403,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 0,
+      "abstention_rate": 0.0,
+      "stable_rate": 0.7485963817841547
+    },
+    {
+      "min_confirm": 2,
+      "min_confidence": 0.6,
+      "frames": 1603,
+      "accuracy": 0.5577043044291953,
+      "confusion": {
+        "green": {
+          "green": 341,
+          "red": 0,
+          "uncertain": 398
+        },
+        "red": {
+          "green": 0,
+          "red": 150,
+          "uncertain": 311
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 403
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 739,
+          "predicted": 341,
+          "true_positive": 341,
+          "precision": 1.0,
+          "recall": 0.4614343707713126,
+          "f1": 0.6314814814814815
+        },
+        "red": {
+          "support": 461,
+          "predicted": 150,
+          "true_positive": 150,
+          "precision": 1.0,
+          "recall": 0.32537960954446854,
+          "f1": 0.4909983633387889
+        },
+        "uncertain": {
+          "support": 403,
+          "predicted": 1112,
+          "true_positive": 403,
+          "precision": 0.36241007194244607,
+          "recall": 1.0,
+          "f1": 0.532013201320132
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 709,
+      "abstention_rate": 0.4422956955708047,
+      "stable_rate": 0.30630068621335
+    },
+    {
+      "min_confirm": 3,
+      "min_confidence": 0.6,
+      "frames": 1603,
+      "accuracy": 0.38116032439176545,
+      "confusion": {
+        "green": {
+          "green": 164,
+          "red": 0,
+          "uncertain": 575
+        },
+        "red": {
+          "green": 0,
+          "red": 44,
+          "uncertain": 417
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 403
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 739,
+          "predicted": 164,
+          "true_positive": 164,
+          "precision": 1.0,
+          "recall": 0.2219215155615697,
+          "f1": 0.36323366555924697
+        },
+        "red": {
+          "support": 461,
+          "predicted": 44,
+          "true_positive": 44,
+          "precision": 1.0,
+          "recall": 0.09544468546637744,
+          "f1": 0.17425742574257425
+        },
+        "uncertain": {
+          "support": 403,
+          "predicted": 1395,
+          "true_positive": 403,
+          "precision": 0.28888888888888886,
+          "recall": 1.0,
+          "f1": 0.4482758620689655
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 992,
+      "abstention_rate": 0.6188396756082346,
+      "stable_rate": 0.12975670617592014
+    },
+    {
+      "min_confirm": 4,
+      "min_confidence": 0.6,
+      "frames": 1603,
+      "accuracy": 0.3087960074859638,
+      "confusion": {
+        "green": {
+          "green": 74,
+          "red": 0,
+          "uncertain": 665
+        },
+        "red": {
+          "green": 0,
+          "red": 18,
+          "uncertain": 443
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 403
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 739,
+          "predicted": 74,
+          "true_positive": 74,
+          "precision": 1.0,
+          "recall": 0.10013531799729364,
+          "f1": 0.18204182041820416
+        },
+        "red": {
+          "support": 461,
+          "predicted": 18,
+          "true_positive": 18,
+          "precision": 1.0,
+          "recall": 0.039045553145336226,
+          "f1": 0.07515657620041753
+        },
+        "uncertain": {
+          "support": 403,
+          "predicted": 1511,
+          "true_positive": 403,
+          "precision": 0.26671078755790867,
+          "recall": 1.0,
+          "f1": 0.4211076280041797
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 1108,
+      "abstention_rate": 0.6912039925140362,
+      "stable_rate": 0.05739238927011853
+    },
+    {
+      "min_confirm": 5,
+      "min_confidence": 0.6,
+      "frames": 1603,
+      "accuracy": 0.2757330006238303,
+      "confusion": {
+        "green": {
+          "green": 30,
+          "red": 0,
+          "uncertain": 709
+        },
+        "red": {
+          "green": 0,
+          "red": 9,
+          "uncertain": 452
+        },
+        "uncertain": {
+          "green": 0,
+          "red": 0,
+          "uncertain": 403
+        }
+      },
+      "per_class": {
+        "green": {
+          "support": 739,
+          "predicted": 30,
+          "true_positive": 30,
+          "precision": 1.0,
+          "recall": 0.04059539918809202,
+          "f1": 0.07802340702210663
+        },
+        "red": {
+          "support": 461,
+          "predicted": 9,
+          "true_positive": 9,
+          "precision": 1.0,
+          "recall": 0.019522776572668113,
+          "f1": 0.03829787234042553
+        },
+        "uncertain": {
+          "support": 403,
+          "predicted": 1564,
+          "true_positive": 403,
+          "precision": 0.25767263427109977,
+          "recall": 1.0,
+          "f1": 0.4097610574478902
+        }
+      },
+      "unsafe_green": 0,
+      "conservative_abstention": 1161,
+      "abstention_rate": 0.7242669993761697,
+      "stable_rate": 0.024329382407985028
+    }
+  ],
+  "invariants": {
+    "auto_go": false,
+    "green_requires_user_confirmation": true
+  }
+}

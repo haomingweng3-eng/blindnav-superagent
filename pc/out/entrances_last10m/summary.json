@@ -1,0 +1,408 @@
+{
+  "inputs": {
+    "dataset": "/Users/mima0000/blindnav-app/pc/data/eval/entrances/extracted/final_dataset",
+    "splits": [
+      "test",
+      "train",
+      "val"
+    ],
+    "max_range_m": 10.0,
+    "min_confidence": 0.5,
+    "camera_height_m": 1.2,
+    "pitch_deg": 15.0,
+    "fov_deg": 70.0,
+    "require_distance": true
+  },
+  "metrics": {
+    "frames": 854,
+    "frames_with_gt": 847,
+    "frames_with_in_range_gt": 846,
+    "empty_label_frames": 7,
+    "frames_proposed": 845,
+    "frame_recall_all_gt": 0.9976387249114522,
+    "frame_recall_in_range_gt": 0.9988179669030733,
+    "frame_recall_all_gt_counts": [
+      845,
+      847
+    ],
+    "frame_recall_in_range_gt_counts": [
+      845,
+      846
+    ],
+    "boxes": 922,
+    "boxes_in_range": 920,
+    "boxes_unknown_range": 0,
+    "box_recall_all": 0.9934924078091106,
+    "box_recall_in_range": 0.9956521739130435,
+    "box_recall_all_counts": [
+      916,
+      922
+    ],
+    "box_recall_in_range_counts": [
+      916,
+      920
+    ],
+    "refused_frames": 9,
+    "refuse_rate": 0.01053864168618267,
+    "refuse_rate_with_gt": 0.0023612750885478157,
+    "refuse_rate_with_in_range_gt": 0.001182033096926714,
+    "false_proposals_on_empty": 0,
+    "refusal_reasons": {
+      "ok": 0,
+      "no_candidate": 7,
+      "low_confidence": 0,
+      "distance_unknown": 0,
+      "out_of_range": 1,
+      "ambiguous": 1
+    },
+    "all_reasons": {
+      "ok": 845,
+      "no_candidate": 7,
+      "low_confidence": 0,
+      "distance_unknown": 0,
+      "out_of_range": 1,
+      "ambiguous": 1
+    },
+    "proposed_count_distribution": {
+      "0": 9,
+      "1": 778,
+      "2": 63,
+      "3": 4
+    },
+    "eligible_count_distribution": {
+      "0": 8,
+      "1": 778,
+      "2": 63,
+      "3": 4,
+      "4": 1
+    },
+    "range_percentiles_m": {
+      "5": 2.634,
+      "25": 3.211,
+      "50": 3.81,
+      "75": 4.057,
+      "95": 4.476
+    },
+    "in_range_range_percentiles_m": {
+      "5": 2.634,
+      "25": 3.208,
+      "50": 3.802,
+      "75": 4.057,
+      "95": 4.476
+    }
+  },
+  "range_sweep": [
+    {
+      "max_range_m": 5.0,
+      "frame_recall_in_range_gt": 0.9988095238095238,
+      "frame_recall_in_range_gt_counts": [
+        839,
+        840
+      ],
+      "box_recall_in_range": 0.9956236323851203,
+      "refuse_rate": 0.01756440281030445,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 7,
+        "ambiguous": 1
+      }
+    },
+    {
+      "max_range_m": 10.0,
+      "frame_recall_in_range_gt": 0.9988179669030733,
+      "frame_recall_in_range_gt_counts": [
+        845,
+        846
+      ],
+      "box_recall_in_range": 0.9956521739130435,
+      "refuse_rate": 0.01053864168618267,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 1,
+        "ambiguous": 1
+      }
+    },
+    {
+      "max_range_m": 15.0,
+      "frame_recall_in_range_gt": 0.9988193624557261,
+      "frame_recall_in_range_gt_counts": [
+        846,
+        847
+      ],
+      "box_recall_in_range": 0.995656894679696,
+      "refuse_rate": 0.00936768149882904,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 1
+      }
+    },
+    {
+      "max_range_m": 20.0,
+      "frame_recall_in_range_gt": 0.9988193624557261,
+      "frame_recall_in_range_gt_counts": [
+        846,
+        847
+      ],
+      "box_recall_in_range": 0.9956616052060737,
+      "refuse_rate": 0.00936768149882904,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 1
+      }
+    }
+  ],
+  "by_split": {
+    "test": {
+      "frames": 30,
+      "frames_with_gt": 30,
+      "frames_with_in_range_gt": 30,
+      "empty_label_frames": 0,
+      "frames_proposed": 30,
+      "frame_recall_all_gt": 1.0,
+      "frame_recall_in_range_gt": 1.0,
+      "frame_recall_all_gt_counts": [
+        30,
+        30
+      ],
+      "frame_recall_in_range_gt_counts": [
+        30,
+        30
+      ],
+      "boxes": 31,
+      "boxes_in_range": 31,
+      "boxes_unknown_range": 0,
+      "box_recall_all": 1.0,
+      "box_recall_in_range": 1.0,
+      "box_recall_all_counts": [
+        31,
+        31
+      ],
+      "box_recall_in_range_counts": [
+        31,
+        31
+      ],
+      "refused_frames": 0,
+      "refuse_rate": 0.0,
+      "refuse_rate_with_gt": 0.0,
+      "refuse_rate_with_in_range_gt": 0.0,
+      "false_proposals_on_empty": 0,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 0,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 0
+      },
+      "all_reasons": {
+        "ok": 30,
+        "no_candidate": 0,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 0
+      },
+      "proposed_count_distribution": {
+        "0": 0,
+        "1": 29,
+        "2": 1,
+        "3": 0
+      },
+      "eligible_count_distribution": {
+        "1": 29,
+        "2": 1
+      },
+      "range_percentiles_m": {
+        "5": 2.465,
+        "25": 3.029,
+        "50": 3.802,
+        "75": 4.161,
+        "95": 4.834
+      },
+      "in_range_range_percentiles_m": {
+        "5": 2.465,
+        "25": 3.029,
+        "50": 3.802,
+        "75": 4.161,
+        "95": 4.834
+      }
+    },
+    "train": {
+      "frames": 795,
+      "frames_with_gt": 788,
+      "frames_with_in_range_gt": 787,
+      "empty_label_frames": 7,
+      "frames_proposed": 786,
+      "frame_recall_all_gt": 0.9974619289340102,
+      "frame_recall_in_range_gt": 0.9987293519695044,
+      "frame_recall_all_gt_counts": [
+        786,
+        788
+      ],
+      "frame_recall_in_range_gt_counts": [
+        786,
+        787
+      ],
+      "boxes": 862,
+      "boxes_in_range": 860,
+      "boxes_unknown_range": 0,
+      "box_recall_all": 0.9930394431554525,
+      "box_recall_in_range": 0.9953488372093023,
+      "box_recall_all_counts": [
+        856,
+        862
+      ],
+      "box_recall_in_range_counts": [
+        856,
+        860
+      ],
+      "refused_frames": 9,
+      "refuse_rate": 0.011320754716981131,
+      "refuse_rate_with_gt": 0.0025380710659898475,
+      "refuse_rate_with_in_range_gt": 0.0012706480304955528,
+      "false_proposals_on_empty": 0,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 1,
+        "ambiguous": 1
+      },
+      "all_reasons": {
+        "ok": 786,
+        "no_candidate": 7,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 1,
+        "ambiguous": 1
+      },
+      "proposed_count_distribution": {
+        "0": 9,
+        "1": 720,
+        "2": 62,
+        "3": 4
+      },
+      "eligible_count_distribution": {
+        "0": 8,
+        "1": 720,
+        "2": 62,
+        "3": 4,
+        "4": 1
+      },
+      "range_percentiles_m": {
+        "5": 2.649,
+        "25": 3.214,
+        "50": 3.802,
+        "75": 4.039,
+        "95": 4.433
+      },
+      "in_range_range_percentiles_m": {
+        "5": 2.649,
+        "25": 3.208,
+        "50": 3.802,
+        "75": 4.039,
+        "95": 4.412
+      }
+    },
+    "val": {
+      "frames": 29,
+      "frames_with_gt": 29,
+      "frames_with_in_range_gt": 29,
+      "empty_label_frames": 0,
+      "frames_proposed": 29,
+      "frame_recall_all_gt": 1.0,
+      "frame_recall_in_range_gt": 1.0,
+      "frame_recall_all_gt_counts": [
+        29,
+        29
+      ],
+      "frame_recall_in_range_gt_counts": [
+        29,
+        29
+      ],
+      "boxes": 29,
+      "boxes_in_range": 29,
+      "boxes_unknown_range": 0,
+      "box_recall_all": 1.0,
+      "box_recall_in_range": 1.0,
+      "box_recall_all_counts": [
+        29,
+        29
+      ],
+      "box_recall_in_range_counts": [
+        29,
+        29
+      ],
+      "refused_frames": 0,
+      "refuse_rate": 0.0,
+      "refuse_rate_with_gt": 0.0,
+      "refuse_rate_with_in_range_gt": 0.0,
+      "false_proposals_on_empty": 0,
+      "refusal_reasons": {
+        "ok": 0,
+        "no_candidate": 0,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 0
+      },
+      "all_reasons": {
+        "ok": 29,
+        "no_candidate": 0,
+        "low_confidence": 0,
+        "distance_unknown": 0,
+        "out_of_range": 0,
+        "ambiguous": 0
+      },
+      "proposed_count_distribution": {
+        "0": 0,
+        "1": 29,
+        "2": 0,
+        "3": 0
+      },
+      "eligible_count_distribution": {
+        "1": 29
+      },
+      "range_percentiles_m": {
+        "5": 2.618,
+        "25": 3.577,
+        "50": 4.039,
+        "75": 4.188,
+        "95": 4.977
+      },
+      "in_range_range_percentiles_m": {
+        "5": 2.618,
+        "25": 3.577,
+        "50": 4.039,
+        "75": 4.188,
+        "95": 4.977
+      }
+    }
+  },
+  "definitions": {
+    "frame_recall_all_gt": "frames with >=1 GT door that get >=1 proposal / frames with >=1 GT door",
+    "frame_recall_in_range_gt": "same, restricted to frames whose GT door range estimate is <= max_range",
+    "box_recall_in_range": "proposed in-range boxes / all in-range GT boxes",
+    "gt_range_source": "flat-ground estimate from the box bottom; Entrances has no distance labels",
+    "confidence_source": "YOLO labels have no confidence, so all boxes are confidence 1.0"
+  },
+  "notes": [
+    "low_confidence cannot fire because labels carry no detector confidence",
+    "distance_unknown cannot fire on this dataset because every parsed box has a finite flat-ground estimate"
+  ]
+}

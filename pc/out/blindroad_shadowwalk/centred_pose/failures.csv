@@ -1,0 +1,2 @@
+split,frame,hint,reason,offset_m,yaw_deg,raw_walkable_frac,mask_ok,pose_valid,stop_on_open_walkable,unknown_when_mask_ok,spurious_turn
+train,35,UNKNOWN,corridor_unseen,0.0,0.0,0.4871,True,True,False,True,False

@@ -1,0 +1,7 @@
+mask_ok_frac,mask_ok_frames,unknown_when_mask_ok,stop_on_open_walkable
+0.15,151,2,0
+0.2,131,0,0
+0.25,111,0,0
+0.3,90,0,0
+0.35,62,0,0
+0.4,35,0,0

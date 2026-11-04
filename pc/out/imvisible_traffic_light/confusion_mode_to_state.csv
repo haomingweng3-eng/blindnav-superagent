@@ -1,0 +1,16 @@
+mode,state,count
+0,green,0
+0,red,461
+0,uncertain,0
+1,green,424
+1,red,0
+1,uncertain,0
+2,green,315
+2,red,0
+2,uncertain,0
+3,green,0
+3,red,0
+3,uncertain,283
+4,green,0
+4,red,0
+4,uncertain,120
