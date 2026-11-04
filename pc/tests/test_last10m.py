@@ -77,8 +77,9 @@ def test_near_tie_at_cutoff_refuses_as_ambiguous():
     assert p.refused and p.reason == "ambiguous" and p.candidates == ()
 
 
-def test_distance_is_required_when_requested():
+def test_distance_is_required_by_default():
     doors = [_door(1.0), DoorCandidate(0, 0.5, 0.7, 0.1, 0.1, distance_m=None)]
-    assert propose_doors(doors, require_distance=True).reason == "distance_unknown"
+    assert propose_doors(doors).reason == "distance_unknown"
     p = propose_doors(doors, require_distance=False)
     assert not p.refused and p.candidates[0].distance_m == 1.0
+    assert propose_doors([DoorCandidate(0, 0.5, 0.7, 0.2, 0.2)], require_distance=False).candidates

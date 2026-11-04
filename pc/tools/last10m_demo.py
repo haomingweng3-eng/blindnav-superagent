@@ -55,8 +55,8 @@ def main(argv=None) -> int:
     ap.add_argument("--pitch-deg", type=float, default=15.0, dest="pitch_deg")
     ap.add_argument("--fov-deg", type=float, default=70.0, dest="fov_deg")
     ap.add_argument("--fx", type=float)
-    ap.add_argument("--require-distance", action="store_true", dest="require_distance",
-                    help="refuse instead of keeping candidates whose ground range is unknown")
+    ap.add_argument("--allow-unknown-distance", action="store_true", dest="allow_unknown_distance",
+                    help="keep candidates whose ground range is unknown instead of refusing")
     args = ap.parse_args(argv)
 
     pitch = math.radians(args.pitch_deg)
@@ -78,7 +78,7 @@ def main(argv=None) -> int:
                 estimate_distance_m(door, K, (width, height), up, args.height)))
         proposal = propose_doors(doors, max_distance_m=args.max_range_m,
                                  min_confidence=args.min_confidence,
-                                 require_distance=args.require_distance)
+                                 require_distance=not args.allow_unknown_distance)
         reasons[proposal.reason] += 1
         picked_counts[len(proposal.candidates)] += 1
         if proposal.refused:

@@ -111,8 +111,12 @@ def _ambiguous(a: DoorCandidate, b: DoorCandidate, margin_m: float, margin_area:
 def propose_doors(candidates: Sequence[DoorCandidate], max_candidates: int = MAX_CANDIDATES,
                   max_distance_m: float = DEFAULT_RANGE_M, min_confidence: float = 0.5,
                   ambiguity_margin_m: float = 0.5, ambiguity_margin_area: float = 0.01,
-                  require_distance: bool = False) -> DoorProposal:
-    """Filter, rank and propose at most three doors; refuse when the choice is not reliable."""
+                  require_distance: bool = True) -> DoorProposal:
+    """Filter, rank and propose at most three doors; refuse when the choice is not reliable.
+
+    ``require_distance=True`` (default) means a candidate whose ground range is unknown is treated
+    as uncertain: a "last 10 m" proposal is not possible without range.
+    """
     if max_candidates < 1:
         raise ValueError("max_candidates must be >= 1")
     limit = min(int(max_candidates), MAX_CANDIDATES)

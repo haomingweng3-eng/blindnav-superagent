@@ -86,7 +86,7 @@ ImVisible 标签映射：`mode` 0=red、1/2=green、3/4=uncertain。
 
 ### Last10m 门候选 stub（`last10m.py`）
 解析 Entrances YOLO 标签（`class cx cy w h`），按框底与平地面估计距离，只保留 10 m 内候选并按距离排序，
-**最多选 3 个**；无候选/低置信/超距/截断处难分先后时直接拒答。不做接近控制。
+**最多选 3 个**；无候选/低置信/距离未知/超距/截断处难分先后时直接拒答。不做接近控制。
 
 ```bash
 .venv/bin/python tools/last10m_demo.py --limit 15
