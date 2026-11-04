@@ -1,3 +1,3 @@
 # Clean install acceptance
 
-An isolated installation produced this PR.
+An isolated installation produced this PR end to end.
