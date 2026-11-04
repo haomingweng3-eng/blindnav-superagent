@@ -56,6 +56,17 @@ python -m blindnav_pc metrics out/run1/log.jsonl --labels labels.csv
 输出目录：`log.jsonl`（逐帧）、`metrics.json`、`overlay.mp4`（左：原图+mask+深度小图+指令；右：BEV、候选航向、选中航向、碰撞走廊）。
 指引只**打印**（"继续 / 稍向左 / 稍向右 / 停下 / 向左回正 / 向右回正 / 请稍停，正在观察"），没有 TTS。
 
+### ShadowWalk 虚拟走廊 stub
+预定义走廊（`straight60` / `left_arc80` / `right_arc100`，宽 2.5 m）接到现有分割 mask，输出
+`STRAIGHT/LEFT/RIGHT/STOP/UNKNOWN`；需要外部位姿（PDR/里程计），看不清或偏离走廊就停，不发“可走”。
+
+```bash
+.venv/bin/python tools/shadowwalk_demo.py --corridor straight60 --frames 12 --drift 0.9
+.venv/bin/python -m pytest tests/test_shadowwalk.py -q
+```
+
+边界与真机门槛见 `../docs/REAL_DEVICE_PROTOCOL.md`：受控 demo，不是独立安全导航。
+
 ### 输入文件格式
 - `camera.json`：`{"fx":..,"fy":..,"cx":..,"cy":..,"width":1920,"height":1080}`（`width/height` 可选，与视频尺寸不同时自动缩放）。缺省按水平 FOV 70° 估计。
 - `imu.csv`：表头 `t_ms,gx,gy,gz`，**重力方向（指向下）在相机坐标系**（OpenCV：x 右、y 下、z 前）下的向量，按最近时间戳取值，额外列忽略。
