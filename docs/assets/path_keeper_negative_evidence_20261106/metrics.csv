@@ -1,0 +1,91 @@
+condition,arm,metric,numerator,denominator,value
+annotated,A,false_free ground (PRIMARY: GT non-walkable ground admitted),92,103,0.8932038834951457
+annotated,A,false_free any (SECONDARY: any GT danger admitted),284,295,0.9627118644067797
+annotated,A,false_free PR15 gate (in-path event frames),78,114,0.6842105263157895
+annotated,A,false_stop ground (PRIMARY),0,378,0.0
+annotated,A,false_stop any (SECONDARY),0,186,0.0
+annotated,A,unknown,11,481,0.02286902286902287
+annotated,A,coverage>=min,470,481,0.9771309771309772
+annotated,A,guidance coverage,470,481,0.9771309771309772
+annotated,A,danger blocking recall ground (STOP+UNKNOWN),11,103,0.10679611650485436
+annotated,A,danger blocking recall any (STOP+UNKNOWN),11,295,0.03728813559322034
+annotated,A,road-in-path ignored,2,481,0.004158004158004158
+annotated,A,curb-in-path ignored,21,481,0.04365904365904366
+annotated,A,unknown when GT walkable,0,481,0.0
+annotated,A,action flips vs arm A,,,0.0
+annotated,A,mean coverage,,481,0.9610187110187111
+annotated,B,false_free ground (PRIMARY: GT non-walkable ground admitted),0,103,0.0
+annotated,B,false_free any (SECONDARY: any GT danger admitted),6,295,0.020338983050847456
+annotated,B,false_free PR15 gate (in-path event frames),0,114,0.0
+annotated,B,false_stop ground (PRIMARY),188,378,0.4973544973544973
+annotated,B,false_stop any (SECONDARY),2,186,0.010752688172043012
+annotated,B,unknown,0,481,0.0
+annotated,B,coverage>=min,470,481,0.9771309771309772
+annotated,B,guidance coverage,190,481,0.39501039501039503
+annotated,B,danger blocking recall ground (STOP+UNKNOWN),103,103,1.0
+annotated,B,danger blocking recall any (STOP+UNKNOWN),289,295,0.9796610169491525
+annotated,B,road-in-path ignored,0,481,0.0
+annotated,B,curb-in-path ignored,2,481,0.004158004158004158
+annotated,B,unknown when GT walkable,0,481,0.0
+annotated,B,action flips vs arm A,,,0.604989604989605
+annotated,B,mean coverage,,481,0.9610187110187111
+annotated,C,false_free ground (PRIMARY: GT non-walkable ground admitted),0,103,0.0
+annotated,C,false_free any (SECONDARY: any GT danger admitted),6,295,0.020338983050847456
+annotated,C,false_free PR15 gate (in-path event frames),0,114,0.0
+annotated,C,false_stop ground (PRIMARY),128,378,0.3386243386243386
+annotated,C,false_stop any (SECONDARY),0,186,0.0
+annotated,C,unknown,77,481,0.1600831600831601
+annotated,C,coverage>=min,470,481,0.9771309771309772
+annotated,C,guidance coverage,190,481,0.39501039501039503
+annotated,C,danger blocking recall ground (STOP+UNKNOWN),103,103,1.0
+annotated,C,danger blocking recall any (STOP+UNKNOWN),289,295,0.9796610169491525
+annotated,C,road-in-path ignored,0,481,0.0
+annotated,C,curb-in-path ignored,2,481,0.004158004158004158
+annotated,C,unknown when GT walkable,76,481,0.158004158004158
+annotated,C,action flips vs arm A,,,0.6029106029106029
+annotated,C,mean coverage,,481,0.9610187110187111
+production,A,false_free ground (PRIMARY: GT non-walkable ground admitted),47,103,0.4563106796116505
+production,A,false_free any (SECONDARY: any GT danger admitted),208,295,0.7050847457627119
+production,A,false_free PR15 gate (in-path event frames),37,114,0.32456140350877194
+production,A,false_stop ground (PRIMARY),0,378,0.0
+production,A,false_stop any (SECONDARY),0,186,0.0
+production,A,unknown,107,481,0.22245322245322247
+production,A,coverage>=min,375,481,0.7796257796257796
+production,A,guidance coverage,374,481,0.7775467775467776
+production,A,danger blocking recall ground (STOP+UNKNOWN),56,103,0.5436893203883495
+production,A,danger blocking recall any (STOP+UNKNOWN),87,295,0.29491525423728815
+production,A,road-in-path ignored,2,481,0.004158004158004158
+production,A,curb-in-path ignored,15,481,0.031185031185031187
+production,A,unknown when GT walkable,96,481,0.1995841995841996
+production,A,action flips vs arm A,,,0.0
+production,A,mean coverage,,481,0.5722453222453222
+production,B,false_free ground (PRIMARY: GT non-walkable ground admitted),19,103,0.18446601941747573
+production,B,false_free any (SECONDARY: any GT danger admitted),130,295,0.4406779661016949
+production,B,false_free PR15 gate (in-path event frames),13,114,0.11403508771929824
+production,B,false_stop ground (PRIMARY),51,378,0.1349206349206349
+production,B,false_stop any (SECONDARY),15,186,0.08064516129032258
+production,B,unknown,139,481,0.288981288981289
+production,B,coverage>=min,375,481,0.7796257796257796
+production,B,guidance coverage,251,481,0.5218295218295218
+production,B,danger blocking recall ground (STOP+UNKNOWN),84,103,0.8155339805825242
+production,B,danger blocking recall any (STOP+UNKNOWN),165,295,0.559322033898305
+production,B,road-in-path ignored,2,481,0.004158004158004158
+production,B,curb-in-path ignored,9,481,0.018711018711018712
+production,B,unknown when GT walkable,128,481,0.2661122661122661
+production,B,action flips vs arm A,,,0.3264033264033264
+production,B,mean coverage,,481,0.5722453222453222
+production,C,false_free ground (PRIMARY: GT non-walkable ground admitted),19,103,0.18446601941747573
+production,C,false_free any (SECONDARY: any GT danger admitted),130,295,0.4406779661016949
+production,C,false_free PR15 gate (in-path event frames),13,114,0.11403508771929824
+production,C,false_stop ground (PRIMARY),28,378,0.07407407407407407
+production,C,false_stop any (SECONDARY),7,186,0.03763440860215054
+production,C,unknown,177,481,0.367983367983368
+production,C,coverage>=min,375,481,0.7796257796257796
+production,C,guidance coverage,251,481,0.5218295218295218
+production,C,danger blocking recall ground (STOP+UNKNOWN),84,103,0.8155339805825242
+production,C,danger blocking recall any (STOP+UNKNOWN),165,295,0.559322033898305
+production,C,road-in-path ignored,2,481,0.004158004158004158
+production,C,curb-in-path ignored,9,481,0.018711018711018712
+production,C,unknown when GT walkable,166,481,0.34511434511434513
+production,C,action flips vs arm A,,,0.2993762993762994
+production,C,mean coverage,,481,0.5722453222453222

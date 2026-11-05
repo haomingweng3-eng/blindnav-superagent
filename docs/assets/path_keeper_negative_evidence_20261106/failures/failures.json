@@ -1,0 +1,376 @@
+[
+  {
+    "id": "f01",
+    "kind": "false_free",
+    "kinds": [
+      "false_free",
+      "false_free_any"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 180,
+    "hint": "STRAIGHT",
+    "reason": "centred",
+    "layer": "segmentation",
+    "raw": "f01_false_free_-PqSDmiE_000180_raw.jpg",
+    "overlay": "f01_false_free_-PqSDmiE_000180_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1893,
+      "danger_ground": true,
+      "danger_any": true,
+      "gt_danger_ground_pts": 8,
+      "gt_danger_any_pts": 8,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 912,
+      "hazard_points": 0,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f02",
+    "kind": "false_free",
+    "kinds": [
+      "false_free",
+      "false_free_any"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+    "frame": 160,
+    "hint": "RIGHT",
+    "reason": "lateral",
+    "layer": "segmentation",
+    "raw": "f02_false_free_UGNwBEZM_000160_raw.jpg",
+    "overlay": "f02_false_free_UGNwBEZM_000160_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1034,
+      "danger_ground": true,
+      "danger_any": true,
+      "gt_danger_ground_pts": 102,
+      "gt_danger_any_pts": 255,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 60,
+      "pr15_event": true,
+      "pr15_23": true
+    },
+    "evidence": {
+      "walkable_swept_points": 258,
+      "hazard_points": 0,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f03",
+    "kind": "false_free_any",
+    "kinds": [
+      "false_free_any"
+    ],
+    "condition": "annotated",
+    "arm": "B",
+    "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+    "frame": 85,
+    "hint": "STRAIGHT",
+    "reason": "centred",
+    "layer": "decision",
+    "raw": "f03_false_free_any_M5UIabsl_000085_raw.jpg",
+    "overlay": "f03_false_free_any_M5UIabsl_000085_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1375,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 6,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 1375,
+      "hazard_points": 6,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f04",
+    "kind": "false_free_any",
+    "kinds": [
+      "false_free_any"
+    ],
+    "condition": "annotated",
+    "arm": "B",
+    "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+    "frame": 215,
+    "hint": "LEFT",
+    "reason": "lateral",
+    "layer": "decision",
+    "raw": "f04_false_free_any_M5UIabsl_000215_raw.jpg",
+    "overlay": "f04_false_free_any_M5UIabsl_000215_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1432,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 5,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 1432,
+      "hazard_points": 5,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f05",
+    "kind": "false_free_any",
+    "kinds": [
+      "false_free_any"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 10,
+    "hint": "RIGHT",
+    "reason": "lateral",
+    "layer": "segmentation",
+    "raw": "f05_false_free_any_-PqSDmiE_000010_raw.jpg",
+    "overlay": "f05_false_free_any_-PqSDmiE_000010_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1818,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 539,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 1107,
+      "hazard_points": 0,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f06",
+    "kind": "false_free_any",
+    "kinds": [
+      "false_free_any"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+    "frame": 45,
+    "hint": "STRAIGHT",
+    "reason": "centred",
+    "layer": "segmentation",
+    "raw": "f06_false_free_any_UGNwBEZM_000045_raw.jpg",
+    "overlay": "f06_false_free_any_UGNwBEZM_000045_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1152,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 1071,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 19,
+      "pr15_event": true,
+      "pr15_23": true
+    },
+    "evidence": {
+      "walkable_swept_points": 373,
+      "hazard_points": 0,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f07",
+    "kind": "false_stop",
+    "kinds": [
+      "false_stop",
+      "unknown_when_gt_walkable"
+    ],
+    "condition": "annotated",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 0,
+    "hint": "STOP",
+    "reason": "hazard_in_path",
+    "layer": "decision",
+    "raw": "f07_false_stop_-PqSDmiE_000000_raw.jpg",
+    "overlay": "f07_false_stop_-PqSDmiE_000000_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1248,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 89,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 1248,
+      "hazard_points": 48,
+      "non_walkable_points": 41,
+      "unknown_points": 0,
+      "hazard_bins": 1,
+      "non_walkable_bins": 1,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f08",
+    "kind": "false_stop",
+    "kinds": [
+      "false_stop",
+      "unknown_when_gt_walkable"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+    "frame": 760,
+    "hint": "STOP",
+    "reason": "non_walkable_in_path",
+    "layer": "decision",
+    "raw": "f08_false_stop_M5UIabsl_000760_raw.jpg",
+    "overlay": "f08_false_stop_M5UIabsl_000760_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1613,
+      "danger_ground": false,
+      "danger_any": false,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 0,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 201,
+      "hazard_points": 0,
+      "non_walkable_points": 582,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 3,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  },
+  {
+    "id": "f09",
+    "kind": "unknown_when_gt_walkable",
+    "kinds": [
+      "unknown_when_gt_walkable"
+    ],
+    "condition": "annotated",
+    "arm": "C",
+    "session": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+    "frame": 0,
+    "hint": "UNKNOWN",
+    "reason": "hazard_confirming",
+    "layer": "temporal",
+    "raw": "f09_unknown_when_gt_walkable_UGNwBEZM_000000_raw.jpg",
+    "overlay": "f09_unknown_when_gt_walkable_UGNwBEZM_000000_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 717,
+      "danger_ground": true,
+      "danger_any": true,
+      "gt_danger_ground_pts": 8,
+      "gt_danger_any_pts": 1203,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 717,
+      "hazard_points": 1011,
+      "non_walkable_points": 193,
+      "unknown_points": 13,
+      "hazard_bins": 5,
+      "non_walkable_bins": 2,
+      "unknown_bins": 1,
+      "temporal_streak": 1
+    }
+  },
+  {
+    "id": "f10",
+    "kind": "unknown_when_gt_walkable",
+    "kinds": [
+      "unknown_when_gt_walkable"
+    ],
+    "condition": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 0,
+    "hint": "UNKNOWN",
+    "reason": "no_metric_depth",
+    "layer": "geometry",
+    "raw": "f10_unknown_when_gt_walkable_-PqSDmiE_000000_raw.jpg",
+    "overlay": "f10_unknown_when_gt_walkable_-PqSDmiE_000000_overlay.jpg",
+    "gt": {
+      "walk_pts_swept": 1248,
+      "danger_ground": false,
+      "danger_any": true,
+      "gt_danger_ground_pts": 0,
+      "gt_danger_any_pts": 89,
+      "pr15_road_path_band": 0,
+      "pr15_curb_path_band": 0,
+      "pr15_event": false,
+      "pr15_23": false
+    },
+    "evidence": {
+      "walkable_swept_points": 0,
+      "hazard_points": 0,
+      "non_walkable_points": 0,
+      "unknown_points": 0,
+      "hazard_bins": 0,
+      "non_walkable_bins": 0,
+      "unknown_bins": 0,
+      "temporal_streak": 0
+    }
+  }
+]

@@ -10,6 +10,12 @@ Deliberately minimal: no localisation, no planning, no control.  Without a trust
 visible walkable ground, or with the walker outside the corridor, the output is UNKNOWN/STOP.
 It never emits "go" and is only meant to run inside the supervised demo of
 ``docs/REAL_DEVICE_PROTOCOL.md``.
+
+The optional negative-evidence entry point (``ShadowWalkTracker.update_evidence``, Issue #16)
+additionally fuses explicit hazard / non-walkable / unknown map points from
+:mod:`blindnav_pc.corridor_evidence`: credible negative evidence inside the body swept rectangle
+raises STOP/UNKNOWN even when the walkable channel is plentiful.  ``update(points, pose)`` is
+unchanged and remains the walkable-only path.
 """
 from __future__ import annotations
 
@@ -21,6 +27,7 @@ from typing import Optional, Sequence, Tuple
 import numpy as np
 
 from .bev import depth_to_level_points
+from .corridor_evidence import CorridorEvidence, body_frame, in_swept_body
 from .ego import wrap_pi
 
 LEFT, RIGHT, STRAIGHT, STOP, UNKNOWN = "LEFT", "RIGHT", "STRAIGHT", "STOP", "UNKNOWN"
@@ -153,6 +160,16 @@ class ShadowWalkConfig:
     max_yaw_deg: float = 30.0
     pixel_stride: int = 4
     max_height_m: float = 0.15       # segmentation points must lie on the ground plane
+    # Negative-evidence swept body (a priori human-body constants, not tuned on the eval set).
+    body_width_m: float = 0.5        # human body width (PlannerConfig.body_width_m)
+    body_margin_m: float = 0.15      # lateral safety margin (PlannerConfig.margin_m)
+    temporal_confirm_frames: int = 0  # 0 = no temporal confirmation (arm B); arm C uses 3
+                                      # (provenance: LayerConfig.drop_confirm_frames == 3)
+
+    @property
+    def swept_half_width_m(self) -> float:
+        """0.4 m with defaults: body half width + lateral safety margin."""
+        return self.body_width_m / 2.0 + self.body_margin_m
 
 
 @dataclass(frozen=True)
@@ -166,6 +183,15 @@ class ShadowWalkHint:
     coverage: float
     n_points: int
     reason: str
+    # Negative-evidence diagnostics (defaulted so the walkable-only path is unchanged).
+    hazard_points: int = 0           # hazard-channel points inside the body swept rectangle
+    non_walkable_points: int = 0     # non-walkable-channel points inside the swept body
+    unknown_points: int = 0          # unknown-channel points inside the swept body
+    walkable_swept_points: int = 0   # walkable-channel points inside the swept body
+    hazard_bins: int = 0             # swept-body forward bins with credible hazard support
+    non_walkable_bins: int = 0       # swept-body forward bins with credible non-walkable support
+    unknown_bins: int = 0            # swept-body forward bins with credible unknown support
+    temporal_streak: int = 0         # consecutive credible-blocking frames (arm C, else 0)
 
 
 def mask_to_map_points(mask: np.ndarray, depth: np.ndarray, K: np.ndarray, up: np.ndarray,
@@ -190,37 +216,109 @@ def mask_to_map_points(mask: np.ndarray, depth: np.ndarray, K: np.ndarray, up: n
 
 
 class ShadowWalkTracker:
-    """Frame-by-frame lateral/yaw guidance against one predefined corridor."""
+    """Frame-by-frame lateral/yaw guidance against one predefined corridor.
+
+    Two entry points:
+
+    * :meth:`update` — the original walkable-only interface (unchanged behaviour).
+    * :meth:`update_evidence` — the negative-evidence fusion layer: besides the walkable channel it
+      consumes explicit hazard / non-walkable / unknown map points and can raise UNKNOWN/STOP for
+      credible negative evidence inside the body swept rectangle (``cfg.swept_half_width_m`` =
+      0.4 m, ``near_m``..``far_m``).  ``update`` is exactly
+      ``update_evidence(CorridorEvidence.walkable_only(points), pose)``.
+    """
 
     def __init__(self, corridor: Corridor, cfg: Optional[ShadowWalkConfig] = None):
         self.corridor = corridor
         self.cfg = cfg or ShadowWalkConfig()
+        self._block_streak = 0          # consecutive frames with credible blocking evidence
+        self._last_bin_counts: dict = {}  # per-forward-bin support arrays of the last analysed frame
 
-    def _result(self, hint, pose_s, offset, band, yaw_err, coverage, n, reason) -> ShadowWalkHint:
+    def _result(self, hint, pose_s, offset, band, yaw_err, coverage, n, reason,
+                hazard_points=0, non_walkable_points=0, unknown_points=0,
+                walkable_swept_points=0, hazard_bins=0, non_walkable_bins=0,
+                unknown_bins=0, temporal_streak=0) -> ShadowWalkHint:
         return ShadowWalkHint(hint, HINT_TEXT[hint], pose_s, offset, band, yaw_err,
-                              coverage, int(n), reason)
+                              coverage, int(n), reason,
+                              int(hazard_points), int(non_walkable_points),
+                              int(unknown_points), int(walkable_swept_points),
+                              int(hazard_bins), int(non_walkable_bins), int(unknown_bins),
+                              int(temporal_streak))
+
+    @staticmethod
+    def _swept_evidence_bins(cfg: ShadowWalkConfig) -> int:
+        """Number of swept-evidence bins covering the INCLUSIVE ``near_m..far_m`` interval.
+
+        ``ceil`` (not the legacy ``round`` used for walkable coverage) so that the last bin is not
+        silently dropped when the range is an integer multiple of ``bin_m``: the 1.5-6.0 m range
+        with 1.0 m bins is 4.5 bins wide, so the inclusive far bin 5.5-6.0 m needs a fifth bin.
+        The legacy coverage binning is intentionally left unchanged so arm A behaviour is fixed.
+        """
+        return max(1, int(math.ceil((cfg.far_m - cfg.near_m) / cfg.bin_m - 1e-9)))
+
+    @staticmethod
+    def _swept_bin_counts(points_map, pose, cfg: ShadowWalkConfig, nbins: int) -> np.ndarray:
+        """Per-forward-bin point support of one channel inside the body swept rectangle.
+
+        Bins span the INCLUSIVE ``near_m``..``far_m`` interval in ``bin_m`` steps measured along
+        the CURRENT BODY HEADING (``corridor_evidence.body_frame``), laterally gated to
+        ``|lateral| <= swept_half_width_m``.  The caller passes the number of bins from
+        :meth:`_swept_evidence_bins`; the final bin is inclusive of ``far_m``.
+        """
+        counts = np.zeros(nbins, dtype=np.int64)
+        if points_map is None:
+            return counts
+        pts = np.asarray(points_map, dtype=np.float64).reshape(-1, 2)
+        if not len(pts):
+            return counts
+        fwd, lat = body_frame(pts, pose)
+        fwd = fwd[in_swept_body(fwd, lat, cfg.near_m, cfg.far_m, cfg.swept_half_width_m)]
+        if not len(fwd):
+            return counts
+        idx = np.floor((fwd - cfg.near_m) / cfg.bin_m).astype(int)
+        # in_swept_body already guarantees near_m <= fwd <= far_m; clip the inclusive far end
+        # (fwd == far_m) into the last bin instead of dropping it.
+        idx = np.clip(idx, 0, nbins - 1)
+        return np.bincount(idx, minlength=nbins).astype(np.int64)[:nbins]
 
     def update(self, points_map: Optional[np.ndarray], pose: Optional[Pose2D]) -> ShadowWalkHint:
+        """Backward-compatible walkable-only entry point (byte-identical legacy behaviour)."""
+        return self.update_evidence(CorridorEvidence.walkable_only(points_map), pose)
+
+    def update_evidence(self, evidence: CorridorEvidence,
+                        pose: Optional[Pose2D]) -> ShadowWalkHint:
+        """Fuse walkable + hazard + non-walkable + unknown evidence into one corridor hint.
+
+        Decision order (frozen contract): pose -> corridor band + ``off_corridor`` ->
+        credible blocking evidence (hazard/non-walkable, optionally temporally confirmed) ->
+        walkable quantity (``walkable_unseen``/``corridor_unseen``) -> unknown channel
+        (``unknown_evidence``) -> low-confidence conflict (``evidence_conflict``) ->
+        ``yaw_too_large`` -> existing lateral/yaw/centred decisions.
+        """
         c, corr = self.cfg, self.corridor
         if pose is None or not all(math.isfinite(v) for v in (pose.x_m, pose.z_m, pose.yaw_rad)):
+            self._block_streak = 0          # an un-analysable frame breaks a confirmation streak
+            self._last_bin_counts = {}
             return self._result(UNKNOWN, 0.0, float("nan"), float("nan"), float("nan"),
                                 0.0, 0, "no_pose")
         s0, walker_off = corr.project(pose.x_m, pose.z_m)
         yaw_err = float(wrap_pi(pose.yaw_rad - corr.heading_at(s0)))
         half = corr.width_m / 2.0
+        nbins = max(1, int(round((c.far_m - c.near_m) / c.bin_m)))  # legacy coverage bins
+        nbins_ev = self._swept_evidence_bins(c)  # inclusive near..far evidence bins
 
-        pts = np.zeros((0, 2)) if points_map is None else np.asarray(points_map, float).reshape(-1, 2)
+        # ---- baseline walkable geometry: corridor coordinates (unchanged) -------------------
+        walk_pts = np.asarray(evidence.walkable, dtype=np.float64).reshape(-1, 2)
         band, coverage = 0.0, 0.0
         n = 0
-        if len(pts):
-            s, off = corr.project_many(pts)
+        if len(walk_pts):
+            s, off = corr.project_many(walk_pts)
             fwd = s - s0
             keep = ((fwd >= c.near_m) & (fwd <= c.far_m) &
                     (np.abs(off) <= half + c.band_margin_m))
             off = off[keep]
             fwd = fwd[keep]
             n = int(len(off))
-            nbins = max(1, int(round((c.far_m - c.near_m) / c.bin_m)))
             if n:
                 idx = np.floor((fwd - c.near_m) / c.bin_m).astype(int)
                 idx = idx[(idx >= 0) & (idx < nbins)]
@@ -229,23 +327,74 @@ class ShadowWalkTracker:
                 band = float(np.median(off))
 
         if abs(walker_off) > c.stop_offset_frac * half:
+            self._block_streak = 0
+            self._last_bin_counts = {}
             return self._result(STOP, s0, walker_off, band, yaw_err, coverage, n, "off_corridor")
+
+        # ---- explicit negative evidence in body coordinates --------------------------------
+        w_bins = self._swept_bin_counts(evidence.walkable, pose, c, nbins_ev)
+        h_bins = self._swept_bin_counts(evidence.hazard, pose, c, nbins_ev)
+        nw_bins = self._swept_bin_counts(evidence.non_walkable, pose, c, nbins_ev)
+        u_bins = self._swept_bin_counts(evidence.unknown, pose, c, nbins_ev)
+        self._last_bin_counts = {"walkable": w_bins, "hazard": h_bins,
+                                 "non_walkable": nw_bins, "unknown": u_bins}
+        ev = dict(hazard_points=int(h_bins.sum()),
+                  non_walkable_points=int(nw_bins.sum()),
+                  unknown_points=int(u_bins.sum()),
+                  walkable_swept_points=int(w_bins.sum()),
+                  hazard_bins=int(np.count_nonzero(h_bins >= c.points_per_bin)),
+                  non_walkable_bins=int(np.count_nonzero(nw_bins >= c.points_per_bin)),
+                  unknown_bins=int(np.count_nonzero(u_bins >= c.points_per_bin)))
+        credible_blocking = (ev["hazard_bins"] > 0) or (ev["non_walkable_bins"] > 0)
+        if c.temporal_confirm_frames > 0:
+            self._block_streak = self._block_streak + 1 if credible_blocking else 0
+        streak = self._block_streak if c.temporal_confirm_frames > 0 else 0
+
+        # Credible blocking evidence is checked BEFORE the walkable-quantity branches, so
+        # "enough walkable points" can never override correctly-labelled negative evidence.
+        if credible_blocking:
+            if c.temporal_confirm_frames > 0 and streak < c.temporal_confirm_frames:
+                reason = ("hazard_confirming" if ev["hazard_bins"] > 0
+                          else "non_walkable_confirming")
+                return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n,
+                                    reason, temporal_streak=streak, **ev)
+            reason = ("hazard_in_path" if ev["hazard_bins"] > 0
+                      else "non_walkable_in_path")
+            return self._result(STOP, s0, walker_off, band, yaw_err, coverage, n, reason,
+                                temporal_streak=streak, **ev)
+
         if n < c.min_points:
-            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n, "walkable_unseen")
+            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n,
+                                "walkable_unseen", temporal_streak=streak, **ev)
         if coverage < c.min_coverage:
-            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n, "corridor_unseen")
+            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n,
+                                "corridor_unseen", temporal_streak=streak, **ev)
+        if ev["unknown_bins"] > 0:
+            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n,
+                                "unknown_evidence", temporal_streak=streak, **ev)
+
+        # Low-confidence / conflicting evidence in the swept path -> Unknown, not Safe.
+        neg = h_bins + nw_bins
+        conflict = np.any((neg + u_bins > 0) & (neg < c.points_per_bin)
+                          & (u_bins < c.points_per_bin) & (w_bins < c.points_per_bin))
+        if conflict:
+            return self._result(UNKNOWN, s0, walker_off, band, yaw_err, coverage, n,
+                                "evidence_conflict", temporal_streak=streak, **ev)
+
         if abs(math.degrees(yaw_err)) > c.max_yaw_deg:
-            return self._result(STOP, s0, walker_off, band, yaw_err, coverage, n, "yaw_too_large")
+            return self._result(STOP, s0, walker_off, band, yaw_err, coverage, n,
+                                "yaw_too_large", temporal_streak=streak, **ev)
 
         target = float(np.clip(band, -(half - 0.4), half - 0.4))
         error = walker_off - target            # + = walker is right of the visible path -> go left
         if abs(error) > c.deadband_m:
             return self._result(LEFT if error > 0 else RIGHT, s0, walker_off, band, yaw_err,
-                                coverage, n, "lateral")
+                                coverage, n, "lateral", temporal_streak=streak, **ev)
         if abs(math.degrees(yaw_err)) > c.deadband_yaw_deg:
             return self._result(LEFT if yaw_err > 0 else RIGHT, s0, walker_off, band, yaw_err,
-                                coverage, n, "yaw")
-        return self._result(STRAIGHT, s0, walker_off, band, yaw_err, coverage, n, "centred")
+                                coverage, n, "yaw", temporal_streak=streak, **ev)
+        return self._result(STRAIGHT, s0, walker_off, band, yaw_err, coverage, n, "centred",
+                            temporal_streak=streak, **ev)
 
 
 def _arc(name: str, length_m: float, turn_deg: float, width_m: float, step_m: float = 10.0) -> Corridor:
