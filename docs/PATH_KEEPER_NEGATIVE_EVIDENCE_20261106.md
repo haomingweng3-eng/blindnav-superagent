@@ -70,8 +70,11 @@ old behaviour. The new decision rule (a priori constants, not tuned on the eval 
   safety margin (`body_margin_m = 0.15 m`, the existing `PlannerConfig.margin_m`), and the real
   forward range of the guidance (`near_m..far_m = 1.5–6.0 m`, existing). A negative point counts
   only if it is inside that rectangle; the same threshold as the existing "a bin counts as seen"
-  support (`points_per_bin = 5`) decides whether a forward bin is credible. Road beside the
-  pavement is therefore outside the body sweep and does not stop the walker.
+  support (`points_per_bin = 5`) decides whether a forward bin is credible. The evidence bins
+  cover the inclusive 1.5–6.0 m range (five 1.0 m bins, so the 5.5–6.0 m tail is counted; this
+  was fixed in review — the first revision dropped it); legacy walkable coverage keeps its
+  pre-existing binning unchanged so arm A stays fixed. Road beside the pavement is therefore
+  outside the body sweep and does not stop the walker.
 * **Credible blocking evidence** (a swept-body bin with >= 5 hazard or non-walkable points) raises
   `STOP` with the new explainable reason codes `hazard_in_path` / `non_walkable_in_path` **before**
   the walkable-quantity branches, so enough walkable points cannot override it.
@@ -128,9 +131,10 @@ old behaviour. The new decision rule (a priori constants, not tuned on the eval 
 ## 5. Results
 
 All numbers below are from one deterministic run over the same 481 frames and identical
-inputs/denominators per condition. Machine-readable: `summary.json`, `metrics.csv`,
-`per_frame.csv` (2 886 rows = 481 frames x 2 conditions x 3 arms) and `report_tables.md/.csv`
-in `docs/assets/path_keeper_negative_evidence_20261106/`. `pr15_23` was recovered as exactly 23
+inputs/denominators per condition, after the review-fixed inclusive far-bin evidence counting
+(see §3 and §9). Machine-readable: `summary.json`, `metrics.csv`, `per_frame.csv`
+(2 886 rows = 481 frames x 2 conditions x 3 arms) and `report_tables.md/.csv` in
+`docs/assets/path_keeper_negative_evidence_20261106/`. `pr15_23` was recovered as exactly 23
 frames and verified on the full run; PR #15 in-path event frames = 114.
 
 Two GT danger denominators are reported side by side because a single one would be one-sided:
@@ -147,58 +151,59 @@ Two GT danger denominators are reported side by side because a single one would 
 | arm | false-free ground | false-free any | false-stop ground | false-stop any | UNKNOWN | guidance coverage | 23-frame W/S/U |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | A | 92/103 (89.3 %) | 284/295 (96.3 %) | 0/378 (0.0 %) | 0/186 (0.0 %) | 11/481 (2.3 %) | 470/481 (97.7 %) | 23/0/0 |
-| B | **6/103 (5.8 %)** | **21/295 (7.1 %)** | 177/378 (46.8 %) | 0/186 (0.0 %) | 0/481 (0.0 %) | 207/481 (43.0 %) | **3/20/0** |
-| C | **6/103 (5.8 %)** | 21/295 (7.1 %) | 118/378 (31.2 %) | 0/186 (0.0 %) | 75/481 (15.6 %) | 207/481 (43.0 %) | 3/16/4 |
+| B | **0/103 (0.0 %)** | **6/295 (2.0 %)** | 188/378 (49.7 %) | 2/186 (1.1 %) | 0/481 (0.0 %) | 190/481 (39.5 %) | **2/21/0** |
+| C | **0/103 (0.0 %)** | 6/295 (2.0 %) | 128/378 (33.9 %) | 0/186 (0.0 %) | 77/481 (16.0 %) | 190/481 (39.5 %) | 2/19/2 |
 
 Other measured cells: danger blocking recall on the ground-danger frames **A 11/103 (10.7 %)
--> B 97/103 (94.2 %) -> C 97/103 (94.2 %)** (C: 81 STOP + 16 UNKNOWN); PR #15-gate false-free
-78/114 (68.4 %) -> 3/114 (2.6 %); mean walkable coverage unchanged at 0.96 and coverage>=min
-unchanged 470/481; road-in-path ignored 2/5 -> 0/5 and curb-in-path ignored 21/109 -> 3/109
-(PR #15 0.6 m definitions, STRAIGHT only); action flips vs A 274/481 (57.0 %) for B, 273/481
-(56.8 %) for C.
+-> B/C 103/103 (100 %)** (B: 103 STOP; C: 86 STOP + 17 UNKNOWN); PR #15-gate false-free
+78/114 (68.4 %) -> 0/114 (0.0 %); mean walkable coverage unchanged at 0.96 and coverage>=min
+unchanged 470/481; road-in-path ignored 2/5 -> 0/5 and curb-in-path ignored 21/109 -> 2/109
+(PR #15 0.6 m definitions, STRAIGHT only); action flips vs A 291/481 (60.5 %) for B, 290/481
+(60.3 %) for C.
 
 ### 5.2 `production` condition (v5 + DAV2 + existing ground calibration)
 
 | arm | false-free ground | false-free any | false-stop ground | false-stop any | UNKNOWN | guidance coverage | 23-frame W/S/U |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | A | 47/103 (45.6 %) | 208/295 (70.5 %) | 0/378 (0.0 %) | 0/186 (0.0 %) | 107/481 (22.2 %) | 374/481 (77.8 %) | 20/0/3 |
-| B | **21/103 (20.4 %)** | **134/295 (45.4 %)** | 47/378 (12.4 %) | 14/186 (7.5 %) | 138/481 (28.7 %) | 257/481 (53.4 %) | **8/6/9** |
-| C | **21/103 (20.4 %)** | 134/295 (45.4 %) | 25/378 (6.6 %) | 4/186 (2.2 %) | 177/481 (36.8 %) | 257/481 (53.4 %) | 8/3/12 |
+| B | **19/103 (18.4 %)** | **130/295 (44.1 %)** | 51/378 (13.5 %) | 15/186 (8.1 %) | 139/481 (28.9 %) | 251/481 (52.2 %) | **8/6/9** |
+| C | **19/103 (18.4 %)** | 130/295 (44.1 %) | 28/378 (7.4 %) | 7/186 (3.8 %) | 177/481 (36.8 %) | 251/481 (52.2 %) | 8/3/12 |
 
-Other measured cells: danger blocking recall on ground-danger frames **A 56/103 (54.4 %) ->B
-82/103 (79.6 %) -> C 82/103 (79.6 %)** (C: 22 STOP + 60 UNKNOWN); PR #15-gate false-free
-37/114 (32.5 %) -> 14/114 (12.3 %); mean coverage unchanged 0.57 and coverage>=min unchanged
-375/481; road-in-path ignored 2/5 -> 2/5, curb-in-path ignored 15/109 -> 10/109; action flips vs A
-151/481 (31.4 %) for B, 136/481 (28.3 %) for C.
+Other measured cells: danger blocking recall on ground-danger frames **A 56/103 (54.4 %) -> B/C
+84/103 (81.6 %)** (B: 40 STOP + 44 UNKNOWN; C: 25 STOP + 59 UNKNOWN); PR #15-gate false-free
+37/114 (32.5 %) -> 13/114 (11.4 %); mean coverage unchanged 0.57 and coverage>=min unchanged
+375/481; road-in-path ignored 2/5 -> 2/5, curb-in-path ignored 15/109 -> 9/109; action flips vs A
+157/481 (32.6 %) for B, 144/481 (29.9 %) for C.
 
 ### 5.3 PR #15 regression frames (fixed 23 frames, denominator 23, never fed to the algorithm)
 
 | condition | arm | of 23: walkable guidance | STOP | UNKNOWN |
 |---|---|---:|---:|---:|
 | annotated | A | 23 | 0 | 0 |
-| annotated | B | **3** | 20 | 0 |
-| annotated | C | **3** | 16 | 4 |
+| annotated | B | **2** | 21 | 0 |
+| annotated | C | **2** | 19 | 2 |
 | production | A | 20 | 0 | 3 |
 | production | B | **8** | 6 | 9 |
 | production | C | **8** | 3 | 12 |
 
-With annotated inputs the representation defect is closed for 20/23 frames in B. The 3 that
-remain walkable are explainable: `-PqSD…` 135 lies inside PR #15's 0.6 m map-frame band but outside
-this decision's 0.4 m body sweep (gate difference), and `UGNw…` 105 / 155 have only 4 / 2 binned
-hazard points, below the 5-point support (sparse curb / the unbinned 5.5–6.0 m tail — see
-Remaining risks). Under production inputs 8/23 remain walkable, all with zero binned negative
-evidence in the v5 mask: their GT ground-danger points are either outside the 0.4 m body sweep
-(PR #15's set uses a 0.6 m map-frame band) or absent from the v5 mask (Road-as-Sidewalk,
+With annotated inputs the representation defect is closed for 21/23 frames in B. The 2 that remain
+walkable are explainable and are not special-cased: `-PqSD…` 135 is inside PR #15's 0.6 m
+map-frame band but outside this decision's 0.4 m body sweep (gate difference), and `UGNw…` 105 has
+only 4 hazard-channel points in the body (below the 5-point support; its GT excluded-ground count
+inside the 0.4 m body is zero). Under production inputs 8/23 remain walkable, all with zero binned
+negative evidence in the v5 mask: their GT ground-danger points are either outside the 0.4 m body
+sweep (PR #15's set uses a 0.6 m map-frame band) or absent from the v5 mask (Road-as-Sidewalk,
 segmentation layer).
 
 ### 5.4 Temporal confirmation (C vs B)
 
 Temporal confirmation does not change false-free at all (it cannot make B stricter): annotated
-6/103 -> 6/103, production 21/103 -> 21/103. It reduces STOP and moves the difference into
-UNKNOWN: annotated STOP 274 -> 199 with UNKNOWN 0 -> 75, false-stop ground 177/378 (46.8 %) ->
-118/378 (31.2 %); production STOP 86 -> 47 with UNKNOWN 138 -> 177, false-stop ground 47/378
-(12.4 %) -> 25/378 (6.6 %). Guidance coverage is unchanged in both conditions because blocked
-frames become UNKNOWN instead of walkable.
+0/103 -> 0/103, production 19/103 -> 19/103. It reduces STOP and moves the difference into
+UNKNOWN: annotated STOP 291 -> 214 with UNKNOWN 0 -> 77, false-stop ground 188/378 (49.7 %) ->
+128/378 (33.9 %), false-stop any 2/186 -> 0/186; production STOP 91 -> 53 with UNKNOWN 138 ->
+177 (28.9 % -> 36.8 %), false-stop ground 51/378 (13.5 %) -> 28/378 (7.4 %), false-stop any
+15/186 -> 7/186. Guidance coverage is unchanged in both conditions because blocked frames become
+UNKNOWN instead of walkable.
 
 ### 5.5 Per-session validation slice (including the session with no GT road/curb danger)
 
@@ -207,13 +212,13 @@ these numbers. The per-session split is the available validation view (all cells
 `report_tables.md` §2):
 
 * `-PqSD…` (121 frames, the only session with GT road points): annotated A false-free ground
-  10/21 -> B 3/21, C 3/21; B STOP 34/121, C STOP 20 + 14 UNKNOWN.
-* `UGNw…` (176 frames, curb-heavy): annotated A false-free ground 82/82 (100 %) -> B 3/82,
-  C 3/82; but B STOP 158/176 and guidance coverage 18/176 — the over-conservative cost is
-  concentrated here.
+  10/21 -> B/C 0/21; B STOP 43/121 (guidance 78/121), C STOP 29 + 14 UNKNOWN.
+* `UGNw…` (176 frames, curb-heavy): annotated A false-free ground 82/82 (100 %) -> B/C 0/82;
+  but B STOP 162/176 and guidance coverage 14/176 — the over-conservative cost is concentrated
+  here.
 * `M5UI…` (184 frames, **zero** GT road/curb ground-danger frames — the PR #15 clean session):
-  annotated A false-free 0/0, guidance 184/184; B still STOPs 82/184 (44.6 %) and loses guidance
-  on those frames even though there is no ground danger at all; all 82 STOPs are carried by
+  annotated A false-free 0/0, guidance 184/184; B still STOPs 86/184 (46.7 %) and loses guidance
+  on those frames even though there is no ground danger at all; all of those STOPs are carried by
   object/vegetation occupancy (danger_any) evidence. This is the clearest validation of the cost
   findings: the false-stop inflation is not a ground-truth road/curb artefact.
 * A genuinely fresh fourth real clip was not available: the raw SANPO-Real download has more
@@ -227,51 +232,52 @@ Ten frames from both conditions and both dimensions are committed with raw RGB a
 overlay in `docs/assets/path_keeper_negative_evidence_20261106/failures/`
 (`failures.json` has the machine-readable manifest, counts and layer label; the fixed 23-frame
 set is never special-cased). Overlay legend: green = GT walkable, red = GT hazard/non-walkable,
-yellow = decision swept body (1.5–6 m, ±0.4 m from the current heading).
+yellow = decision swept body (1.5–6.0 m, ±0.4 m from the current heading).
 
 | # | kind | condition / arm | session | frame | hint / reason | layer | what still fails |
 |---|---|---|---|---:|---|---|---|
-| f01 | false-free (ground) | annotated / B | `-PqSD…` | 155 | RIGHT / lateral | decision | 24 GT curb points in the swept body but they sit at 5.55–6.0 m; the inherited 4-bin counters (`round(4.5)=4` bins) do not bin that tail, so hazard support is 0 |
-| f02 | false-free (ground) | annotated / B | `UGNw…` | 145 | RIGHT / lateral | decision | 6 GT curb points, all in the same 5.55–6.0 m unbinned tail (body-frame lateral 0.29–0.40 m); PR #15's 0.6 m map-frame event is also false here because the per-frame heading rotation pushes these points outside its lateral band, so this frame is not in the 23 |
-| f03 | false-free (ground) | production / B | `-PqSD…` | 180 | STRAIGHT / centred | segmentation | v5 mask labels the GT curb/road ground walkable (Road-as-Sidewalk), so the evidence layer has nothing to block; v5/D AV2 input limitation |
-| f04 | false-free (ground) | production / B | `UGNw…` | 150 | STRAIGHT / centred | segmentation | same: GT curb 5 points inside the swept body, zero binned negative evidence in the v5 mask |
-| f05 | false-free (any) | annotated / B | `M5UI…` | 85 | STRAIGHT / centred | decision | 6 GT object-occupancy points at the body edge (3 hazard points, below the 5-point support), so the fused decision keeps walkable guidance — low-support case |
-| f06 | false-free (any) | production / B | `-PqSD…` | 10 | RIGHT / lateral | segmentation | 539 GT object/vegetation points in the swept body but the v5 mask produces no binned negative evidence there |
-| f07 | false-stop (ground) | annotated / B | `M5UI…` | 50 | STOP / hazard_in_path | decision | no ground danger; 39 object/vegetation points trip the hazard channel and stop the walker — the over-conservative occupancy case |
-| f08 | false-stop (ground) | production / B | `UGNw…` | 15 | STOP / hazard_in_path | decision | no ground danger; 126 hazard + 389 unknown points (v5/D AV2 mask/geometry) occupy the swept body |
-| f09 | UNKNOWN when GT walkable | annotated / C | `-PqSD…` | 195 | UNKNOWN / hazard_confirming | temporal | persistent curb evidence in the body; C converts the first frames of the block to UNKNOWN instead of STOP (temporal cost) |
-| f10 | UNKNOWN when GT walkable | production / B | `M5UI…` | 65 | UNKNOWN / unknown_evidence | segmentation | 377 unknown-channel points (v5 ignore-class / geometric conflict) block confirmation of a GT-walkable surface |
+| f01 | false-free (ground) | production / B | `-PqSD…` | 180 | STRAIGHT / centred | segmentation | 8 GT road/curb ground points inside the swept body but zero binned negative evidence in the v5 mask (Road-as-Sidewalk) |
+| f02 | false-free (ground) | production / B | `UGNw…` | 160 | RIGHT / lateral | segmentation | 102 GT road/curb points in the body; the v5 mask still has no walkable counter-evidence to gate on |
+| f03 | false-free (any) | annotated / B | `M5UI…` | 85 | STRAIGHT / centred | decision | 6 GT object-occupancy points in the body, but spread over bins with < 5 support each, so no credible negative bin |
+| f04 | false-free (any) | annotated / B | `M5UI…` | 215 | LEFT / lateral | decision | same low-support case with 5 GT occupancy points below the per-bin support threshold |
+| f05 | false-free (any) | production / B | `-PqSD…` | 10 | RIGHT / lateral | segmentation | 539 GT object/vegetation points in the body but no binned negative evidence from the v5 mask |
+| f06 | false-free (any) | production / B | `UGNw…` | 45 | STRAIGHT / centred | segmentation | 1 071 GT object/vegetation points in the body, same v5-mask limitation |
+| f07 | false-stop (ground) | annotated / B | `-PqSD…` | 0 | STOP / hazard_in_path | decision | no GT ground danger; 48 hazard + 41 non-walkable points in the body stop the walker — the over-conservative occupancy case |
+| f08 | false-stop (ground) | production / B | `M5UI…` | 760 | STOP / non_walkable_in_path | decision | no GT any-negative danger; 582 non-walkable points come from v5-mask/geometry noise in the body |
+| f09 | UNKNOWN when GT walkable | annotated / C | `UGNw…` | 0 | UNKNOWN / hazard_confirming | temporal | persistent curb evidence in the body; C converts the first frames of the block to UNKNOWN instead of STOP (temporal cost) |
+| f10 | UNKNOWN when GT walkable | production / B | `-PqSD…` | 0 | UNKNOWN / no_metric_depth | geometry | calibration warm-up frame: no metric geometry at all, so the tracker is skipped |
 
-![f07 overlay: accepted stop on object/vegetation occupancy with no GT ground danger](assets/path_keeper_negative_evidence_20261106/failures/f07_false_stop_M5UIabsl_000050_overlay.jpg)
+![f07 overlay: accepted stop on occupancy evidence with no GT ground danger](assets/path_keeper_negative_evidence_20261106/failures/f07_false_stop_-PqSDmiE_000000_overlay.jpg)
 
-![f01 overlay: GT curb inside the body but in the unbinned 5.5-6.0 m tail](assets/path_keeper_negative_evidence_20261106/failures/f01_false_free_-PqSDmiE_000155_overlay.jpg)
+![f01 overlay: production v5 mask misses the GT road/curb so there is no counter-evidence](assets/path_keeper_negative_evidence_20261106/failures/f01_false_free_-PqSDmiE_000180_overlay.jpg)
 
-![f03 overlay: production v5 calls the GT curb/road walkable, so there is no counter-evidence](assets/path_keeper_negative_evidence_20261106/failures/f03_false_free_-PqSDmiE_000180_overlay.jpg)
+![f09 overlay: temporal-confirmation UNKNOWN on a persistent curb block](assets/path_keeper_negative_evidence_20261106/failures/f09_unknown_when_gt_walkable_UGNwBEZM_000000_overlay.jpg)
 
 ## 7. What improved, what regressed, what remains NOT_EVALUABLE
 
 **Improved (representation defect).** Under annotated segmentation + reference geometry — the best
 inputs the segmenter can ever give — the corridor no longer emits walkable guidance while GT
-excluded ground is inside the swept body: false-free ground danger 92/103 (89.3 %) -> 6/103
-(5.8 %), blocking recall on those frames 10.7 % -> 94.2 %, and the PR #15 23-frame regression set
-23 -> 3 remaining walkable (B). The unintended "walkable-only" representation (excluded ground
-contributes nothing) is replaced by an explicit four-channel structure with swept-body gating,
-UNKNOWN on low confidence/conflict, explainable reason codes and no change to the existing state
-machine semantics. Under production inputs the same change still reduces false-free ground danger
-45.6 % -> 20.4 % and the 23-frame remain count 20 -> 8; the residual is bounded by the unchanged
-segmentation (v5 Road-as-Sidewalk) and by the inherited bin-tail representation.
+excluded ground is inside the swept body: false-free ground danger 92/103 (89.3 %) -> 0/103
+(0.0 %), blocking recall on those frames 10.7 % -> 100 %, curb-in-path ignored 21/109 -> 2/109,
+PR #15-gate false-free 78/114 (68.4 %) -> 0/114, and the PR #15 23-frame regression set
+23 -> 2 remaining walkable (21 STOP). The unintended "walkable-only" representation (excluded
+ground contributes nothing) is replaced by an explicit four-channel structure with swept-body
+gating, UNKNOWN on low confidence/conflict, explainable reason codes and no change to the existing
+state machine semantics. Under production inputs the same change still reduces false-free ground
+danger 45.6 % -> 18.4 %, blocking recall 54.4 % -> 81.6 % and the 23-frame remain count 20 -> 8;
+the residual is bounded by the unchanged segmentation (v5 Road-as-Sidewalk) and by the 0.4 m
+decision body versus PR #15's 0.6 m band.
 
 **Regressed (cost — this is why the PR is not an adoption).** The rule "any credible negative
 evidence inside the body sweep escalates" is far too conservative for real walks: guidance
-coverage falls 97.7 % -> 43.0 % (annotated) and 77.8 % -> 53.4 % (production), with 274/481
-(57.0 %) and 86/481 (17.9 %) STOPs. The dominant cause is not road/curb: it is object/vegetation
+coverage falls 97.7 % -> 39.5 % (annotated) and 77.8 % -> 52.2 % (production), with 291/481
+(60.5 %) and 91/481 (18.9 %) STOPs. The dominant cause is not road/curb: it is object/vegetation
 occupancy inside the 0.4 m body sweep. The dual denominators expose this exactly — annotated B
-false-stop is 177/378 (46.8 %) against GT ground danger but 0/186 against GT any-negative danger,
-and the held-out clean session `M5UI…` (zero GT ground danger) still stops 82/184 frames in the
-annotated condition. Temporal confirmation (C) is a real but insufficient iteration: it halves the
-ground false-stop rate (46.8 % -> 31.2 % annotated, 12.4 % -> 6.6 % production) by turning STOP
-into UNKNOWN (UNKNOWN 0 -> 15.6 % annotated, 28.7 % -> 36.8 % production) without changing
-false-free or guidance coverage.
+false-stop is 188/378 (49.7 %) against GT ground danger but 2/186 (1.1 %) against GT any-negative
+danger, and the clean validation session `M5UI…` (zero GT ground danger) still stops 86/184 frames
+in the annotated condition. Temporal confirmation (C) is a real but insufficient iteration: it
+halves the ground false-stop rate (49.7 % -> 33.9 % annotated, 13.5 % -> 7.4 % production) by
+turning STOP into UNKNOWN, with no false-free or guidance-coverage recovery.
 
 **NOT_EVALUABLE.** Device behaviour, phone IMU/camera, real blind-user usefulness and acceptance of
 STOP decisions (no device or user session; NOT_CONNECTED), obstacle-node behaviour (separate node;
@@ -285,10 +291,9 @@ structure and the swept-body/UNKNOWN rules, but not adopting "credible negative 
 body sweep -> STOP" for all four channels. The next iteration should split severity: excluded
 *ground* evidence (curb/drop/road) remains the corridor decision's escalation channel; object/
 vegetation occupancy should be routed to the obstacle node (which owns approach, persistence and
-context) or at most raise UNKNOWN, and the 0.4 m body sweep / 5.5–6.0 m bin tail should be
-re-examined. That split was not implemented here because it would add a new public evidence channel
-and a product decision on STOP semantics; the PR therefore stays open for operator adoption and is
-not merged.
+context) or at most raise UNKNOWN, and the 0.4 m body sweep should be re-examined. That split would
+add a new public evidence channel and a product decision on STOP semantics; the PR therefore stays
+open for operator adoption and is not merged.
 
 ## 8. Regression
 
@@ -334,8 +339,11 @@ not merged.
 * **Temporal confirmation across calibration gaps**: frames without metric geometry return
   `UNKNOWN no_metric_depth` without invoking the tracker, so a C block streak is not reset by a gap
   (documented implementation note; no effect on centreline poses here).
-* **Bin-tail/rounding and integer bin boundaries** are inherited from the baseline; they are
-  reported rather than silently changed.
+* **Bin boundaries**: the swept-evidence bins now cover the inclusive 1.5–6.0 m range (the
+  5.5–6.0 m tail is counted; review finding, fixed before the numbers in this report were
+  produced). Legacy walkable coverage still uses the pre-existing `round((far-near)/bin) = 4`
+  binning, unchanged on purpose so arm A is fixed; that baseline quirk is inherited, not
+  introduced here, and is visible only through the coverage metric.
 * **True independent validation, device verification and blind-user testing are NOT_EVALUABLE**;
   all numbers are DESKTOP_REAL_DATA on SANPO-Real (chest-mounted ZED VIO pose used as an IMU proxy,
   recorded VIO route used as the corridor centreline). BlindNav is not a certified mobility aid and

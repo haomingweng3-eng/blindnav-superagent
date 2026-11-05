@@ -247,6 +247,48 @@ def test_swept_body_near_and_far_gating():
     assert hint.hazard_points == 0 and hint.hazard_bins == 0
 
 
+def test_swept_evidence_includes_inclusive_far_end_bin():
+    """The 5.5-6.0 m tail of the declared 1.5-6.0 m swept body must be binned.
+
+    Review finding: with the legacy ``round((far-near)/bin) == 4`` bin count the last 0.5 m
+    produced no credible bin, so hazard/non-walkable points there were silently dropped and the
+    corridor could keep emitting walkable guidance.  Evidence binning must use the inclusive
+    ceil range while legacy walkable coverage keeps its own (unchanged) bin count.
+    """
+    corridor = get_corridor("straight60")
+    pose = corridor.pose_at(2.0)
+    far_tail = body_to_map(pose, (5.55, 5.64, 5.73, 5.82, 5.91), lateral=0.0,
+                           n=1, jitter_m=0.0)
+    hint = ShadowWalkTracker(corridor).update_evidence(
+        CorridorEvidence(walkable=walk_band(corridor), hazard=far_tail), pose)
+    assert hint.hazard_points == 5 and hint.hazard_bins == 1
+    assert hint.hint == STOP and hint.reason == "hazard_in_path"
+
+
+def test_swept_evidence_far_endpoint_is_inclusive():
+    corridor = get_corridor("straight60")
+    pose = corridor.pose_at(2.0)
+    at_far = body_to_map(pose, (6.0,), lateral=0.0, n=5, jitter_m=0.0)
+    hint = ShadowWalkTracker(corridor).update_evidence(
+        CorridorEvidence(walkable=walk_band(corridor), non_walkable=at_far), pose)
+    assert hint.non_walkable_points == 5 and hint.non_walkable_bins == 1
+    assert hint.hint == STOP and hint.reason == "non_walkable_in_path"
+
+    beyond = body_to_map(pose, (6.01,), lateral=0.0, n=1, jitter_m=0.0)
+    hint2 = ShadowWalkTracker(corridor).update_evidence(
+        CorridorEvidence(walkable=walk_band(corridor), non_walkable=beyond), pose)
+    assert hint2.non_walkable_points == 0
+    assert hint2.hint == STRAIGHT and hint2.reason == "centred"
+
+
+def test_legacy_coverage_bins_unchanged_by_evidence_far_bin():
+    """Arm A walkable coverage must keep the legacy binning (the fix is evidence-only)."""
+    corridor = get_corridor("straight60")
+    hint = ShadowWalkTracker(corridor).update(walk_band(corridor), corridor.pose_at(2.0))
+    assert hint.hint == STRAIGHT and hint.reason == "centred"
+    assert hint.coverage == pytest.approx(1.0)
+
+
 def test_hazard_in_swept_path_stops_despite_strong_walkable_support():
     corridor = get_corridor("straight60")
     pose = corridor.pose_at(2.0)

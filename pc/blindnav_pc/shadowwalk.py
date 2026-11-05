@@ -246,11 +246,24 @@ class ShadowWalkTracker:
                               int(temporal_streak))
 
     @staticmethod
+    def _swept_evidence_bins(cfg: ShadowWalkConfig) -> int:
+        """Number of swept-evidence bins covering the INCLUSIVE ``near_m..far_m`` interval.
+
+        ``ceil`` (not the legacy ``round`` used for walkable coverage) so that the last bin is not
+        silently dropped when the range is an integer multiple of ``bin_m``: the 1.5-6.0 m range
+        with 1.0 m bins is 4.5 bins wide, so the inclusive far bin 5.5-6.0 m needs a fifth bin.
+        The legacy coverage binning is intentionally left unchanged so arm A behaviour is fixed.
+        """
+        return max(1, int(math.ceil((cfg.far_m - cfg.near_m) / cfg.bin_m - 1e-9)))
+
+    @staticmethod
     def _swept_bin_counts(points_map, pose, cfg: ShadowWalkConfig, nbins: int) -> np.ndarray:
         """Per-forward-bin point support of one channel inside the body swept rectangle.
 
-        Bins span ``near_m``..``far_m`` in ``bin_m`` steps measured along the CURRENT BODY HEADING
-        (``corridor_evidence.body_frame``), laterally gated to ``|lateral| <= swept_half_width_m``.
+        Bins span the INCLUSIVE ``near_m``..``far_m`` interval in ``bin_m`` steps measured along
+        the CURRENT BODY HEADING (``corridor_evidence.body_frame``), laterally gated to
+        ``|lateral| <= swept_half_width_m``.  The caller passes the number of bins from
+        :meth:`_swept_evidence_bins`; the final bin is inclusive of ``far_m``.
         """
         counts = np.zeros(nbins, dtype=np.int64)
         if points_map is None:
@@ -263,9 +276,9 @@ class ShadowWalkTracker:
         if not len(fwd):
             return counts
         idx = np.floor((fwd - cfg.near_m) / cfg.bin_m).astype(int)
-        idx = idx[(idx >= 0) & (idx < nbins)]
-        if not len(idx):
-            return counts
+        # in_swept_body already guarantees near_m <= fwd <= far_m; clip the inclusive far end
+        # (fwd == far_m) into the last bin instead of dropping it.
+        idx = np.clip(idx, 0, nbins - 1)
         return np.bincount(idx, minlength=nbins).astype(np.int64)[:nbins]
 
     def update(self, points_map: Optional[np.ndarray], pose: Optional[Pose2D]) -> ShadowWalkHint:
@@ -291,7 +304,8 @@ class ShadowWalkTracker:
         s0, walker_off = corr.project(pose.x_m, pose.z_m)
         yaw_err = float(wrap_pi(pose.yaw_rad - corr.heading_at(s0)))
         half = corr.width_m / 2.0
-        nbins = max(1, int(round((c.far_m - c.near_m) / c.bin_m)))
+        nbins = max(1, int(round((c.far_m - c.near_m) / c.bin_m)))  # legacy coverage bins
+        nbins_ev = self._swept_evidence_bins(c)  # inclusive near..far evidence bins
 
         # ---- baseline walkable geometry: corridor coordinates (unchanged) -------------------
         walk_pts = np.asarray(evidence.walkable, dtype=np.float64).reshape(-1, 2)
@@ -318,10 +332,10 @@ class ShadowWalkTracker:
             return self._result(STOP, s0, walker_off, band, yaw_err, coverage, n, "off_corridor")
 
         # ---- explicit negative evidence in body coordinates --------------------------------
-        w_bins = self._swept_bin_counts(evidence.walkable, pose, c, nbins)
-        h_bins = self._swept_bin_counts(evidence.hazard, pose, c, nbins)
-        nw_bins = self._swept_bin_counts(evidence.non_walkable, pose, c, nbins)
-        u_bins = self._swept_bin_counts(evidence.unknown, pose, c, nbins)
+        w_bins = self._swept_bin_counts(evidence.walkable, pose, c, nbins_ev)
+        h_bins = self._swept_bin_counts(evidence.hazard, pose, c, nbins_ev)
+        nw_bins = self._swept_bin_counts(evidence.non_walkable, pose, c, nbins_ev)
+        u_bins = self._swept_bin_counts(evidence.unknown, pose, c, nbins_ev)
         self._last_bin_counts = {"walkable": w_bins, "hazard": h_bins,
                                  "non_walkable": nw_bins, "unknown": u_bins}
         ev = dict(hazard_points=int(h_bins.sum()),

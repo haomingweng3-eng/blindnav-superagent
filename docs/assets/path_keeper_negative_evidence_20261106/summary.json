@@ -324,7 +324,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 576275,
+        "walkable_swept_points_total": 593728,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -334,36 +334,36 @@
     "annotated/B": {
       "frames": 481,
       "hint_counts": {
-        "STRAIGHT": 132,
-        "LEFT": 15,
-        "RIGHT": 60,
-        "STOP": 274,
+        "STRAIGHT": 125,
+        "LEFT": 13,
+        "RIGHT": 52,
+        "STOP": 291,
         "UNKNOWN": 0
       },
       "false_free": {
-        "numerator": 6,
+        "numerator": 0,
         "denominator": 103,
-        "rate": 0.05825242718446602
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 21,
+        "numerator": 6,
         "denominator": 295,
-        "rate": 0.0711864406779661
+        "rate": 0.020338983050847456
       },
       "false_free_pr15_gate": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 114,
-        "rate": 0.02631578947368421
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 177,
+        "numerator": 188,
         "denominator": 378,
-        "rate": 0.46825396825396826
+        "rate": 0.4973544973544973
       },
       "false_stop_any": {
-        "numerator": 0,
+        "numerator": 2,
         "denominator": 186,
-        "rate": 0.0
+        "rate": 0.010752688172043012
       },
       "unknown": {
         "numerator": 0,
@@ -377,94 +377,94 @@
         "mean_coverage": 0.9610187110187111
       },
       "guidance_coverage": {
-        "numerator": 207,
+        "numerator": 190,
         "denominator": 481,
-        "rate": 0.4303534303534304
+        "rate": 0.39501039501039503
       },
       "danger_handling": {
         "danger_frames": 103,
-        "stop": 97,
+        "stop": 103,
         "unknown": 0,
-        "walkable": 6,
-        "blocking_recall": 0.941747572815534
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 103,
-        "stop": 97,
+        "stop": 103,
         "unknown": 0,
-        "walkable": 6,
-        "blocking_recall": 0.941747572815534
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 295,
-        "stop": 274,
+        "stop": 289,
         "unknown": 0,
-        "walkable": 21,
-        "blocking_recall": 0.9288135593220339
+        "walkable": 6,
+        "blocking_recall": 0.9796610169491525
       },
       "pr15_23": {
         "frames": 23,
-        "walkable_guidance": 3,
-        "stop": 20,
+        "walkable_guidance": 2,
+        "stop": 21,
         "unknown": 0
       },
       "action_flips": {
         "frames": 481,
-        "rate": 0.5696465696465697,
+        "rate": 0.604989604989605,
         "pairs": {
-          "LEFT->STOP": 110,
-          "STRAIGHT->STOP": 131,
-          "RIGHT->STOP": 22,
+          "RIGHT->STOP": 30,
+          "LEFT->STOP": 112,
+          "STRAIGHT->STOP": 138,
           "UNKNOWN->STOP": 11
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 3,
+        "curb_in_path_ignored": 2,
         "unknown_when_gt_walkable": 0,
         "pr15_event_frames": 114,
         "danger_ground_frames": 103,
         "danger_any_frames": 295
       },
       "evidence": {
-        "hazard_points_total": 176236,
-        "non_walkable_points_total": 39505,
-        "unknown_points_total": 1339,
-        "walkable_swept_points_total": 576275,
-        "hazard_bins_total": 692,
-        "non_walkable_bins_total": 569,
-        "unknown_bins_total": 61,
-        "frames_with_blocking_evidence": 274
+        "hazard_points_total": 186294,
+        "non_walkable_points_total": 42230,
+        "unknown_points_total": 1946,
+        "walkable_swept_points_total": 593728,
+        "hazard_bins_total": 886,
+        "non_walkable_bins_total": 704,
+        "unknown_bins_total": 72,
+        "frames_with_blocking_evidence": 291
       }
     },
     "annotated/C": {
       "frames": 481,
       "hint_counts": {
-        "STRAIGHT": 132,
-        "LEFT": 15,
-        "RIGHT": 60,
-        "STOP": 199,
-        "UNKNOWN": 75
+        "STRAIGHT": 125,
+        "LEFT": 13,
+        "RIGHT": 52,
+        "STOP": 214,
+        "UNKNOWN": 77
       },
       "false_free": {
-        "numerator": 6,
+        "numerator": 0,
         "denominator": 103,
-        "rate": 0.05825242718446602
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 21,
+        "numerator": 6,
         "denominator": 295,
-        "rate": 0.0711864406779661
+        "rate": 0.020338983050847456
       },
       "false_free_pr15_gate": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 114,
-        "rate": 0.02631578947368421
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 118,
+        "numerator": 128,
         "denominator": 378,
-        "rate": 0.31216931216931215
+        "rate": 0.3386243386243386
       },
       "false_stop_any": {
         "numerator": 0,
@@ -472,9 +472,9 @@
         "rate": 0.0
       },
       "unknown": {
-        "numerator": 75,
+        "numerator": 77,
         "denominator": 481,
-        "rate": 0.15592515592515593
+        "rate": 0.1600831600831601
       },
       "coverage": {
         "frames_ge_min_coverage": 470,
@@ -483,67 +483,67 @@
         "mean_coverage": 0.9610187110187111
       },
       "guidance_coverage": {
-        "numerator": 207,
+        "numerator": 190,
         "denominator": 481,
-        "rate": 0.4303534303534304
+        "rate": 0.39501039501039503
       },
       "danger_handling": {
         "danger_frames": 103,
-        "stop": 81,
-        "unknown": 16,
-        "walkable": 6,
-        "blocking_recall": 0.941747572815534
+        "stop": 86,
+        "unknown": 17,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 103,
-        "stop": 81,
-        "unknown": 16,
-        "walkable": 6,
-        "blocking_recall": 0.941747572815534
+        "stop": 86,
+        "unknown": 17,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 295,
-        "stop": 199,
+        "stop": 214,
         "unknown": 75,
-        "walkable": 21,
-        "blocking_recall": 0.9288135593220339
+        "walkable": 6,
+        "blocking_recall": 0.9796610169491525
       },
       "pr15_23": {
         "frames": 23,
-        "walkable_guidance": 3,
-        "stop": 16,
-        "unknown": 4
+        "walkable_guidance": 2,
+        "stop": 19,
+        "unknown": 2
       },
       "action_flips": {
         "frames": 481,
-        "rate": 0.5675675675675675,
+        "rate": 0.6029106029106029,
         "pairs": {
-          "LEFT->UNKNOWN": 9,
-          "STRAIGHT->UNKNOWN": 56,
+          "RIGHT->UNKNOWN": 17,
+          "LEFT->STOP": 105,
+          "STRAIGHT->STOP": 86,
           "RIGHT->STOP": 13,
-          "STRAIGHT->STOP": 75,
-          "LEFT->STOP": 101,
-          "RIGHT->UNKNOWN": 9,
-          "UNKNOWN->STOP": 10
+          "STRAIGHT->UNKNOWN": 52,
+          "UNKNOWN->STOP": 10,
+          "LEFT->UNKNOWN": 7
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 3,
-        "unknown_when_gt_walkable": 74,
+        "curb_in_path_ignored": 2,
+        "unknown_when_gt_walkable": 76,
         "pr15_event_frames": 114,
         "danger_ground_frames": 103,
         "danger_any_frames": 295
       },
       "evidence": {
-        "hazard_points_total": 176236,
-        "non_walkable_points_total": 39505,
-        "unknown_points_total": 1339,
-        "walkable_swept_points_total": 576275,
-        "hazard_bins_total": 692,
-        "non_walkable_bins_total": 569,
-        "unknown_bins_total": 61,
-        "frames_with_blocking_evidence": 274
+        "hazard_points_total": 186294,
+        "non_walkable_points_total": 42230,
+        "unknown_points_total": 1946,
+        "walkable_swept_points_total": 593728,
+        "hazard_bins_total": 886,
+        "non_walkable_bins_total": 704,
+        "unknown_bins_total": 72,
+        "frames_with_blocking_evidence": 291
       }
     },
     "production/A": {
@@ -640,7 +640,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 208762,
+        "walkable_swept_points_total": 225693,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -650,41 +650,41 @@
     "production/B": {
       "frames": 481,
       "hint_counts": {
-        "STRAIGHT": 175,
+        "STRAIGHT": 169,
         "LEFT": 4,
         "RIGHT": 78,
-        "STOP": 86,
-        "UNKNOWN": 138
+        "STOP": 91,
+        "UNKNOWN": 139
       },
       "false_free": {
-        "numerator": 21,
+        "numerator": 19,
         "denominator": 103,
-        "rate": 0.20388349514563106
+        "rate": 0.18446601941747573
       },
       "false_free_any": {
-        "numerator": 134,
+        "numerator": 130,
         "denominator": 295,
-        "rate": 0.4542372881355932
+        "rate": 0.4406779661016949
       },
       "false_free_pr15_gate": {
-        "numerator": 14,
+        "numerator": 13,
         "denominator": 114,
-        "rate": 0.12280701754385964
+        "rate": 0.11403508771929824
       },
       "false_stop": {
-        "numerator": 47,
+        "numerator": 51,
         "denominator": 378,
-        "rate": 0.12433862433862433
+        "rate": 0.1349206349206349
       },
       "false_stop_any": {
-        "numerator": 14,
+        "numerator": 15,
         "denominator": 186,
-        "rate": 0.07526881720430108
+        "rate": 0.08064516129032258
       },
       "unknown": {
-        "numerator": 138,
+        "numerator": 139,
         "denominator": 481,
-        "rate": 0.2869022869022869
+        "rate": 0.288981288981289
       },
       "coverage": {
         "frames_ge_min_coverage": 375,
@@ -693,30 +693,30 @@
         "mean_coverage": 0.5722453222453222
       },
       "guidance_coverage": {
-        "numerator": 257,
+        "numerator": 251,
         "denominator": 481,
-        "rate": 0.5343035343035343
+        "rate": 0.5218295218295218
       },
       "danger_handling": {
         "danger_frames": 103,
-        "stop": 39,
-        "unknown": 43,
-        "walkable": 21,
-        "blocking_recall": 0.7961165048543689
+        "stop": 40,
+        "unknown": 44,
+        "walkable": 19,
+        "blocking_recall": 0.8155339805825242
       },
       "danger_handling_ground": {
         "danger_frames": 103,
-        "stop": 39,
-        "unknown": 43,
-        "walkable": 21,
-        "blocking_recall": 0.7961165048543689
+        "stop": 40,
+        "unknown": 44,
+        "walkable": 19,
+        "blocking_recall": 0.8155339805825242
       },
       "danger_handling_any": {
         "danger_frames": 295,
-        "stop": 72,
+        "stop": 76,
         "unknown": 89,
-        "walkable": 134,
-        "blocking_recall": 0.5457627118644067
+        "walkable": 130,
+        "blocking_recall": 0.559322033898305
       },
       "pr15_23": {
         "frames": 23,
@@ -726,69 +726,69 @@
       },
       "action_flips": {
         "frames": 481,
-        "rate": 0.31392931392931395,
+        "rate": 0.3264033264033264,
         "pairs": {
-          "LEFT->UNKNOWN": 35,
+          "LEFT->UNKNOWN": 32,
           "RIGHT->UNKNOWN": 19,
           "UNKNOWN->STOP": 34,
-          "STRAIGHT->UNKNOWN": 11,
-          "STRAIGHT->STOP": 12,
+          "STRAIGHT->UNKNOWN": 15,
+          "STRAIGHT->STOP": 14,
           "RIGHT->STOP": 21,
-          "LEFT->STOP": 19
+          "LEFT->STOP": 22
         }
       },
       "events": {
         "road_in_path_ignored": 2,
-        "curb_in_path_ignored": 10,
-        "unknown_when_gt_walkable": 127,
+        "curb_in_path_ignored": 9,
+        "unknown_when_gt_walkable": 128,
         "pr15_event_frames": 114,
         "danger_ground_frames": 103,
         "danger_any_frames": 295
       },
       "evidence": {
-        "hazard_points_total": 15423,
-        "non_walkable_points_total": 6997,
-        "unknown_points_total": 57565,
-        "walkable_swept_points_total": 208762,
-        "hazard_bins_total": 97,
-        "non_walkable_bins_total": 85,
-        "unknown_bins_total": 317,
-        "frames_with_blocking_evidence": 86
+        "hazard_points_total": 18125,
+        "non_walkable_points_total": 7879,
+        "unknown_points_total": 63822,
+        "walkable_swept_points_total": 225693,
+        "hazard_bins_total": 132,
+        "non_walkable_bins_total": 121,
+        "unknown_bins_total": 453,
+        "frames_with_blocking_evidence": 91
       }
     },
     "production/C": {
       "frames": 481,
       "hint_counts": {
-        "STRAIGHT": 175,
+        "STRAIGHT": 169,
         "LEFT": 4,
         "RIGHT": 78,
-        "STOP": 47,
+        "STOP": 53,
         "UNKNOWN": 177
       },
       "false_free": {
-        "numerator": 21,
+        "numerator": 19,
         "denominator": 103,
-        "rate": 0.20388349514563106
+        "rate": 0.18446601941747573
       },
       "false_free_any": {
-        "numerator": 134,
+        "numerator": 130,
         "denominator": 295,
-        "rate": 0.4542372881355932
+        "rate": 0.4406779661016949
       },
       "false_free_pr15_gate": {
-        "numerator": 14,
+        "numerator": 13,
         "denominator": 114,
-        "rate": 0.12280701754385964
+        "rate": 0.11403508771929824
       },
       "false_stop": {
-        "numerator": 25,
+        "numerator": 28,
         "denominator": 378,
-        "rate": 0.06613756613756613
+        "rate": 0.07407407407407407
       },
       "false_stop_any": {
-        "numerator": 4,
+        "numerator": 7,
         "denominator": 186,
-        "rate": 0.021505376344086023
+        "rate": 0.03763440860215054
       },
       "unknown": {
         "numerator": 177,
@@ -802,30 +802,30 @@
         "mean_coverage": 0.5722453222453222
       },
       "guidance_coverage": {
-        "numerator": 257,
+        "numerator": 251,
         "denominator": 481,
-        "rate": 0.5343035343035343
+        "rate": 0.5218295218295218
       },
       "danger_handling": {
         "danger_frames": 103,
-        "stop": 22,
-        "unknown": 60,
-        "walkable": 21,
-        "blocking_recall": 0.7961165048543689
+        "stop": 25,
+        "unknown": 59,
+        "walkable": 19,
+        "blocking_recall": 0.8155339805825242
       },
       "danger_handling_ground": {
         "danger_frames": 103,
-        "stop": 22,
-        "unknown": 60,
-        "walkable": 21,
-        "blocking_recall": 0.7961165048543689
+        "stop": 25,
+        "unknown": 59,
+        "walkable": 19,
+        "blocking_recall": 0.8155339805825242
       },
       "danger_handling_any": {
         "danger_frames": 295,
-        "stop": 43,
-        "unknown": 118,
-        "walkable": 134,
-        "blocking_recall": 0.5457627118644067
+        "stop": 46,
+        "unknown": 119,
+        "walkable": 130,
+        "blocking_recall": 0.559322033898305
       },
       "pr15_23": {
         "frames": 23,
@@ -835,34 +835,34 @@
       },
       "action_flips": {
         "frames": 481,
-        "rate": 0.28274428274428276,
+        "rate": 0.2993762993762994,
         "pairs": {
-          "LEFT->UNKNOWN": 43,
-          "RIGHT->UNKNOWN": 30,
-          "STRAIGHT->UNKNOWN": 16,
-          "STRAIGHT->STOP": 7,
-          "LEFT->STOP": 11,
-          "UNKNOWN->STOP": 19,
-          "RIGHT->STOP": 10
+          "LEFT->UNKNOWN": 42,
+          "RIGHT->UNKNOWN": 29,
+          "STRAIGHT->UNKNOWN": 20,
+          "STRAIGHT->STOP": 9,
+          "RIGHT->STOP": 11,
+          "LEFT->STOP": 12,
+          "UNKNOWN->STOP": 21
         }
       },
       "events": {
         "road_in_path_ignored": 2,
-        "curb_in_path_ignored": 10,
+        "curb_in_path_ignored": 9,
         "unknown_when_gt_walkable": 166,
         "pr15_event_frames": 114,
         "danger_ground_frames": 103,
         "danger_any_frames": 295
       },
       "evidence": {
-        "hazard_points_total": 15423,
-        "non_walkable_points_total": 6997,
-        "unknown_points_total": 57565,
-        "walkable_swept_points_total": 208762,
-        "hazard_bins_total": 97,
-        "non_walkable_bins_total": 85,
-        "unknown_bins_total": 317,
-        "frames_with_blocking_evidence": 86
+        "hazard_points_total": 18125,
+        "non_walkable_points_total": 7879,
+        "unknown_points_total": 63822,
+        "walkable_swept_points_total": 225693,
+        "hazard_bins_total": 132,
+        "non_walkable_bins_total": 121,
+        "unknown_bins_total": 453,
+        "frames_with_blocking_evidence": 91
       }
     }
   },
@@ -961,7 +961,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 134080,
+        "walkable_swept_points_total": 139103,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -1062,7 +1062,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 274696,
+        "walkable_swept_points_total": 283436,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -1163,7 +1163,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 167499,
+        "walkable_swept_points_total": 171189,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -1173,36 +1173,36 @@
     "annotated/B/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
       "frames": 121,
       "hint_counts": {
-        "STRAIGHT": 72,
-        "LEFT": 5,
-        "RIGHT": 10,
-        "STOP": 34,
+        "STRAIGHT": 67,
+        "LEFT": 4,
+        "RIGHT": 7,
+        "STOP": 43,
         "UNKNOWN": 0
       },
       "false_free": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 21,
-        "rate": 0.14285714285714285
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 8,
+        "numerator": 0,
         "denominator": 42,
-        "rate": 0.19047619047619047
+        "rate": 0.0
       },
       "false_free_pr15_gate": {
-        "numerator": 1,
+        "numerator": 0,
         "denominator": 10,
-        "rate": 0.1
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 16,
+        "numerator": 22,
         "denominator": 100,
-        "rate": 0.16
+        "rate": 0.22
       },
       "false_stop_any": {
-        "numerator": 0,
+        "numerator": 1,
         "denominator": 79,
-        "rate": 0.0
+        "rate": 0.012658227848101266
       },
       "unknown": {
         "numerator": 0,
@@ -1216,30 +1216,30 @@
         "mean_coverage": 0.8533057851239669
       },
       "guidance_coverage": {
-        "numerator": 87,
+        "numerator": 78,
         "denominator": 121,
-        "rate": 0.71900826446281
+        "rate": 0.6446280991735537
       },
       "danger_handling": {
         "danger_frames": 21,
-        "stop": 18,
+        "stop": 21,
         "unknown": 0,
-        "walkable": 3,
-        "blocking_recall": 0.8571428571428571
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 21,
-        "stop": 18,
+        "stop": 21,
         "unknown": 0,
-        "walkable": 3,
-        "blocking_recall": 0.8571428571428571
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 42,
-        "stop": 34,
+        "stop": 42,
         "unknown": 0,
-        "walkable": 8,
-        "blocking_recall": 0.8095238095238095
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "pr15_23": {
         "frames": 3,
@@ -1249,11 +1249,11 @@
       },
       "action_flips": {
         "frames": 121,
-        "rate": 0.2809917355371901,
+        "rate": 0.35537190082644626,
         "pairs": {
-          "LEFT->STOP": 4,
-          "STRAIGHT->STOP": 17,
-          "RIGHT->STOP": 2,
+          "RIGHT->STOP": 5,
+          "LEFT->STOP": 5,
+          "STRAIGHT->STOP": 22,
           "UNKNOWN->STOP": 11
         }
       },
@@ -1266,23 +1266,23 @@
         "danger_any_frames": 42
       },
       "evidence": {
-        "hazard_points_total": 4612,
-        "non_walkable_points_total": 7241,
-        "unknown_points_total": 466,
-        "walkable_swept_points_total": 134080,
-        "hazard_bins_total": 25,
-        "non_walkable_bins_total": 51,
-        "unknown_bins_total": 8,
-        "frames_with_blocking_evidence": 34
+        "hazard_points_total": 8370,
+        "non_walkable_points_total": 8313,
+        "unknown_points_total": 1048,
+        "walkable_swept_points_total": 139103,
+        "hazard_bins_total": 53,
+        "non_walkable_bins_total": 77,
+        "unknown_bins_total": 17,
+        "frames_with_blocking_evidence": 43
       }
     },
     "annotated/B/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
       "frames": 184,
       "hint_counts": {
-        "STRAIGHT": 58,
+        "STRAIGHT": 57,
         "LEFT": 8,
-        "RIGHT": 36,
-        "STOP": 82,
+        "RIGHT": 33,
+        "STOP": 86,
         "UNKNOWN": 0
       },
       "false_free": {
@@ -1291,9 +1291,9 @@
         "rate": null
       },
       "false_free_any": {
-        "numerator": 9,
+        "numerator": 6,
         "denominator": 91,
-        "rate": 0.0989010989010989
+        "rate": 0.06593406593406594
       },
       "false_free_pr15_gate": {
         "numerator": 0,
@@ -1301,14 +1301,14 @@
         "rate": null
       },
       "false_stop": {
-        "numerator": 82,
+        "numerator": 86,
         "denominator": 184,
-        "rate": 0.44565217391304346
+        "rate": 0.4673913043478261
       },
       "false_stop_any": {
-        "numerator": 0,
+        "numerator": 1,
         "denominator": 93,
-        "rate": 0.0
+        "rate": 0.010752688172043012
       },
       "unknown": {
         "numerator": 0,
@@ -1322,9 +1322,9 @@
         "mean_coverage": 0.998641304347826
       },
       "guidance_coverage": {
-        "numerator": 102,
+        "numerator": 98,
         "denominator": 184,
-        "rate": 0.5543478260869565
+        "rate": 0.532608695652174
       },
       "danger_handling": {
         "danger_frames": 0,
@@ -1342,10 +1342,10 @@
       },
       "danger_handling_any": {
         "danger_frames": 91,
-        "stop": 82,
+        "stop": 85,
         "unknown": 0,
-        "walkable": 9,
-        "blocking_recall": 0.9010989010989011
+        "walkable": 6,
+        "blocking_recall": 0.9340659340659341
       },
       "pr15_23": {
         "frames": 0,
@@ -1355,11 +1355,11 @@
       },
       "action_flips": {
         "frames": 184,
-        "rate": 0.44565217391304346,
+        "rate": 0.4673913043478261,
         "pairs": {
-          "STRAIGHT->STOP": 74,
+          "STRAIGHT->STOP": 75,
           "LEFT->STOP": 5,
-          "RIGHT->STOP": 3
+          "RIGHT->STOP": 6
         }
       },
       "events": {
@@ -1371,44 +1371,44 @@
         "danger_any_frames": 91
       },
       "evidence": {
-        "hazard_points_total": 7414,
-        "non_walkable_points_total": 1452,
+        "hazard_points_total": 8868,
+        "non_walkable_points_total": 2036,
         "unknown_points_total": 8,
-        "walkable_swept_points_total": 274696,
-        "hazard_bins_total": 189,
-        "non_walkable_bins_total": 84,
+        "walkable_swept_points_total": 283436,
+        "hazard_bins_total": 261,
+        "non_walkable_bins_total": 127,
         "unknown_bins_total": 0,
-        "frames_with_blocking_evidence": 82
+        "frames_with_blocking_evidence": 86
       }
     },
     "annotated/B/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
       "frames": 176,
       "hint_counts": {
-        "STRAIGHT": 2,
-        "LEFT": 2,
-        "RIGHT": 14,
-        "STOP": 158,
+        "STRAIGHT": 1,
+        "LEFT": 1,
+        "RIGHT": 12,
+        "STOP": 162,
         "UNKNOWN": 0
       },
       "false_free": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 82,
-        "rate": 0.036585365853658534
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 4,
+        "numerator": 0,
         "denominator": 162,
-        "rate": 0.024691358024691357
+        "rate": 0.0
       },
       "false_free_pr15_gate": {
-        "numerator": 2,
+        "numerator": 0,
         "denominator": 104,
-        "rate": 0.019230769230769232
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 79,
+        "numerator": 80,
         "denominator": 94,
-        "rate": 0.8404255319148937
+        "rate": 0.851063829787234
       },
       "false_stop_any": {
         "numerator": 0,
@@ -1427,93 +1427,93 @@
         "mean_coverage": 0.9957386363636364
       },
       "guidance_coverage": {
-        "numerator": 18,
+        "numerator": 14,
         "denominator": 176,
-        "rate": 0.10227272727272728
+        "rate": 0.07954545454545454
       },
       "danger_handling": {
         "danger_frames": 82,
-        "stop": 79,
+        "stop": 82,
         "unknown": 0,
-        "walkable": 3,
-        "blocking_recall": 0.9634146341463414
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 82,
-        "stop": 79,
+        "stop": 82,
         "unknown": 0,
-        "walkable": 3,
-        "blocking_recall": 0.9634146341463414
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 162,
-        "stop": 158,
+        "stop": 162,
         "unknown": 0,
-        "walkable": 4,
-        "blocking_recall": 0.9753086419753086
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "pr15_23": {
         "frames": 20,
-        "walkable_guidance": 2,
-        "stop": 18,
+        "walkable_guidance": 1,
+        "stop": 19,
         "unknown": 0
       },
       "action_flips": {
         "frames": 176,
-        "rate": 0.8977272727272727,
+        "rate": 0.9204545454545454,
         "pairs": {
-          "LEFT->STOP": 101,
-          "STRAIGHT->STOP": 40,
-          "RIGHT->STOP": 17
+          "LEFT->STOP": 102,
+          "STRAIGHT->STOP": 41,
+          "RIGHT->STOP": 19
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 2,
+        "curb_in_path_ignored": 1,
         "unknown_when_gt_walkable": 0,
         "pr15_event_frames": 104,
         "danger_ground_frames": 82,
         "danger_any_frames": 162
       },
       "evidence": {
-        "hazard_points_total": 164210,
-        "non_walkable_points_total": 30812,
-        "unknown_points_total": 865,
-        "walkable_swept_points_total": 167499,
-        "hazard_bins_total": 478,
-        "non_walkable_bins_total": 434,
-        "unknown_bins_total": 53,
-        "frames_with_blocking_evidence": 158
+        "hazard_points_total": 169056,
+        "non_walkable_points_total": 31881,
+        "unknown_points_total": 890,
+        "walkable_swept_points_total": 171189,
+        "hazard_bins_total": 572,
+        "non_walkable_bins_total": 500,
+        "unknown_bins_total": 55,
+        "frames_with_blocking_evidence": 162
       }
     },
     "annotated/C/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
       "frames": 121,
       "hint_counts": {
-        "STRAIGHT": 72,
-        "LEFT": 5,
-        "RIGHT": 10,
-        "STOP": 20,
+        "STRAIGHT": 67,
+        "LEFT": 4,
+        "RIGHT": 7,
+        "STOP": 29,
         "UNKNOWN": 14
       },
       "false_free": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 21,
-        "rate": 0.14285714285714285
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 8,
+        "numerator": 0,
         "denominator": 42,
-        "rate": 0.19047619047619047
+        "rate": 0.0
       },
       "false_free_pr15_gate": {
-        "numerator": 1,
+        "numerator": 0,
         "denominator": 10,
-        "rate": 0.1
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 9,
+        "numerator": 16,
         "denominator": 100,
-        "rate": 0.09
+        "rate": 0.16
       },
       "false_stop_any": {
         "numerator": 0,
@@ -1532,30 +1532,30 @@
         "mean_coverage": 0.8533057851239669
       },
       "guidance_coverage": {
-        "numerator": 87,
+        "numerator": 78,
         "denominator": 121,
-        "rate": 0.71900826446281
+        "rate": 0.6446280991735537
       },
       "danger_handling": {
         "danger_frames": 21,
-        "stop": 11,
-        "unknown": 7,
-        "walkable": 3,
-        "blocking_recall": 0.8571428571428571
+        "stop": 13,
+        "unknown": 8,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 21,
-        "stop": 11,
-        "unknown": 7,
-        "walkable": 3,
-        "blocking_recall": 0.8571428571428571
+        "stop": 13,
+        "unknown": 8,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 42,
-        "stop": 20,
-        "unknown": 14,
-        "walkable": 8,
-        "blocking_recall": 0.8095238095238095
+        "stop": 29,
+        "unknown": 13,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "pr15_23": {
         "frames": 3,
@@ -1565,14 +1565,13 @@
       },
       "action_flips": {
         "frames": 121,
-        "rate": 0.2727272727272727,
+        "rate": 0.34710743801652894,
         "pairs": {
-          "LEFT->UNKNOWN": 2,
-          "STRAIGHT->UNKNOWN": 10,
+          "RIGHT->UNKNOWN": 4,
+          "LEFT->STOP": 5,
+          "STRAIGHT->STOP": 13,
           "RIGHT->STOP": 1,
-          "STRAIGHT->STOP": 7,
-          "LEFT->STOP": 2,
-          "RIGHT->UNKNOWN": 1,
+          "STRAIGHT->UNKNOWN": 9,
           "UNKNOWN->STOP": 10
         }
       },
@@ -1585,24 +1584,24 @@
         "danger_any_frames": 42
       },
       "evidence": {
-        "hazard_points_total": 4612,
-        "non_walkable_points_total": 7241,
-        "unknown_points_total": 466,
-        "walkable_swept_points_total": 134080,
-        "hazard_bins_total": 25,
-        "non_walkable_bins_total": 51,
-        "unknown_bins_total": 8,
-        "frames_with_blocking_evidence": 34
+        "hazard_points_total": 8370,
+        "non_walkable_points_total": 8313,
+        "unknown_points_total": 1048,
+        "walkable_swept_points_total": 139103,
+        "hazard_bins_total": 53,
+        "non_walkable_bins_total": 77,
+        "unknown_bins_total": 17,
+        "frames_with_blocking_evidence": 43
       }
     },
     "annotated/C/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
       "frames": 184,
       "hint_counts": {
-        "STRAIGHT": 58,
+        "STRAIGHT": 57,
         "LEFT": 8,
-        "RIGHT": 36,
+        "RIGHT": 33,
         "STOP": 35,
-        "UNKNOWN": 47
+        "UNKNOWN": 51
       },
       "false_free": {
         "numerator": 0,
@@ -1610,9 +1609,9 @@
         "rate": null
       },
       "false_free_any": {
-        "numerator": 9,
+        "numerator": 6,
         "denominator": 91,
-        "rate": 0.0989010989010989
+        "rate": 0.06593406593406594
       },
       "false_free_pr15_gate": {
         "numerator": 0,
@@ -1630,9 +1629,9 @@
         "rate": 0.0
       },
       "unknown": {
-        "numerator": 47,
+        "numerator": 51,
         "denominator": 184,
-        "rate": 0.2554347826086957
+        "rate": 0.27717391304347827
       },
       "coverage": {
         "frames_ge_min_coverage": 184,
@@ -1641,9 +1640,9 @@
         "mean_coverage": 0.998641304347826
       },
       "guidance_coverage": {
-        "numerator": 102,
+        "numerator": 98,
         "denominator": 184,
-        "rate": 0.5543478260869565
+        "rate": 0.532608695652174
       },
       "danger_handling": {
         "danger_frames": 0,
@@ -1662,9 +1661,9 @@
       "danger_handling_any": {
         "danger_frames": 91,
         "stop": 35,
-        "unknown": 47,
-        "walkable": 9,
-        "blocking_recall": 0.9010989010989011
+        "unknown": 50,
+        "walkable": 6,
+        "blocking_recall": 0.9340659340659341
       },
       "pr15_23": {
         "frames": 0,
@@ -1674,62 +1673,62 @@
       },
       "action_flips": {
         "frames": 184,
-        "rate": 0.44565217391304346,
+        "rate": 0.4673913043478261,
         "pairs": {
-          "STRAIGHT->UNKNOWN": 40,
+          "STRAIGHT->UNKNOWN": 41,
           "LEFT->UNKNOWN": 4,
           "STRAIGHT->STOP": 34,
-          "RIGHT->UNKNOWN": 3,
+          "RIGHT->UNKNOWN": 6,
           "LEFT->STOP": 1
         }
       },
       "events": {
         "road_in_path_ignored": 0,
         "curb_in_path_ignored": 0,
-        "unknown_when_gt_walkable": 47,
+        "unknown_when_gt_walkable": 51,
         "pr15_event_frames": 0,
         "danger_ground_frames": 0,
         "danger_any_frames": 91
       },
       "evidence": {
-        "hazard_points_total": 7414,
-        "non_walkable_points_total": 1452,
+        "hazard_points_total": 8868,
+        "non_walkable_points_total": 2036,
         "unknown_points_total": 8,
-        "walkable_swept_points_total": 274696,
-        "hazard_bins_total": 189,
-        "non_walkable_bins_total": 84,
+        "walkable_swept_points_total": 283436,
+        "hazard_bins_total": 261,
+        "non_walkable_bins_total": 127,
         "unknown_bins_total": 0,
-        "frames_with_blocking_evidence": 82
+        "frames_with_blocking_evidence": 86
       }
     },
     "annotated/C/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
       "frames": 176,
       "hint_counts": {
-        "STRAIGHT": 2,
-        "LEFT": 2,
-        "RIGHT": 14,
-        "STOP": 144,
-        "UNKNOWN": 14
+        "STRAIGHT": 1,
+        "LEFT": 1,
+        "RIGHT": 12,
+        "STOP": 150,
+        "UNKNOWN": 12
       },
       "false_free": {
-        "numerator": 3,
+        "numerator": 0,
         "denominator": 82,
-        "rate": 0.036585365853658534
+        "rate": 0.0
       },
       "false_free_any": {
-        "numerator": 4,
+        "numerator": 0,
         "denominator": 162,
-        "rate": 0.024691358024691357
+        "rate": 0.0
       },
       "false_free_pr15_gate": {
-        "numerator": 2,
+        "numerator": 0,
         "denominator": 104,
-        "rate": 0.019230769230769232
+        "rate": 0.0
       },
       "false_stop": {
-        "numerator": 74,
+        "numerator": 77,
         "denominator": 94,
-        "rate": 0.7872340425531915
+        "rate": 0.8191489361702128
       },
       "false_stop_any": {
         "numerator": 0,
@@ -1737,9 +1736,9 @@
         "rate": 0.0
       },
       "unknown": {
-        "numerator": 14,
+        "numerator": 12,
         "denominator": 176,
-        "rate": 0.07954545454545454
+        "rate": 0.06818181818181818
       },
       "coverage": {
         "frames_ge_min_coverage": 176,
@@ -1748,66 +1747,66 @@
         "mean_coverage": 0.9957386363636364
       },
       "guidance_coverage": {
-        "numerator": 18,
+        "numerator": 14,
         "denominator": 176,
-        "rate": 0.10227272727272728
+        "rate": 0.07954545454545454
       },
       "danger_handling": {
         "danger_frames": 82,
-        "stop": 70,
+        "stop": 73,
         "unknown": 9,
-        "walkable": 3,
-        "blocking_recall": 0.9634146341463414
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_ground": {
         "danger_frames": 82,
-        "stop": 70,
+        "stop": 73,
         "unknown": 9,
-        "walkable": 3,
-        "blocking_recall": 0.9634146341463414
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "danger_handling_any": {
         "danger_frames": 162,
-        "stop": 144,
-        "unknown": 14,
-        "walkable": 4,
-        "blocking_recall": 0.9753086419753086
+        "stop": 150,
+        "unknown": 12,
+        "walkable": 0,
+        "blocking_recall": 1.0
       },
       "pr15_23": {
         "frames": 20,
-        "walkable_guidance": 2,
-        "stop": 15,
-        "unknown": 3
+        "walkable_guidance": 1,
+        "stop": 18,
+        "unknown": 1
       },
       "action_flips": {
         "frames": 176,
-        "rate": 0.8977272727272727,
+        "rate": 0.9204545454545454,
         "pairs": {
           "LEFT->UNKNOWN": 3,
-          "STRAIGHT->UNKNOWN": 6,
-          "STRAIGHT->STOP": 34,
-          "RIGHT->UNKNOWN": 5,
+          "STRAIGHT->UNKNOWN": 2,
+          "STRAIGHT->STOP": 39,
+          "RIGHT->UNKNOWN": 7,
           "RIGHT->STOP": 12,
-          "LEFT->STOP": 98
+          "LEFT->STOP": 99
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 2,
-        "unknown_when_gt_walkable": 14,
+        "curb_in_path_ignored": 1,
+        "unknown_when_gt_walkable": 12,
         "pr15_event_frames": 104,
         "danger_ground_frames": 82,
         "danger_any_frames": 162
       },
       "evidence": {
-        "hazard_points_total": 164210,
-        "non_walkable_points_total": 30812,
-        "unknown_points_total": 865,
-        "walkable_swept_points_total": 167499,
-        "hazard_bins_total": 478,
-        "non_walkable_bins_total": 434,
-        "unknown_bins_total": 53,
-        "frames_with_blocking_evidence": 158
+        "hazard_points_total": 169056,
+        "non_walkable_points_total": 31881,
+        "unknown_points_total": 890,
+        "walkable_swept_points_total": 171189,
+        "hazard_bins_total": 572,
+        "non_walkable_bins_total": 500,
+        "unknown_bins_total": 55,
+        "frames_with_blocking_evidence": 162
       }
     },
     "production/A/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
@@ -1904,7 +1903,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 53332,
+        "walkable_swept_points_total": 56933,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -2005,7 +2004,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 122324,
+        "walkable_swept_points_total": 130987,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -2106,7 +2105,7 @@
         "hazard_points_total": 0,
         "non_walkable_points_total": 0,
         "unknown_points_total": 0,
-        "walkable_swept_points_total": 33106,
+        "walkable_swept_points_total": 37773,
         "hazard_bins_total": 0,
         "non_walkable_bins_total": 0,
         "unknown_bins_total": 0,
@@ -2116,21 +2115,21 @@
     "production/B/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
       "frames": 121,
       "hint_counts": {
-        "STRAIGHT": 37,
+        "STRAIGHT": 33,
         "LEFT": 0,
         "RIGHT": 16,
-        "STOP": 10,
-        "UNKNOWN": 58
+        "STOP": 12,
+        "UNKNOWN": 60
       },
       "false_free": {
-        "numerator": 8,
+        "numerator": 7,
         "denominator": 21,
-        "rate": 0.38095238095238093
+        "rate": 0.3333333333333333
       },
       "false_free_any": {
-        "numerator": 15,
+        "numerator": 13,
         "denominator": 42,
-        "rate": 0.35714285714285715
+        "rate": 0.30952380952380953
       },
       "false_free_pr15_gate": {
         "numerator": 2,
@@ -2138,19 +2137,19 @@
         "rate": 0.2
       },
       "false_stop": {
-        "numerator": 9,
+        "numerator": 11,
         "denominator": 100,
-        "rate": 0.09
+        "rate": 0.11
       },
       "false_stop_any": {
-        "numerator": 8,
+        "numerator": 9,
         "denominator": 79,
-        "rate": 0.10126582278481013
+        "rate": 0.11392405063291139
       },
       "unknown": {
-        "numerator": 58,
+        "numerator": 60,
         "denominator": 121,
-        "rate": 0.4793388429752066
+        "rate": 0.49586776859504134
       },
       "coverage": {
         "frames_ge_min_coverage": 89,
@@ -2159,30 +2158,30 @@
         "mean_coverage": 0.53099173553719
       },
       "guidance_coverage": {
-        "numerator": 53,
+        "numerator": 49,
         "denominator": 121,
-        "rate": 0.4380165289256198
+        "rate": 0.4049586776859504
       },
       "danger_handling": {
         "danger_frames": 21,
         "stop": 1,
-        "unknown": 12,
-        "walkable": 8,
-        "blocking_recall": 0.6190476190476191
+        "unknown": 13,
+        "walkable": 7,
+        "blocking_recall": 0.6666666666666666
       },
       "danger_handling_ground": {
         "danger_frames": 21,
         "stop": 1,
-        "unknown": 12,
-        "walkable": 8,
-        "blocking_recall": 0.6190476190476191
+        "unknown": 13,
+        "walkable": 7,
+        "blocking_recall": 0.6666666666666666
       },
       "danger_handling_any": {
         "danger_frames": 42,
-        "stop": 2,
-        "unknown": 25,
-        "walkable": 15,
-        "blocking_recall": 0.6428571428571429
+        "stop": 3,
+        "unknown": 26,
+        "walkable": 13,
+        "blocking_recall": 0.6904761904761905
       },
       "pr15_23": {
         "frames": 3,
@@ -2192,34 +2191,34 @@
       },
       "action_flips": {
         "frames": 121,
-        "rate": 0.2975206611570248,
+        "rate": 0.3305785123966942,
         "pairs": {
-          "LEFT->UNKNOWN": 17,
+          "LEFT->UNKNOWN": 16,
           "RIGHT->UNKNOWN": 5,
           "UNKNOWN->STOP": 1,
-          "STRAIGHT->UNKNOWN": 4,
-          "STRAIGHT->STOP": 5,
+          "STRAIGHT->UNKNOWN": 7,
+          "STRAIGHT->STOP": 6,
           "RIGHT->STOP": 3,
-          "LEFT->STOP": 1
+          "LEFT->STOP": 2
         }
       },
       "events": {
         "road_in_path_ignored": 2,
         "curb_in_path_ignored": 2,
-        "unknown_when_gt_walkable": 47,
+        "unknown_when_gt_walkable": 49,
         "pr15_event_frames": 10,
         "danger_ground_frames": 21,
         "danger_any_frames": 42
       },
       "evidence": {
-        "hazard_points_total": 953,
-        "non_walkable_points_total": 1657,
-        "unknown_points_total": 19124,
-        "walkable_swept_points_total": 53332,
-        "hazard_bins_total": 4,
-        "non_walkable_bins_total": 16,
-        "unknown_bins_total": 90,
-        "frames_with_blocking_evidence": 10
+        "hazard_points_total": 1114,
+        "non_walkable_points_total": 1909,
+        "unknown_points_total": 20882,
+        "walkable_swept_points_total": 56933,
+        "hazard_bins_total": 6,
+        "non_walkable_bins_total": 26,
+        "unknown_bins_total": 131,
+        "frames_with_blocking_evidence": 12
       }
     },
     "production/B/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
@@ -2320,44 +2319,44 @@
         "danger_any_frames": 91
       },
       "evidence": {
-        "hazard_points_total": 120,
-        "non_walkable_points_total": 2900,
-        "unknown_points_total": 9483,
-        "walkable_swept_points_total": 122324,
-        "hazard_bins_total": 3,
-        "non_walkable_bins_total": 18,
-        "unknown_bins_total": 52,
+        "hazard_points_total": 146,
+        "non_walkable_points_total": 2939,
+        "unknown_points_total": 10244,
+        "walkable_swept_points_total": 130987,
+        "hazard_bins_total": 4,
+        "non_walkable_bins_total": 21,
+        "unknown_bins_total": 68,
         "frames_with_blocking_evidence": 8
       }
     },
     "production/B/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
       "frames": 176,
       "hint_counts": {
-        "STRAIGHT": 27,
+        "STRAIGHT": 25,
         "LEFT": 4,
         "RIGHT": 18,
-        "STOP": 68,
-        "UNKNOWN": 59
+        "STOP": 71,
+        "UNKNOWN": 58
       },
       "false_free": {
-        "numerator": 13,
+        "numerator": 12,
         "denominator": 82,
-        "rate": 0.15853658536585366
+        "rate": 0.14634146341463414
       },
       "false_free_any": {
-        "numerator": 39,
+        "numerator": 37,
         "denominator": 162,
-        "rate": 0.24074074074074073
+        "rate": 0.22839506172839505
       },
       "false_free_pr15_gate": {
-        "numerator": 12,
+        "numerator": 11,
         "denominator": 104,
-        "rate": 0.11538461538461539
+        "rate": 0.10576923076923077
       },
       "false_stop": {
-        "numerator": 30,
+        "numerator": 32,
         "denominator": 94,
-        "rate": 0.3191489361702128
+        "rate": 0.3404255319148936
       },
       "false_stop_any": {
         "numerator": 0,
@@ -2365,9 +2364,9 @@
         "rate": 0.0
       },
       "unknown": {
-        "numerator": 59,
+        "numerator": 58,
         "denominator": 176,
-        "rate": 0.3352272727272727
+        "rate": 0.32954545454545453
       },
       "coverage": {
         "frames_ge_min_coverage": 107,
@@ -2376,30 +2375,30 @@
         "mean_coverage": 0.4133522727272727
       },
       "guidance_coverage": {
-        "numerator": 49,
+        "numerator": 47,
         "denominator": 176,
-        "rate": 0.2784090909090909
+        "rate": 0.26704545454545453
       },
       "danger_handling": {
         "danger_frames": 82,
-        "stop": 38,
+        "stop": 39,
         "unknown": 31,
-        "walkable": 13,
-        "blocking_recall": 0.8414634146341463
+        "walkable": 12,
+        "blocking_recall": 0.8536585365853658
       },
       "danger_handling_ground": {
         "danger_frames": 82,
-        "stop": 38,
+        "stop": 39,
         "unknown": 31,
-        "walkable": 13,
-        "blocking_recall": 0.8414634146341463
+        "walkable": 12,
+        "blocking_recall": 0.8536585365853658
       },
       "danger_handling_any": {
         "danger_frames": 162,
-        "stop": 68,
-        "unknown": 55,
-        "walkable": 39,
-        "blocking_recall": 0.7592592592592593
+        "stop": 71,
+        "unknown": 54,
+        "walkable": 37,
+        "blocking_recall": 0.7716049382716049
       },
       "pr15_23": {
         "frames": 20,
@@ -2409,54 +2408,54 @@
       },
       "action_flips": {
         "frames": 176,
-        "rate": 0.5170454545454546,
+        "rate": 0.5284090909090909,
         "pairs": {
-          "LEFT->UNKNOWN": 15,
-          "STRAIGHT->UNKNOWN": 3,
+          "LEFT->UNKNOWN": 13,
+          "STRAIGHT->UNKNOWN": 4,
           "RIGHT->STOP": 16,
-          "LEFT->STOP": 13,
+          "LEFT->STOP": 15,
+          "STRAIGHT->STOP": 7,
           "UNKNOWN->STOP": 33,
-          "RIGHT->UNKNOWN": 5,
-          "STRAIGHT->STOP": 6
+          "RIGHT->UNKNOWN": 5
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 8,
-        "unknown_when_gt_walkable": 59,
+        "curb_in_path_ignored": 7,
+        "unknown_when_gt_walkable": 58,
         "pr15_event_frames": 104,
         "danger_ground_frames": 82,
         "danger_any_frames": 162
       },
       "evidence": {
-        "hazard_points_total": 14350,
-        "non_walkable_points_total": 2440,
-        "unknown_points_total": 28958,
-        "walkable_swept_points_total": 33106,
-        "hazard_bins_total": 90,
-        "non_walkable_bins_total": 51,
-        "unknown_bins_total": 175,
-        "frames_with_blocking_evidence": 68
+        "hazard_points_total": 16865,
+        "non_walkable_points_total": 3031,
+        "unknown_points_total": 32696,
+        "walkable_swept_points_total": 37773,
+        "hazard_bins_total": 122,
+        "non_walkable_bins_total": 74,
+        "unknown_bins_total": 254,
+        "frames_with_blocking_evidence": 71
       }
     },
     "production/C/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
       "frames": 121,
       "hint_counts": {
-        "STRAIGHT": 37,
+        "STRAIGHT": 33,
         "LEFT": 0,
         "RIGHT": 16,
-        "STOP": 1,
-        "UNKNOWN": 67
+        "STOP": 4,
+        "UNKNOWN": 68
       },
       "false_free": {
-        "numerator": 8,
+        "numerator": 7,
         "denominator": 21,
-        "rate": 0.38095238095238093
+        "rate": 0.3333333333333333
       },
       "false_free_any": {
-        "numerator": 15,
+        "numerator": 13,
         "denominator": 42,
-        "rate": 0.35714285714285715
+        "rate": 0.30952380952380953
       },
       "false_free_pr15_gate": {
         "numerator": 2,
@@ -2464,19 +2463,19 @@
         "rate": 0.2
       },
       "false_stop": {
-        "numerator": 1,
+        "numerator": 4,
         "denominator": 100,
-        "rate": 0.01
+        "rate": 0.04
       },
       "false_stop_any": {
-        "numerator": 1,
+        "numerator": 4,
         "denominator": 79,
-        "rate": 0.012658227848101266
+        "rate": 0.05063291139240506
       },
       "unknown": {
-        "numerator": 67,
+        "numerator": 68,
         "denominator": 121,
-        "rate": 0.5537190082644629
+        "rate": 0.5619834710743802
       },
       "coverage": {
         "frames_ge_min_coverage": 89,
@@ -2485,30 +2484,30 @@
         "mean_coverage": 0.53099173553719
       },
       "guidance_coverage": {
-        "numerator": 53,
+        "numerator": 49,
         "denominator": 121,
-        "rate": 0.4380165289256198
+        "rate": 0.4049586776859504
       },
       "danger_handling": {
         "danger_frames": 21,
         "stop": 0,
-        "unknown": 13,
-        "walkable": 8,
-        "blocking_recall": 0.6190476190476191
+        "unknown": 14,
+        "walkable": 7,
+        "blocking_recall": 0.6666666666666666
       },
       "danger_handling_ground": {
         "danger_frames": 21,
         "stop": 0,
-        "unknown": 13,
-        "walkable": 8,
-        "blocking_recall": 0.6190476190476191
+        "unknown": 14,
+        "walkable": 7,
+        "blocking_recall": 0.6666666666666666
       },
       "danger_handling_any": {
         "danger_frames": 42,
         "stop": 0,
-        "unknown": 27,
-        "walkable": 15,
-        "blocking_recall": 0.6428571428571429
+        "unknown": 29,
+        "walkable": 13,
+        "blocking_recall": 0.6904761904761905
       },
       "pr15_23": {
         "frames": 3,
@@ -2518,31 +2517,32 @@
       },
       "action_flips": {
         "frames": 121,
-        "rate": 0.2892561983471074,
+        "rate": 0.32231404958677684,
         "pairs": {
           "LEFT->UNKNOWN": 18,
-          "RIGHT->UNKNOWN": 8,
-          "STRAIGHT->UNKNOWN": 8,
-          "STRAIGHT->STOP": 1
+          "RIGHT->UNKNOWN": 7,
+          "STRAIGHT->UNKNOWN": 10,
+          "STRAIGHT->STOP": 3,
+          "RIGHT->STOP": 1
         }
       },
       "events": {
         "road_in_path_ignored": 2,
         "curb_in_path_ignored": 2,
-        "unknown_when_gt_walkable": 56,
+        "unknown_when_gt_walkable": 57,
         "pr15_event_frames": 10,
         "danger_ground_frames": 21,
         "danger_any_frames": 42
       },
       "evidence": {
-        "hazard_points_total": 953,
-        "non_walkable_points_total": 1657,
-        "unknown_points_total": 19124,
-        "walkable_swept_points_total": 53332,
-        "hazard_bins_total": 4,
-        "non_walkable_bins_total": 16,
-        "unknown_bins_total": 90,
-        "frames_with_blocking_evidence": 10
+        "hazard_points_total": 1114,
+        "non_walkable_points_total": 1909,
+        "unknown_points_total": 20882,
+        "walkable_swept_points_total": 56933,
+        "hazard_bins_total": 6,
+        "non_walkable_bins_total": 26,
+        "unknown_bins_total": 131,
+        "frames_with_blocking_evidence": 12
       }
     },
     "production/C/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
@@ -2642,39 +2642,39 @@
         "danger_any_frames": 91
       },
       "evidence": {
-        "hazard_points_total": 120,
-        "non_walkable_points_total": 2900,
-        "unknown_points_total": 9483,
-        "walkable_swept_points_total": 122324,
-        "hazard_bins_total": 3,
-        "non_walkable_bins_total": 18,
-        "unknown_bins_total": 52,
+        "hazard_points_total": 146,
+        "non_walkable_points_total": 2939,
+        "unknown_points_total": 10244,
+        "walkable_swept_points_total": 130987,
+        "hazard_bins_total": 4,
+        "non_walkable_bins_total": 21,
+        "unknown_bins_total": 68,
         "frames_with_blocking_evidence": 8
       }
     },
     "production/C/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
       "frames": 176,
       "hint_counts": {
-        "STRAIGHT": 27,
+        "STRAIGHT": 25,
         "LEFT": 4,
         "RIGHT": 18,
-        "STOP": 41,
-        "UNKNOWN": 86
+        "STOP": 44,
+        "UNKNOWN": 85
       },
       "false_free": {
-        "numerator": 13,
+        "numerator": 12,
         "denominator": 82,
-        "rate": 0.15853658536585366
+        "rate": 0.14634146341463414
       },
       "false_free_any": {
-        "numerator": 39,
+        "numerator": 37,
         "denominator": 162,
-        "rate": 0.24074074074074073
+        "rate": 0.22839506172839505
       },
       "false_free_pr15_gate": {
-        "numerator": 12,
+        "numerator": 11,
         "denominator": 104,
-        "rate": 0.11538461538461539
+        "rate": 0.10576923076923077
       },
       "false_stop": {
         "numerator": 19,
@@ -2687,9 +2687,9 @@
         "rate": 0.0
       },
       "unknown": {
-        "numerator": 86,
+        "numerator": 85,
         "denominator": 176,
-        "rate": 0.48863636363636365
+        "rate": 0.48295454545454547
       },
       "coverage": {
         "frames_ge_min_coverage": 107,
@@ -2698,30 +2698,30 @@
         "mean_coverage": 0.4133522727272727
       },
       "guidance_coverage": {
-        "numerator": 49,
+        "numerator": 47,
         "denominator": 176,
-        "rate": 0.2784090909090909
+        "rate": 0.26704545454545453
       },
       "danger_handling": {
         "danger_frames": 82,
-        "stop": 22,
-        "unknown": 47,
-        "walkable": 13,
-        "blocking_recall": 0.8414634146341463
+        "stop": 25,
+        "unknown": 45,
+        "walkable": 12,
+        "blocking_recall": 0.8536585365853658
       },
       "danger_handling_ground": {
         "danger_frames": 82,
-        "stop": 22,
-        "unknown": 47,
-        "walkable": 13,
-        "blocking_recall": 0.8414634146341463
+        "stop": 25,
+        "unknown": 45,
+        "walkable": 12,
+        "blocking_recall": 0.8536585365853658
       },
       "danger_handling_any": {
         "danger_frames": 162,
-        "stop": 41,
-        "unknown": 82,
-        "walkable": 39,
-        "blocking_recall": 0.7592592592592593
+        "stop": 44,
+        "unknown": 81,
+        "walkable": 37,
+        "blocking_recall": 0.7716049382716049
       },
       "pr15_23": {
         "frames": 20,
@@ -2731,34 +2731,34 @@
       },
       "action_flips": {
         "frames": 176,
-        "rate": 0.4375,
+        "rate": 0.4602272727272727,
         "pairs": {
-          "LEFT->UNKNOWN": 21,
-          "STRAIGHT->UNKNOWN": 4,
+          "LEFT->UNKNOWN": 20,
+          "STRAIGHT->UNKNOWN": 6,
           "RIGHT->UNKNOWN": 11,
-          "LEFT->STOP": 7,
-          "UNKNOWN->STOP": 19,
+          "LEFT->STOP": 8,
+          "UNKNOWN->STOP": 21,
           "STRAIGHT->STOP": 5,
           "RIGHT->STOP": 10
         }
       },
       "events": {
         "road_in_path_ignored": 0,
-        "curb_in_path_ignored": 8,
-        "unknown_when_gt_walkable": 86,
+        "curb_in_path_ignored": 7,
+        "unknown_when_gt_walkable": 85,
         "pr15_event_frames": 104,
         "danger_ground_frames": 82,
         "danger_any_frames": 162
       },
       "evidence": {
-        "hazard_points_total": 14350,
-        "non_walkable_points_total": 2440,
-        "unknown_points_total": 28958,
-        "walkable_swept_points_total": 33106,
-        "hazard_bins_total": 90,
-        "non_walkable_bins_total": 51,
-        "unknown_bins_total": 175,
-        "frames_with_blocking_evidence": 68
+        "hazard_points_total": 16865,
+        "non_walkable_points_total": 3031,
+        "unknown_points_total": 32696,
+        "walkable_swept_points_total": 37773,
+        "hazard_bins_total": 122,
+        "non_walkable_bins_total": 74,
+        "unknown_bins_total": 254,
+        "frames_with_blocking_evidence": 71
       }
     }
   }
