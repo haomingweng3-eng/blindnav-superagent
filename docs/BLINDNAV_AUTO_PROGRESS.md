@@ -14,3 +14,18 @@
    `NO_HUMAN_ACTION_REQUIRED`
 
 下一轮自动继续：Walking 在完整数据上把双 head 训练到收敛；Obstacle 做深度补全与在线地面估计；Door 做候选排序/relation，把 11.4 个候选压到 ≤3。未达到上手机门槛，不请求真机测试。
+
+# BlindNav Auto Progress — 2026-11-05（W1，对齐 2026-11-04 真机协议）
+
+1. **今天真实改善了什么？**
+   - W1 安全协议锁定在 `docs/W1_SAFETY_PROTOCOL.md`，与 `docs/REAL_DEVICE_PROTOCOL.md` 对齐：STOP / OBSERVE / 拒答、受控演示约束、路缘召回 ≥70%、近场危险召回 ≥90%、P95 延迟必须报告（演示目标 ≤300 ms）。STOP 率和翻转率一并报告，避免用全停或来回跳刷召回。
+   - 红绿灯仍是 RED / GREEN / UNCERTAIN，`auto_go` 恒为 false。在原有三态 stub 和连续帧确认上补了 ImVisible 文本标签、`parse_imvisible_csv`，以及 HSV/OpenCV `TrafficLightThreeState.predict`（基线，不是最终模型，不输出 CROSS / 可以过街）。
+   - 离线 harness：`python -m blindnav_pc.eval_traffic_light` 写 `metrics.json` 和中文 `summary.md`。不确定不计成绿灯。图像可以不在。
+   - ImVisible 不下载、不入库。现有路径是 `pc/data/eval/imvisible/`。同一份标注若放在 `pc/data/imvisible/`，把 `--ann` / `--images` 指过去即可。
+
+2. **当前最大的 RED 是什么？**
+   - HSV 基线没有接入主 pipeline，绿灯也不是过街许可。
+   - 路缘召回和近场危险召回还没有在真机或 ImVisible 上按 W1 门槛正式通过。协议是门槛，不是成绩。
+
+3. **有没有需要人决定的事情？**
+   `NO_HUMAN_ACTION_REQUIRED`
