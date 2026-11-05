@@ -29,3 +29,17 @@
 
 3. **有没有需要人决定的事情？**
    `NO_HUMAN_ACTION_REQUIRED`
+
+# BlindNav Auto Progress — 2026-11-05（W2，ShadowWalk / Last10m 离线指标）
+
+1. **今天真实改善了什么？**
+   - 产品演示路径的离线指标落到 `pc/blindnav_pc/eval_shadowwalk.py` 和 `pc/blindnav_pc/eval_last10m.py`。ShadowWalk 用现有 `shadowwalk.py` 报横向偏移 MAE/P95、航向漂移、修正/翻转次数、UNKNOWN/STOP 率、覆盖失败率。Last10m 用现有 `last10m.py` 报过滤后候选数（强制 ≤3）、拒答率、有 GT 时的 top-k 命中、距离分箱拒答正确性（缺距离必须拒答）。
+   - 命令：`python -m blindnav_pc.eval_shadowwalk --corridor <json|fixture> --out <dir>`，`python -m blindnav_pc.eval_last10m --labels <dir_or_file> --out <dir>`。真实 session 或 Entrances 不在时用合成夹具，仍写 `metrics.json` 和中文 `summary.md`。不下载大数据，不改 Android Kotlin，不用 ARCore / LiDAR。
+   - 红绿灯仍只保持三态。本轮不输出 CROSS / 可以过街 / auto_go。纯单目仍只是有安全员的低速受控演示。
+
+2. **当前最大的 RED 是什么？**
+   - 路缘召回 ≥70% 和近场危险召回 ≥90% 还没有按 W1 门槛通过。这两份离线指标不替代那两条门槛，也不把合成夹具的数字写成已经通过。
+   - ShadowWalk 仍不定位、不规划、不控制。Last10m 仍只提议门候选，缺距离就拒答。
+
+3. **有没有需要人决定的事情？**
+   `NO_HUMAN_ACTION_REQUIRED`
