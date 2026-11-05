@@ -1,0 +1,666 @@
+condition,scope,arm,metric,numerator,denominator,rate,definition
+annotated,overall,A,frames,481,481,,row count
+annotated,overall,A,false_free,92,103,0.893204,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,overall,A,false_free_any,284,295,0.962712,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,overall,A,false_free_pr15_gate,78,114,0.684211,primary false-free on PR #15 road/curb path event frames
+annotated,overall,A,false_stop,0,378,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,overall,A,false_stop_any,0,186,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,overall,A,unknown,11,481,0.022869,hint UNKNOWN / all frames
+annotated,overall,A,guidance_coverage,470,481,0.977131,walkable guidance / all frames
+annotated,overall,A,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+annotated,overall,A,curb_in_path_ignored,21,109,0.192661,PR #15 curb-in-path ignored / curb event frames
+annotated,overall,A,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+annotated,overall,A,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+annotated,overall,A,coverage_mean,,481,0.961019,mean tracker coverage / frames with coverage
+annotated,overall,A,coverage_ge_min,470,481,0.977131,coverage >= min_coverage / all frames
+annotated,overall,A,action_flips_vs_A,0,481,0.000000,hint != arm A on joined frames
+annotated,overall,A,danger_blocking_recall,11,103,0.106796,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,overall,A,danger_blocking_recall_any,11,295,0.037288,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,overall,A,danger_stop,0,103,0.000000,STOP / GT excluded-ground danger frames (primary)
+annotated,overall,A,danger_stop_any,0,295,0.000000,STOP / GT any-negative danger frames (secondary)
+annotated,overall,A,danger_unknown,11,103,0.106796,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,overall,A,danger_unknown_any,11,295,0.037288,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,overall,A,pr15_23_walkable,23,23,1.000000,23-frame set walkable guidance
+annotated,overall,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,overall,A,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,overall,B,frames,481,481,,row count
+annotated,overall,B,false_free,6,103,0.058252,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,overall,B,false_free_any,21,295,0.071186,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,overall,B,false_free_pr15_gate,3,114,0.026316,primary false-free on PR #15 road/curb path event frames
+annotated,overall,B,false_stop,177,378,0.468254,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,overall,B,false_stop_any,0,186,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,overall,B,unknown,0,481,0.000000,hint UNKNOWN / all frames
+annotated,overall,B,guidance_coverage,207,481,0.430353,walkable guidance / all frames
+annotated,overall,B,road_in_path_ignored,0,5,0.000000,PR #15 road-in-path ignored / road event frames
+annotated,overall,B,curb_in_path_ignored,3,109,0.027523,PR #15 curb-in-path ignored / curb event frames
+annotated,overall,B,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+annotated,overall,B,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+annotated,overall,B,coverage_mean,,481,0.961019,mean tracker coverage / frames with coverage
+annotated,overall,B,coverage_ge_min,470,481,0.977131,coverage >= min_coverage / all frames
+annotated,overall,B,action_flips_vs_A,274,481,0.569647,hint != arm A on joined frames
+annotated,overall,B,action_flip_pair_LEFT_to_STOP,110,481,0.228690,frames with hint pair LEFT->STOP
+annotated,overall,B,action_flip_pair_RIGHT_to_STOP,22,481,0.045738,frames with hint pair RIGHT->STOP
+annotated,overall,B,action_flip_pair_STRAIGHT_to_STOP,131,481,0.272349,frames with hint pair STRAIGHT->STOP
+annotated,overall,B,action_flip_pair_UNKNOWN_to_STOP,11,481,0.022869,frames with hint pair UNKNOWN->STOP
+annotated,overall,B,danger_blocking_recall,97,103,0.941748,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,overall,B,danger_blocking_recall_any,274,295,0.928814,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,overall,B,danger_stop,97,103,0.941748,STOP / GT excluded-ground danger frames (primary)
+annotated,overall,B,danger_stop_any,274,295,0.928814,STOP / GT any-negative danger frames (secondary)
+annotated,overall,B,danger_unknown,0,103,0.000000,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,overall,B,danger_unknown_any,0,295,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,overall,B,pr15_23_walkable,3,23,0.130435,23-frame set walkable guidance
+annotated,overall,B,pr15_23_stop,20,23,0.869565,23-frame set STOP
+annotated,overall,B,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,overall,C,frames,481,481,,row count
+annotated,overall,C,false_free,6,103,0.058252,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,overall,C,false_free_any,21,295,0.071186,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,overall,C,false_free_pr15_gate,3,114,0.026316,primary false-free on PR #15 road/curb path event frames
+annotated,overall,C,false_stop,118,378,0.312169,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,overall,C,false_stop_any,0,186,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,overall,C,unknown,75,481,0.155925,hint UNKNOWN / all frames
+annotated,overall,C,guidance_coverage,207,481,0.430353,walkable guidance / all frames
+annotated,overall,C,road_in_path_ignored,0,5,0.000000,PR #15 road-in-path ignored / road event frames
+annotated,overall,C,curb_in_path_ignored,3,109,0.027523,PR #15 curb-in-path ignored / curb event frames
+annotated,overall,C,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+annotated,overall,C,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+annotated,overall,C,coverage_mean,,481,0.961019,mean tracker coverage / frames with coverage
+annotated,overall,C,coverage_ge_min,470,481,0.977131,coverage >= min_coverage / all frames
+annotated,overall,C,action_flips_vs_A,273,481,0.567568,hint != arm A on joined frames
+annotated,overall,C,action_flip_pair_LEFT_to_STOP,101,481,0.209979,frames with hint pair LEFT->STOP
+annotated,overall,C,action_flip_pair_LEFT_to_UNKNOWN,9,481,0.018711,frames with hint pair LEFT->UNKNOWN
+annotated,overall,C,action_flip_pair_RIGHT_to_STOP,13,481,0.027027,frames with hint pair RIGHT->STOP
+annotated,overall,C,action_flip_pair_RIGHT_to_UNKNOWN,9,481,0.018711,frames with hint pair RIGHT->UNKNOWN
+annotated,overall,C,action_flip_pair_STRAIGHT_to_STOP,75,481,0.155925,frames with hint pair STRAIGHT->STOP
+annotated,overall,C,action_flip_pair_STRAIGHT_to_UNKNOWN,56,481,0.116424,frames with hint pair STRAIGHT->UNKNOWN
+annotated,overall,C,action_flip_pair_UNKNOWN_to_STOP,10,481,0.020790,frames with hint pair UNKNOWN->STOP
+annotated,overall,C,danger_blocking_recall,97,103,0.941748,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,overall,C,danger_blocking_recall_any,274,295,0.928814,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,overall,C,danger_stop,81,103,0.786408,STOP / GT excluded-ground danger frames (primary)
+annotated,overall,C,danger_stop_any,199,295,0.674576,STOP / GT any-negative danger frames (secondary)
+annotated,overall,C,danger_unknown,16,103,0.155340,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,overall,C,danger_unknown_any,75,295,0.254237,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,overall,C,pr15_23_walkable,3,23,0.130435,23-frame set walkable guidance
+annotated,overall,C,pr15_23_stop,16,23,0.695652,23-frame set STOP
+annotated,overall,C,pr15_23_unknown,4,23,0.173913,23-frame set UNKNOWN
+production,overall,A,frames,481,481,,row count
+production,overall,A,false_free,47,103,0.456311,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,overall,A,false_free_any,208,295,0.705085,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,overall,A,false_free_pr15_gate,37,114,0.324561,primary false-free on PR #15 road/curb path event frames
+production,overall,A,false_stop,0,378,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,overall,A,false_stop_any,0,186,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,overall,A,unknown,107,481,0.222453,hint UNKNOWN / all frames
+production,overall,A,guidance_coverage,374,481,0.777547,walkable guidance / all frames
+production,overall,A,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,overall,A,curb_in_path_ignored,15,109,0.137615,PR #15 curb-in-path ignored / curb event frames
+production,overall,A,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+production,overall,A,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+production,overall,A,coverage_mean,,481,0.572245,mean tracker coverage / frames with coverage
+production,overall,A,coverage_ge_min,375,481,0.779626,coverage >= min_coverage / all frames
+production,overall,A,action_flips_vs_A,0,481,0.000000,hint != arm A on joined frames
+production,overall,A,danger_blocking_recall,56,103,0.543689,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,overall,A,danger_blocking_recall_any,87,295,0.294915,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,overall,A,danger_stop,0,103,0.000000,STOP / GT excluded-ground danger frames (primary)
+production,overall,A,danger_stop_any,0,295,0.000000,STOP / GT any-negative danger frames (secondary)
+production,overall,A,danger_unknown,56,103,0.543689,UNKNOWN / GT excluded-ground danger frames (primary)
+production,overall,A,danger_unknown_any,87,295,0.294915,UNKNOWN / GT any-negative danger frames (secondary)
+production,overall,A,pr15_23_walkable,20,23,0.869565,23-frame set walkable guidance
+production,overall,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,overall,A,pr15_23_unknown,3,23,0.130435,23-frame set UNKNOWN
+production,overall,B,frames,481,481,,row count
+production,overall,B,false_free,21,103,0.203883,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,overall,B,false_free_any,134,295,0.454237,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,overall,B,false_free_pr15_gate,14,114,0.122807,primary false-free on PR #15 road/curb path event frames
+production,overall,B,false_stop,47,378,0.124339,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,overall,B,false_stop_any,14,186,0.075269,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,overall,B,unknown,138,481,0.286902,hint UNKNOWN / all frames
+production,overall,B,guidance_coverage,257,481,0.534304,walkable guidance / all frames
+production,overall,B,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,overall,B,curb_in_path_ignored,10,109,0.091743,PR #15 curb-in-path ignored / curb event frames
+production,overall,B,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+production,overall,B,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+production,overall,B,coverage_mean,,481,0.572245,mean tracker coverage / frames with coverage
+production,overall,B,coverage_ge_min,375,481,0.779626,coverage >= min_coverage / all frames
+production,overall,B,action_flips_vs_A,151,481,0.313929,hint != arm A on joined frames
+production,overall,B,action_flip_pair_LEFT_to_STOP,19,481,0.039501,frames with hint pair LEFT->STOP
+production,overall,B,action_flip_pair_LEFT_to_UNKNOWN,35,481,0.072765,frames with hint pair LEFT->UNKNOWN
+production,overall,B,action_flip_pair_RIGHT_to_STOP,21,481,0.043659,frames with hint pair RIGHT->STOP
+production,overall,B,action_flip_pair_RIGHT_to_UNKNOWN,19,481,0.039501,frames with hint pair RIGHT->UNKNOWN
+production,overall,B,action_flip_pair_STRAIGHT_to_STOP,12,481,0.024948,frames with hint pair STRAIGHT->STOP
+production,overall,B,action_flip_pair_STRAIGHT_to_UNKNOWN,11,481,0.022869,frames with hint pair STRAIGHT->UNKNOWN
+production,overall,B,action_flip_pair_UNKNOWN_to_STOP,34,481,0.070686,frames with hint pair UNKNOWN->STOP
+production,overall,B,danger_blocking_recall,82,103,0.796117,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,overall,B,danger_blocking_recall_any,161,295,0.545763,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,overall,B,danger_stop,39,103,0.378641,STOP / GT excluded-ground danger frames (primary)
+production,overall,B,danger_stop_any,72,295,0.244068,STOP / GT any-negative danger frames (secondary)
+production,overall,B,danger_unknown,43,103,0.417476,UNKNOWN / GT excluded-ground danger frames (primary)
+production,overall,B,danger_unknown_any,89,295,0.301695,UNKNOWN / GT any-negative danger frames (secondary)
+production,overall,B,pr15_23_walkable,8,23,0.347826,23-frame set walkable guidance
+production,overall,B,pr15_23_stop,6,23,0.260870,23-frame set STOP
+production,overall,B,pr15_23_unknown,9,23,0.391304,23-frame set UNKNOWN
+production,overall,C,frames,481,481,,row count
+production,overall,C,false_free,21,103,0.203883,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,overall,C,false_free_any,134,295,0.454237,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,overall,C,false_free_pr15_gate,14,114,0.122807,primary false-free on PR #15 road/curb path event frames
+production,overall,C,false_stop,25,378,0.066138,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,overall,C,false_stop_any,4,186,0.021505,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,overall,C,unknown,177,481,0.367983,hint UNKNOWN / all frames
+production,overall,C,guidance_coverage,257,481,0.534304,walkable guidance / all frames
+production,overall,C,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,overall,C,curb_in_path_ignored,10,109,0.091743,PR #15 curb-in-path ignored / curb event frames
+production,overall,C,danger_ground_frames,103,481,0.214137,frames with GT excluded-ground danger in the swept body
+production,overall,C,danger_any_frames,295,481,0.613306,frames with GT any-negative danger in the swept body
+production,overall,C,coverage_mean,,481,0.572245,mean tracker coverage / frames with coverage
+production,overall,C,coverage_ge_min,375,481,0.779626,coverage >= min_coverage / all frames
+production,overall,C,action_flips_vs_A,136,481,0.282744,hint != arm A on joined frames
+production,overall,C,action_flip_pair_LEFT_to_STOP,11,481,0.022869,frames with hint pair LEFT->STOP
+production,overall,C,action_flip_pair_LEFT_to_UNKNOWN,43,481,0.089397,frames with hint pair LEFT->UNKNOWN
+production,overall,C,action_flip_pair_RIGHT_to_STOP,10,481,0.020790,frames with hint pair RIGHT->STOP
+production,overall,C,action_flip_pair_RIGHT_to_UNKNOWN,30,481,0.062370,frames with hint pair RIGHT->UNKNOWN
+production,overall,C,action_flip_pair_STRAIGHT_to_STOP,7,481,0.014553,frames with hint pair STRAIGHT->STOP
+production,overall,C,action_flip_pair_STRAIGHT_to_UNKNOWN,16,481,0.033264,frames with hint pair STRAIGHT->UNKNOWN
+production,overall,C,action_flip_pair_UNKNOWN_to_STOP,19,481,0.039501,frames with hint pair UNKNOWN->STOP
+production,overall,C,danger_blocking_recall,82,103,0.796117,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,overall,C,danger_blocking_recall_any,161,295,0.545763,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,overall,C,danger_stop,22,103,0.213592,STOP / GT excluded-ground danger frames (primary)
+production,overall,C,danger_stop_any,43,295,0.145763,STOP / GT any-negative danger frames (secondary)
+production,overall,C,danger_unknown,60,103,0.582524,UNKNOWN / GT excluded-ground danger frames (primary)
+production,overall,C,danger_unknown_any,118,295,0.400000,UNKNOWN / GT any-negative danger frames (secondary)
+production,overall,C,pr15_23_walkable,8,23,0.347826,23-frame set walkable guidance
+production,overall,C,pr15_23_stop,3,23,0.130435,23-frame set STOP
+production,overall,C,pr15_23_unknown,12,23,0.521739,23-frame set UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,frames,121,121,,row count
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free,10,21,0.476190,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free_any,31,42,0.738095,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free_pr15_gate,3,10,0.300000,primary false-free on PR #15 road/curb path event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_stop,0,100,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_stop_any,0,79,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,unknown,11,121,0.090909,hint UNKNOWN / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,guidance_coverage,110,121,0.909091,walkable guidance / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,curb_in_path_ignored,1,5,0.200000,PR #15 curb-in-path ignored / curb event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,coverage_mean,,121,0.853306,mean tracker coverage / frames with coverage
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,coverage_ge_min,110,121,0.909091,coverage >= min_coverage / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,action_flips_vs_A,0,121,0.000000,hint != arm A on joined frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_blocking_recall,11,21,0.523810,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_blocking_recall_any,11,42,0.261905,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_stop,0,21,0.000000,STOP / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_stop_any,0,42,0.000000,STOP / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_unknown,11,21,0.523810,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_unknown_any,11,42,0.261905,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_walkable,3,23,0.130435,23-frame set walkable guidance
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,frames,184,184,,row count
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free_any,91,91,1.000000,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_stop,0,184,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_stop_any,0,93,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,unknown,0,184,0.000000,hint UNKNOWN / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,guidance_coverage,184,184,1.000000,walkable guidance / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,coverage_mean,,184,0.998641,mean tracker coverage / frames with coverage
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,coverage_ge_min,184,184,1.000000,coverage >= min_coverage / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,action_flips_vs_A,0,184,0.000000,hint != arm A on joined frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_blocking_recall_any,0,91,0.000000,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_stop_any,0,91,0.000000,STOP / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_unknown_any,0,91,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,frames,176,176,,row count
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free,82,82,1.000000,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free_any,162,162,1.000000,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free_pr15_gate,75,104,0.721154,primary false-free on PR #15 road/curb path event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_stop,0,94,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,unknown,0,176,0.000000,hint UNKNOWN / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,guidance_coverage,176,176,1.000000,walkable guidance / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,curb_in_path_ignored,20,104,0.192308,PR #15 curb-in-path ignored / curb event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,coverage_mean,,176,0.995739,mean tracker coverage / frames with coverage
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,coverage_ge_min,176,176,1.000000,coverage >= min_coverage / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,action_flips_vs_A,0,176,0.000000,hint != arm A on joined frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_blocking_recall,0,82,0.000000,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_blocking_recall_any,0,162,0.000000,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_stop,0,82,0.000000,STOP / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_stop_any,0,162,0.000000,STOP / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_unknown,0,82,0.000000,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_unknown_any,0,162,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_walkable,20,23,0.869565,23-frame set walkable guidance
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,frames,121,121,,row count
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free,3,21,0.142857,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free_any,8,42,0.190476,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free_pr15_gate,1,10,0.100000,primary false-free on PR #15 road/curb path event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_stop,16,100,0.160000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_stop_any,0,79,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,unknown,0,121,0.000000,hint UNKNOWN / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,guidance_coverage,87,121,0.719008,walkable guidance / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,road_in_path_ignored,0,5,0.000000,PR #15 road-in-path ignored / road event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,curb_in_path_ignored,1,5,0.200000,PR #15 curb-in-path ignored / curb event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,coverage_mean,,121,0.853306,mean tracker coverage / frames with coverage
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,coverage_ge_min,110,121,0.909091,coverage >= min_coverage / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flips_vs_A,34,121,0.280992,hint != arm A on joined frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_LEFT_to_STOP,4,121,0.033058,frames with hint pair LEFT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_RIGHT_to_STOP,2,121,0.016529,frames with hint pair RIGHT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_STRAIGHT_to_STOP,17,121,0.140496,frames with hint pair STRAIGHT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_UNKNOWN_to_STOP,11,121,0.090909,frames with hint pair UNKNOWN->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_blocking_recall,18,21,0.857143,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_blocking_recall_any,34,42,0.809524,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_stop,18,21,0.857143,STOP / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_stop_any,34,42,0.809524,STOP / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_unknown,0,21,0.000000,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_unknown_any,0,42,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_walkable,1,23,0.043478,23-frame set walkable guidance
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_stop,2,23,0.086957,23-frame set STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,frames,184,184,,row count
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free_any,9,91,0.098901,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_stop,82,184,0.445652,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_stop_any,0,93,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,unknown,0,184,0.000000,hint UNKNOWN / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,guidance_coverage,102,184,0.554348,walkable guidance / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,coverage_mean,,184,0.998641,mean tracker coverage / frames with coverage
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,coverage_ge_min,184,184,1.000000,coverage >= min_coverage / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flips_vs_A,82,184,0.445652,hint != arm A on joined frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_LEFT_to_STOP,5,184,0.027174,frames with hint pair LEFT->STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_RIGHT_to_STOP,3,184,0.016304,frames with hint pair RIGHT->STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_STRAIGHT_to_STOP,74,184,0.402174,frames with hint pair STRAIGHT->STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_blocking_recall_any,82,91,0.901099,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_stop_any,82,91,0.901099,STOP / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_unknown_any,0,91,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,frames,176,176,,row count
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free,3,82,0.036585,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free_any,4,162,0.024691,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free_pr15_gate,2,104,0.019231,primary false-free on PR #15 road/curb path event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_stop,79,94,0.840426,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,unknown,0,176,0.000000,hint UNKNOWN / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,guidance_coverage,18,176,0.102273,walkable guidance / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,curb_in_path_ignored,2,104,0.019231,PR #15 curb-in-path ignored / curb event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,coverage_mean,,176,0.995739,mean tracker coverage / frames with coverage
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,coverage_ge_min,176,176,1.000000,coverage >= min_coverage / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flips_vs_A,158,176,0.897727,hint != arm A on joined frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_LEFT_to_STOP,101,176,0.573864,frames with hint pair LEFT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_RIGHT_to_STOP,17,176,0.096591,frames with hint pair RIGHT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_STRAIGHT_to_STOP,40,176,0.227273,frames with hint pair STRAIGHT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_blocking_recall,79,82,0.963415,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_blocking_recall_any,158,162,0.975309,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_stop,79,82,0.963415,STOP / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_stop_any,158,162,0.975309,STOP / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_unknown,0,82,0.000000,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_unknown_any,0,162,0.000000,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_walkable,2,23,0.086957,23-frame set walkable guidance
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_stop,18,23,0.782609,23-frame set STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,frames,121,121,,row count
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free,3,21,0.142857,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free_any,8,42,0.190476,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free_pr15_gate,1,10,0.100000,primary false-free on PR #15 road/curb path event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_stop,9,100,0.090000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_stop_any,0,79,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,unknown,14,121,0.115702,hint UNKNOWN / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,guidance_coverage,87,121,0.719008,walkable guidance / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,road_in_path_ignored,0,5,0.000000,PR #15 road-in-path ignored / road event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,curb_in_path_ignored,1,5,0.200000,PR #15 curb-in-path ignored / curb event frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,coverage_mean,,121,0.853306,mean tracker coverage / frames with coverage
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,coverage_ge_min,110,121,0.909091,coverage >= min_coverage / all frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flips_vs_A,33,121,0.272727,hint != arm A on joined frames
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_LEFT_to_STOP,2,121,0.016529,frames with hint pair LEFT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_LEFT_to_UNKNOWN,2,121,0.016529,frames with hint pair LEFT->UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_RIGHT_to_STOP,1,121,0.008264,frames with hint pair RIGHT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_RIGHT_to_UNKNOWN,1,121,0.008264,frames with hint pair RIGHT->UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_STRAIGHT_to_STOP,7,121,0.057851,frames with hint pair STRAIGHT->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_STRAIGHT_to_UNKNOWN,10,121,0.082645,frames with hint pair STRAIGHT->UNKNOWN
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_UNKNOWN_to_STOP,10,121,0.082645,frames with hint pair UNKNOWN->STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_blocking_recall,18,21,0.857143,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_blocking_recall_any,34,42,0.809524,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_stop,11,21,0.523810,STOP / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_stop_any,20,42,0.476190,STOP / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_unknown,7,21,0.333333,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_unknown_any,14,42,0.333333,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_walkable,1,23,0.043478,23-frame set walkable guidance
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_stop,1,23,0.043478,23-frame set STOP
+annotated,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_unknown,1,23,0.043478,23-frame set UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,frames,184,184,,row count
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free_any,9,91,0.098901,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_stop,35,184,0.190217,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_stop_any,0,93,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,unknown,47,184,0.255435,hint UNKNOWN / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,guidance_coverage,102,184,0.554348,walkable guidance / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,coverage_mean,,184,0.998641,mean tracker coverage / frames with coverage
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,coverage_ge_min,184,184,1.000000,coverage >= min_coverage / all frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flips_vs_A,82,184,0.445652,hint != arm A on joined frames
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_LEFT_to_STOP,1,184,0.005435,frames with hint pair LEFT->STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_LEFT_to_UNKNOWN,4,184,0.021739,frames with hint pair LEFT->UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_RIGHT_to_UNKNOWN,3,184,0.016304,frames with hint pair RIGHT->UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_STRAIGHT_to_STOP,34,184,0.184783,frames with hint pair STRAIGHT->STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_STRAIGHT_to_UNKNOWN,40,184,0.217391,frames with hint pair STRAIGHT->UNKNOWN
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_blocking_recall_any,82,91,0.901099,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_stop_any,35,91,0.384615,STOP / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_unknown_any,47,91,0.516484,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_stop,0,23,0.000000,23-frame set STOP
+annotated,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,frames,176,176,,row count
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free,3,82,0.036585,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free_any,4,162,0.024691,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free_pr15_gate,2,104,0.019231,primary false-free on PR #15 road/curb path event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_stop,74,94,0.787234,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,unknown,14,176,0.079545,hint UNKNOWN / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,guidance_coverage,18,176,0.102273,walkable guidance / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,curb_in_path_ignored,2,104,0.019231,PR #15 curb-in-path ignored / curb event frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,coverage_mean,,176,0.995739,mean tracker coverage / frames with coverage
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,coverage_ge_min,176,176,1.000000,coverage >= min_coverage / all frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flips_vs_A,158,176,0.897727,hint != arm A on joined frames
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_LEFT_to_STOP,98,176,0.556818,frames with hint pair LEFT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_LEFT_to_UNKNOWN,3,176,0.017045,frames with hint pair LEFT->UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_RIGHT_to_STOP,12,176,0.068182,frames with hint pair RIGHT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_RIGHT_to_UNKNOWN,5,176,0.028409,frames with hint pair RIGHT->UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_STRAIGHT_to_STOP,34,176,0.193182,frames with hint pair STRAIGHT->STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_STRAIGHT_to_UNKNOWN,6,176,0.034091,frames with hint pair STRAIGHT->UNKNOWN
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_blocking_recall,79,82,0.963415,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_blocking_recall_any,158,162,0.975309,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_stop,70,82,0.853659,STOP / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_stop_any,144,162,0.888889,STOP / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_unknown,9,82,0.109756,UNKNOWN / GT excluded-ground danger frames (primary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_unknown_any,14,162,0.086420,UNKNOWN / GT any-negative danger frames (secondary)
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_walkable,2,23,0.086957,23-frame set walkable guidance
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_stop,15,23,0.652174,23-frame set STOP
+annotated,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_unknown,3,23,0.130435,23-frame set UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,frames,121,121,,row count
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free,10,21,0.476190,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free_any,23,42,0.547619,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_free_pr15_gate,3,10,0.300000,primary false-free on PR #15 road/curb path event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_stop,0,100,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,false_stop_any,0,79,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,unknown,33,121,0.272727,hint UNKNOWN / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,guidance_coverage,88,121,0.727273,walkable guidance / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,curb_in_path_ignored,3,5,0.600000,PR #15 curb-in-path ignored / curb event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,coverage_mean,,121,0.530992,mean tracker coverage / frames with coverage
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,coverage_ge_min,89,121,0.735537,coverage >= min_coverage / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,action_flips_vs_A,0,121,0.000000,hint != arm A on joined frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_blocking_recall,11,21,0.523810,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_blocking_recall_any,19,42,0.452381,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_stop,0,21,0.000000,STOP / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_stop_any,0,42,0.000000,STOP / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_unknown,11,21,0.523810,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,danger_unknown_any,19,42,0.452381,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_walkable,2,23,0.086957,23-frame set walkable guidance
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,A,pr15_23_unknown,1,23,0.043478,23-frame set UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,frames,184,184,,row count
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free_any,90,91,0.989011,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_stop,0,184,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,false_stop_any,0,93,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,unknown,5,184,0.027174,hint UNKNOWN / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,guidance_coverage,179,184,0.972826,walkable guidance / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,coverage_mean,,184,0.751359,mean tracker coverage / frames with coverage
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,coverage_ge_min,179,184,0.972826,coverage >= min_coverage / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,action_flips_vs_A,0,184,0.000000,hint != arm A on joined frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_blocking_recall_any,1,91,0.010989,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_stop_any,0,91,0.000000,STOP / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,danger_unknown_any,1,91,0.010989,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,A,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,frames,176,176,,row count
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free,37,82,0.451220,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free_any,95,162,0.586420,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_free_pr15_gate,34,104,0.326923,primary false-free on PR #15 road/curb path event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_stop,0,94,0.000000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,unknown,69,176,0.392045,hint UNKNOWN / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,guidance_coverage,107,176,0.607955,walkable guidance / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,curb_in_path_ignored,12,104,0.115385,PR #15 curb-in-path ignored / curb event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,coverage_mean,,176,0.413352,mean tracker coverage / frames with coverage
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,coverage_ge_min,107,176,0.607955,coverage >= min_coverage / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,action_flips_vs_A,0,176,0.000000,hint != arm A on joined frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_blocking_recall,45,82,0.548780,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_blocking_recall_any,67,162,0.413580,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_stop,0,82,0.000000,STOP / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_stop_any,0,162,0.000000,STOP / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_unknown,45,82,0.548780,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,danger_unknown_any,67,162,0.413580,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_walkable,18,23,0.782609,23-frame set walkable guidance
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,A,pr15_23_unknown,2,23,0.086957,23-frame set UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,frames,121,121,,row count
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free,8,21,0.380952,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free_any,15,42,0.357143,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_free_pr15_gate,2,10,0.200000,primary false-free on PR #15 road/curb path event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_stop,9,100,0.090000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,false_stop_any,8,79,0.101266,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,unknown,58,121,0.479339,hint UNKNOWN / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,guidance_coverage,53,121,0.438017,walkable guidance / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,curb_in_path_ignored,2,5,0.400000,PR #15 curb-in-path ignored / curb event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,coverage_mean,,121,0.530992,mean tracker coverage / frames with coverage
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,coverage_ge_min,89,121,0.735537,coverage >= min_coverage / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flips_vs_A,36,121,0.297521,hint != arm A on joined frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_LEFT_to_STOP,1,121,0.008264,frames with hint pair LEFT->STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_LEFT_to_UNKNOWN,17,121,0.140496,frames with hint pair LEFT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_RIGHT_to_STOP,3,121,0.024793,frames with hint pair RIGHT->STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_RIGHT_to_UNKNOWN,5,121,0.041322,frames with hint pair RIGHT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_STRAIGHT_to_STOP,5,121,0.041322,frames with hint pair STRAIGHT->STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_STRAIGHT_to_UNKNOWN,4,121,0.033058,frames with hint pair STRAIGHT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,action_flip_pair_UNKNOWN_to_STOP,1,121,0.008264,frames with hint pair UNKNOWN->STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_blocking_recall,13,21,0.619048,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_blocking_recall_any,27,42,0.642857,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_stop,1,21,0.047619,STOP / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_stop_any,2,42,0.047619,STOP / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_unknown,12,21,0.571429,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,danger_unknown_any,25,42,0.595238,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_walkable,2,23,0.086957,23-frame set walkable guidance
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,B,pr15_23_unknown,1,23,0.043478,23-frame set UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,frames,184,184,,row count
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free_any,80,91,0.879121,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_stop,8,184,0.043478,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,false_stop_any,6,93,0.064516,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,unknown,21,184,0.114130,hint UNKNOWN / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,guidance_coverage,155,184,0.842391,walkable guidance / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,coverage_mean,,184,0.751359,mean tracker coverage / frames with coverage
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,coverage_ge_min,179,184,0.972826,coverage >= min_coverage / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flips_vs_A,24,184,0.130435,hint != arm A on joined frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_LEFT_to_STOP,5,184,0.027174,frames with hint pair LEFT->STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_LEFT_to_UNKNOWN,3,184,0.016304,frames with hint pair LEFT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_RIGHT_to_STOP,2,184,0.010870,frames with hint pair RIGHT->STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_RIGHT_to_UNKNOWN,9,184,0.048913,frames with hint pair RIGHT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_STRAIGHT_to_STOP,1,184,0.005435,frames with hint pair STRAIGHT->STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,action_flip_pair_STRAIGHT_to_UNKNOWN,4,184,0.021739,frames with hint pair STRAIGHT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_blocking_recall_any,11,91,0.120879,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_stop_any,2,91,0.021978,STOP / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,danger_unknown_any,9,91,0.098901,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,B,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,frames,176,176,,row count
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free,13,82,0.158537,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free_any,39,162,0.240741,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_free_pr15_gate,12,104,0.115385,primary false-free on PR #15 road/curb path event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_stop,30,94,0.319149,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,unknown,59,176,0.335227,hint UNKNOWN / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,guidance_coverage,49,176,0.278409,walkable guidance / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,curb_in_path_ignored,8,104,0.076923,PR #15 curb-in-path ignored / curb event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,coverage_mean,,176,0.413352,mean tracker coverage / frames with coverage
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,coverage_ge_min,107,176,0.607955,coverage >= min_coverage / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flips_vs_A,91,176,0.517045,hint != arm A on joined frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_LEFT_to_STOP,13,176,0.073864,frames with hint pair LEFT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_LEFT_to_UNKNOWN,15,176,0.085227,frames with hint pair LEFT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_RIGHT_to_STOP,16,176,0.090909,frames with hint pair RIGHT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_RIGHT_to_UNKNOWN,5,176,0.028409,frames with hint pair RIGHT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_STRAIGHT_to_STOP,6,176,0.034091,frames with hint pair STRAIGHT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_STRAIGHT_to_UNKNOWN,3,176,0.017045,frames with hint pair STRAIGHT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,action_flip_pair_UNKNOWN_to_STOP,33,176,0.187500,frames with hint pair UNKNOWN->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_blocking_recall,69,82,0.841463,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_blocking_recall_any,123,162,0.759259,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_stop,38,82,0.463415,STOP / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_stop_any,68,162,0.419753,STOP / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_unknown,31,82,0.378049,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,danger_unknown_any,55,162,0.339506,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_walkable,6,23,0.260870,23-frame set walkable guidance
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_stop,6,23,0.260870,23-frame set STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,B,pr15_23_unknown,8,23,0.347826,23-frame set UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,frames,121,121,,row count
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free,8,21,0.380952,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free_any,15,42,0.357143,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_free_pr15_gate,2,10,0.200000,primary false-free on PR #15 road/curb path event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_stop,1,100,0.010000,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,false_stop_any,1,79,0.012658,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,unknown,67,121,0.553719,hint UNKNOWN / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,guidance_coverage,53,121,0.438017,walkable guidance / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,road_in_path_ignored,2,5,0.400000,PR #15 road-in-path ignored / road event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,curb_in_path_ignored,2,5,0.400000,PR #15 curb-in-path ignored / curb event frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_ground_frames,21,121,0.173554,frames with GT excluded-ground danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_any_frames,42,121,0.347107,frames with GT any-negative danger in the swept body
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,coverage_mean,,121,0.530992,mean tracker coverage / frames with coverage
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,coverage_ge_min,89,121,0.735537,coverage >= min_coverage / all frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flips_vs_A,35,121,0.289256,hint != arm A on joined frames
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_LEFT_to_UNKNOWN,18,121,0.148760,frames with hint pair LEFT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_RIGHT_to_UNKNOWN,8,121,0.066116,frames with hint pair RIGHT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_STRAIGHT_to_STOP,1,121,0.008264,frames with hint pair STRAIGHT->STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,action_flip_pair_STRAIGHT_to_UNKNOWN,8,121,0.066116,frames with hint pair STRAIGHT->UNKNOWN
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_blocking_recall,13,21,0.619048,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_blocking_recall_any,27,42,0.642857,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_stop,0,21,0.000000,STOP / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_stop_any,0,42,0.000000,STOP / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_unknown,13,21,0.619048,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,danger_unknown_any,27,42,0.642857,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_walkable,2,23,0.086957,23-frame set walkable guidance
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,C,pr15_23_unknown,1,23,0.043478,23-frame set UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,frames,184,184,,row count
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free,0,0,,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free_any,80,91,0.879121,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_free_pr15_gate,0,0,,primary false-free on PR #15 road/curb path event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_stop,5,184,0.027174,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,false_stop_any,3,93,0.032258,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,unknown,24,184,0.130435,hint UNKNOWN / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,guidance_coverage,155,184,0.842391,walkable guidance / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,curb_in_path_ignored,0,0,,PR #15 curb-in-path ignored / curb event frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_ground_frames,0,184,0.000000,frames with GT excluded-ground danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_any_frames,91,184,0.494565,frames with GT any-negative danger in the swept body
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,coverage_mean,,184,0.751359,mean tracker coverage / frames with coverage
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,coverage_ge_min,179,184,0.972826,coverage >= min_coverage / all frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flips_vs_A,24,184,0.130435,hint != arm A on joined frames
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_LEFT_to_STOP,4,184,0.021739,frames with hint pair LEFT->STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_LEFT_to_UNKNOWN,4,184,0.021739,frames with hint pair LEFT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_RIGHT_to_UNKNOWN,11,184,0.059783,frames with hint pair RIGHT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_STRAIGHT_to_STOP,1,184,0.005435,frames with hint pair STRAIGHT->STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,action_flip_pair_STRAIGHT_to_UNKNOWN,4,184,0.021739,frames with hint pair STRAIGHT->UNKNOWN
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_blocking_recall,0,0,,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_blocking_recall_any,11,91,0.120879,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_stop,0,0,,STOP / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_stop_any,2,91,0.021978,STOP / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_unknown,0,0,,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,danger_unknown_any,9,91,0.098901,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_walkable,0,23,0.000000,23-frame set walkable guidance
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_stop,0,23,0.000000,23-frame set STOP
+production,session:M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,C,pr15_23_unknown,0,23,0.000000,23-frame set UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,frames,176,176,,row count
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free,13,82,0.158537,"danger_ground admitted as guidance / danger_ground frames (PR #15 class, primary)"
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free_any,39,162,0.240741,danger_any admitted as guidance / danger_any frames (incl. object/vegetation occupancy)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_free_pr15_gate,12,104,0.115385,primary false-free on PR #15 road/curb path event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_stop,19,94,0.202128,STOP without danger_ground / no-ground-danger + GT walkable swept frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,false_stop_any,0,14,0.000000,STOP without danger_any / no-any-danger + GT walkable swept frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,unknown,86,176,0.488636,hint UNKNOWN / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,guidance_coverage,49,176,0.278409,walkable guidance / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,road_in_path_ignored,0,0,,PR #15 road-in-path ignored / road event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,curb_in_path_ignored,8,104,0.076923,PR #15 curb-in-path ignored / curb event frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_ground_frames,82,176,0.465909,frames with GT excluded-ground danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_any_frames,162,176,0.920455,frames with GT any-negative danger in the swept body
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,coverage_mean,,176,0.413352,mean tracker coverage / frames with coverage
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,coverage_ge_min,107,176,0.607955,coverage >= min_coverage / all frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flips_vs_A,77,176,0.437500,hint != arm A on joined frames
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_LEFT_to_STOP,7,176,0.039773,frames with hint pair LEFT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_LEFT_to_UNKNOWN,21,176,0.119318,frames with hint pair LEFT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_RIGHT_to_STOP,10,176,0.056818,frames with hint pair RIGHT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_RIGHT_to_UNKNOWN,11,176,0.062500,frames with hint pair RIGHT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_STRAIGHT_to_STOP,5,176,0.028409,frames with hint pair STRAIGHT->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_STRAIGHT_to_UNKNOWN,4,176,0.022727,frames with hint pair STRAIGHT->UNKNOWN
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,action_flip_pair_UNKNOWN_to_STOP,19,176,0.107955,frames with hint pair UNKNOWN->STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_blocking_recall,69,82,0.841463,(STOP+UNKNOWN)/GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_blocking_recall_any,123,162,0.759259,(STOP+UNKNOWN)/GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_stop,22,82,0.268293,STOP / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_stop_any,41,162,0.253086,STOP / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_unknown,47,82,0.573171,UNKNOWN / GT excluded-ground danger frames (primary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,danger_unknown_any,82,162,0.506173,UNKNOWN / GT any-negative danger frames (secondary)
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_walkable,6,23,0.260870,23-frame set walkable guidance
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_stop,3,23,0.130435,23-frame set STOP
+production,session:UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,C,pr15_23_unknown,11,23,0.478261,23-frame set UNKNOWN
