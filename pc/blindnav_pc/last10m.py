@@ -15,6 +15,7 @@ from typing import Optional, Sequence, Tuple
 import numpy as np
 
 from .ground import flat_ground_depth
+from .storefront import Door, Sign, ground
 
 MAX_CANDIDATES = 3
 DEFAULT_RANGE_M = 10.0
@@ -140,3 +141,33 @@ def propose_doors(candidates: Sequence[DoorCandidate], max_candidates: int = MAX
         return DoorProposal((), len(ranked), total, True, "ambiguous", limit)
     picked = tuple(ranked[:limit])
     return DoorProposal(picked, len(ranked), total, False, "ok", limit)
+
+
+def propose_doors_for_target(
+    candidates: Sequence[DoorCandidate],
+    signs: Sequence[Sign],
+    target: str,
+    aliases: Sequence[str] = (),
+    max_candidates: int = MAX_CANDIDATES,
+    **kwargs,
+) -> DoorProposal:
+    """Rank doors by ownership of ``target``; fall back to the distance ranking when unseen.
+
+    The fallback keeps the previous behaviour for calls without usable sign evidence, and the
+    reason string always says which path produced the proposal.
+    """
+    doors = [Door(c.bbox, c.confidence, c.distance_m) for c in candidates]
+    by_identity = {id(d): c for d, c in zip(doors, candidates)}
+    result = ground(doors, signs, target, aliases)
+
+    if result.state == "target_not_seen":
+        fallback = propose_doors(candidates, max_candidates=max_candidates, **kwargs)
+        return DoorProposal(fallback.candidates, fallback.candidate_count, fallback.total_count,
+                            fallback.refused, f"fallback_{fallback.reason}", fallback.max_candidates)
+    if result.state == "ambiguous":
+        return DoorProposal((), len(result.candidates), len(candidates), True,
+                            f"target_{result.reason}", min(max_candidates, MAX_CANDIDATES))
+
+    picked = tuple(by_identity[id(c.door)] for c in result.candidates[:max_candidates])
+    return DoorProposal(picked, len(result.candidates), len(candidates), False,
+                        "target_confirmed", min(max_candidates, MAX_CANDIDATES))
