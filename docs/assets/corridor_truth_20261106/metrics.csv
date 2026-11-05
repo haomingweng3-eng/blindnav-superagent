@@ -1,0 +1,65 @@
+mode,arm,metric,numerator,denominator,value
+production,A,Road-as-Sidewalk,0,52197,0.0
+production,A,curb recall,0,35199,0.0
+production,A,corridor coverage>=min,394,481,0.8191268191268192
+production,A,UNKNOWN,88,481,0.18295218295218296
+production,A,wrong-correction (rotation->LEFT/RIGHT),1,481,0.002079002079002079
+production,A,band-driven LEFT/RIGHT,160,481,0.33264033264033266
+production,A,road-in-path ignored,0,481,0.0
+production,A,curb-in-path ignored,24,109,0.22018348623853212
+production,B,Road-as-Sidewalk,26944,52197,0.51619824894151
+production,B,curb recall,0,35199,0.0
+production,B,corridor coverage>=min,375,481,0.7796257796257796
+production,B,UNKNOWN,107,481,0.22245322245322247
+production,B,wrong-correction (rotation->LEFT/RIGHT),1,481,0.002079002079002079
+production,B,band-driven LEFT/RIGHT,173,481,0.3596673596673597
+production,B,road-in-path ignored,2,481,0.004158004158004158
+production,B,curb-in-path ignored,15,109,0.13761467889908258
+production,C,Road-as-Sidewalk,0,52197,0.0
+production,C,curb recall,35199,35199,1.0
+production,C,corridor coverage>=min,377,481,0.7837837837837838
+production,C,UNKNOWN,106,481,0.2203742203742204
+production,C,wrong-correction (rotation->LEFT/RIGHT),1,481,0.002079002079002079
+production,C,band-driven LEFT/RIGHT,152,481,0.316008316008316
+production,C,road-in-path ignored,0,481,0.0
+production,C,curb-in-path ignored,29,109,0.26605504587155965
+production,D,Road-as-Sidewalk,19602,52197,0.3755388240703489
+production,D,curb recall,28069,35199,0.7974374271996364
+production,D,corridor coverage>=min,366,481,0.760914760914761
+production,D,UNKNOWN,115,481,0.2390852390852391
+production,D,wrong-correction (rotation->LEFT/RIGHT),2,481,0.004158004158004158
+production,D,band-driven LEFT/RIGHT,152,481,0.316008316008316
+production,D,road-in-path ignored,2,481,0.004158004158004158
+production,D,curb-in-path ignored,14,109,0.12844036697247707
+oracle-geometry,A,Road-as-Sidewalk,0,52197,0.0
+oracle-geometry,A,curb recall,0,35199,0.0
+oracle-geometry,A,corridor coverage>=min,470,481,0.9771309771309772
+oracle-geometry,A,UNKNOWN,11,481,0.02286902286902287
+oracle-geometry,A,wrong-correction (rotation->LEFT/RIGHT),2,481,0.004158004158004158
+oracle-geometry,A,band-driven LEFT/RIGHT,201,481,0.4178794178794179
+oracle-geometry,A,road-in-path ignored,2,481,0.004158004158004158
+oracle-geometry,A,curb-in-path ignored,21,109,0.1926605504587156
+oracle-geometry,B,Road-as-Sidewalk,26944,52197,0.51619824894151
+oracle-geometry,B,curb recall,0,35199,0.0
+oracle-geometry,B,corridor coverage>=min,468,481,0.972972972972973
+oracle-geometry,B,UNKNOWN,13,481,0.02702702702702703
+oracle-geometry,B,wrong-correction (rotation->LEFT/RIGHT),2,481,0.004158004158004158
+oracle-geometry,B,band-driven LEFT/RIGHT,197,481,0.4095634095634096
+oracle-geometry,B,road-in-path ignored,4,481,0.008316008316008316
+oracle-geometry,B,curb-in-path ignored,22,109,0.2018348623853211
+oracle-geometry,C,Road-as-Sidewalk,0,52197,0.0
+oracle-geometry,C,curb recall,35199,35199,1.0
+oracle-geometry,C,corridor coverage>=min,463,481,0.9625779625779626
+oracle-geometry,C,UNKNOWN,18,481,0.037422037422037424
+oracle-geometry,C,wrong-correction (rotation->LEFT/RIGHT),2,481,0.004158004158004158
+oracle-geometry,C,band-driven LEFT/RIGHT,303,481,0.6299376299376299
+oracle-geometry,C,road-in-path ignored,2,481,0.004158004158004158
+oracle-geometry,C,curb-in-path ignored,24,109,0.22018348623853212
+oracle-geometry,D,Road-as-Sidewalk,17808,52197,0.3411690327030289
+oracle-geometry,D,curb recall,33456,35199,0.9504815477712435
+oracle-geometry,D,corridor coverage>=min,464,481,0.9646569646569647
+oracle-geometry,D,UNKNOWN,17,481,0.035343035343035345
+oracle-geometry,D,wrong-correction (rotation->LEFT/RIGHT),3,481,0.006237006237006237
+oracle-geometry,D,band-driven LEFT/RIGHT,283,481,0.5883575883575883
+oracle-geometry,D,road-in-path ignored,3,481,0.006237006237006237
+oracle-geometry,D,curb-in-path ignored,17,109,0.1559633027522936
