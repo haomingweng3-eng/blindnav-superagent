@@ -182,11 +182,14 @@ Other measured cells: danger blocking recall on ground-danger frames **A 56/103 
 | production | B | **8** | 6 | 9 |
 | production | C | **8** | 3 | 12 |
 
-With annotated inputs the representation defect is closed for 20/23 frames in B (3 remain
-walkable because their only GT ground-danger points fall in the 5.5–6.0 m tail of the forward
-range, which the inherited integer-bin counters do not bin — see Remaining risks). Under
-production inputs 8/23 remain walkable, all with zero binned negative evidence in the v5 mask
-(segmentation layer, v5 Road-as-Sidewalk) plus the same bin-tail case.
+With annotated inputs the representation defect is closed for 20/23 frames in B. The 3 that
+remain walkable are explainable: `-PqSD…` 135 lies inside PR #15's 0.6 m map-frame band but outside
+this decision's 0.4 m body sweep (gate difference), and `UGNw…` 105 / 155 have only 4 / 2 binned
+hazard points, below the 5-point support (sparse curb / the unbinned 5.5–6.0 m tail — see
+Remaining risks). Under production inputs 8/23 remain walkable, all with zero binned negative
+evidence in the v5 mask: their GT ground-danger points are either outside the 0.4 m body sweep
+(PR #15's set uses a 0.6 m map-frame band) or absent from the v5 mask (Road-as-Sidewalk,
+segmentation layer).
 
 ### 5.4 Temporal confirmation (C vs B)
 
@@ -229,7 +232,7 @@ yellow = decision swept body (1.5–6 m, ±0.4 m from the current heading).
 | # | kind | condition / arm | session | frame | hint / reason | layer | what still fails |
 |---|---|---|---|---:|---|---|---|
 | f01 | false-free (ground) | annotated / B | `-PqSD…` | 155 | RIGHT / lateral | decision | 24 GT curb points in the swept body but they sit at 5.55–6.0 m; the inherited 4-bin counters (`round(4.5)=4` bins) do not bin that tail, so hazard support is 0 |
-| f02 | false-free (ground) | annotated / B | `UGNw…` | 145 | RIGHT / lateral | decision | 6 GT curb points, same 5.55–6.0 m tail; PR #15 0.6 m event is also false (below its 2.5 m curb start), so this frame is not in the 23 |
+| f02 | false-free (ground) | annotated / B | `UGNw…` | 145 | RIGHT / lateral | decision | 6 GT curb points, all in the same 5.55–6.0 m unbinned tail (body-frame lateral 0.29–0.40 m); PR #15's 0.6 m map-frame event is also false here because the per-frame heading rotation pushes these points outside its lateral band, so this frame is not in the 23 |
 | f03 | false-free (ground) | production / B | `-PqSD…` | 180 | STRAIGHT / centred | segmentation | v5 mask labels the GT curb/road ground walkable (Road-as-Sidewalk), so the evidence layer has nothing to block; v5/D AV2 input limitation |
 | f04 | false-free (ground) | production / B | `UGNw…` | 150 | STRAIGHT / centred | segmentation | same: GT curb 5 points inside the swept body, zero binned negative evidence in the v5 mask |
 | f05 | false-free (any) | annotated / B | `M5UI…` | 85 | STRAIGHT / centred | decision | 6 GT object-occupancy points at the body edge (3 hazard points, below the 5-point support), so the fused decision keeps walkable guidance — low-support case |
@@ -314,8 +317,8 @@ not merged.
   body width/margin; `near/far`; `points_per_bin`); they were not swept or tuned. The 0.4 m half
   width is narrower than PR #15's 0.6 m event band, and the 5.5–6.0 m tail is not binned because the
   inherited `round((far-near)/bin)=4` bin count is kept unchanged to keep arm A comparable
-  (2/6 annotated residual false-free frames are exactly this tail). Fixing it would change the
-  baseline too and was left out of scope.
+  (the two clearest annotated residual false-free frames, f01/f02, have all their GT danger points
+  in exactly this tail). Fixing it would change the baseline too and was left out of scope.
 * **The hazard/occupancy channels include object and vegetation points** (raw GT ids and the v5
   NON class), which is what makes the corridor STOP on ordinary sidewalk encounters. The evidence
   builder intentionally overlaps ignore-class obstacle pixels in `hazard` and `unknown`
