@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "tool": "pc/tools/responsibility_split_attribution.py",
+  "condition": "production",
+  "arm": "C",
+  "per_frame": "/Users/mima0000/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/out/responsibility_split/per_frame.csv",
+  "v5_checkpoint": "/Users/mima0000/blindnav-real-eval/models/segformer_sanpo_b0_v5.pt",
+  "evidence_level": "DESKTOP_REAL_DATA"
+ },
+ "aggregate": {
+  "frames_requested": 110,
+  "frames_attributed": 108,
+  "frames_skipped": 2,
+  "pixel_attribution": {
+   "occupancy:geometry": 12842,
+   "curb:geometry": 497,
+   "curb:segmentation": 393,
+   "occupancy:decision": 1200,
+   "road:segmentation": 5,
+   "occupancy:segmentation": 867,
+   "curb:decision": 3
+  },
+  "class_at_gt_pixel": {
+   "occupancy:non": 14042,
+   "curb:non": 500,
+   "curb:safe": 393,
+   "road:safe": 5,
+   "occupancy:safe": 867
+  },
+  "gt_pixels": {
+   "occupancy": 14909,
+   "curb": 893,
+   "road": 5
+  },
+  "frames_with_kind": {
+   "occupancy": 103,
+   "curb": 10,
+   "road": 1
+  },
+  "skipped_examples": [
+   "production_calibration_failed:low_confidence+stale",
+   "production_calibration_failed:low_confidence+stale"
+  ],
+  "occupancy_layer_share": {
+   "segmentation": 0.0582,
+   "geometry": 0.8614,
+   "decision": 0.0805
+  },
+  "road_layer_share": {
+   "segmentation": 1.0,
+   "geometry": 0.0,
+   "decision": 0.0
+  },
+  "curb_layer_share": {
+   "segmentation": 0.4401,
+   "geometry": 0.5566,
+   "decision": 0.0034
+  }
+ }
+}

@@ -1,0 +1,1438 @@
+{
+ "meta": {
+  "tool": "pc/tools/phone_clip_retest.py",
+  "ticket": "Issue #18 P1 Path Keeper: independent re-test on local annotated clips",
+  "annotations_csv": "/Users/mima0000/Desktop/\u76f2\u884c\u5bfc\u822a/\u89c6\u9891\u6807\u6ce8/\u4eba\u5de5\u6807\u6ce8\u8868_\u5df2\u5b8c\u6210.csv",
+  "videos_dir": "/Users/mima0000/Desktop/\u76f2\u884c\u5bfc\u822a/\u89c6\u9891\u6807\u6ce8/\u624b\u673a\u89c6\u9891_\u539f\u6587\u4ef6",
+  "v5_checkpoint": "/Users/mima0000/blindnav-real-eval/models/segformer_sanpo_b0_v5.pt",
+  "clips": 35,
+  "safe_clips": 31,
+  "near_miss_clips": 3,
+  "conflict_clips": 1,
+  "frames": 610,
+  "sampled_rows": 1830,
+  "sample_fps": 2.0,
+  "max_width": 640,
+  "assumed": {
+   "camera_height_m": 1.3,
+   "pitch_deg": 15.0,
+   "corridor": "assumed straight 2.5 m corridor; pose = identity",
+   "gravity": "fixed pitch/roll (no IMU)"
+  },
+  "label_capability": [
+   {
+    "metric": "curb/road danger miss",
+    "status": "NOT_EVALUABLE",
+    "reason": "video-level labels only; no per-frame curb/road segmentation or geometry GT"
+   },
+   {
+    "metric": "3D occupancy danger miss",
+    "status": "NOT_EVALUABLE",
+    "reason": "video-level labels only; no per-frame 3D occupancy / object boxes GT"
+   },
+   {
+    "metric": "true false-stop (confirmed clear path)",
+    "status": "NOT_EVALUABLE",
+    "reason": "no per-frame clear-path GT; a safe video label does not make each frame clear"
+   },
+   {
+    "metric": "latency to first hazard warning",
+    "status": "NOT_EVALUABLE",
+    "reason": "only a coarse video-level onset time for 4 clips; no frame-level hazard onset"
+   },
+   {
+    "metric": "effective guidance coverage",
+    "status": "PROXY",
+    "reason": "GT-free system output share, but corridor geometry is assumed (no IMU/pose/VIO)"
+   },
+   {
+    "metric": "UNKNOWN share",
+    "status": "PROXY",
+    "reason": "GT-free system output share under the same assumed corridor geometry"
+   },
+   {
+    "metric": "decision flips",
+    "status": "PROXY",
+    "reason": "GT-free system output statistic under the same assumed corridor geometry"
+   }
+  ],
+  "evidence_level": "PROTOTYPE",
+  "device_verified": false,
+  "user_tested": false,
+  "clips_used_for_design": false,
+  "notes": "Video-level labels only. Metrics needing frame-level GT are NOT_EVALUABLE; GT-free output statistics are PROXY under assumed corridor/pitch/height."
+ },
+ "arms": {
+  "A": {
+   "frames": 610,
+   "clips": 35,
+   "calib_ok_share": {
+    "numerator": 610,
+    "denominator": 610,
+    "rate": 1.0,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "guidance_coverage": {
+    "numerator": 130,
+    "denominator": 610,
+    "rate": 0.21311475409836064,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "warning_share": {
+    "numerator": 480,
+    "denominator": 610,
+    "rate": 0.7868852459016393,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "unknown_share": {
+    "numerator": 65,
+    "denominator": 610,
+    "rate": 0.10655737704918032,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "observe_share": {
+    "numerator": 0,
+    "denominator": 610,
+    "rate": 0.0,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "blocked_share": {
+    "numerator": 415,
+    "denominator": 610,
+    "rate": 0.680327868852459,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "clear_share": {
+    "numerator": 130,
+    "denominator": 610,
+    "rate": 0.21311475409836064,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips": {
+    "numerator": 92,
+    "denominator": 575,
+    "rate": 0.16,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips_per_minute": {
+    "value": 19.2,
+    "denominator": 575,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "per_status": {
+    "safe": {
+     "frames": 565,
+     "clips": 31,
+     "guidance_coverage": {
+      "numerator": 115,
+      "denominator": 565,
+      "rate": 0.20353982300884957,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 450,
+      "denominator": 565,
+      "rate": 0.7964601769911505,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "near_miss": {
+     "frames": 32,
+     "clips": 3,
+     "guidance_coverage": {
+      "numerator": 10,
+      "denominator": 32,
+      "rate": 0.3125,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 22,
+      "denominator": 32,
+      "rate": 0.6875,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "conflict": {
+     "frames": 13,
+     "clips": 1,
+     "guidance_coverage": {
+      "numerator": 5,
+      "denominator": 13,
+      "rate": 0.38461538461538464,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 8,
+      "denominator": 13,
+      "rate": 0.6153846153846154,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    }
+   },
+   "per_clip": {
+    "VID_20260917_153727.mp4": {
+     "frames": 29,
+     "status": "safe",
+     "guidance_coverage": 0.069,
+     "warning_share": 0.931,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153750.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153814.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153840.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153908.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.1,
+     "warning_share": 0.9,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153935.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153948.mp4": {
+     "frames": 8,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154023.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 1.0,
+     "warning_share": 0.0,
+     "first_warning_t_s": null,
+     "approx_time_s": null
+    },
+    "VID_20260917_154051.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.714,
+     "warning_share": 0.286,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154108.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.235,
+     "warning_share": 0.765,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154144.mp4": {
+     "frames": 15,
+     "status": "safe",
+     "guidance_coverage": 0.467,
+     "warning_share": 0.533,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154208.mp4": {
+     "frames": 11,
+     "status": "safe",
+     "guidance_coverage": 0.364,
+     "warning_share": 0.636,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154223.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.545,
+     "warning_share": 0.455,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_164502.mp4": {
+     "frames": 24,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164541.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164629.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164658.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164819.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.048,
+     "warning_share": 0.952,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164852.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165015.mp4": {
+     "frames": 28,
+     "status": "safe",
+     "guidance_coverage": 0.179,
+     "warning_share": 0.821,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165051.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165129.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165309.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165429.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.389,
+     "warning_share": 0.611,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165520.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165928.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.478,
+     "warning_share": 0.522,
+     "first_warning_t_s": 2.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_170001.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170135.mp4": {
+     "frames": 19,
+     "status": "safe",
+     "guidance_coverage": 0.895,
+     "warning_share": 0.105,
+     "first_warning_t_s": 6.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170259.mp4": {
+     "frames": 12,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170345.mp4": {
+     "frames": 9,
+     "status": "near_miss",
+     "guidance_coverage": 0.444,
+     "warning_share": 0.556,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170405.mp4": {
+     "frames": 10,
+     "status": "near_miss",
+     "guidance_coverage": 0.6,
+     "warning_share": 0.4,
+     "first_warning_t_s": 3.0,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170500.mp4": {
+     "frames": 13,
+     "status": "near_miss",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": 4.0
+    },
+    "VID_20260922_170525.mp4": {
+     "frames": 13,
+     "status": "conflict",
+     "guidance_coverage": 0.385,
+     "warning_share": 0.615,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": 3.0
+    },
+    "VID_20260922_170741.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 0.375,
+     "warning_share": 0.625,
+     "first_warning_t_s": 2.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170807.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.5,
+     "warning_share": 0.5,
+     "first_warning_t_s": 3.5,
+     "approx_time_s": null
+    }
+   }
+  },
+  "B": {
+   "frames": 610,
+   "clips": 35,
+   "calib_ok_share": {
+    "numerator": 610,
+    "denominator": 610,
+    "rate": 1.0,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "guidance_coverage": {
+    "numerator": 130,
+    "denominator": 610,
+    "rate": 0.21311475409836064,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "warning_share": {
+    "numerator": 480,
+    "denominator": 610,
+    "rate": 0.7868852459016393,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "unknown_share": {
+    "numerator": 65,
+    "denominator": 610,
+    "rate": 0.10655737704918032,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "observe_share": {
+    "numerator": 223,
+    "denominator": 610,
+    "rate": 0.3655737704918033,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "blocked_share": {
+    "numerator": 192,
+    "denominator": 610,
+    "rate": 0.31475409836065577,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "clear_share": {
+    "numerator": 130,
+    "denominator": 610,
+    "rate": 0.21311475409836064,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips": {
+    "numerator": 128,
+    "denominator": 575,
+    "rate": 0.22260869565217392,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips_per_minute": {
+    "value": 26.71304347826087,
+    "denominator": 575,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "per_status": {
+    "safe": {
+     "frames": 565,
+     "clips": 31,
+     "guidance_coverage": {
+      "numerator": 115,
+      "denominator": 565,
+      "rate": 0.20353982300884957,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 450,
+      "denominator": 565,
+      "rate": 0.7964601769911505,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "near_miss": {
+     "frames": 32,
+     "clips": 3,
+     "guidance_coverage": {
+      "numerator": 10,
+      "denominator": 32,
+      "rate": 0.3125,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 22,
+      "denominator": 32,
+      "rate": 0.6875,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "conflict": {
+     "frames": 13,
+     "clips": 1,
+     "guidance_coverage": {
+      "numerator": 5,
+      "denominator": 13,
+      "rate": 0.38461538461538464,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 8,
+      "denominator": 13,
+      "rate": 0.6153846153846154,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    }
+   },
+   "per_clip": {
+    "VID_20260917_153727.mp4": {
+     "frames": 29,
+     "status": "safe",
+     "guidance_coverage": 0.069,
+     "warning_share": 0.931,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153750.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153814.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153840.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153908.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.1,
+     "warning_share": 0.9,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153935.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153948.mp4": {
+     "frames": 8,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154023.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 1.0,
+     "warning_share": 0.0,
+     "first_warning_t_s": null,
+     "approx_time_s": null
+    },
+    "VID_20260917_154051.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.714,
+     "warning_share": 0.286,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154108.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.235,
+     "warning_share": 0.765,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154144.mp4": {
+     "frames": 15,
+     "status": "safe",
+     "guidance_coverage": 0.467,
+     "warning_share": 0.533,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154208.mp4": {
+     "frames": 11,
+     "status": "safe",
+     "guidance_coverage": 0.364,
+     "warning_share": 0.636,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154223.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.545,
+     "warning_share": 0.455,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_164502.mp4": {
+     "frames": 24,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164541.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164629.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164658.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164819.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.048,
+     "warning_share": 0.952,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164852.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165015.mp4": {
+     "frames": 28,
+     "status": "safe",
+     "guidance_coverage": 0.179,
+     "warning_share": 0.821,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165051.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165129.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165309.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165429.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.389,
+     "warning_share": 0.611,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165520.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165928.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.478,
+     "warning_share": 0.522,
+     "first_warning_t_s": 2.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_170001.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170135.mp4": {
+     "frames": 19,
+     "status": "safe",
+     "guidance_coverage": 0.895,
+     "warning_share": 0.105,
+     "first_warning_t_s": 6.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170259.mp4": {
+     "frames": 12,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170345.mp4": {
+     "frames": 9,
+     "status": "near_miss",
+     "guidance_coverage": 0.444,
+     "warning_share": 0.556,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170405.mp4": {
+     "frames": 10,
+     "status": "near_miss",
+     "guidance_coverage": 0.6,
+     "warning_share": 0.4,
+     "first_warning_t_s": 3.0,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170500.mp4": {
+     "frames": 13,
+     "status": "near_miss",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": 4.0
+    },
+    "VID_20260922_170525.mp4": {
+     "frames": 13,
+     "status": "conflict",
+     "guidance_coverage": 0.385,
+     "warning_share": 0.615,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": 3.0
+    },
+    "VID_20260922_170741.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 0.375,
+     "warning_share": 0.625,
+     "first_warning_t_s": 2.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170807.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.5,
+     "warning_share": 0.5,
+     "first_warning_t_s": 3.5,
+     "approx_time_s": null
+    }
+   }
+  },
+  "C": {
+   "frames": 610,
+   "clips": 35,
+   "calib_ok_share": {
+    "numerator": 610,
+    "denominator": 610,
+    "rate": 1.0,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "guidance_coverage": {
+    "numerator": 129,
+    "denominator": 610,
+    "rate": 0.21147540983606558,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "warning_share": {
+    "numerator": 481,
+    "denominator": 610,
+    "rate": 0.7885245901639344,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "unknown_share": {
+    "numerator": 90,
+    "denominator": 610,
+    "rate": 0.14754098360655737,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "observe_share": {
+    "numerator": 244,
+    "denominator": 610,
+    "rate": 0.4,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "blocked_share": {
+    "numerator": 147,
+    "denominator": 610,
+    "rate": 0.24098360655737705,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "clear_share": {
+    "numerator": 129,
+    "denominator": 610,
+    "rate": 0.21147540983606558,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips": {
+    "numerator": 145,
+    "denominator": 575,
+    "rate": 0.25217391304347825,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "flips_per_minute": {
+    "value": 30.26086956521739,
+    "denominator": 575,
+    "status": "EVALUABLE",
+    "low_sample": false
+   },
+   "per_status": {
+    "safe": {
+     "frames": 565,
+     "clips": 31,
+     "guidance_coverage": {
+      "numerator": 114,
+      "denominator": 565,
+      "rate": 0.20176991150442478,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 451,
+      "denominator": 565,
+      "rate": 0.7982300884955752,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "near_miss": {
+     "frames": 32,
+     "clips": 3,
+     "guidance_coverage": {
+      "numerator": 10,
+      "denominator": 32,
+      "rate": 0.3125,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 22,
+      "denominator": 32,
+      "rate": 0.6875,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    },
+    "conflict": {
+     "frames": 13,
+     "clips": 1,
+     "guidance_coverage": {
+      "numerator": 5,
+      "denominator": 13,
+      "rate": 0.38461538461538464,
+      "status": "EVALUABLE",
+      "low_sample": false
+     },
+     "warning_share": {
+      "numerator": 8,
+      "denominator": 13,
+      "rate": 0.6153846153846154,
+      "status": "EVALUABLE",
+      "low_sample": false
+     }
+    }
+   },
+   "per_clip": {
+    "VID_20260917_153727.mp4": {
+     "frames": 29,
+     "status": "safe",
+     "guidance_coverage": 0.069,
+     "warning_share": 0.931,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153750.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153814.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153840.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153908.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.1,
+     "warning_share": 0.9,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153935.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_153948.mp4": {
+     "frames": 8,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154023.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 1.0,
+     "warning_share": 0.0,
+     "first_warning_t_s": null,
+     "approx_time_s": null
+    },
+    "VID_20260917_154051.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.714,
+     "warning_share": 0.286,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154108.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.235,
+     "warning_share": 0.765,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154144.mp4": {
+     "frames": 15,
+     "status": "safe",
+     "guidance_coverage": 0.467,
+     "warning_share": 0.533,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260917_154208.mp4": {
+     "frames": 11,
+     "status": "safe",
+     "guidance_coverage": 0.364,
+     "warning_share": 0.636,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": null
+    },
+    "VID_20260917_154223.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.545,
+     "warning_share": 0.455,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_164502.mp4": {
+     "frames": 24,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164541.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164629.mp4": {
+     "frames": 22,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164658.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164819.mp4": {
+     "frames": 21,
+     "status": "safe",
+     "guidance_coverage": 0.048,
+     "warning_share": 0.952,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_164852.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165015.mp4": {
+     "frames": 28,
+     "status": "safe",
+     "guidance_coverage": 0.179,
+     "warning_share": 0.821,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165051.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165129.mp4": {
+     "frames": 20,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165309.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165429.mp4": {
+     "frames": 18,
+     "status": "safe",
+     "guidance_coverage": 0.389,
+     "warning_share": 0.611,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165520.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_165928.mp4": {
+     "frames": 23,
+     "status": "safe",
+     "guidance_coverage": 0.435,
+     "warning_share": 0.565,
+     "first_warning_t_s": 2.5,
+     "approx_time_s": null
+    },
+    "VID_20260922_170001.mp4": {
+     "frames": 17,
+     "status": "safe",
+     "guidance_coverage": 0.118,
+     "warning_share": 0.882,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170135.mp4": {
+     "frames": 19,
+     "status": "safe",
+     "guidance_coverage": 0.895,
+     "warning_share": 0.105,
+     "first_warning_t_s": 6.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170259.mp4": {
+     "frames": 12,
+     "status": "safe",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170345.mp4": {
+     "frames": 9,
+     "status": "near_miss",
+     "guidance_coverage": 0.444,
+     "warning_share": 0.556,
+     "first_warning_t_s": 1.5,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170405.mp4": {
+     "frames": 10,
+     "status": "near_miss",
+     "guidance_coverage": 0.6,
+     "warning_share": 0.4,
+     "first_warning_t_s": 3.0,
+     "approx_time_s": 2.5
+    },
+    "VID_20260922_170500.mp4": {
+     "frames": 13,
+     "status": "near_miss",
+     "guidance_coverage": 0.0,
+     "warning_share": 1.0,
+     "first_warning_t_s": 0.0,
+     "approx_time_s": 4.0
+    },
+    "VID_20260922_170525.mp4": {
+     "frames": 13,
+     "status": "conflict",
+     "guidance_coverage": 0.385,
+     "warning_share": 0.615,
+     "first_warning_t_s": 0.5,
+     "approx_time_s": 3.0
+    },
+    "VID_20260922_170741.mp4": {
+     "frames": 16,
+     "status": "safe",
+     "guidance_coverage": 0.375,
+     "warning_share": 0.625,
+     "first_warning_t_s": 2.0,
+     "approx_time_s": null
+    },
+    "VID_20260922_170807.mp4": {
+     "frames": 14,
+     "status": "safe",
+     "guidance_coverage": 0.5,
+     "warning_share": 0.5,
+     "first_warning_t_s": 3.5,
+     "approx_time_s": null
+    }
+   }
+  }
+ },
+ "label_capability": [
+  {
+   "metric": "curb/road danger miss",
+   "status": "NOT_EVALUABLE",
+   "reason": "video-level labels only; no per-frame curb/road segmentation or geometry GT"
+  },
+  {
+   "metric": "3D occupancy danger miss",
+   "status": "NOT_EVALUABLE",
+   "reason": "video-level labels only; no per-frame 3D occupancy / object boxes GT"
+  },
+  {
+   "metric": "true false-stop (confirmed clear path)",
+   "status": "NOT_EVALUABLE",
+   "reason": "no per-frame clear-path GT; a safe video label does not make each frame clear"
+  },
+  {
+   "metric": "latency to first hazard warning",
+   "status": "NOT_EVALUABLE",
+   "reason": "only a coarse video-level onset time for 4 clips; no frame-level hazard onset"
+  },
+  {
+   "metric": "effective guidance coverage",
+   "status": "PROXY",
+   "reason": "GT-free system output share, but corridor geometry is assumed (no IMU/pose/VIO)"
+  },
+  {
+   "metric": "UNKNOWN share",
+   "status": "PROXY",
+   "reason": "GT-free system output share under the same assumed corridor geometry"
+  },
+  {
+   "metric": "decision flips",
+   "status": "PROXY",
+   "reason": "GT-free system output statistic under the same assumed corridor geometry"
+  }
+ ],
+ "onset_proxy": [
+  {
+   "clip": "VID_20260922_170345.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "A",
+   "first_warning_t_s": 1.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170345.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "B",
+   "first_warning_t_s": 1.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170345.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "C",
+   "first_warning_t_s": 1.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170405.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "A",
+   "first_warning_t_s": 3.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170405.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "B",
+   "first_warning_t_s": 3.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170405.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 2.5,
+   "arm": "C",
+   "first_warning_t_s": 3.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170500.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 4.0,
+   "arm": "A",
+   "first_warning_t_s": 0.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170500.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 4.0,
+   "arm": "B",
+   "first_warning_t_s": 0.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170500.mp4",
+   "status": "near_miss",
+   "target": "electric_bicycle",
+   "approx_time_s": 4.0,
+   "arm": "C",
+   "first_warning_t_s": 0.0,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170525.mp4",
+   "status": "conflict",
+   "target": "electric_bicycle",
+   "approx_time_s": 3.0,
+   "arm": "A",
+   "first_warning_t_s": 0.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170525.mp4",
+   "status": "conflict",
+   "target": "electric_bicycle",
+   "approx_time_s": 3.0,
+   "arm": "B",
+   "first_warning_t_s": 0.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  },
+  {
+   "clip": "VID_20260922_170525.mp4",
+   "status": "conflict",
+   "target": "electric_bicycle",
+   "approx_time_s": 3.0,
+   "arm": "C",
+   "first_warning_t_s": 0.5,
+   "warning_before_or_at_note": true,
+   "note": "PROXY only; no frame-level hazard GT (NOT_EVALUABLE as a metric)"
+  }
+ ]
+}
