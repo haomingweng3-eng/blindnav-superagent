@@ -1,0 +1,79 @@
+[
+  {
+    "id": "f01",
+    "kind": "road_in_path_walkable",
+    "layer": "segmentation",
+    "mode": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 470,
+    "raw": "f01_segmentation_B_-PqSDmiE_000470_raw.jpg",
+    "overlay": "f01_segmentation_B_-PqSDmiE_000470_overlay.jpg"
+  },
+  {
+    "id": "f02",
+    "kind": "road_in_path_walkable",
+    "layer": "segmentation",
+    "mode": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 495,
+    "raw": "f02_segmentation_B_-PqSDmiE_000495_raw.jpg",
+    "overlay": "f02_segmentation_B_-PqSDmiE_000495_overlay.jpg"
+  },
+  {
+    "id": "f03",
+    "kind": "curb_in_path_ignored",
+    "layer": "state_machine",
+    "mode": "production",
+    "arm": "A",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 135,
+    "raw": "f03_state_machine_A_-PqSDmiE_000135_raw.jpg",
+    "overlay": "f03_state_machine_A_-PqSDmiE_000135_overlay.jpg"
+  },
+  {
+    "id": "f04",
+    "kind": "curb_in_path_ignored",
+    "layer": "state_machine",
+    "mode": "production",
+    "arm": "A",
+    "session": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+    "frame": 35,
+    "raw": "f04_state_machine_A_UGNwBEZM_000035_raw.jpg",
+    "overlay": "f04_state_machine_A_UGNwBEZM_000035_overlay.jpg"
+  },
+  {
+    "id": "f05",
+    "kind": "rotation_wrong_correction",
+    "layer": "motion",
+    "mode": "production",
+    "arm": "B",
+    "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+    "frame": 155,
+    "raw": "f05_motion_B_-PqSDmiE_000155_raw.jpg",
+    "overlay": "f05_motion_B_-PqSDmiE_000155_overlay.jpg"
+  },
+  {
+    "id": "f06",
+    "kind": "unknown_when_gt_walkable",
+    "layer": "geometry",
+    "mode": "production",
+    "arm": "A",
+    "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+    "frame": 240,
+    "raw": "f06_geometry_A_M5UIabsl_000240_raw.jpg",
+    "overlay": "f06_geometry_A_M5UIabsl_000240_overlay.jpg"
+  },
+  {
+    "id": "f07",
+    "kind": "unknown_when_gt_walkable",
+    "layer": "state_machine",
+    "mode": "production",
+    "arm": "A",
+    "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+    "frame": 350,
+    "raw": "f07_state_machine_A_M5UIabsl_000350_raw.jpg",
+    "overlay": "f07_state_machine_A_M5UIabsl_000350_overlay.jpg"
+  }
+]
