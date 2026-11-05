@@ -697,7 +697,8 @@ def render_overlay(session: SanpoSession, i: int, row: dict, gt_cls: np.ndarray,
 
 def save_failure_frames(session: SanpoSession, model, device: str,
                         cfg: Config, rows: Sequence[dict], out_dir: str,
-                        limit_per_kind: int = 2, max_total: int = 12) -> List[dict]:
+                        limit_per_kind: int = 2, max_total: int = 12,
+                        band_m: float = BAND_M) -> List[dict]:
     """Save raw RGB + overlay for representative failing frames (production mode)."""
     os.makedirs(out_dir, exist_ok=True)
     prod = [r for r in rows if r["mode"] == MODE_PRODUCTION]
@@ -739,7 +740,7 @@ def save_failure_frames(session: SanpoSession, model, device: str,
             walk, boundary = make_arm_classes(r["arm"], gt_cls, v5_cls)
             plane = oracle_plane(session, i, gt)
             if plane is not None:
-                band = uncertain_band(walk, boundary, gt.depth_m, session.K[0, 0])
+                band = uncertain_band(walk, boundary, gt.depth_m, session.K[0, 0], band_m=band_m)
         overlay = render_overlay(session, i, r, gt_cls, v5_cls, band)
         ov_out = os.path.join(out_dir, stem + "_overlay.jpg")
         if overlay is not None:
@@ -952,7 +953,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 [r for r in all_rows if r["session"] == sid],
                 os.path.join(args.out, "failures", sid),
                 limit_per_kind=args.failures_limit_per_kind,
-                max_total=args.failures_max)
+                max_total=args.failures_max,
+                band_m=args.band_m)
             failure_manifest.extend(manifest)
             print(f"  saved {len(manifest)} failure frames under {args.out}/failures/{sid}", flush=True)
 
@@ -966,7 +968,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "v5_checkpoint": os.path.abspath(args.v5_checkpoint),
         "modes": list(args.modes), "band_m": args.band_m,
         "corridor": "recorded VIO route, width 2.5 m",
-        "band_construction": "physical 0.25 m ground band around walkable-region boundary",
+        "band_construction": (f"physical {args.band_m:g} m ground band around the "
+                              "walkable-region boundary"),
         "rotation_only_threshold_deg": ROTATION_DEG,
         "rotation_window_s": ROTATION_WINDOW_S,
         "rot_tangent_deg": ROTATION_TANGENT_DEG,
