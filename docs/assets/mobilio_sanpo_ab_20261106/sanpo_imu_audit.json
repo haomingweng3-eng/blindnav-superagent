@@ -1,0 +1,261 @@
+{
+  "root": "/Users/mima0000/blindnav-app/pc/data/sanpo_real/sanpo-real",
+  "sessions": [
+    {
+      "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+      "declared_sensors": [
+        {
+          "serial": 33186188,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 400.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0016,
+            "random_walk": 0.0002509
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 400.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019474
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "magnetometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.3,
+            "sampling_rate": 50.0,
+            "range_min": -2500.0,
+            "range_max": 2500.0,
+            "noise_density": 0.07,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "barometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.01,
+            "sampling_rate": 25.0,
+            "range_min": 300.0,
+            "range_max": 1100.0,
+            "noise_density": 0.0004,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 800.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0018,
+            "random_walk": 0.0006435
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 800.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019825
+          }
+        }
+      ],
+      "imu_observation_files": [],
+      "has_fixed_camera_poses": true
+    },
+    {
+      "session": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+      "declared_sensors": [
+        {
+          "serial": 33186188,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 400.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0016,
+            "random_walk": 0.0002509
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 400.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019474
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "magnetometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.3,
+            "sampling_rate": 50.0,
+            "range_min": -2500.0,
+            "range_max": 2500.0,
+            "noise_density": 0.07,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "barometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.01,
+            "sampling_rate": 25.0,
+            "range_min": 300.0,
+            "range_max": 1100.0,
+            "noise_density": 0.0004,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 800.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0018,
+            "random_walk": 0.0006435
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 800.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019825
+          }
+        }
+      ],
+      "imu_observation_files": [],
+      "has_fixed_camera_poses": true
+    },
+    {
+      "session": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+      "declared_sensors": [
+        {
+          "serial": 33186188,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 400.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0016,
+            "random_walk": 0.0002509
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 400.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019474
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "magnetometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.3,
+            "sampling_rate": 50.0,
+            "range_min": -2500.0,
+            "range_max": 2500.0,
+            "noise_density": 0.07,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 33186188,
+          "sensor": "barometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.01,
+            "sampling_rate": 25.0,
+            "range_min": 300.0,
+            "range_max": 1100.0,
+            "noise_density": 0.0004,
+            "random_walk": "NaN"
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "accelerometer_params",
+          "params": {
+            "available": true,
+            "resolution": 0.0023950196,
+            "sampling_rate": 800.0,
+            "range_min": -78.48,
+            "range_max": 78.48,
+            "noise_density": 0.0018,
+            "random_walk": 0.0006435
+          }
+        },
+        {
+          "serial": 11272073,
+          "sensor": "gyroscope_params",
+          "params": {
+            "available": true,
+            "resolution": 0.030517578,
+            "sampling_rate": 800.0,
+            "range_min": -1000.0,
+            "range_max": 1000.0,
+            "noise_density": 0.007,
+            "random_walk": 0.0019825
+          }
+        }
+      ],
+      "imu_observation_files": [],
+      "has_fixed_camera_poses": true
+    }
+  ],
+  "raw_imu_observations_present": false
+}
