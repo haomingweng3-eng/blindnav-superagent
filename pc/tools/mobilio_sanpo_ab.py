@@ -52,7 +52,7 @@ from mobilio_viz import render_replay_frame  # noqa: E402
 
 BASELINE_ARM = "baseline_split_c"
 CANDIDATE_ARM = "mobilio"
-CONDITIONS = ("annotated", "production")
+CONDITIONS = ("annotated", "production", "A_gt_gt", "B_v5_gt", "C_gt_dav2", "D_v5_dav2")
 MOBILIO_EXTRA_FIELDS = [
     "depth_source", "pose_mode", "surface_state", "surface_distance_m",
     "surface_unknown_cells", "surface_fully_observed", "occupancy_state",
@@ -279,7 +279,8 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
 
     positions, headings = route_frame(session, indices)
     tangents = route_tangents(positions)
-    need_production = "production" in conditions
+    need_model = any(c in conditions for c in ("production", "B_v5_gt", "D_v5_dav2"))
+    need_dav2 = any(c in conditions for c in ("production", "C_gt_dav2", "D_v5_dav2"))
     calibrator = GroundCalibrator(cfg.ground)
     keepers = {condition: PathKeeper(rse.CORRIDOR, rse.SW_CFG) for condition in conditions}
     guardians = {condition: ObstacleGuardian(SPATIAL) for condition in conditions}
@@ -303,27 +304,29 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
         gt_ref = rse.compute_gt_reference(gt, gt_cls, session, frame, relative_pose, rse.SW_CFG)
 
         v5_cls = q_dav2 = fit = None
-        if need_production:
+        if need_model or need_dav2:
             v5_cls = predict_v5(model, device, inp.bgr, gt.seg.shape)
+        if need_dav2:
             q_dav2 = depth_estimator.predict(inp.bgr)
-            v5_walk = rse.walkable_mask_from_classes(v5_cls)
-            fit = calibrator.update(q_dav2, v5_walk, session.K, up_pose, up_source="attitude")
+            calib_cls = v5_cls if v5_cls is not None else gt_cls
+            calib_walk = rse.walkable_mask_from_classes(calib_cls)
+            fit = calibrator.update(q_dav2, calib_walk, session.K, up_pose, up_source="attitude")
 
         for condition in conditions:
-            if condition == "annotated":
+            if condition in ("annotated", "A_gt_gt", "B_v5_gt"):
                 resolved = resolve_condition_depth(
-                    condition, None, type("Fit", (), {"up": gt_ref.get("up")})(),
+                    "annotated", None, type("Fit", (), {"up": gt_ref.get("up")})(),
                     gt.depth_m, camera_height_m=float(gt_ref.get("h") or session.camera_height_m))
-                cls = gt_cls
+                cls = v5_cls if condition == "B_v5_gt" else gt_cls
                 up = gt_ref.get("up")
                 camera_height = float(gt_ref.get("h") or session.camera_height_m)
                 calib_reason = "" if resolved.ok else "no_gt_plane"
-            elif condition == "production":
+            elif condition in ("production", "C_gt_dav2", "D_v5_dav2"):
                 resolved = resolve_condition_depth(
-                    condition, q_dav2, fit, gt.depth_m,
+                    "production", q_dav2, fit, gt.depth_m,
                     camera_height_m=float(session.camera_height_m),
                     max_depth_m=float(cfg.ground.max_depth_m))
-                cls = v5_cls
+                cls = gt_cls if condition == "C_gt_dav2" else v5_cls
                 up = resolved.up if resolved.up is not None else up_pose
                 camera_height = float(session.camera_height_m)
                 calib_reason = "" if resolved.ok else "no_metric_depth"
@@ -565,7 +568,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print(f"BLOCKED_MISSING_DATA: {data_root}", file=sys.stderr)
         return 2
     conditions = list(args.conditions)
-    if "production" in conditions and not args.v5_checkpoint:
+    needs_checkpoint = any(c in conditions for c in ("production", "B_v5_gt", "C_gt_dav2", "D_v5_dav2"))
+    if needs_checkpoint and not args.v5_checkpoint:
         print("BLOCKED_MISSING_CHECKPOINT: --v5-checkpoint is required for production", file=sys.stderr)
         return 2
     sessions = args.sessions or sorted(
@@ -575,7 +579,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return 2
 
     model = device = depth_estimator = None
-    if "production" in conditions:
+    if needs_checkpoint:
         model, device = load_v5(args.v5_checkpoint, args.device)
         from blindnav_pc.depth import DepthEstimator
         depth_estimator = DepthEstimator(device=device)

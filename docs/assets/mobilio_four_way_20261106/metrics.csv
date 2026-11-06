@@ -1,0 +1,1217 @@
+condition,arm,scope,metric,numerator,denominator,rate,value,unit,status,low_sample,note
+A_gt_gt,baseline_split_c,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,baseline_split_c,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,all,curb_miss,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,all,curb_miss_straight,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,all,curb_danger_blocked_recall,84,84,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,all,ground_miss,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,baseline_split_c,all,ground_miss_straight,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,baseline_split_c,all,ground_danger_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,all,occupancy_miss,1,218,0.0045871559633027525,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,all,occupancy_miss_straight,0,218,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,all,occupancy_turn_guidance_not_evaluable,1,218,0.0045871559633027525,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,all,occupancy_blocked_recall,217,218,0.9954128440366973,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,all,any_miss,1,295,0.003389830508474576,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,baseline_split_c,all,any_danger_blocked_recall,294,295,0.9966101694915255,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,baseline_split_c,all,unnecessary_observe,0,150,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,baseline_split_c,all,unknown_on_confirmed_clear,0,150,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,baseline_split_c,all,guidance_on_confirmed_clear,150,150,1.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,baseline_split_c,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,baseline_split_c,all,guidance_coverage_all,178,481,0.3700623700623701,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,baseline_split_c,all,guidance_coverage_non_danger,177,186,0.9516129032258065,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,baseline_split_c,all,unknown_share,1,481,0.002079002079002079,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,baseline_split_c,all,observe_share,46,481,0.09563409563409564,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,baseline_split_c,all,blocked_share,256,481,0.5322245322245323,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,baseline_split_c,all,clear_share,178,481,0.3700623700623701,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,baseline_split_c,all,stop_share,256,481,0.5322245322245323,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,baseline_split_c,all,flips,133,478,0.27824267782426776,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,baseline_split_c,all,flips_per_minute,,478,50.08368200836815,50.08368200836815,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,baseline_split_c,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,baseline_split_c,all,warning_within_horizon,46,47,0.9787234042553191,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+A_gt_gt,baseline_split_c,all,warning_at_onset,46,47,0.9787234042553191,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,baseline_split_c,all,latency_p50_frames,,46,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,all,latency_p95_frames,,46,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,all,latency_p50_ms,,46,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,all,latency_p95_ms,,46,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,6,6,1.0,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,21,21,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,0,24,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,24,24,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,0,42,0.0,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,42,42,1.0,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,0,61,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,0,61,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,61,61,1.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,78,121,0.6446280991735537,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,78,79,0.9873417721518988,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,1,121,0.008264462809917356,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,19,121,0.15702479338842976,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,23,121,0.19008264462809918,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,78,121,0.6446280991735537,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,23,121,0.19008264462809918,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,26,120,0.21666666666666667,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,38.99999999999999,38.99999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,0,91,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,90,91,0.989010989010989,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,1,91,0.01098901098901099,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,90,91,0.989010989010989,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,0,76,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,0,76,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,76,76,1.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,87,184,0.47282608695652173,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,86,93,0.9247311827956989,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,0,184,0.0,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,8,184,0.043478260869565216,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,89,184,0.483695652173913,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,87,184,0.47282608695652173,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,89,184,0.483695652173913,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,70,183,0.3825136612021858,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,68.85245901639327,68.85245901639327,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,30,31,0.967741935483871,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,30,31,0.967741935483871,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,30,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,30,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,30,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,30,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,78,78,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,82,82,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,0,103,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,0,162,0.0,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,162,162,1.0,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,0,13,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,13,13,1.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,13,176,0.07386363636363637,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,13,14,0.9285714285714286,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,0,176,0.0,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,19,176,0.10795454545454546,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,144,176,0.8181818181818182,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,13,176,0.07386363636363637,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,144,176,0.8181818181818182,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,37,175,0.21142857142857144,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,38.057142857142765,38.057142857142765,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,mobilio,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,mobilio,all,curb_miss,1,84,0.011904761904761904,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,all,curb_miss_straight,1,84,0.011904761904761904,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,all,curb_danger_blocked_recall,83,84,0.9880952380952381,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,mobilio,all,ground_miss,1,103,0.009708737864077669,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,mobilio,all,ground_miss_straight,1,103,0.009708737864077669,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,mobilio,all,ground_danger_blocked_recall,102,103,0.9902912621359223,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,mobilio,all,occupancy_miss,9,218,0.04128440366972477,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,all,occupancy_miss_straight,6,218,0.027522935779816515,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,all,occupancy_turn_guidance_not_evaluable,3,218,0.013761467889908258,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,all,occupancy_blocked_recall,209,218,0.9587155963302753,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,mobilio,all,any_miss,10,295,0.03389830508474576,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,mobilio,all,any_danger_blocked_recall,285,295,0.9661016949152542,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,mobilio,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,mobilio,all,unnecessary_observe,135,150,0.9,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,mobilio,all,unknown_on_confirmed_clear,1,150,0.006666666666666667,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,mobilio,all,guidance_on_confirmed_clear,14,150,0.09333333333333334,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,mobilio,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,mobilio,all,guidance_coverage_all,29,481,0.060291060291060294,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,mobilio,all,guidance_coverage_non_danger,19,186,0.10215053763440861,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,mobilio,all,unknown_share,37,481,0.07692307692307693,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,mobilio,all,observe_share,402,481,0.8357588357588358,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,mobilio,all,blocked_share,13,481,0.02702702702702703,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,mobilio,all,clear_share,29,481,0.060291060291060294,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,mobilio,all,stop_share,13,481,0.02702702702702703,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,mobilio,all,flips,65,478,0.13598326359832635,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,mobilio,all,flips_per_minute,,478,24.476987447698722,24.476987447698722,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,mobilio,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,mobilio,all,warning_within_horizon,47,47,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+A_gt_gt,mobilio,all,warning_at_onset,43,47,0.9148936170212766,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,mobilio,all,latency_p50_frames,,47,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,mobilio,all,latency_p95_frames,,47,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,mobilio,all,latency_p50_ms,,47,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,all,latency_p95_ms,,47,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,6,6,1.0,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,21,21,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,3,24,0.125,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,1,24,0.041666666666666664,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,2,24,0.08333333333333333,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,21,24,0.875,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,3,42,0.07142857142857142,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,39,42,0.9285714285714286,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,55,61,0.9016393442622951,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,0,61,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,6,61,0.09836065573770492,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,10,121,0.08264462809917356,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,7,79,0.08860759493670886,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,33,121,0.2727272727272727,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,78,121,0.6446280991735537,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,10,121,0.08264462809917356,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,14,120,0.11666666666666667,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,20.999999999999996,20.999999999999996,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,6,91,0.06593406593406594,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,5,91,0.054945054945054944,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,85,91,0.9340659340659341,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,6,91,0.06593406593406594,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,85,91,0.9340659340659341,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,67,76,0.881578947368421,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,1,76,0.013157894736842105,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,8,76,0.10526315789473684,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,18,184,0.09782608695652174,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,12,93,0.12903225806451613,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,1,184,0.005434782608695652,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,165,184,0.8967391304347826,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,18,184,0.09782608695652174,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,27,183,0.14754098360655737,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,26.55737704918026,26.55737704918026,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,31,31,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,27,31,0.8709677419354839,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,31,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,31,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,31,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,31,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,1,78,0.01282051282051282,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,1,78,0.01282051282051282,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,77,78,0.9871794871794872,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,1,82,0.012195121951219513,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,1,82,0.012195121951219513,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,81,82,0.9878048780487805,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,0,103,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,1,162,0.006172839506172839,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,161,162,0.9938271604938271,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,13,13,1.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,1,176,0.005681818181818182,,,EVALUABLE,False,frames with usable forward guidance / all frames
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,0,14,0.0,,,EVALUABLE,False,usable guidance / frames without any GT danger
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,3,176,0.017045454545454544,,,EVALUABLE,False,UNKNOWN state frames / all
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,159,176,0.9034090909090909,,,EVALUABLE,False,OBSERVE state frames / all
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,13,176,0.07386363636363637,,,EVALUABLE,False,BLOCKED state frames / all
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,1,176,0.005681818181818182,,,EVALUABLE,False,CLEAR state frames / all
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,13,176,0.07386363636363637,,,EVALUABLE,False,STOP command frames / all
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,24,175,0.13714285714285715,,,EVALUABLE,False,consecutive-frame effective-command changes
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,24.68571428571423,24.68571428571423,flips/min,EVALUABLE,False,per minute of processed frames
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+A_gt_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,baseline_split_c,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,all,curb_miss,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,all,curb_miss_straight,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,all,curb_danger_blocked_recall,84,84,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,all,ground_miss,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,baseline_split_c,all,ground_miss_straight,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,baseline_split_c,all,ground_danger_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,all,occupancy_miss,1,218,0.0045871559633027525,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,all,occupancy_miss_straight,0,218,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,all,occupancy_turn_guidance_not_evaluable,1,218,0.0045871559633027525,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,all,occupancy_blocked_recall,217,218,0.9954128440366973,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,all,any_miss,2,295,0.006779661016949152,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,baseline_split_c,all,any_danger_blocked_recall,293,295,0.9932203389830508,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,baseline_split_c,all,unnecessary_observe,33,150,0.22,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,baseline_split_c,all,unknown_on_confirmed_clear,0,150,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,baseline_split_c,all,guidance_on_confirmed_clear,117,150,0.78,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,baseline_split_c,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,baseline_split_c,all,guidance_coverage_all,147,481,0.30561330561330563,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,baseline_split_c,all,guidance_coverage_non_danger,145,186,0.7795698924731183,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,baseline_split_c,all,unknown_share,13,481,0.02702702702702703,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,baseline_split_c,all,observe_share,67,481,0.1392931392931393,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,baseline_split_c,all,blocked_share,254,481,0.5280665280665281,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,baseline_split_c,all,clear_share,147,481,0.30561330561330563,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,baseline_split_c,all,stop_share,254,481,0.5280665280665281,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,baseline_split_c,all,flips,138,478,0.28870292887029286,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,baseline_split_c,all,flips_per_minute,,478,51.96652719665267,51.96652719665267,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,baseline_split_c,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,baseline_split_c,all,warning_within_horizon,46,47,0.9787234042553191,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+B_v5_gt,baseline_split_c,all,warning_at_onset,46,47,0.9787234042553191,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,baseline_split_c,all,latency_p50_frames,,46,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,all,latency_p95_frames,,46,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,all,latency_p50_ms,,46,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,all,latency_p95_ms,,46,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,6,6,1.0,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,21,21,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,0,24,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,24,24,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,0,42,0.0,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,42,42,1.0,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,24,61,0.39344262295081966,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,0,61,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,37,61,0.6065573770491803,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,54,121,0.4462809917355372,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,54,79,0.6835443037974683,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,11,121,0.09090909090909091,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,33,121,0.2727272727272727,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,23,121,0.19008264462809918,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,54,121,0.4462809917355372,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,23,121,0.19008264462809918,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,28,120,0.23333333333333334,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,41.99999999999999,41.99999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,0,91,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,90,91,0.989010989010989,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,1,91,0.01098901098901099,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,90,91,0.989010989010989,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,9,76,0.11842105263157894,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,0,76,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,67,76,0.881578947368421,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,79,184,0.42934782608695654,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,78,93,0.8387096774193549,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,0,184,0.0,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,16,184,0.08695652173913043,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,89,184,0.483695652173913,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,79,184,0.42934782608695654,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,89,184,0.483695652173913,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,72,183,0.39344262295081966,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,70.81967213114736,70.81967213114736,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,30,31,0.967741935483871,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,30,31,0.967741935483871,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,30,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,30,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,30,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,30,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,78,78,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,82,82,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,0,103,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,1,162,0.006172839506172839,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,161,162,0.9938271604938271,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,0,13,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,13,13,1.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,14,176,0.07954545454545454,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,13,14,0.9285714285714286,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,2,176,0.011363636363636364,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,18,176,0.10227272727272728,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,142,176,0.8068181818181818,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,14,176,0.07954545454545454,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,142,176,0.8068181818181818,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,38,175,0.21714285714285714,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,39.0857142857142,39.0857142857142,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,mobilio,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,mobilio,all,curb_miss,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,all,curb_miss_straight,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,all,curb_danger_blocked_recall,84,84,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,mobilio,all,ground_miss,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,mobilio,all,ground_miss_straight,0,103,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,mobilio,all,ground_danger_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,mobilio,all,occupancy_miss,8,218,0.03669724770642202,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,all,occupancy_miss_straight,7,218,0.03211009174311927,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,all,occupancy_turn_guidance_not_evaluable,1,218,0.0045871559633027525,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,all,occupancy_blocked_recall,210,218,0.963302752293578,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,mobilio,all,any_miss,8,295,0.02711864406779661,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,mobilio,all,any_danger_blocked_recall,287,295,0.9728813559322034,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,mobilio,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,mobilio,all,unnecessary_observe,123,150,0.82,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,mobilio,all,unknown_on_confirmed_clear,21,150,0.14,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,mobilio,all,guidance_on_confirmed_clear,6,150,0.04,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,mobilio,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,mobilio,all,guidance_coverage_all,15,481,0.031185031185031187,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,mobilio,all,guidance_coverage_non_danger,7,186,0.03763440860215054,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,mobilio,all,unknown_share,61,481,0.12681912681912683,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,mobilio,all,observe_share,395,481,0.8212058212058212,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,mobilio,all,blocked_share,10,481,0.02079002079002079,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,mobilio,all,clear_share,15,481,0.031185031185031187,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,mobilio,all,stop_share,10,481,0.02079002079002079,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,mobilio,all,flips,39,478,0.08158995815899582,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,mobilio,all,flips_per_minute,,478,14.686192468619234,14.686192468619234,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,mobilio,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,mobilio,all,warning_within_horizon,47,47,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+B_v5_gt,mobilio,all,warning_at_onset,43,47,0.9148936170212766,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,mobilio,all,latency_p50_frames,,47,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,mobilio,all,latency_p95_frames,,47,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,mobilio,all,latency_p50_ms,,47,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,all,latency_p95_ms,,47,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,6,6,1.0,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,0,21,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,21,21,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,0,24,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,24,24,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,0,42,0.0,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,42,42,1.0,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,41,61,0.6721311475409836,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,20,61,0.32786885245901637,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,0,61,0.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,0,121,0.0,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,0,79,0.0,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,58,121,0.4793388429752066,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,63,121,0.5206611570247934,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,0,121,0.0,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,6,120,0.05,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,8.999999999999998,8.999999999999998,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,8,91,0.08791208791208792,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,7,91,0.07692307692307693,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,1,91,0.01098901098901099,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,83,91,0.9120879120879121,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,8,91,0.08791208791208792,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,83,91,0.9120879120879121,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,69,76,0.9078947368421053,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,1,76,0.013157894736842105,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,6,76,0.07894736842105263,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,15,184,0.08152173913043478,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,7,93,0.07526881720430108,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,1,184,0.005434782608695652,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,168,184,0.9130434782608695,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,15,184,0.08152173913043478,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,18,183,0.09836065573770492,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,17.70491803278684,17.70491803278684,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,31,31,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,27,31,0.8709677419354839,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,31,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,31,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,31,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,31,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,78,78,1.0,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,0,82,0.0,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,82,82,1.0,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,0,103,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,0,162,0.0,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,162,162,1.0,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,13,13,1.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,0,176,0.0,,,EVALUABLE,False,frames with usable forward guidance / all frames
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,0,14,0.0,,,EVALUABLE,False,usable guidance / frames without any GT danger
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,2,176,0.011363636363636364,,,EVALUABLE,False,UNKNOWN state frames / all
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,164,176,0.9318181818181818,,,EVALUABLE,False,OBSERVE state frames / all
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,10,176,0.056818181818181816,,,EVALUABLE,False,BLOCKED state frames / all
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,0,176,0.0,,,EVALUABLE,False,CLEAR state frames / all
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,10,176,0.056818181818181816,,,EVALUABLE,False,STOP command frames / all
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,15,175,0.08571428571428572,,,EVALUABLE,False,consecutive-frame effective-command changes
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,15.428571428571393,15.428571428571393,flips/min,EVALUABLE,False,per minute of processed frames
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+B_v5_gt,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,all,road_miss,1,15,0.06666666666666667,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,all,road_miss_straight,1,15,0.06666666666666667,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,baseline_split_c,all,road_danger_blocked_recall,14,15,0.9333333333333333,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,all,curb_miss,11,84,0.13095238095238096,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,all,curb_miss_straight,4,84,0.047619047619047616,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,all,curb_turn_guidance_not_evaluable,7,84,0.08333333333333333,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,all,curb_danger_blocked_recall,73,84,0.8690476190476191,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,all,ground_miss,13,103,0.1262135922330097,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,baseline_split_c,all,ground_miss_straight,6,103,0.05825242718446602,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,baseline_split_c,all,ground_danger_blocked_recall,90,103,0.8737864077669902,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,all,occupancy_miss,104,218,0.47706422018348627,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,all,occupancy_miss_straight,74,218,0.3394495412844037,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,all,occupancy_turn_guidance_not_evaluable,30,218,0.13761467889908258,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,all,occupancy_blocked_recall,114,218,0.5229357798165137,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,all,any_miss,120,295,0.4067796610169492,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,baseline_split_c,all,any_danger_blocked_recall,175,295,0.5932203389830508,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,all,unnecessary_observe,0,150,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,baseline_split_c,all,unknown_on_confirmed_clear,67,150,0.44666666666666666,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,all,guidance_on_confirmed_clear,83,150,0.5533333333333333,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,baseline_split_c,all,guidance_coverage_all,224,481,0.4656964656964657,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,baseline_split_c,all,guidance_coverage_non_danger,104,186,0.5591397849462365,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,baseline_split_c,all,unknown_share,200,481,0.4158004158004158,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,baseline_split_c,all,observe_share,45,481,0.09355509355509356,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,baseline_split_c,all,blocked_share,12,481,0.02494802494802495,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,baseline_split_c,all,clear_share,224,481,0.4656964656964657,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,baseline_split_c,all,stop_share,12,481,0.02494802494802495,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,baseline_split_c,all,flips,206,478,0.4309623430962343,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,baseline_split_c,all,flips_per_minute,,478,77.5732217573221,77.5732217573221,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,baseline_split_c,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,baseline_split_c,all,warning_within_horizon,36,47,0.7659574468085106,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+C_gt_dav2,baseline_split_c,all,warning_at_onset,17,47,0.3617021276595745,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,baseline_split_c,all,latency_p50_frames,,36,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,all,latency_p95_frames,,36,8.25,8.25,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,all,latency_p50_ms,,36,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,all,latency_p95_ms,,36,2750.0,2750.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,1,15,0.06666666666666667,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,1,15,0.06666666666666667,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,14,15,0.9333333333333333,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,4,6,0.6666666666666666,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,3,21,0.14285714285714285,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,3,21,0.14285714285714285,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,18,21,0.8571428571428571,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,5,24,0.20833333333333334,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,4,24,0.16666666666666666,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,1,24,0.041666666666666664,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,19,24,0.7916666666666666,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,7,42,0.16666666666666666,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,35,42,0.8333333333333334,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,0,61,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,43,61,0.7049180327868853,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,18,61,0.29508196721311475,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,31,121,0.256198347107438,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,24,79,0.3037974683544304,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,74,121,0.6115702479338843,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,16,121,0.1322314049586777,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,31,121,0.256198347107438,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,46,120,0.38333333333333336,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,68.99999999999999,68.99999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,82,91,0.9010989010989011,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,59,91,0.6483516483516484,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,23,91,0.25274725274725274,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,9,91,0.0989010989010989,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,82,91,0.9010989010989011,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,9,91,0.0989010989010989,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,0,76,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,21,76,0.27631578947368424,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,55,76,0.7236842105263158,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,152,184,0.8260869565217391,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,70,93,0.7526881720430108,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,32,184,0.17391304347826086,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,0,184,0.0,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,152,184,0.8260869565217391,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,78,183,0.4262295081967213,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,76.72131147540964,76.72131147540964,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,21,31,0.6774193548387096,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,4,31,0.12903225806451613,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,21,4.0,4.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,21,9.0,9.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,21,1333.3333333333333,1333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,21,3000.0,3000.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,9,78,0.11538461538461539,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,2,78,0.02564102564102564,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,7,78,0.08974358974358974,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,69,78,0.8846153846153846,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,10,82,0.12195121951219512,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,3,82,0.036585365853658534,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,72,82,0.8780487804878049,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,17,103,0.1650485436893204,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,11,103,0.10679611650485436,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,6,103,0.05825242718446602,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,86,103,0.8349514563106796,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,31,162,0.19135802469135801,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,131,162,0.808641975308642,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,0,13,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,3,13,0.23076923076923078,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,10,13,0.7692307692307693,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,41,176,0.23295454545454544,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,10,14,0.7142857142857143,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,94,176,0.5340909090909091,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,29,176,0.16477272727272727,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,12,176,0.06818181818181818,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,41,176,0.23295454545454544,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,12,176,0.06818181818181818,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,82,175,0.4685714285714286,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,84.34285714285694,84.34285714285694,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,7,8,0.875,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,5,8,0.625,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,7,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,7,2.3999999999999986,2.3999999999999986,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,7,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,7,799.9999999999995,799.9999999999995,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,mobilio,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,all,curb_miss,3,84,0.03571428571428571,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,all,curb_miss_straight,3,84,0.03571428571428571,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,all,curb_danger_blocked_recall,81,84,0.9642857142857143,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,all,ground_miss,3,103,0.02912621359223301,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,mobilio,all,ground_miss_straight,3,103,0.02912621359223301,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,mobilio,all,ground_danger_blocked_recall,100,103,0.970873786407767,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,mobilio,all,occupancy_miss,15,218,0.06880733944954129,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,all,occupancy_miss_straight,12,218,0.05504587155963303,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,all,occupancy_turn_guidance_not_evaluable,3,218,0.013761467889908258,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,all,occupancy_blocked_recall,203,218,0.9311926605504587,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,mobilio,all,any_miss,18,295,0.061016949152542375,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,mobilio,all,any_danger_blocked_recall,277,295,0.9389830508474576,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,mobilio,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,mobilio,all,unnecessary_observe,71,150,0.47333333333333333,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,mobilio,all,unknown_on_confirmed_clear,43,150,0.2866666666666667,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,mobilio,all,guidance_on_confirmed_clear,36,150,0.24,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,mobilio,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,mobilio,all,guidance_coverage_all,57,481,0.11850311850311851,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,mobilio,all,guidance_coverage_non_danger,39,186,0.20967741935483872,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,mobilio,all,unknown_share,276,481,0.5738045738045738,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,mobilio,all,observe_share,148,481,0.3076923076923077,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,mobilio,all,blocked_share,0,481,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,mobilio,all,clear_share,57,481,0.11850311850311851,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,mobilio,all,stop_share,0,481,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,mobilio,all,flips,145,478,0.303347280334728,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,mobilio,all,flips_per_minute,,478,54.602510460251,54.602510460251,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,mobilio,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,mobilio,all,warning_within_horizon,47,47,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+C_gt_dav2,mobilio,all,warning_at_onset,38,47,0.8085106382978723,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,mobilio,all,latency_p50_frames,,47,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,all,latency_p95_frames,,47,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,all,latency_p50_ms,,47,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,all,latency_p95_ms,,47,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,4,6,0.6666666666666666,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,2,21,0.09523809523809523,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,2,21,0.09523809523809523,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,19,21,0.9047619047619048,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,0,24,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,24,24,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,2,42,0.047619047619047616,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,40,42,0.9523809523809523,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,24,61,0.39344262295081966,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,25,61,0.4098360655737705,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,12,61,0.19672131147540983,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,14,121,0.11570247933884298,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,12,79,0.1518987341772152,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,76,121,0.628099173553719,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,31,121,0.256198347107438,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,14,121,0.11570247933884298,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,34,120,0.2833333333333333,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,50.99999999999999,50.99999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,6,8,0.75,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,1.0,1.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,333.3333333333333,333.3333333333333,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,15,91,0.16483516483516483,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,12,91,0.13186813186813187,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,3,91,0.03296703296703297,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,76,91,0.8351648351648352,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,15,91,0.16483516483516483,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,76,91,0.8351648351648352,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,38,76,0.5,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,14,76,0.18421052631578946,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,24,76,0.3157894736842105,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,42,184,0.22826086956521738,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,27,93,0.2903225806451613,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,53,184,0.28804347826086957,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,89,184,0.483695652173913,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,42,184,0.22826086956521738,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,90,183,0.4918032786885246,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,88.5245901639342,88.5245901639342,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,31,31,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,25,31,0.8064516129032258,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,31,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,31,1.5,1.5,frames,EVALUABLE,False,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,31,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,31,500.0,500.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,1,78,0.01282051282051282,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,1,78,0.01282051282051282,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,77,78,0.9871794871794872,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,1,82,0.012195121951219513,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,1,82,0.012195121951219513,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,81,82,0.9878048780487805,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,0,103,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,103,103,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,1,162,0.006172839506172839,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,161,162,0.9938271604938271,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,9,13,0.6923076923076923,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,4,13,0.3076923076923077,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,1,176,0.005681818181818182,,,EVALUABLE,False,frames with usable forward guidance / all frames
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,0,14,0.0,,,EVALUABLE,False,usable guidance / frames without any GT danger
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,147,176,0.8352272727272727,,,EVALUABLE,False,UNKNOWN state frames / all
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,28,176,0.1590909090909091,,,EVALUABLE,False,OBSERVE state frames / all
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,0,176,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,1,176,0.005681818181818182,,,EVALUABLE,False,CLEAR state frames / all
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,0,176,0.0,,,EVALUABLE,False,STOP command frames / all
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,21,175,0.12,,,EVALUABLE,False,consecutive-frame effective-command changes
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,21.599999999999948,21.599999999999948,flips/min,EVALUABLE,False,per minute of processed frames
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,7,8,0.875,,,EVALUABLE,False,warning already on the onset frame
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.6499999999999995,0.6499999999999995,frames,EVALUABLE,True,latency to first hazard warning (detected)
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+C_gt_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,216.6666666666665,216.6666666666665,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,all,road_miss,3,15,0.2,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,all,road_miss_straight,2,15,0.13333333333333333,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,all,road_turn_guidance_not_evaluable,1,15,0.06666666666666667,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,baseline_split_c,all,road_danger_blocked_recall,12,15,0.8,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,all,curb_miss,13,84,0.15476190476190477,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,all,curb_miss_straight,6,84,0.07142857142857142,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,all,curb_turn_guidance_not_evaluable,7,84,0.08333333333333333,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,all,curb_danger_blocked_recall,71,84,0.8452380952380952,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,all,ground_miss,17,103,0.1650485436893204,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,baseline_split_c,all,ground_miss_straight,8,103,0.07766990291262135,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,baseline_split_c,all,ground_danger_blocked_recall,86,103,0.8349514563106796,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,all,occupancy_miss,105,218,0.481651376146789,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,all,occupancy_miss_straight,74,218,0.3394495412844037,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,all,occupancy_turn_guidance_not_evaluable,31,218,0.14220183486238533,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,all,occupancy_blocked_recall,113,218,0.518348623853211,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,all,any_miss,123,295,0.41694915254237286,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,baseline_split_c,all,any_danger_blocked_recall,172,295,0.5830508474576271,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,all,unnecessary_observe,13,150,0.08666666666666667,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,baseline_split_c,all,unknown_on_confirmed_clear,61,150,0.4066666666666667,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,all,guidance_on_confirmed_clear,76,150,0.5066666666666667,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,baseline_split_c,all,guidance_coverage_all,220,481,0.4573804573804574,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,baseline_split_c,all,guidance_coverage_non_danger,97,186,0.521505376344086,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,baseline_split_c,all,unknown_share,214,481,0.44490644490644493,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,baseline_split_c,all,observe_share,40,481,0.08316008316008316,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,baseline_split_c,all,blocked_share,7,481,0.014553014553014554,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,baseline_split_c,all,clear_share,220,481,0.4573804573804574,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,baseline_split_c,all,stop_share,7,481,0.014553014553014554,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,baseline_split_c,all,flips,201,478,0.4205020920502092,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,baseline_split_c,all,flips_per_minute,,478,75.69037656903758,75.69037656903758,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,baseline_split_c,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,baseline_split_c,all,warning_within_horizon,36,47,0.7659574468085106,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+D_v5_dav2,baseline_split_c,all,warning_at_onset,18,47,0.3829787234042553,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,baseline_split_c,all,latency_p50_frames,,36,0.5,0.5,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,all,latency_p95_frames,,36,8.25,8.25,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,all,latency_p50_ms,,36,166.66666666666666,166.66666666666666,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,all,latency_p95_ms,,36,2750.0,2750.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,3,15,0.2,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,2,15,0.13333333333333333,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,1,15,0.06666666666666667,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,12,15,0.8,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,4,6,0.6666666666666666,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,5,21,0.23809523809523808,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,4,21,0.19047619047619047,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,16,21,0.7619047619047619,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,7,24,0.2916666666666667,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,5,24,0.20833333333333334,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,2,24,0.08333333333333333,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,17,24,0.7083333333333334,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,9,42,0.21428571428571427,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,33,42,0.7857142857142857,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,9,61,0.14754098360655737,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,38,61,0.6229508196721312,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,14,61,0.22950819672131148,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,29,121,0.2396694214876033,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,20,79,0.25316455696202533,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,81,121,0.6694214876033058,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,11,121,0.09090909090909091,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,29,121,0.2396694214876033,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,45,120,0.375,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,67.49999999999999,67.49999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,8,8,1.0,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,80,91,0.8791208791208791,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,57,91,0.6263736263736264,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,23,91,0.25274725274725274,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,11,91,0.12087912087912088,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,80,91,0.8791208791208791,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,11,91,0.12087912087912088,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,4,76,0.05263157894736842,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,20,76,0.2631578947368421,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,52,76,0.6842105263157895,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,147,184,0.7989130434782609,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,67,93,0.7204301075268817,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,31,184,0.16847826086956522,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,6,184,0.03260869565217391,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,147,184,0.7989130434782609,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,83,183,0.453551912568306,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,81.63934426229487,81.63934426229487,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,21,31,0.6774193548387096,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,5,31,0.16129032258064516,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,21,3.0,3.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,21,9.0,9.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,21,1000.0,1000.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,21,3000.0,3000.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,11,78,0.14102564102564102,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,4,78,0.05128205128205128,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,7,78,0.08974358974358974,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,67,78,0.8589743589743589,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,12,82,0.14634146341463414,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,4,82,0.04878048780487805,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,70,82,0.8536585365853658,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,18,103,0.17475728155339806,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,12,103,0.11650485436893204,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,6,103,0.05825242718446602,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,85,103,0.8252427184466019,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,34,162,0.20987654320987653,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,128,162,0.7901234567901234,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,0,13,0.0,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,3,13,0.23076923076923078,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,10,13,0.7692307692307693,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,44,176,0.25,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,10,14,0.7142857142857143,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,102,176,0.5795454545454546,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,23,176,0.13068181818181818,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,7,176,0.03977272727272727,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,44,176,0.25,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,7,176,0.03977272727272727,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,73,175,0.41714285714285715,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,75.0857142857141,75.0857142857141,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,7,8,0.875,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,5,8,0.625,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,7,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,7,2.3999999999999986,2.3999999999999986,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,7,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,7,799.9999999999995,799.9999999999995,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,all,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,all,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,all,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,mobilio,all,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,all,curb_miss,4,84,0.047619047619047616,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,all,curb_miss_straight,4,84,0.047619047619047616,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,all,curb_turn_guidance_not_evaluable,0,84,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,all,curb_danger_blocked_recall,80,84,0.9523809523809523,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,all,ground_miss,4,103,0.038834951456310676,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,mobilio,all,ground_miss_straight,4,103,0.038834951456310676,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,mobilio,all,ground_danger_blocked_recall,99,103,0.9611650485436893,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,mobilio,all,occupancy_miss,14,218,0.06422018348623854,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,all,occupancy_miss_straight,12,218,0.05504587155963303,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,all,occupancy_turn_guidance_not_evaluable,2,218,0.009174311926605505,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,all,occupancy_blocked_recall,204,218,0.9357798165137615,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,mobilio,all,any_miss,17,295,0.0576271186440678,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,mobilio,all,any_danger_blocked_recall,278,295,0.9423728813559322,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,mobilio,all,true_false_stop,0,150,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,mobilio,all,unnecessary_observe,80,150,0.5333333333333333,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,mobilio,all,unknown_on_confirmed_clear,41,150,0.2733333333333333,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,mobilio,all,guidance_on_confirmed_clear,29,150,0.19333333333333333,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,mobilio,all,false_stop_on_weak_clear,0,174,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,mobilio,all,guidance_coverage_all,49,481,0.10187110187110188,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,mobilio,all,guidance_coverage_non_danger,32,186,0.17204301075268819,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,mobilio,all,unknown_share,275,481,0.5717255717255717,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,mobilio,all,observe_share,157,481,0.3264033264033264,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,mobilio,all,blocked_share,0,481,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,mobilio,all,clear_share,49,481,0.10187110187110188,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,mobilio,all,stop_share,0,481,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,mobilio,all,flips,136,478,0.28451882845188287,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,mobilio,all,flips_per_minute,,478,51.213389121338864,51.213389121338864,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,mobilio,all,hazard_onset_events,,47,,47,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,mobilio,all,warning_within_horizon,47,47,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+D_v5_dav2,mobilio,all,warning_at_onset,39,47,0.8297872340425532,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,mobilio,all,latency_p50_frames,,47,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,all,latency_p95_frames,,47,1.0,1.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,all,latency_p50_ms,,47,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,all,latency_p95_ms,,47,333.3333333333333,333.3333333333333,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss,0,15,0.0,,,EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_miss_straight,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_turn_guidance_not_evaluable,0,15,0.0,,,EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,road_danger_blocked_recall,15,15,1.0,,,EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_miss_straight,2,6,0.3333333333333333,,,EVALUABLE,True,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_turn_guidance_not_evaluable,0,6,0.0,,,EVALUABLE,True,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,curb_danger_blocked_recall,4,6,0.6666666666666666,,,EVALUABLE,True,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss,2,21,0.09523809523809523,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_miss_straight,2,21,0.09523809523809523,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,ground_danger_blocked_recall,19,21,0.9047619047619048,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss,0,24,0.0,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_miss_straight,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_turn_guidance_not_evaluable,0,24,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,occupancy_blocked_recall,24,24,1.0,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_miss,2,42,0.047619047619047616,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,any_danger_blocked_recall,40,42,0.9523809523809523,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,true_false_stop,0,61,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unnecessary_observe,31,61,0.5081967213114754,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_on_confirmed_clear,22,61,0.36065573770491804,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_on_confirmed_clear,8,61,0.13114754098360656,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,false_stop_on_weak_clear,0,78,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_all,10,121,0.08264462809917356,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,guidance_coverage_non_danger,8,79,0.10126582278481013,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,unknown_share,74,121,0.6115702479338843,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,observe_share,37,121,0.30578512396694213,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,blocked_share,0,121,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,clear_share,10,121,0.08264462809917356,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,stop_share,0,121,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips,27,120,0.225,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,flips_per_minute,,120,40.49999999999999,40.49999999999999,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,warning_at_onset,6,8,0.75,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_frames,,8,1.0,1.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,latency_p95_ms,,8,333.3333333333333,333.3333333333333,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,curb_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,ground_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss,13,91,0.14285714285714285,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_miss_straight,11,91,0.12087912087912088,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_turn_guidance_not_evaluable,2,91,0.02197802197802198,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,occupancy_blocked_recall,78,91,0.8571428571428571,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_miss,13,91,0.14285714285714285,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,any_danger_blocked_recall,78,91,0.8571428571428571,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,true_false_stop,0,76,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unnecessary_observe,40,76,0.5263157894736842,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_on_confirmed_clear,15,76,0.19736842105263158,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_on_confirmed_clear,21,76,0.27631578947368424,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,false_stop_on_weak_clear,0,83,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_all,37,184,0.20108695652173914,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,guidance_coverage_non_danger,24,93,0.25806451612903225,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,unknown_share,53,184,0.28804347826086957,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,observe_share,94,184,0.5108695652173914,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,blocked_share,0,184,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,clear_share,37,184,0.20108695652173914,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,stop_share,0,184,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips,90,183,0.4918032786885246,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,flips_per_minute,,183,88.5245901639342,88.5245901639342,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,hazard_onset_events,,31,,31,events,EVALUABLE,False,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_within_horizon,31,31,1.0,,,EVALUABLE,False,first non-forward warning within 10 frames of onset
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,warning_at_onset,26,31,0.8387096774193549,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_frames,,31,0.0,0.0,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_frames,,31,1.5,1.5,frames,EVALUABLE,False,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p50_ms,,31,0.0,0.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,latency_p95_ms,,31,500.0,500.0,ms,EVALUABLE,False,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss,0,0,,,,NOT_EVALUABLE,False,GT road surface in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_miss_straight,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_turn_guidance_not_evaluable,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep -> LEFT/RIGHT guidance; one frame cannot decide if the turn avoids it
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,road_danger_blocked_recall,0,0,,,,NOT_EVALUABLE,False,GT road in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss,2,78,0.02564102564102564,,,EVALUABLE,False,GT curb in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_miss_straight,2,78,0.02564102564102564,,,EVALUABLE,False,GT curb in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_turn_guidance_not_evaluable,0,78,0.0,,,EVALUABLE,False,GT curb in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,curb_danger_blocked_recall,76,78,0.9743589743589743,,,EVALUABLE,False,GT curb in body sweep NOT given forward guidance
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss,2,82,0.024390243902439025,,,EVALUABLE,False,GT non-walkable ground in body sweep -> forward guidance (PR #15-class view)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_miss_straight,2,82,0.024390243902439025,,,EVALUABLE,False,GT non-walkable ground in body sweep -> STRAIGHT guidance
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,ground_danger_blocked_recall,80,82,0.975609756097561,,,EVALUABLE,False,GT non-walkable ground in body sweep NOT forward-guided
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss,1,103,0.009708737864077669,,,EVALUABLE,False,GT 3D object occupancy in body sweep -> forward guidance (conservative view)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_miss_straight,1,103,0.009708737864077669,,,EVALUABLE,False,GT 3D occupancy in body sweep -> STRAIGHT guidance (definite miss)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_turn_guidance_not_evaluable,0,103,0.0,,,EVALUABLE,False,GT 3D occupancy in body sweep -> LEFT/RIGHT guidance; single frame cannot decide
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,occupancy_blocked_recall,102,103,0.9902912621359223,,,EVALUABLE,False,GT 3D occupancy in body sweep NOT forward-guided
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_miss,2,162,0.012345679012345678,,,EVALUABLE,False,"any GT danger in body sweep -> forward guidance (secondary, not one-sided)"
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,any_danger_blocked_recall,160,162,0.9876543209876543,,,EVALUABLE,False,any GT danger in body sweep NOT forward-guided
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,true_false_stop,0,13,0.0,,,EVALUABLE,False,STOP on a GT confirmed clear path
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unnecessary_observe,9,13,0.6923076923076923,,,EVALUABLE,False,OBSERVE on a GT confirmed clear path (hold without a confirmed obstacle)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_on_confirmed_clear,4,13,0.3076923076923077,,,EVALUABLE,False,UNKNOWN on a GT confirmed clear path
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_on_confirmed_clear,0,13,0.0,,,EVALUABLE,False,usable forward guidance on a GT confirmed clear path
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,false_stop_on_weak_clear,0,13,0.0,,,EVALUABLE,False,STOP on a weaker clear view (no GT danger + >=5 walkable points in body sweep)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_all,2,176,0.011363636363636364,,,EVALUABLE,False,frames with usable forward guidance / all frames
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,guidance_coverage_non_danger,0,14,0.0,,,EVALUABLE,False,usable guidance / frames without any GT danger
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,unknown_share,148,176,0.8409090909090909,,,EVALUABLE,False,UNKNOWN state frames / all
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,observe_share,26,176,0.14772727272727273,,,EVALUABLE,False,OBSERVE state frames / all
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,blocked_share,0,176,0.0,,,EVALUABLE,False,BLOCKED state frames / all
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,clear_share,2,176,0.011363636363636364,,,EVALUABLE,False,CLEAR state frames / all
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,stop_share,0,176,0.0,,,EVALUABLE,False,STOP command frames / all
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips,19,175,0.10857142857142857,,,EVALUABLE,False,consecutive-frame effective-command changes
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,flips_per_minute,,175,19.5428571428571,19.5428571428571,flips/min,EVALUABLE,False,per minute of processed frames
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,hazard_onset_events,,8,,8,events,EVALUABLE,True,GT hazard onsets (confirm->hazard transitions)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_within_horizon,8,8,1.0,,,EVALUABLE,True,first non-forward warning within 10 frames of onset
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,warning_at_onset,7,8,0.875,,,EVALUABLE,False,warning already on the onset frame
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_frames,,8,0.0,0.0,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_frames,,8,0.6499999999999995,0.6499999999999995,frames,EVALUABLE,True,latency to first hazard warning (detected)
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p50_ms,,8,0.0,0.0,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
+D_v5_dav2,mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,latency_p95_ms,,8,216.6666666666665,216.6666666666665,ms,EVALUABLE,True,"desktop frame spacing, not phone latency"
