@@ -404,7 +404,8 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                     h_surface_angle, h_surface_dist, 0, 0, 1 if h_angle_deg is not None else 0,
                     h_angle_deg is not None and h_surface_dist > hsurface.cfg.min_path_length,
                     "walkable" if h_angle_deg is not None else "no_candidate_ray")
-                h_dir, h_closest = hocc.check_for_obstacle(math.degrees(headings[k]))
+                h_dir, h_closest = hocc.check_for_obstacle(
+                    (map_pose.x_m, map_pose.z_m), math.degrees(headings[k]))
                 hocc_route = OccupancyRoute(
                     "BLOCKED" if h_closest < hocc.cfg.distance_to_obstacle else "CLEAR",
                     math.radians(h_dir), h_closest, 1 if h_closest < hocc.cfg.distance_to_obstacle else 0,

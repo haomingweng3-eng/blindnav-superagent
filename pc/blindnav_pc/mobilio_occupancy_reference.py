@@ -19,7 +19,9 @@ class HarvardOccupancyConfig:
     padded_distance: float = 2.0
     person_radius: float = 0.2
     person_height: float = 1.7
-    ground: float = -1.2
+    # Reference grid stores world height; the adapter converts camera-relative
+    # height to a ground-at-zero world coordinate.
+    ground: float = 0.0
     points_to_block_cell: float = 2.0
     cells_to_block_person: int = 2
 
@@ -43,13 +45,15 @@ class HarvardOccupancyReference:
                 if self.grid[key] < 1e-6:
                     del self.grid[key]
 
-    def _blocking(self, heading_deg: float = 0.0):
+    def _blocking(self, position=(0.0, 0.0), heading_deg: float = 0.0):
         sin_h, cos_h = math.sin(math.radians(heading_deg)), math.cos(math.radians(heading_deg))
         points = []
         for (ix, iy, iz), score in self.grid.items():
             if score <= self.cfg.points_to_block_cell:
                 continue
-            x, y, z = ix * self.cfg.node_size, iy * self.cfg.node_size, iz * self.cfg.node_size
+            x = ix * self.cfg.node_size - float(position[0])
+            y = iy * self.cfg.node_size
+            z = iz * self.cfg.node_size - float(position[1])
             if not (self.cfg.ground < y < self.cfg.ground + self.cfg.person_height):
                 continue
             rx, rz = cos_h * x - sin_h * z, sin_h * x + cos_h * z
@@ -71,9 +75,9 @@ class HarvardOccupancyReference:
                 return True, float((x - half) ** 2 + (y - half) ** 2)
         return False, float((x - half) ** 2 + (y - half) ** 2)
 
-    def best_line_direction(self, heading_deg: float = 0.0) -> float:
+    def best_line_direction(self, position=(0.0, 0.0), heading_deg: float = 0.0) -> float:
         blocked = set()
-        for rx, rz in self._blocking(heading_deg):
+        for rx, rz in self._blocking(position, heading_deg):
             i = int(rx / self.cfg.node_size) + int(self.cfg.search_radius / self.cfg.node_size)
             j = int(rz / self.cfg.node_size) + int(self.cfg.search_radius / self.cfg.node_size)
             blocked.add((i, j))
@@ -90,10 +94,10 @@ class HarvardOccupancyReference:
         if 0 < best_dir < 30: best_dir = 30
         return best_dir
 
-    def check_for_obstacle(self, heading_deg: float = 0.0) -> Tuple[float, float]:
-        points = self._blocking(heading_deg)
+    def check_for_obstacle(self, position=(0.0, 0.0), heading_deg: float = 0.0) -> Tuple[float, float]:
+        points = self._blocking(position, heading_deg)
         inside = [(x, z) for x, z in points if 0 < z < self.cfg.distance_to_obstacle
                   and -self.cfg.person_radius < x < self.cfg.person_radius]
         closest = min((math.hypot(x, z) for x, z in inside), default=999.0)
-        direction = self.best_line_direction(heading_deg) if len(inside) >= self.cfg.cells_to_block_person else 0.0
+        direction = self.best_line_direction(position, heading_deg) if len(inside) >= self.cfg.cells_to_block_person else 0.0
         return direction, closest

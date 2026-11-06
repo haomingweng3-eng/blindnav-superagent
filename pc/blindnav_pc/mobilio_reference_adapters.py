@@ -47,6 +47,8 @@ def update_reference_maps(surface: HarvardSurfaceReference, occupancy: HarvardOc
                                 pixel_stride=pixel_stride)
     world = occupancy_reference_body_to_world(body, pose)
     occupancy.add_to_grid(world)
+    c = occupancy.cfg.node_size
+    occupancy.decay_visible({(round(x / c), round(z / c)) for x, _y, z in world})
     return len(surface_points), len(body)
 
 
