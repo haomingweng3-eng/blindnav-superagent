@@ -57,7 +57,7 @@ MOBILIO_EXTRA_FIELDS = [
     "depth_source", "pose_mode", "surface_state", "surface_distance_m",
     "surface_unknown_cells", "surface_fully_observed", "occupancy_state",
     "occupancy_clear_distance_m", "occupancy_blocking_cells",
-    "occupancy_unknown_cells",
+    "occupancy_unknown_cells", "guidance_command",
 ]
 MOBILIO_FIELDS = list(dict.fromkeys(list(rse.PER_FRAME_FIELDS) + MOBILIO_EXTRA_FIELDS))
 
@@ -129,6 +129,7 @@ def make_candidate_row(condition: str, arm: str, session: str, frame: int, *,
         "occupancy_clear_distance_m": getattr(occupancy_route, "clear_distance_m", None),
         "occupancy_blocking_cells": getattr(occupancy_route, "blocking_cells", None),
         "occupancy_unknown_cells": getattr(occupancy_route, "unknown_cells", None),
+        "guidance_command": getattr(decision, "guidance", None),
     })
     row.update({str(key): value for key, value in gt_ref.items()})
     return row

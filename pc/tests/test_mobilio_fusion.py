@@ -15,3 +15,11 @@ def test_unknown_surface_does_not_become_clear_from_empty_occupancy():
     surface = SurfaceRoute("UNKNOWN", None, 0.0, 3, 0, 0, False, "no observed ray")
     occupancy = OccupancyRoute("UNKNOWN", 0.0, 0.0, 0, 3, False, "unobserved")
     assert fuse(surface, occupancy).state == "UNKNOWN"
+
+
+def test_observe_occupancy_keeps_surface_route_as_cautious_guidance():
+    surface = SurfaceRoute("CLEAR", 0.0, 6.0, 0, 0, 1, True, "walkable")
+    occupancy = OccupancyRoute("OBSERVE", 0.0, 2.0, 0, 1, False, "unconfirmed")
+    decision = fuse(surface, occupancy)
+    assert decision.state == "OBSERVE"
+    assert decision.guidance == "STRAIGHT"

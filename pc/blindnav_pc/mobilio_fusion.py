@@ -52,10 +52,13 @@ def fuse(surface: SurfaceRoute, occupancy: OccupancyRoute) -> MobilioDecision:
     else:
         reason = f"surface:{surface.reason}"
         angle = surface.angle_rad if surface.angle_rad is not None else occupancy.angle_rad
+    cautious_guidance = None
+    if state == OBSERVE and surface.state == CLEAR and occupancy.state == OBSERVE:
+        cautious_guidance = _guidance(surface.angle_rad)
     return MobilioDecision(
         state=state,
         angle_rad=angle,
-        guidance=_guidance(angle) if state == CLEAR else None,
+        guidance=_guidance(angle) if state == CLEAR else cautious_guidance,
         reason=reason,
         surface_state=surface.state,
         occupancy_state=occupancy.state,

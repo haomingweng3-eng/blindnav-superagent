@@ -13,6 +13,9 @@ def _bool(row, key):
 def _warning(row):
     return str(row.get("effective_command", "")) in WARNING
 
+def _guidance(row):
+    return str(row.get("guidance_command") or row.get("effective_command", "")) in {"STRAIGHT", "LEFT", "RIGHT"}
+
 def analyze(rows):
     by_key = {}
     for row in rows:
@@ -31,6 +34,7 @@ def analyze(rows):
             danger = _bool(base, "danger_any")
             clear = _bool(base, "confirmed_clear")
             bw, cw = _warning(base), _warning(cand)
+            cg = _guidance(cand)
             if danger and base.get("effective_command") == "STRAIGHT" and cw:
                 counts["baseline_wrong_straight_to_candidate_warning"] += 1
             if danger and base.get("effective_command") == "STRAIGHT" and str(cand.get("safety_state")) == "UNKNOWN":
@@ -43,6 +47,7 @@ def analyze(rows):
             counts["confirmed_clear_frames"] += int(clear)
             counts["baseline_warning_on_danger"] += int(danger and bw)
             counts["candidate_warning_on_danger"] += int(danger and cw)
+            counts["candidate_cautious_guidance_on_danger"] += int(danger and cg and not cw)
             counts["candidate_unknown_on_danger"] += int(danger and str(cand.get("safety_state")) == "UNKNOWN")
             counts["baseline_guidance_on_clear"] += int(clear and base.get("effective_command") == "STRAIGHT")
             counts["candidate_guidance_on_clear"] += int(clear and cand.get("effective_command") == "STRAIGHT")
