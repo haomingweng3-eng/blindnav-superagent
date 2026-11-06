@@ -37,6 +37,10 @@ class SurfaceGridConfig:
     half_extent_m: float = 15.0
     ground_band_m: float = 0.15
     max_range_m: float = 15.0
+    max_gap_cells: int = 2
+    min_candidate_m: float = 5.0
+    scan_half_angle_deg: float = 90.0
+    scan_step_deg: float = 1.0
     evidence_decay: float = 0.90
     stale_after_frames: int = 15
 
@@ -47,6 +51,10 @@ class SurfaceGridConfig:
             raise ValueError("evidence_decay must be in (0, 1]")
         if self.ground_band_m < 0 or self.stale_after_frames < 0:
             raise ValueError("ground band and stale frame count must be non-negative")
+        if self.max_gap_cells < 0 or self.min_candidate_m < 0:
+            raise ValueError("gap and candidate distance must be non-negative")
+        if self.scan_half_angle_deg <= 0 or self.scan_step_deg <= 0:
+            raise ValueError("scan angles must be positive")
 
 
 @dataclass(frozen=True)
@@ -218,3 +226,114 @@ class SurfaceGrid2D:
                           "evidence": self.cell_evidence(ix, iz),
                           "last_frame": cell.last_frame})
         return {"cell_m": self.cfg.cell_m, "cells": cells}
+
+    def _ray_cells(self, pose: SurfacePose, angle_rad: float):
+        """Yield ``(ix, iz, distance)`` using a 2-D grid DDA."""
+        c = float(self.cfg.cell_m)
+        origin_x, origin_z = float(pose.x_m), float(pose.z_m)
+        world_angle = float(pose.yaw_rad) + float(angle_rad)
+        dx, dz = math.sin(world_angle), math.cos(world_angle)
+        ix, iz = self.world_to_cell(origin_x, origin_z)
+        yield ix, iz, 0.0
+
+        if abs(dx) < 1e-12:
+            step_x, t_delta_x, t_max_x = 0, float("inf"), float("inf")
+        elif dx > 0:
+            step_x = 1
+            t_delta_x = c / dx
+            t_max_x = ((ix + 1) * c - origin_x) / dx
+        else:
+            step_x = -1
+            t_delta_x = -c / dx
+            t_max_x = (ix * c - origin_x) / dx
+
+        if abs(dz) < 1e-12:
+            step_z, t_delta_z, t_max_z = 0, float("inf"), float("inf")
+        elif dz > 0:
+            step_z = 1
+            t_delta_z = c / dz
+            t_max_z = ((iz + 1) * c - origin_z) / dz
+        else:
+            step_z = -1
+            t_delta_z = -c / dz
+            t_max_z = (iz * c - origin_z) / dz
+
+        max_steps = int(math.ceil(self.cfg.max_range_m / c)) * 3 + 3
+        for _ in range(max_steps):
+            if t_max_x < t_max_z:
+                distance = t_max_x
+                t_max_x += t_delta_x
+                ix += step_x
+            else:
+                distance = t_max_z
+                t_max_z += t_delta_z
+                iz += step_z
+            if distance > self.cfg.max_range_m:
+                break
+            yield ix, iz, float(distance)
+
+    @staticmethod
+    def _angle_diff(a: float, b: float) -> float:
+        return (float(a) - float(b) + math.pi) % (2.0 * math.pi) - math.pi
+
+    def _ray_candidate(self, pose: SurfacePose, angle_rad: float) -> SurfaceRoute:
+        observed = 0.0
+        unknown_total = 0
+        unknown_run = 0
+        terminated = ROLE_UNKNOWN
+        fully_observed = True
+        seen = set()
+        for ix, iz, distance in self._ray_cells(pose, angle_rad):
+            key = (ix, iz)
+            if key in seen:
+                continue
+            seen.add(key)
+            role = self.cell_role(ix, iz)
+            if role == ROLE_WALKABLE:
+                observed = max(observed, min(distance + self.cfg.cell_m, self.cfg.max_range_m))
+                unknown_run = 0
+                continue
+            if role == ROLE_UNKNOWN:
+                unknown_total += 1
+                unknown_run += 1
+                fully_observed = False
+                if unknown_run > self.cfg.max_gap_cells:
+                    terminated = ROLE_UNKNOWN
+                    break
+                continue
+            terminated = role
+            break
+        return SurfaceRoute(
+            state="CLEAR" if fully_observed and observed >= self.cfg.min_candidate_m else "OBSERVE",
+            angle_rad=float(angle_rad), observed_distance_m=float(observed),
+            unknown_cells=int(unknown_total), terminated_role=int(terminated),
+            candidate_count=1, fully_observed=bool(fully_observed),
+            reason=("walkable" if terminated == ROLE_UNKNOWN else
+                    ("hazard" if terminated == ROLE_HAZARD else "non_walkable")),
+        )
+
+    def raycast_route(self, pose: SurfacePose, target_angle_rad: float = 0.0) -> SurfaceRoute:
+        """Search target +/-90 degrees and choose the longest safe observed ray."""
+        half = math.radians(float(self.cfg.scan_half_angle_deg))
+        step = math.radians(float(self.cfg.scan_step_deg))
+        n = int(round((2.0 * half) / step))
+        angles = [float(target_angle_rad - half + i * step) for i in range(n + 1)]
+        candidates = []
+        for angle in angles:
+            candidate = self._ray_candidate(pose, angle)
+            if candidate.observed_distance_m >= self.cfg.min_candidate_m:
+                candidates.append(candidate)
+        if not candidates:
+            return SurfaceRoute("UNKNOWN", None, 0.0, 0, ROLE_UNKNOWN, 0, False,
+                                "no_candidate_ray")
+        candidates.sort(key=lambda r: (-r.observed_distance_m,
+                                       abs(self._angle_diff(r.angle_rad, target_angle_rad)),
+                                       r.angle_rad))
+        selected = candidates[0]
+        return SurfaceRoute(
+            state=selected.state, angle_rad=selected.angle_rad,
+            observed_distance_m=selected.observed_distance_m,
+            unknown_cells=selected.unknown_cells, terminated_role=selected.terminated_role,
+            candidate_count=len(candidates), fully_observed=selected.fully_observed,
+            reason=selected.reason,
+        )
