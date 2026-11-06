@@ -25,6 +25,7 @@ class OccupancyGridConfig:
     cell_m: float = 0.10
     height_cell_m: float = 0.10
     max_range_m: float = 4.0
+    blind_zone_m: float = 2.2
     immediate_range_m: float = 1.5
     padded_range_m: float = 2.0
     person_radius_m: float = 0.20
@@ -42,6 +43,8 @@ class OccupancyGridConfig:
     def __post_init__(self) -> None:
         if self.cell_m <= 0 or self.height_cell_m <= 0 or self.max_range_m <= 0:
             raise ValueError("occupancy grid dimensions must be positive")
+        if self.blind_zone_m < 0 or self.blind_zone_m > self.max_range_m:
+            raise ValueError("blind_zone_m must lie within max_range_m")
         if self.immediate_range_m <= 0 or self.padded_range_m <= 0:
             raise ValueError("occupancy horizons must be positive")
         if self.person_radius_m <= 0 or self.person_height_m <= 0:
@@ -310,7 +313,7 @@ class OccupancyGrid3D:
     def _ray_candidate(self, pose: SurfacePose, angle_rad: float) -> OccupancyRoute:
         clear = 0.0
         unknown = 0
-        unknown_run = 0
+        pending_unknown = 0
         seen = set()
         for ix, iz, distance in self._ray_cells(pose, angle_rad):
             if (ix, iz) in seen:
@@ -319,18 +322,22 @@ class OccupancyGrid3D:
             occupied = self._occupied_at(ix, iz)
             confirmed = any(self.is_confirmed(key) for key, _ in occupied)
             if confirmed:
+                unknown += pending_unknown
                 return OccupancyRoute(BLOCKED, float(angle_rad), clear,
                                       len(occupied), unknown, True, "confirmed_ray_occupancy")
             if occupied:
+                unknown += pending_unknown
                 return OccupancyRoute(OBSERVE, float(angle_rad), clear,
                                       len(occupied), unknown, False, "unconfirmed_ray_occupancy")
             if self._horizontal_free(ix, iz):
+                unknown += pending_unknown
+                pending_unknown = 0
                 clear = max(clear, min(distance + self.cfg.cell_m, self.cfg.max_range_m))
-                unknown_run = 0
                 continue
-            unknown += 1
-            unknown_run += 1
-            if unknown_run > self.cfg.max_gap_cells:
+            if distance <= self.cfg.blind_zone_m:
+                continue
+            pending_unknown += 1
+            if pending_unknown > self.cfg.max_gap_cells:
                 break
         if clear <= 0.0:
             return OccupancyRoute(UNKNOWN, float(angle_rad), 0.0, 0, unknown, False,

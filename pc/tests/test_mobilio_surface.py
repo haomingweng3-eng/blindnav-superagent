@@ -50,7 +50,7 @@ def test_raycast_stops_at_non_walkable_and_reports_observed_distance():
 
 
 def test_unknown_gap_is_flagged_and_never_fully_observed():
-    grid = SurfaceGrid2D(SurfaceGridConfig(min_candidate_m=0.5))
+    grid = SurfaceGrid2D(SurfaceGridConfig(min_candidate_m=0.5, blind_zone_m=0.0))
     _paint(grid, [0.1, 0.1, 0.1, 0.1], [0.3, 0.5, 0.9, 1.1], ROLE_WALKABLE)
     route = grid.raycast_route(SurfacePose(0.1, 0.1, 0.0), target_angle_rad=0.0)
     assert route.unknown_cells > 0
@@ -66,3 +66,14 @@ def test_equal_length_candidates_prefer_target_angle():
         _paint(grid, pts[:, 0], pts[:, 1], ROLE_WALKABLE)
     route = grid.raycast_route(SurfacePose(0.0, 0.0, 0.0), np.deg2rad(10.0))
     assert abs(np.rad2deg(route.angle_rad) - 10.0) <= 1.1
+
+
+def test_camera_blind_zone_is_explicitly_ignored_before_observed_ground():
+    grid = SurfaceGrid2D(SurfaceGridConfig(
+        min_candidate_m=4.0, blind_zone_m=2.0, max_gap_cells=2))
+    for z in np.arange(2.2, 6.2, 0.2):
+        _paint(grid, [0.1], [z], ROLE_WALKABLE)
+    route = grid.raycast_route(SurfacePose(0.1, 0.1, 0.0), 0.0)
+    assert route.angle_rad is not None
+    assert route.observed_distance_m >= 4.0
+    assert route.fully_observed

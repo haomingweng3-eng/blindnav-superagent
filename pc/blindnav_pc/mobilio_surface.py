@@ -37,6 +37,7 @@ class SurfaceGridConfig:
     half_extent_m: float = 15.0
     ground_band_m: float = 0.15
     max_range_m: float = 15.0
+    blind_zone_m: float = 2.2
     max_gap_cells: int = 2
     min_candidate_m: float = 5.0
     scan_half_angle_deg: float = 90.0
@@ -51,6 +52,8 @@ class SurfaceGridConfig:
             raise ValueError("evidence_decay must be in (0, 1]")
         if self.ground_band_m < 0 or self.stale_after_frames < 0:
             raise ValueError("ground band and stale frame count must be non-negative")
+        if self.blind_zone_m < 0 or self.blind_zone_m > self.max_range_m:
+            raise ValueError("blind_zone_m must lie within max_range_m")
         if self.max_gap_cells < 0 or self.min_candidate_m < 0:
             raise ValueError("gap and candidate distance must be non-negative")
         if self.scan_half_angle_deg <= 0 or self.scan_step_deg <= 0:
@@ -125,9 +128,11 @@ class SurfaceGrid2D:
         c = self.cfg.cell_m
         return (float(ix + 0.5) * c, float(iz + 0.5) * c)
 
-    def _in_window(self, x_m: float, z_m: float) -> bool:
+    def _in_window(self, x_m: float, z_m: float,
+                   center: Tuple[float, float] = (0.0, 0.0)) -> bool:
         limit = self.cfg.half_extent_m
-        return abs(float(x_m)) <= limit and abs(float(z_m)) <= limit
+        return (abs(float(x_m) - float(center[0])) <= limit
+                and abs(float(z_m) - float(center[1])) <= limit)
 
     def _age_cells(self, frame_id: int, touched: Iterable[Tuple[int, int]]) -> None:
         touched_set = set(touched)
@@ -143,7 +148,8 @@ class SurfaceGrid2D:
                 del self._cells[key]
 
     def update_points(self, points_map: np.ndarray, roles: np.ndarray,
-                      frame_id: int, confidence: Optional[np.ndarray] = None) -> SurfaceUpdate:
+                      frame_id: int, confidence: Optional[np.ndarray] = None,
+                      center: Optional[Tuple[float, float]] = None) -> SurfaceUpdate:
         points = np.asarray(points_map, dtype=np.float64)
         if points.size == 0:
             points = np.zeros((0, 2), dtype=np.float64)
@@ -158,6 +164,7 @@ class SurfaceGrid2D:
             if len(weights) != len(points):
                 raise ValueError("confidence must contain one value per point")
 
+        center_x, center_z = center if center is not None else (0.0, 0.0)
         touched = []
         accepted = 0
         unknown = 0
@@ -167,9 +174,9 @@ class SurfaceGrid2D:
             if (not np.isfinite(x_m) or not np.isfinite(z_m)
                     or not np.isfinite(weight) or weight <= 0
                     or role not in _KNOWN_ROLES
-                    or not self._in_window(x_m, z_m)):
+                    or not self._in_window(x_m, z_m, (center_x, center_z))):
                 continue
-            if math.hypot(x_m, z_m) > self.cfg.max_range_m:
+            if math.hypot(x_m - float(center_x), z_m - float(center_z)) > self.cfg.max_range_m:
                 continue
             key = self.world_to_cell(x_m, z_m)
             cell = self._cells.setdefault(key, _CellEvidence())
@@ -201,7 +208,9 @@ class SurfaceGrid2D:
         cos_y, sin_y = math.cos(float(pose.yaw_rad)), math.sin(float(pose.yaw_rad))
         map_x = float(pose.x_m) + x_lat[keep] * cos_y + z_fwd[keep] * sin_y
         map_z = float(pose.z_m) - x_lat[keep] * sin_y + z_fwd[keep] * cos_y
-        return self.update_points(np.column_stack([map_x, map_z]), sampled_roles[keep], frame_id)
+        return self.update_points(
+            np.column_stack([map_x, map_z]), sampled_roles[keep], frame_id,
+            center=(float(pose.x_m), float(pose.z_m)))
 
     def cell_role(self, ix: int, iz: int) -> int:
         cell = self._cells.get((int(ix), int(iz)))
@@ -280,7 +289,7 @@ class SurfaceGrid2D:
     def _ray_candidate(self, pose: SurfacePose, angle_rad: float) -> SurfaceRoute:
         observed = 0.0
         unknown_total = 0
-        unknown_run = 0
+        pending_unknown = 0
         terminated = ROLE_UNKNOWN
         fully_observed = True
         seen = set()
@@ -291,17 +300,24 @@ class SurfaceGrid2D:
             seen.add(key)
             role = self.cell_role(ix, iz)
             if role == ROLE_WALKABLE:
+                if pending_unknown:
+                    unknown_total += pending_unknown
+                    fully_observed = False
+                    pending_unknown = 0
                 observed = max(observed, min(distance + self.cfg.cell_m, self.cfg.max_range_m))
-                unknown_run = 0
                 continue
             if role == ROLE_UNKNOWN:
-                unknown_total += 1
-                unknown_run += 1
-                fully_observed = False
-                if unknown_run > self.cfg.max_gap_cells:
+                if distance <= self.cfg.blind_zone_m:
+                    continue
+                pending_unknown += 1
+                if pending_unknown > self.cfg.max_gap_cells:
                     terminated = ROLE_UNKNOWN
                     break
                 continue
+            if pending_unknown:
+                unknown_total += pending_unknown
+                fully_observed = False
+                pending_unknown = 0
             terminated = role
             break
         return SurfaceRoute(
