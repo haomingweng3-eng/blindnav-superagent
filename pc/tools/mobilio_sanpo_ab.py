@@ -48,11 +48,17 @@ from corridor_evidence_eval import role_map_from_classes  # noqa: E402
 from corridor_truth_eval import frame_dt_s, gt_remap, load_v5, predict_v5, route_frame, route_tangents  # noqa: E402
 from eval.sanpo import SanpoSession  # noqa: E402
 from mobilio_viz import render_replay_frame  # noqa: E402
+from blindnav_pc.mobilio_reference import HarvardSurfaceReference  # noqa: E402
+from blindnav_pc.mobilio_occupancy_reference import HarvardOccupancyReference  # noqa: E402
+from blindnav_pc.mobilio_reference_adapters import update_reference_maps  # noqa: E402
+from blindnav_pc.mobilio_surface import SurfaceRoute  # noqa: E402
+from blindnav_pc.mobilio_occupancy import OccupancyRoute  # noqa: E402
 
 
 BASELINE_ARM = "baseline_split_c"
 CANDIDATE_ARM = "mobilio"
-CONDITIONS = ("annotated", "production", "A_gt_gt", "B_v5_gt", "C_gt_dav2", "D_v5_dav2")
+CONDITIONS = ("annotated", "production", "A_gt_gt", "B_v5_gt", "C_gt_dav2", "D_v5_dav2",
+              "harvard_A", "harvard_D")
 MOBILIO_EXTRA_FIELDS = [
     "depth_source", "pose_mode", "surface_state", "surface_distance_m",
     "surface_unknown_cells", "surface_fully_observed", "occupancy_state",
@@ -279,14 +285,18 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
 
     positions, headings = route_frame(session, indices)
     tangents = route_tangents(positions)
-    need_model = any(c in conditions for c in ("production", "B_v5_gt", "D_v5_dav2"))
-    need_dav2 = any(c in conditions for c in ("production", "C_gt_dav2", "D_v5_dav2"))
+    need_model = any(c in conditions for c in ("production", "B_v5_gt", "D_v5_dav2", "harvard_D"))
+    need_dav2 = any(c in conditions for c in ("production", "C_gt_dav2", "D_v5_dav2", "harvard_D"))
     calibrator = GroundCalibrator(cfg.ground)
     keepers = {condition: PathKeeper(rse.CORRIDOR, rse.SW_CFG) for condition in conditions}
     guardians = {condition: ObstacleGuardian(SPATIAL) for condition in conditions}
     coordinators = {condition: SafetyCoordinator() for condition in conditions}
     surface_grids = {condition: SurfaceGrid2D() for condition in conditions}
     occupancy_grids = {condition: OccupancyGrid3D() for condition in conditions}
+    harvard_surfaces = {condition: HarvardSurfaceReference() for condition in conditions
+                        if condition in ("harvard_A", "harvard_D")}
+    harvard_occupancies = {condition: HarvardOccupancyReference() for condition in conditions
+                           if condition in ("harvard_A", "harvard_D")}
     rows: List[dict] = []
 
     for k, frame in enumerate(indices):
@@ -313,7 +323,7 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
             fit = calibrator.update(q_dav2, calib_walk, session.K, up_pose, up_source="attitude")
 
         for condition in conditions:
-            if condition in ("annotated", "A_gt_gt", "B_v5_gt"):
+            if condition in ("annotated", "A_gt_gt", "B_v5_gt", "harvard_A"):
                 resolved = resolve_condition_depth(
                     "annotated", None, type("Fit", (), {"up": gt_ref.get("up")})(),
                     gt.depth_m, camera_height_m=float(gt_ref.get("h") or session.camera_height_m))
@@ -321,7 +331,7 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                 up = gt_ref.get("up")
                 camera_height = float(gt_ref.get("h") or session.camera_height_m)
                 calib_reason = "" if resolved.ok else "no_gt_plane"
-            elif condition in ("production", "C_gt_dav2", "D_v5_dav2"):
+            elif condition in ("production", "C_gt_dav2", "D_v5_dav2", "harvard_D"):
                 resolved = resolve_condition_depth(
                     "production", q_dav2, fit, gt.depth_m,
                     camera_height_m=float(session.camera_height_m),
@@ -377,6 +387,48 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                  "depth_confidence": resolved.confidence,
                                  "calib_reason": calib_reason})
             rows.append(baseline_row)
+
+            if condition in ("harvard_A", "harvard_D"):
+                hsurface, hocc = harvard_surfaces[condition], harvard_occupancies[condition]
+                update_reference_maps(hsurface, hocc, role_map, depth, session.K,
+                                      np.asarray(up), camera_height, map_pose,
+                                      pixel_stride=rse.SW_CFG.pixel_stride)
+                h_angle_deg, _ = hsurface.raycast_grid(math.degrees(target_angle),
+                                                       math.degrees(target_angle),
+                                                       (map_pose.x_m, map_pose.z_m))
+                h_surface_angle = None if h_angle_deg is None else math.radians(h_angle_deg)
+                h_surface_dist = 0.0 if h_angle_deg is None else hsurface.raycast_grid_walkable(
+                    map_pose.x_m, map_pose.z_m, h_angle_deg)
+                hsurface_route = SurfaceRoute(
+                    "CLEAR" if h_angle_deg is not None and h_surface_dist > hsurface.cfg.min_path_length else "UNKNOWN",
+                    h_surface_angle, h_surface_dist, 0, 0, 1 if h_angle_deg is not None else 0,
+                    h_angle_deg is not None and h_surface_dist > hsurface.cfg.min_path_length,
+                    "walkable" if h_angle_deg is not None else "no_candidate_ray")
+                h_dir, h_closest = hocc.check_for_obstacle(math.degrees(headings[k]))
+                hocc_route = OccupancyRoute(
+                    "BLOCKED" if h_closest < hocc.cfg.distance_to_obstacle else "CLEAR",
+                    math.radians(h_dir), h_closest, 1 if h_closest < hocc.cfg.distance_to_obstacle else 0,
+                    0, h_closest < hocc.cfg.distance_to_obstacle,
+                    "obstacle_ahead" if h_closest < hocc.cfg.distance_to_obstacle else "clear")
+                h_state = "BLOCKED" if hocc_route.state == "BLOCKED" else (
+                    "CLEAR" if hsurface_route.state == "CLEAR" else "UNKNOWN")
+                h_guidance = ("STRAIGHT" if h_surface_angle is not None and abs(math.degrees(h_surface_angle)) < 15
+                              else ("RIGHT" if h_surface_angle is not None and h_surface_angle > 0 else "LEFT")) 
+                h_decision = MobilioDecision(h_state, h_surface_angle,
+                                             h_guidance if h_state == "CLEAR" else None,
+                                             "harvard_reference", hsurface_route.state, hocc_route.state)
+                candidate_row = _candidate_row(
+                    condition, sid, frame, h_decision, hsurface_route, hocc_route,
+                    gt_ref=gt_ref, calib_ok=resolved.ok, depth_source=resolved.source,
+                    pose_mode="sanpo_recorded_pose")
+                candidate_row.update({"yaw_err_deg": math.degrees(yaw_err),
+                                      "rotation_only": False,
+                                      "depth_confidence": resolved.confidence,
+                                      "calib_reason": calib_reason,
+                                      "surface_angle_rad": h_surface_angle,
+                                      "occupancy_angle_rad": math.radians(h_dir)})
+                rows.append(candidate_row)
+                continue
 
             surface_grid = surface_grids[condition]
             occupancy_grid = occupancy_grids[condition]
@@ -568,7 +620,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print(f"BLOCKED_MISSING_DATA: {data_root}", file=sys.stderr)
         return 2
     conditions = list(args.conditions)
-    needs_checkpoint = any(c in conditions for c in ("production", "B_v5_gt", "C_gt_dav2", "D_v5_dav2"))
+    needs_checkpoint = any(c in conditions for c in ("production", "B_v5_gt", "C_gt_dav2", "D_v5_dav2", "harvard_D"))
     if needs_checkpoint and not args.v5_checkpoint:
         print("BLOCKED_MISSING_CHECKPOINT: --v5-checkpoint is required for production", file=sys.stderr)
         return 2
