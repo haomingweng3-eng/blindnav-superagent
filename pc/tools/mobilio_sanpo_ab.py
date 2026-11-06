@@ -369,7 +369,12 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
             visible = _visible_ground_cells(
                 occupancy_grid, points_body, point_roles, map_pose,
                 SurfaceGrid2D().cfg.ground_band_m)
-            occupancy_grid.update_body_points(points_body, map_pose, int(frame), visible)
+            obstacle_mask = (
+                (points_body[:, 2] >= occupancy_grid.cfg.min_obstacle_height_m)
+                & (points_body[:, 2] <= occupancy_grid.cfg.person_height_m)
+                & (point_roles != int(rse.ROLE_WALKABLE)))
+            occupancy_grid.update_body_points(
+                points_body[obstacle_mask], map_pose, int(frame), visible)
             surface_route = surface_grid.raycast_route(map_pose, target_angle)
             occupancy_route = occupancy_grid.raycast_clearance(map_pose, target_angle)
             candidate_decision = fuse(surface_route, occupancy_route)

@@ -26,6 +26,14 @@ def test_height_and_range_filter_rejects_ground_below_and_far_points():
     assert update.n_accepted == 1
 
 
+def test_ground_surface_points_are_not_occupancy_objects():
+    grid = OccupancyGrid3D()
+    update = grid.update_body_points(np.array([[0.0, 1.0, 0.0]]),
+                                     SurfacePose(0.0, 0.0, 0.0), frame_id=1)
+    assert update.n_accepted == 0
+    assert grid.keys() == []
+
+
 def test_visible_free_cell_decays_but_unobserved_cell_does_not_disappear():
     grid = OccupancyGrid3D(OccupancyGridConfig(decay=0.9, remove_below=0.1))
     pose = SurfacePose(0.0, 0.0, 0.0)
@@ -49,3 +57,15 @@ def test_two_frame_body_intersection_becomes_blocked():
     second = grid.raycast_clearance(pose)
     assert first.state == "OBSERVE"
     assert second.state == "BLOCKED"
+
+
+def test_camera_blind_zone_does_not_make_observed_free_ray_unknown():
+    grid = OccupancyGrid3D()
+    pose = SurfacePose(0.0, 0.0, 0.0)
+    visible = []
+    for fwd in np.arange(2.2, 4.2, 0.1):
+        visible.append(grid.world_to_cell(0.0, fwd, 0.0))
+    grid.update_body_points(np.zeros((0, 3)), pose, frame_id=1,
+                            visible_free_cells=visible)
+    route = grid.raycast_clearance(pose)
+    assert route.state == "CLEAR"

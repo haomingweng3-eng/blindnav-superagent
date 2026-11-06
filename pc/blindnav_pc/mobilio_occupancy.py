@@ -30,6 +30,7 @@ class OccupancyGridConfig:
     padded_range_m: float = 2.0
     person_radius_m: float = 0.20
     person_height_m: float = 1.70
+    min_obstacle_height_m: float = 0.15
     evidence_hit: float = 1.0
     confirm_score: float = 2.0
     confirm_frames: int = 2
@@ -49,6 +50,8 @@ class OccupancyGridConfig:
             raise ValueError("occupancy horizons must be positive")
         if self.person_radius_m <= 0 or self.person_height_m <= 0:
             raise ValueError("person envelope must be positive")
+        if self.min_obstacle_height_m < 0 or self.min_obstacle_height_m >= self.person_height_m:
+            raise ValueError("min_obstacle_height_m must lie inside the person envelope")
         if self.confirm_frames <= 0 or self.window_frames <= 0:
             raise ValueError("confirmation windows must be positive")
         if self.confirm_frames > self.window_frames:
@@ -185,7 +188,7 @@ class OccupancyGrid3D:
             if (not np.isfinite(lateral) or not np.isfinite(forward)
                     or not np.isfinite(height)):
                 continue
-            if height < 0.0 or height > self.cfg.person_height_m:
+            if height < self.cfg.min_obstacle_height_m or height > self.cfg.person_height_m:
                 continue
             if forward < -self.cfg.person_radius_m:
                 continue
@@ -242,7 +245,7 @@ class OccupancyGrid3D:
             if state is None or state.evidence < self.cfg.remove_below:
                 continue
             _, _, height = self.cell_to_world(key)
-            if 0.0 <= height <= self.cfg.person_height_m:
+            if self.cfg.min_obstacle_height_m <= height <= self.cfg.person_height_m:
                 out.append((key, state))
         return out
 
@@ -295,7 +298,7 @@ class OccupancyGrid3D:
             if state.evidence < self.cfg.remove_below:
                 continue
             x_m, z_m, height_m = self.cell_to_world(key)
-            if not 0.0 <= height_m <= self.cfg.person_height_m:
+            if not self.cfg.min_obstacle_height_m <= height_m <= self.cfg.person_height_m:
                 continue
             dx, dz = x_m - float(pose.x_m), z_m - float(pose.z_m)
             fwd = dx * sin_y + dz * cos_y

@@ -320,8 +320,10 @@ class SurfaceGrid2D:
                 pending_unknown = 0
             terminated = role
             break
+        route_clear = (fully_observed and observed >= self.cfg.min_candidate_m
+                       and terminated == ROLE_UNKNOWN)
         return SurfaceRoute(
-            state="CLEAR" if fully_observed and observed >= self.cfg.min_candidate_m else "OBSERVE",
+            state="CLEAR" if route_clear else "OBSERVE",
             angle_rad=float(angle_rad), observed_distance_m=float(observed),
             unknown_cells=int(unknown_total), terminated_role=int(terminated),
             candidate_count=1, fully_observed=bool(fully_observed),
@@ -343,7 +345,7 @@ class SurfaceGrid2D:
         if not candidates:
             return SurfaceRoute("UNKNOWN", None, 0.0, 0, ROLE_UNKNOWN, 0, False,
                                 "no_candidate_ray")
-        candidates.sort(key=lambda r: (-r.observed_distance_m,
+        candidates.sort(key=lambda r: (not r.fully_observed, -r.observed_distance_m,
                                        abs(self._angle_diff(r.angle_rad, target_angle_rad)),
                                        r.angle_rad))
         selected = candidates[0]
