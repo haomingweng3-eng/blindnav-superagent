@@ -37,3 +37,15 @@ def test_visible_free_cell_decays_but_unobserved_cell_does_not_disappear():
     assert grid.evidence(key) == before * 0.9
     grid.update_body_points(np.zeros((0, 3)), pose, frame_id=3)
     assert grid.evidence(key) > 0.0
+
+
+def test_two_frame_body_intersection_becomes_blocked():
+    grid = OccupancyGrid3D()
+    pose = SurfacePose(0.0, 0.0, 0.0)
+    point = np.array([[0.0, 1.0, 0.8]])
+    grid.update_body_points(point, pose, frame_id=1)
+    first = grid.raycast_clearance(pose)
+    grid.update_body_points(point, pose, frame_id=2)
+    second = grid.raycast_clearance(pose)
+    assert first.state == "OBSERVE"
+    assert second.state == "BLOCKED"
