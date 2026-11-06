@@ -222,7 +222,8 @@ class SurfaceGrid2D:
             x_m, z_m = self.cell_to_world(ix, iz)
             if pose is not None and math.hypot(x_m - pose.x_m, z_m - pose.z_m) > limit:
                 continue
-            cells.append({"ix": ix, "iz": iz, "role": cell.resolve(),
+            cells.append({"ix": ix, "iz": iz, "x_m": x_m, "z_m": z_m,
+                          "role": cell.resolve(),
                           "evidence": self.cell_evidence(ix, iz),
                           "last_frame": cell.last_frame})
         return {"cell_m": self.cfg.cell_m, "cells": cells}

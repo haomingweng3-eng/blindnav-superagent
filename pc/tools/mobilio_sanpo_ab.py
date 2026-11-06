@@ -252,7 +252,9 @@ def _visible_ground_cells(occupancy: OccupancyGrid3D, points_body: np.ndarray,
 
 def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_estimator,
                      cfg: Config, conditions: Sequence[str],
-                     limit_per_session: int = 0) -> List[dict]:
+                     limit_per_session: int = 0,
+                     visual_cases: Optional[List[dict]] = None,
+                     visual_max: int = 0) -> List[dict]:
     """Evaluate both arms on one session with shared frame/model/depth products."""
     sid = os.path.basename(session.dir.rstrip("/"))
     indices = session.available_frames()
@@ -323,6 +325,14 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                     row.update({"yaw_err_deg": math.degrees(yaw_err),
                                 "rotation_only": False, "depth_confidence": resolved.confidence,
                                 "calib_reason": calib_reason})
+                if (visual_cases is not None and len(visual_cases) < visual_max
+                        and k == 0):
+                    for row in pair:
+                        if len(visual_cases) >= visual_max:
+                            break
+                        visual_cases.append({"rgb": inp.bgr.copy(), "row": row,
+                                             "surface": {"cells": []},
+                                             "occupancy": {"cells": []}})
                 rows.extend(pair)
                 continue
 
@@ -371,6 +381,21 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                   "rotation_only": False,
                                   "depth_confidence": resolved.confidence,
                                   "calib_reason": calib_reason})
+            candidate_row["surface_angle_rad"] = surface_route.angle_rad
+            candidate_row["occupancy_angle_rad"] = occupancy_route.angle_rad
+            if visual_cases is not None and len(visual_cases) < visual_max:
+                failure = any(bool(candidate_row.get(flag, False)) for flag in (
+                    "any_miss", "occupancy_miss", "ground_miss",
+                    "true_false_stop", "unknown_on_confirmed_clear"))
+                if k == 0 or failure:
+                    surface_snapshot = surface_grid.snapshot(map_pose)
+                    occupancy_snapshot = occupancy_grid.snapshot(map_pose)
+                    for row in (baseline_row, candidate_row):
+                        if len(visual_cases) >= visual_max:
+                            break
+                        visual_cases.append({"rgb": inp.bgr.copy(), "row": row,
+                                             "surface": surface_snapshot,
+                                             "occupancy": occupancy_snapshot})
             rows.append(candidate_row)
     return rows
 
@@ -529,13 +554,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     frame_counts: Dict[str, int] = {}
     dt_by_session: Dict[str, float] = {}
     fps_by_session: Dict[str, float] = {}
+    visual_cases: List[dict] = []
+    visual_max = max(2, int(args.save_failures) * 2)
     started = time.time()
     for sid in sessions:
         session = SanpoSession(os.path.join(data_root, sid), args.camera,
                                max_width=args.max_width)
         cfg.ground.camera_height_m = float(session.camera_height_m)
         session_rows = evaluate_session(session, model, device, depth_estimator, cfg,
-                                         conditions, args.limit_per_session)
+                                         conditions, args.limit_per_session,
+                                         visual_cases=visual_cases, visual_max=visual_max)
         if not session_rows:
             continue
         all_rows.extend(session_rows)
@@ -598,6 +626,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     with open(os.path.join(out_dir, "summary.md"), "w", encoding="utf-8") as fh:
         fh.write(render_mobilio_summary_md(summary, meta, conditions,
                                            (BASELINE_ARM, CANDIDATE_ARM)))
+    from mobilio_viz import render_contact_sheet
+    if visual_cases:
+        render_contact_sheet(visual_cases, os.path.join(out_dir, "contact_sheet.png"))
     failures = _select_failure_rows(all_rows, int(args.save_failures))
     with open(os.path.join(out_dir, "failure_manifest.json"), "w", encoding="utf-8") as fh:
         json.dump(failures, fh, indent=2, default=_json_default)
