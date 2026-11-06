@@ -14,10 +14,10 @@
 
 * Work only in `/Users/mima0000/blindnav-app-mobilio-pc-experiment` on `codex/mobilio-pc-experiment`, based on `c000ad2`.
 * Keep the user's current branch, all existing PR branches, Android sources, and Last10m unchanged.
-* Use a 0.20 m surface grid, 15 m surface extent, 0.10 m occupancy cells, 1.5 m immediate horizon, 2.0 m padded horizon, 4.0 m route horizon, 0.20 m person radius, and 1.7 m person height unless a test explicitly overrides a value.
+* Use a 0.20 m surface grid, 15 m surface extent, 2.2 m named camera blind-zone proxy, 0.10 m occupancy cells, 1.5 m immediate horizon, 2.0 m padded horizon, 4.0 m route horizon, 0.20 m person radius, and 1.7 m person height unless a test explicitly overrides a value.
 * Use SANPO `fixed_camera_poses.csv` as an explicitly named offline VIO proxy; never imply that raw phone IMU/VIO has been reproduced.
 * Production uses v5 + existing DAV2/ground calibration only; SANPO GT is scoring input and may be used by the separately named annotated geometry condition only.
-* Unknown remains distinct from non-walkable and cannot be silently reported as a fully observed clear corridor.
+* Unknown remains distinct from non-walkable and cannot be silently reported as a fully observed clear corridor; the ray selector prefers fully observed candidates before longer gapped candidates.
 * Run tests before each implementation commit and keep the frozen responsibility-split reference check unchanged.
 
 ## File Map
@@ -136,7 +136,7 @@ class SurfaceGrid2D:
                           frame_id: int, pixel_stride: int = 4) -> SurfaceUpdate: ...
 ```
 
-Use a dictionary keyed by `(ix, iz)` so empty/missing cells remain unknown. In `update_points`, reject non-finite/out-of-window points, accumulate role scores, and resolve equal-time conflicts with `HAZARD > NON_WALKABLE > WALKABLE > UNKNOWN`. In `update_from_frame`, call `depth_to_level_points`, keep `abs(height) <= ground_band_m`, transform `(lat, forward)` using `pose.yaw_rad`, and pass the resulting map points to `update_points`.
+Use a dictionary keyed by `(ix, iz)` so empty/missing cells remain unknown. In `update_points`, reject non-finite/out-of-window points, accumulate role scores, and resolve equal-time conflicts with `HAZARD > NON_WALKABLE > WALKABLE > UNKNOWN`. In `update_from_frame`, call `depth_to_level_points`, keep `abs(height) <= ground_band_m`, transform `(lat, forward)` using `pose.yaw_rad`, and pass the resulting map points to `update_points` centered on the current pose so global SANPO coordinates do not get filtered against the session origin.
 
 - [ ] **Step 4: Run the focused tests to verify they pass**
 
@@ -229,7 +229,7 @@ class SurfaceRoute:
 def raycast_route(self, pose: SurfacePose, target_angle_rad: float = 0.0) -> SurfaceRoute: ...
 ```
 
-Generate angles from `target - pi/2` through `target + pi/2` in exactly one-degree increments. Traverse cell centers from the pose with a DDA step no larger than half a cell. A walkable cell extends the observed distance; unknown/missing cells increment a gap counter and terminate after `max_gap_cells`; hazard/non-walkable cells terminate immediately. Keep candidates with observed distance at least `min_candidate_m`, sort by `(-distance, abs(wrapped_angle-target), angle)`, and return the first. Set `state` to `CLEAR` only when the selected candidate is fully observed, `OBSERVE` when a candidate exists with bounded unknown gaps, and `UNKNOWN` when no candidate exists. Return `terminated_role` and `reason` for every branch.
+Generate angles from `target - pi/2` through `target + pi/2` in exactly one-degree increments. Traverse cell centers from the pose with a DDA step no larger than half a cell. A walkable cell extends the observed distance; unknown/missing cells after the 2.2 m blind-zone proxy increment a gap counter and terminate after `max_gap_cells`; hazard/non-walkable cells terminate immediately. Keep candidates with observed distance at least `min_candidate_m`, prefer fully observed candidates, then sort by `(-distance, abs(wrapped_angle-target), angle)`, and return the first. Set `state` to `CLEAR` only when the selected candidate is fully observed and reaches the unknown tail rather than a hazard/non-walkable surface; use `OBSERVE` for a bounded gap or surface termination, and `UNKNOWN` when no candidate exists. Return `terminated_role` and `reason` for every branch.
 
 - [ ] **Step 4: Run all surface tests and verify they pass**
 
@@ -347,7 +347,7 @@ class OccupancyGrid3D:
 
 Use `map_x = pose.x_m + forward*sin(yaw) + lateral*cos(yaw)` and
 `map_z = pose.z_m + forward*cos(yaw) - lateral*sin(yaw)`. Filter finite points,
-`0 <= height <= person_height_m`, and `0 < hypot(lateral, forward) <= max_range_m`. Store a bounded deque of frame IDs per key so confirmation requires hits in at least `confirm_frames` distinct frames within `window_frames`; apply decay only to explicitly visible-free keys.
+`0.15 <= height <= person_height_m`, and `0 < hypot(lateral, forward) <= max_range_m`. Store a bounded deque of frame IDs per key so confirmation requires hits in at least `confirm_frames` distinct frames within `window_frames`; reject semantic `WALKABLE` points before writing object evidence; apply decay only to explicitly visible-free keys.
 
 - [ ] **Step 4: Run the occupancy state tests and verify they pass**
 

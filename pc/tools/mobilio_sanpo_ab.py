@@ -616,7 +616,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "seed": int(args.seed), "pose_mode": "sanpo_recorded_pose_offline_vio_proxy",
         "depth_sources": {"production": "dav2_calibrated", "annotated": "sanpo_gt"},
         "grid": {"surface_cell_m": 0.20, "surface_extent_m": 15.0,
-                 "occupancy_cell_m": 0.10, "occupancy_horizon_m": 4.0},
+                 "blind_zone_m": 2.2, "occupancy_cell_m": 0.10,
+                 "occupancy_horizon_m": 4.0, "occupancy_min_height_m": 0.15},
         "evidence_level": "DESKTOP_REAL_DATA",
         "production_gt_isolation": "GT is used only after production decisions for scoring",
     }
