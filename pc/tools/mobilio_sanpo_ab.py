@@ -66,6 +66,7 @@ MOBILIO_EXTRA_FIELDS = [
     "occupancy_unknown_cells", "guidance_command",
     "risk_state", "observation_hint", "authorized_motion",
     "surface_angle_rad", "occupancy_angle_rad",
+    "surface_failure", "surface_failure_cell", "surface_last_walkable_cell",
 ]
 MOBILIO_FIELDS = list(dict.fromkeys(list(rse.PER_FRAME_FIELDS) + MOBILIO_EXTRA_FIELDS))
 
@@ -396,6 +397,10 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                 h_angle_deg, _ = hsurface.raycast_grid(math.degrees(target_angle),
                                                        math.degrees(target_angle),
                                                        (map_pose.x_m, map_pose.z_m))
+                hdiag = hsurface.raycast_diagnostics(math.degrees(target_angle),
+                                                     (map_pose.x_m, map_pose.z_m))
+                hfail = next((d for d in hdiag if d["distance_m"] <= hsurface.cfg.min_path_length),
+                             hdiag[0] if hdiag else {})
                 h_surface_angle = None if h_angle_deg is None else math.radians(h_angle_deg)
                 h_surface_dist = 0.0 if h_angle_deg is None else hsurface.raycast_grid_walkable(
                     map_pose.x_m, map_pose.z_m, h_angle_deg)
@@ -427,7 +432,10 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                       "depth_confidence": resolved.confidence,
                                       "calib_reason": calib_reason,
                                       "surface_angle_rad": h_surface_angle,
-                                      "occupancy_angle_rad": math.radians(h_dir)})
+                                      "occupancy_angle_rad": math.radians(h_dir),
+                                      "surface_failure": hfail.get("failure"),
+                                      "surface_failure_cell": hfail.get("failure_cell"),
+                                      "surface_last_walkable_cell": hfail.get("last_walkable_cell")})
                 rows.append(candidate_row)
                 continue
 

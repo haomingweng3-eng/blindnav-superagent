@@ -99,8 +99,8 @@ class HarvardSurfaceReference:
                 "failure": first_failure or "target_reached", "failure_cell": failure_cell,
                 "last_walkable_cell": (valid_x, valid_y)}
 
-    def raycast_diagnostics(self, target_angle_deg: float) -> list:
-        return [self.raycast_grid_walkable_diagnostic(0.0, 0.0, float(angle))
+    def raycast_diagnostics(self, target_angle_deg: float, origin=(0.0, 0.0)) -> list:
+        return [self.raycast_grid_walkable_diagnostic(origin[0], origin[1], float(angle))
                 for angle in range(int(target_angle_deg - 90), int(target_angle_deg + 90) + 1)]
 
     def raycast_grid(self, target_angle_deg: float, turn_angle_deg: float = 0.0,
