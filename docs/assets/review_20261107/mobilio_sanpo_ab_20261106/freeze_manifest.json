@@ -1,0 +1,16 @@
+{
+  "git_sha": "c6f3c2fed4cc842556598e72ae097ccde002304e",
+  "evaluator_sha256": "71ee2b6d5e317e49794f11763c81e934f8abf102e0b9b573e25573db81e33fe4",
+  "transition_eval_sha256": "ef2ff5cb7d32e8e0c57e5c1fdc6ce120b124083016e4e23a970cb002bfa0f61f",
+  "v5_checkpoint": "/Users/mima0000/blindnav-real-eval/models/segformer_sanpo_b0_v5.pt",
+  "v5_checkpoint_sha256": "952c2a156ab43090aa7aa4088a812b21f0639e75bb2eb8d8d7851696a17696bf",
+  "sanpo_file_count": 1452,
+  "sanpo_file_list_sha256": "457b6eb8c9ba64f0cb2e38e0e70e20297ec1a458e0ee9c37b4b1569e3428b2f9",
+  "frames_per_condition": 481,
+  "conditions": [
+    "annotated",
+    "production"
+  ],
+  "condition_c": "NOT_EVALUABLE: SANPO has no raw IMU stream and no validated RGB+IMU estimator in this run",
+  "evidence_level": "DESKTOP_REAL_DATA"
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "last10m-demo/1",
+  "scenario_count": 3,
+  "frame_count": 7,
+  "scenarios": [
+    {
+      "id": "s1_arrival",
+      "title": "单门确认：三扇并排门里认出目标那一扇（真实 LSVT 街景）",
+      "target": {
+        "name": "水果超市",
+        "aliases": []
+      },
+      "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+      "frames": [
+        {
+          "label": "wide_view",
+          "image": "s1_arrival_wide_view.jpg",
+          "target_visible": true,
+          "target_identity": "水果超市",
+          "door_count": 2,
+          "same_target_ids": [
+            "door_1"
+          ],
+          "neighbor_ids": [
+            "door_2"
+          ],
+          "relation_labeled": true,
+          "ground_visible": true,
+          "ground_obstruction": null,
+          "need_view": "DOOR"
+        },
+        {
+          "label": "nearer_view",
+          "image": "s1_arrival_nearer_view.jpg",
+          "target_visible": true,
+          "target_identity": "水果超市",
+          "door_count": 3,
+          "same_target_ids": [
+            "door_1"
+          ],
+          "neighbor_ids": [
+            "door_2",
+            "door_3"
+          ],
+          "relation_labeled": true,
+          "ground_visible": false,
+          "ground_obstruction": null,
+          "need_view": "GROUND"
+        },
+        {
+          "label": "door_and_ground",
+          "image": "s1_arrival_door_and_ground.jpg",
+          "target_visible": true,
+          "target_identity": "水果超市",
+          "door_count": 2,
+          "same_target_ids": [
+            "door_1"
+          ],
+          "neighbor_ids": [
+            "door_2"
+          ],
+          "relation_labeled": true,
+          "ground_visible": true,
+          "ground_obstruction": null,
+          "need_view": "DOOR"
+        }
+      ]
+    },
+    {
+      "id": "s2_neighbor",
+      "title": "隔壁门：招牌是目标的，门却是别家的（真实 LSVT 街景）",
+      "target": {
+        "name": "佳佳便利店",
+        "aliases": []
+      },
+      "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+      "frames": [
+        {
+          "label": "wide_storefront",
+          "image": "s2_neighbor_wide_storefront.jpg",
+          "target_visible": true,
+          "target_identity": "佳佳便利店",
+          "door_count": 0,
+          "same_target_ids": [],
+          "neighbor_ids": [],
+          "relation_labeled": false,
+          "ground_visible": true,
+          "ground_obstruction": null,
+          "need_view": "DOOR"
+        },
+        {
+          "label": "same_view",
+          "image": "s2_neighbor_same_view.jpg",
+          "target_visible": true,
+          "target_identity": "佳佳便利店",
+          "door_count": 1,
+          "same_target_ids": [],
+          "neighbor_ids": [
+            "door_1"
+          ],
+          "relation_labeled": true,
+          "ground_visible": true,
+          "ground_obstruction": null,
+          "need_view": "STOREFRONT"
+        }
+      ]
+    },
+    {
+      "id": "s3_hazard",
+      "title": "门前有阻挡：认出目标那扇门，但门前有护栏和自行车（真实 LSVT 街景）",
+      "target": {
+        "name": "豪园便利店",
+        "aliases": []
+      },
+      "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+      "frames": [
+        {
+          "label": "full_with_railing",
+          "image": "s3_hazard_full_with_railing.jpg",
+          "target_visible": true,
+          "target_identity": "豪园便利店",
+          "door_count": 1,
+          "same_target_ids": [
+            "door_1"
+          ],
+          "neighbor_ids": [],
+          "relation_labeled": true,
+          "ground_visible": true,
+          "ground_obstruction": true,
+          "need_view": "DOOR"
+        },
+        {
+          "label": "ground_view",
+          "image": "s3_hazard_ground_view.jpg",
+          "target_visible": null,
+          "target_identity": null,
+          "door_count": 0,
+          "same_target_ids": [],
+          "neighbor_ids": [],
+          "relation_labeled": false,
+          "ground_visible": true,
+          "ground_obstruction": true,
+          "need_view": "SIGN"
+        }
+      ]
+    }
+  ],
+  "all_frames_have_relation_or_refusal_context": true
+}
