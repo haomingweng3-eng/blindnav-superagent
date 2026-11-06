@@ -47,6 +47,7 @@ import responsibility_split_metrics as rsm  # noqa: E402
 from corridor_evidence_eval import role_map_from_classes  # noqa: E402
 from corridor_truth_eval import frame_dt_s, gt_remap, load_v5, predict_v5, route_frame, route_tangents  # noqa: E402
 from eval.sanpo import SanpoSession  # noqa: E402
+from mobilio_viz import render_replay_frame  # noqa: E402
 
 
 BASELINE_ARM = "baseline_split_c"
@@ -254,7 +255,7 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                      cfg: Config, conditions: Sequence[str],
                      limit_per_session: int = 0,
                      visual_cases: Optional[List[dict]] = None,
-                     visual_max: int = 0) -> List[dict]:
+                     visual_max: int = 0, video_writer=None) -> List[dict]:
     """Evaluate both arms on one session with shared frame/model/depth products."""
     sid = os.path.basename(session.dir.rstrip("/"))
     indices = session.available_frames()
@@ -333,6 +334,11 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                         visual_cases.append({"rgb": inp.bgr.copy(), "row": row,
                                              "surface": {"cells": []},
                                              "occupancy": {"cells": []}})
+                if video_writer is not None:
+                    video_writer.write(render_replay_frame({
+                        "rgb": inp.bgr, "row": row, "baseline": pair[0],
+                        "candidate": pair[1], "surface": {"cells": []},
+                        "occupancy": {"cells": []}}))
                 rows.extend(pair)
                 continue
 
@@ -388,19 +394,24 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                   "calib_reason": calib_reason})
             candidate_row["surface_angle_rad"] = surface_route.angle_rad
             candidate_row["occupancy_angle_rad"] = occupancy_route.angle_rad
+            surface_snapshot = surface_grid.snapshot(map_pose)
+            occupancy_snapshot = occupancy_grid.snapshot(map_pose)
             if visual_cases is not None and len(visual_cases) < visual_max:
                 failure = any(bool(candidate_row.get(flag, False)) for flag in (
                     "any_miss", "occupancy_miss", "ground_miss",
                     "true_false_stop", "unknown_on_confirmed_clear"))
                 if k == 0 or failure:
-                    surface_snapshot = surface_grid.snapshot(map_pose)
-                    occupancy_snapshot = occupancy_grid.snapshot(map_pose)
                     for row in (baseline_row, candidate_row):
                         if len(visual_cases) >= visual_max:
                             break
                         visual_cases.append({"rgb": inp.bgr.copy(), "row": row,
                                              "surface": surface_snapshot,
                                              "occupancy": occupancy_snapshot})
+            if video_writer is not None:
+                video_writer.write(render_replay_frame({
+                    "rgb": inp.bgr, "row": candidate_row, "baseline": baseline_row,
+                    "candidate": candidate_row, "surface": surface_snapshot,
+                    "occupancy": occupancy_snapshot}))
             rows.append(candidate_row)
     return rows
 
@@ -528,6 +539,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--save-failures", type=int, default=0)
     parser.add_argument("--device", default=None)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--video-out", default=None,
+                        help="optional MP4 path for a frame-aligned SANPO A/B replay")
     return parser.parse_args(argv)
 
 
@@ -561,14 +574,24 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     fps_by_session: Dict[str, float] = {}
     visual_cases: List[dict] = []
     visual_max = max(2, int(args.save_failures) * 2)
+    video_writer = None
     started = time.time()
     for sid in sessions:
         session = SanpoSession(os.path.join(data_root, sid), args.camera,
                                max_width=args.max_width)
+        if args.video_out and video_writer is None:
+            import cv2
+            video_path = os.path.abspath(args.video_out)
+            os.makedirs(os.path.dirname(video_path), exist_ok=True)
+            video_writer = cv2.VideoWriter(
+                video_path, cv2.VideoWriter_fourcc(*"mp4v"), float(session.fps), (720, 480))
+            if not video_writer.isOpened():
+                raise SystemExit(f"VIDEO_OPEN_FAILED: {video_path}")
         cfg.ground.camera_height_m = float(session.camera_height_m)
         session_rows = evaluate_session(session, model, device, depth_estimator, cfg,
                                          conditions, args.limit_per_session,
-                                         visual_cases=visual_cases, visual_max=visual_max)
+                                         visual_cases=visual_cases, visual_max=visual_max,
+                                         video_writer=video_writer)
         if not session_rows:
             continue
         all_rows.extend(session_rows)
@@ -635,6 +658,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     from mobilio_viz import render_contact_sheet
     if visual_cases:
         render_contact_sheet(visual_cases, os.path.join(out_dir, "contact_sheet.png"))
+    if video_writer is not None:
+        video_writer.release()
     failures = _select_failure_rows(all_rows, int(args.save_failures))
     with open(os.path.join(out_dir, "failure_manifest.json"), "w", encoding="utf-8") as fh:
         json.dump(failures, fh, indent=2, default=_json_default)

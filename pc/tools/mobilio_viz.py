@@ -113,6 +113,32 @@ def _one_case(case: dict) -> np.ndarray:
     ])
 
 
+def render_replay_frame(case: dict) -> np.ndarray:
+    """Render one fixed-size A/B replay frame for the SANPO video."""
+    row = dict(case.get("row", {}))
+    baseline = dict(case.get("baseline", {}))
+    candidate = dict(case.get("candidate", {}))
+    text = np.full((PANEL_H, PANEL_W, 3), 32, dtype=np.uint8)
+    lines = [
+        f"{row.get('condition', '?')} session={str(row.get('session', '?'))[:10]}",
+        f"frame={row.get('frame', '?')} depth={row.get('depth_source', '?')}",
+        f"baseline: {baseline.get('effective_command', '?')} / {baseline.get('safety_state', '?')}",
+        f"mobilio:  {candidate.get('effective_command', '?')} / {candidate.get('safety_state', '?')}",
+        "pose=SANPO recorded pose (offline VIO proxy)",
+        "maps persist across frames; arrows show selected route",
+    ]
+    for i, line in enumerate(lines):
+        cv2.putText(text, str(line)[:58], (8, 30 + i * 32),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.45, (230, 230, 230), 1, cv2.LINE_AA)
+    return np.vstack([
+        np.hstack([_panel(np.asarray(case.get("rgb", np.zeros((PANEL_H, PANEL_W, 3), dtype=np.uint8))),
+                          "SANPO input"),
+                   _surface_panel(case.get("surface", {}), candidate)]),
+        np.hstack([_occupancy_panel(case.get("occupancy", {}), candidate),
+                   _panel(text, "Frame A/B decisions")]),
+    ])
+
+
 def render_contact_sheet(cases: Sequence[dict], out_path: str) -> None:
     """Render one 2x2 diagnostic tile per case in a deterministic vertical sheet."""
     if not cases:
