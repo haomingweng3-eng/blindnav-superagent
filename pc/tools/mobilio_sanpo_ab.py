@@ -399,8 +399,12 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                                        (map_pose.x_m, map_pose.z_m))
                 hdiag = hsurface.raycast_diagnostics(math.degrees(target_angle),
                                                      (map_pose.x_m, map_pose.z_m))
-                hfail = next((d for d in hdiag if d["distance_m"] <= hsurface.cfg.min_path_length),
-                             hdiag[0] if hdiag else {})
+                if hdiag:
+                    hfail = (min(hdiag, key=lambda d: abs(d["angle_deg"] - h_angle_deg))
+                             if h_angle_deg is not None else
+                             max(hdiag, key=lambda d: d["distance_m"]))
+                else:
+                    hfail = {}
                 h_surface_angle = None if h_angle_deg is None else math.radians(h_angle_deg)
                 h_surface_dist = 0.0 if h_angle_deg is None else hsurface.raycast_grid_walkable(
                     map_pose.x_m, map_pose.z_m, h_angle_deg)
