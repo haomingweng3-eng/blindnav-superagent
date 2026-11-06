@@ -66,6 +66,43 @@ class HarvardSurfaceReference:
         return math.hypot(self.cfg.node_size * valid_x - origin[0],
                           self.cfg.node_size * valid_y - origin[1])
 
+    def raycast_grid_walkable_diagnostic(self, x0: float, z0: float, target_angle_deg: float) -> dict:
+        """Return the upstream distance plus the first grid failure and cell."""
+        x, y = self._cell(x0, z0); valid_x, valid_y = x, y
+        origin = (self.cfg.node_size * x, self.cfg.node_size * y)
+        skips = 0; first_failure = None; failure_cell = None
+        key = origin_to_key(origin, self.cfg)
+        if not self.grid.get(key, False):
+            skips = 1; first_failure = "origin_not_walkable"; failure_cell = key
+        target_x = x + int(round(self.cfg.fill_radius * math.sin(math.radians(target_angle_deg)) / self.cfg.node_size))
+        target_y = y + int(round(self.cfg.fill_radius * math.cos(math.radians(target_angle_deg)) / self.cfg.node_size))
+        dx, dy = target_x - x + 1e-6, target_y - y + 1e-6
+        sx, sy = (1 if dx > 0 else -1), (1 if dy > 0 else -1)
+        dist = math.sqrt(dx * dx + dy * dy); tx, ty = abs(dist / dx), abs(dist / dy)
+        mx, my = tx, ty
+        while x != target_x or y != target_y:
+            if mx < my: mx += tx; x += sx
+            else: my += ty; y += sy
+            cell = (x, y)
+            if not self.grid.get(cell, False):
+                skips += 1
+                if first_failure is None:
+                    first_failure, failure_cell = "non_walkable_cell", cell
+                if skips > self.cfg.grid_skips:
+                    first_failure = "skip_budget_exceeded"
+                    break
+            else:
+                valid_x, valid_y, skips = x, y, 0
+        distance = math.hypot(self.cfg.node_size * valid_x - origin[0],
+                              self.cfg.node_size * valid_y - origin[1])
+        return {"angle_deg": float(target_angle_deg), "distance_m": float(distance),
+                "failure": first_failure or "target_reached", "failure_cell": failure_cell,
+                "last_walkable_cell": (valid_x, valid_y)}
+
+    def raycast_diagnostics(self, target_angle_deg: float) -> list:
+        return [self.raycast_grid_walkable_diagnostic(0.0, 0.0, float(angle))
+                for angle in range(int(target_angle_deg - 90), int(target_angle_deg + 90) + 1)]
+
     def raycast_grid(self, target_angle_deg: float, turn_angle_deg: float = 0.0,
                      origin: Tuple[float, float] = (0.0, 0.0)) -> Tuple[Optional[float], List[float]]:
         angle_dist = []
