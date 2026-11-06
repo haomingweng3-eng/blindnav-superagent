@@ -23,6 +23,24 @@ def world_surface_points(roles, depth_m, K, up, camera_height_m, pose, walkable_
     return np.column_stack([x, z]) if np.any(keep) else np.zeros((0, 2))
 
 
+def world_surface_cells(roles, depth_m, K, up, camera_height_m, pose, walkable_role=1,
+                        pixel_stride=4):
+    """Return Harvard FillGrid-style ``(ix, iz) -> bool`` ground observations."""
+    lat, fwd, height, (vs, us) = depth_to_level_points(
+        np.asarray(depth_m), np.asarray(K), np.asarray(up), float(camera_height_m),
+        stride=int(pixel_stride))
+    role_map = np.asarray(roles)
+    keep = np.isfinite(height) & (np.abs(height) <= 0.15)
+    if not np.any(keep): return {}
+    c, s = math.cos(pose.yaw_rad), math.sin(pose.yaw_rad)
+    x = pose.x_m + lat[keep] * c + fwd[keep] * s
+    z = pose.z_m - lat[keep] * s + fwd[keep] * c
+    sampled = role_map[vs[keep], us[keep]] == int(walkable_role)
+    cell_m = 0.2
+    return {(int(round(float(px) / cell_m)), int(round(float(pz) / cell_m))): bool(ok)
+            for px, pz, ok in zip(x, z, sampled)}
+
+
 def obstacle_body_points(roles, depth_m, K, up, camera_height_m, min_height=0.15,
                          max_height=1.7, pixel_stride=4):
     """Return gravity-aligned obstacle points for Harvard's 3-D reference grid."""
@@ -38,11 +56,9 @@ def obstacle_body_points(roles, depth_m, K, up, camera_height_m, min_height=0.15
 def update_reference_maps(surface: HarvardSurfaceReference, occupancy: HarvardOccupancyReference,
                           roles, depth_m, K, up, camera_height_m, pose, pixel_stride=4):
     """Update both isolated reference maps from one shared input frame."""
-    surface_points = world_surface_points(roles, depth_m, K, up, camera_height_m, pose,
-                                          pixel_stride=pixel_stride)
-    surface.grid.update({(int(round(x / surface.cfg.node_size)),
-                          int(round(z / surface.cfg.node_size))): True
-                         for x, z in surface_points})
+    cells = world_surface_cells(roles, depth_m, K, up, camera_height_m, pose,
+                                pixel_stride=pixel_stride)
+    surface.grid.update(cells)
     body = obstacle_body_points(roles, depth_m, K, up, camera_height_m,
                                 pixel_stride=pixel_stride)
     world = occupancy_reference_body_to_world(body, pose)
