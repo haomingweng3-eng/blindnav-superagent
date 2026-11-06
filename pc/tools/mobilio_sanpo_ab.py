@@ -58,6 +58,8 @@ MOBILIO_EXTRA_FIELDS = [
     "surface_unknown_cells", "surface_fully_observed", "occupancy_state",
     "occupancy_clear_distance_m", "occupancy_blocking_cells",
     "occupancy_unknown_cells", "guidance_command",
+    "risk_state", "observation_hint", "authorized_motion",
+    "surface_angle_rad", "occupancy_angle_rad",
 ]
 MOBILIO_FIELDS = list(dict.fromkeys(list(rse.PER_FRAME_FIELDS) + MOBILIO_EXTRA_FIELDS))
 
@@ -130,6 +132,11 @@ def make_candidate_row(condition: str, arm: str, session: str, frame: int, *,
         "occupancy_blocking_cells": getattr(occupancy_route, "blocking_cells", None),
         "occupancy_unknown_cells": getattr(occupancy_route, "unknown_cells", None),
         "guidance_command": getattr(decision, "guidance", None),
+        "risk_state": str(decision.state),
+        "observation_hint": (getattr(decision, "guidance", None)
+                              if str(decision.state) == OBSERVE else None),
+        "authorized_motion": (getattr(decision, "guidance", None)
+                               if str(decision.state) == CLEAR else None),
     })
     row.update({str(key): value for key, value in gt_ref.items()})
     return row
@@ -189,6 +196,10 @@ def _baseline_row(condition: str, session: str, frame: int, decision,
         "obstacle_lateral_extent_m": obstacle.lateral_extent_m,
         "obstacle_height_extent_m": obstacle.height_extent_m,
         "obstacle_temporal_streak": int(obstacle.temporal_streak),
+        "risk_state": str(decision.state),
+        "observation_hint": None,
+        "authorized_motion": (decision.effective_command()
+                               if str(decision.state) == CLEAR else None),
     })
     return _finalize_row(row)
 
@@ -233,6 +244,7 @@ def _no_geometry_rows(condition: str, session: str, frame: int, *, gt_ref: dict,
         "effective_command": UNKNOWN, "safety_state": UNKNOWN, "guidance": None,
         "reason": calib_reason, "path_status": UNKNOWN, "path_reason": calib_reason,
         "obstacle_state": UNKNOWN, "obstacle_reason": calib_reason,
+        "risk_state": UNKNOWN, "observation_hint": None, "authorized_motion": None,
     })
     return [_finalize_row(baseline), candidate]
 
