@@ -1,0 +1,82 @@
+{
+ "schema": "last10m-demo/1",
+ "note": "图片来自公开数据集 LSVT（真实街景照片）。每帧 JSON 是云端 VLM 对该取景的真实回答，不是手写期望值。",
+ "generated_utc": "2026-11-02T12:10:57Z",
+ "scenarios": [
+  {
+   "id": "s1_arrival",
+   "title": "单门确认：三扇并排门里认出目标那一扇（真实 LSVT 街景）",
+   "target": {
+    "name": "水果超市",
+    "aliases": []
+   },
+   "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+   "frames": [
+    {
+     "label": "wide_view",
+     "image": "s1_arrival_wide_view.jpg",
+     "note": "真实照片 gt_1955.jpg 的 wide_view 取景；VLM 真实回答于 2026-11-02T12:10:45Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 900, \"target_identity\": \"水果超市\", \"ocr_texts\": [{\"text\": \"水果超市\", \"bbox\": [0, 440, 420, 620], \"confidence\": 950}, {\"text\": \"全有百货超市\", \"bbox\": [450, 440, 940, 620], \"confidence\": 930}, {\"text\": \"洋溢杂货店\", \"bbox\": [250, 600, 410, 660], \"confidence\": 880}, {\"text\": \"垃圾分类\", \"bbox\": [700, 880, 990, 990], \"confidence\": 900}], \"doors\": [{\"id\": \"door_1\", \"bbox\": [0, 660, 380, 990], \"confidence\": 700}, {\"id\": \"door_2\", \"bbox\": [400, 660, 660, 990], \"confidence\": 650}], \"relations\": [{\"door_id\": \"door_1\", \"relation\": \"SAME_TARGET\", \"confidence\": 700}, {\"door_id\": \"door_2\", \"relation\": \"NEIGHBOR\", \"confidence\": 600}], \"ground\": {\"visible\": true, \"step\": null, \"curb\": null, \"obstruction\": null}, \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"need_view\": \"DOOR\", \"scene_summary\": \"画面是一栋两层建筑，红色招牌上写着水果超市和全有百货超市，下方有两处玻璃门面，右侧有垃圾分类标识牌。\"}"
+    },
+    {
+     "label": "nearer_view",
+     "image": "s1_arrival_nearer_view.jpg",
+     "note": "真实照片 gt_1955.jpg 的 nearer_view 取景；VLM 真实回答于 2026-11-02T12:10:48Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 900, \"target_identity\": \"水果超市\", \"ocr_texts\": [{\"text\": \"水果超市\", \"bbox\": [0, 420, 390, 600], \"confidence\": 900}, {\"text\": \"全有百货超市\", \"bbox\": [430, 450, 940, 620], \"confidence\": 900}, {\"text\": \"洋溢杂货店\", \"bbox\": [220, 590, 380, 640], \"confidence\": 850}, {\"text\": \"垃圾分类\", \"bbox\": [700, 900, 990, 990], \"confidence\": 850}], \"doors\": [{\"id\": \"door_1\", \"bbox\": [0, 650, 340, 990], \"confidence\": 700}, {\"id\": \"door_2\", \"bbox\": [370, 650, 660, 990], \"confidence\": 700}, {\"id\": \"door_3\", \"bbox\": [680, 650, 990, 990], \"confidence\": 650}], \"relations\": [{\"door_id\": \"door_1\", \"relation\": \"SAME_TARGET\", \"confidence\": 700}, {\"door_id\": \"door_2\", \"relation\": \"NEIGHBOR\", \"confidence\": 600}, {\"door_id\": \"door_3\", \"relation\": \"NEIGHBOR\", \"confidence\": 600}], \"ground\": {\"visible\": false, \"step\": null, \"curb\": null, \"obstruction\": null}, \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"need_view\": \"GROUND\", \"scene_summary\": \"画面为临街两层建筑，一层上方有红底招牌，写着水果超市、全有百货超市和洋溢杂货店，招牌下方是几处玻璃门面，其中一处门内堆放着成摞的织物，右下角有垃圾分类标识牌。\"}"
+    },
+    {
+     "label": "door_and_ground",
+     "image": "s1_arrival_door_and_ground.jpg",
+     "note": "真实照片 gt_1955.jpg 的 lower 取景（门+门前地面）；VLM 真实回答于 2026-11-02T12:10:59Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 950, \"target_identity\": \"水果超市\", \"ocr_texts\": [{\"text\": \"水果超市\", \"bbox\": [0, 190, 420, 470], \"confidence\": 950}, {\"text\": \"全有百货超市\", \"bbox\": [450, 200, 960, 470], \"confidence\": 900}, {\"text\": \"洋溢杂货店\", \"bbox\": [250, 440, 400, 510], \"confidence\": 850}, {\"text\": \"垃圾分类\", \"bbox\": [700, 850, 1000, 1000], \"confidence\": 900}], \"doors\": [{\"id\": \"door_1\", \"bbox\": [60, 600, 380, 1000], \"confidence\": 700}, {\"id\": \"door_2\", \"bbox\": [400, 600, 660, 1000], \"confidence\": 700}], \"relations\": [{\"door_id\": \"door_1\", \"relation\": \"SAME_TARGET\", \"confidence\": 600}, {\"door_id\": \"door_2\", \"relation\": \"NEIGHBOR\", \"confidence\": 600}], \"ground\": {\"visible\": true, \"step\": null, \"curb\": null, \"obstruction\": null}, \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"need_view\": \"DOOR\", \"scene_summary\": \"画面是一间临街店铺，红色招牌上写着水果超市和全有百货超市，下方有敞开的门洞，门洞内堆放着成摞的袋装物品，右侧有垃圾分类标识。\"}"
+    }
+   ]
+  },
+  {
+   "id": "s2_neighbor",
+   "title": "隔壁门：招牌是目标的，门却是别家的（真实 LSVT 街景）",
+   "target": {
+    "name": "佳佳便利店",
+    "aliases": []
+   },
+   "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+   "frames": [
+    {
+     "label": "wide_storefront",
+     "image": "s2_neighbor_wide_storefront.jpg",
+     "note": "真实照片 gt_7968.jpg 的 wide_storefront 取景；VLM 真实回答于 2026-11-02T12:10:50Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 900, \"target_identity\": \"佳佳便利店\", \"ocr_texts\": [{\"text\": \"佳佳便利店\", \"bbox\": [60, 290, 390, 400], \"confidence\": 900}, {\"text\": \"电话：13428869593\", \"bbox\": [110, 400, 300, 430], \"confidence\": 800}, {\"text\": \"E01\", \"bbox\": [320, 400, 370, 430], \"confidence\": 800}, {\"text\": \"阿勇收件点\", \"bbox\": [430, 290, 810, 400], \"confidence\": 900}, {\"text\": \"服务热线：13924282625\", \"bbox\": [440, 400, 660, 430], \"confidence\": 800}, {\"text\": \"E02档\", \"bbox\": [680, 400, 760, 430], \"confidence\": 800}, {\"text\": \"新一佳车行\", \"bbox\": [380, 470, 410, 760], \"confidence\": 700}, {\"text\": \"新一佳车行\", \"bbox\": [40, 470, 70, 760], \"confidence\": 700}], \"doors\": [], \"relations\": [], \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"ground\": {\"visible\": true, \"step\": null, \"curb\": null, \"obstruction\": null}, \"need_view\": \"DOOR\", \"scene_summary\": \"画面中有两家相邻店铺的招牌，左侧为佳佳便利店，右侧为阿勇收件点，下方为绿色卷闸门与敞开的门洞，门前有电动车和行人。\"}"
+    },
+    {
+     "label": "same_view",
+     "image": "s2_neighbor_same_view.jpg",
+     "note": "真实照片 gt_7968.jpg 的 same_view 取景；VLM 真实回答于 2026-11-02T12:10:52Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 900, \"target_identity\": \"佳佳便利店\", \"ocr_texts\": [{\"text\": \"佳佳便利店\", \"bbox\": [20, 270, 370, 380], \"confidence\": 950}, {\"text\": \"电话：13428869593\", \"bbox\": [110, 380, 300, 410], \"confidence\": 900}, {\"text\": \"E01\", \"bbox\": [310, 380, 350, 410], \"confidence\": 900}, {\"text\": \"阿勇收件点\", \"bbox\": [410, 270, 800, 380], \"confidence\": 950}, {\"text\": \"服务热线：13924282625\", \"bbox\": [420, 380, 700, 410], \"confidence\": 900}, {\"text\": \"E02档\", \"bbox\": [720, 380, 790, 410], \"confidence\": 900}, {\"text\": \"新一佳车行\", \"bbox\": [0, 430, 40, 620], \"confidence\": 850}, {\"text\": \"新一佳车行\", \"bbox\": [370, 430, 410, 620], \"confidence\": 850}], \"doors\": [{\"id\": \"door_1\", \"bbox\": [420, 430, 790, 950], \"confidence\": 800}], \"relations\": [{\"door_id\": \"door_1\", \"relation\": \"NEIGHBOR\", \"confidence\": 700}], \"ground\": {\"visible\": true, \"step\": null, \"curb\": null, \"obstruction\": null}, \"door_type\": \"OPEN_DOORWAY\", \"button_location\": \"UNKNOWN\", \"need_view\": \"STOREFRONT\", \"scene_summary\": \"画面中有并排的店铺招牌，左侧为佳佳便利店，中间为阿勇收件点，中间有一处敞开的门洞，门洞内可见货架、杂物和坐着的人，门前停有电动车。\"}"
+    }
+   ]
+  },
+  {
+   "id": "s3_hazard",
+   "title": "门前有阻挡：认出目标那扇门，但门前有护栏和自行车（真实 LSVT 街景）",
+   "target": {
+    "name": "豪园便利店",
+    "aliases": []
+   },
+   "provenance": "REMOTE_VLM 真实输出，Demo 以 REPLAY 来源回放",
+   "frames": [
+    {
+     "label": "full_with_railing",
+     "image": "s3_hazard_full_with_railing.jpg",
+     "note": "真实照片 gt_12881.jpg 的 full_with_railing 取景；VLM 真实回答于 2026-11-02T12:10:55Z",
+     "json": "{\"target_visible\": true, \"target_confidence\": 900, \"target_identity\": \"豪园便利店\", \"ocr_texts\": [{\"text\": \"豪园便利店\", \"bbox\": [0, 190, 330, 270], \"confidence\": 900}, {\"text\": \"锦悦时尚宾馆\", \"bbox\": [380, 180, 710, 250], \"confidence\": 850}, {\"text\": \"文明城市\", \"bbox\": [420, 270, 520, 300], \"confidence\": 800}, {\"text\": \"社会主义\", \"bbox\": [560, 270, 660, 300], \"confidence\": 800}, {\"text\": \"订做电话:63312560\", \"bbox\": [760, 270, 900, 300], \"confidence\": 600}], \"doors\": [{\"id\": \"door_1\", \"bbox\": [100, 330, 230, 520], \"confidence\": 600}], \"relations\": [{\"door_id\": \"door_1\", \"relation\": \"SAME_TARGET\", \"confidence\": 600}], \"ground\": {\"visible\": true, \"step\": null, \"curb\": true, \"obstruction\": true}, \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"need_view\": \"DOOR\", \"scene_summary\": \"画面左侧有蓝色招牌的便利店，中间是宾馆招牌，门前有白色护栏、自行车和行人，地面为铺装路面。\"}"
+    },
+    {
+     "label": "ground_view",
+     "image": "s3_hazard_ground_view.jpg",
+     "note": "真实照片 gt_12881.jpg 的 ground_view 取景；VLM 真实回答于 2026-11-02T12:10:57Z",
+     "json": "{\"target_visible\": null, \"target_confidence\": null, \"target_identity\": null, \"ocr_texts\": [], \"doors\": [], \"relations\": [], \"ground\": {\"visible\": true, \"step\": null, \"curb\": null, \"obstruction\": true}, \"door_type\": \"UNKNOWN\", \"button_location\": \"UNKNOWN\", \"need_view\": \"SIGN\", \"scene_summary\": \"画面中是一段人行道，有白色蓝条纹护栏、一辆自行车、一名骑电动车载着孩子的人、树干、地面上的隔离柱，以及后方店铺的玻璃门面和货架。\"}"
+    }
+   ]
+  }
+ ]
+}
