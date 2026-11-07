@@ -142,3 +142,17 @@ replacement and not a VIO detour. A layer variant may be promoted only if the
 independent verifier confirms same-input metrics and the safety invariants above.
 If both E2 and E3 increase hints without improving confirmed-clear guidance,
 the next bottleneck is upstream spatial evidence quality, not fusion policy.
+
+### E3 status
+
+E3 is currently **NOT_EVALUABLE** from the frozen CSV. The production rows keep
+`surface_state`, `surface_distance_m`, `surface_unknown_cells`, and
+`surface_fully_observed`, but do not keep the failed ray's truncation cell,
+last walkable cell, candidate angle, or candidate distance. All 134 production
+D surface-UNKNOWN rows have `surface_distance_m=0`, so a post-hoc rule would
+manufacture a hint rather than expose a recorded candidate.
+
+The next valid E3 run must add those diagnostic fields to the offline evaluator
+while keeping the safety decision frozen, then regenerate the same 481 rows.
+Until that run is independently checked, no Surface hint or authorization claim
+is made.
