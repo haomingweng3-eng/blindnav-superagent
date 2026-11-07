@@ -338,6 +338,21 @@ BlindNav 有两个相关但必须分开验收的产品/研究工作流：
 - 不修改或合并 PR #20；
 - 不进行手机验证，直到 PC 阶段门槛通过。
 
+## 9.1 P0 证据评审（2026-11-07）
+
+| 字段 | 本阶段记录 |
+|---|---|
+| 假设 | SANPO 本地缺失的 IMU 可能只是选择性下载或路径判断错误；P0.3 应能确认 TUM-VI/Basalt 的最小可复现入口。 |
+| 实际执行 | 通过公开 GCS JSON API 对三个 SANPO-Real session 前缀做递归分页清单；记录 chest/head `fixed_camera_poses.csv` 元数据；核对 TUM-VI 官方 512x512 Euroc/DSO 导出路径、CC BY 4.0、MD5 sidecar 机制和 Basalt `basalt_vio --dataset-type euroc` 命令契约；只读检查本机编译工具。 |
+| 结果 | 三个 session 对象数为 5,462、8,286、7,986；每个 session 的 IMU/gyro/accelerometer/sensor 文件名匹配数均为 0；每个 session 都有 chest/head corrected pose。TUM-VI 官方源、许可和 checksum 机制已记录，但具体 room1 文件 MD5 尚未取得。 |
+| 证据等级 | DATASET / DESKTOP_ENVIRONMENT_AUDIT；没有 VIO 运行结果。 |
+| 偏差 | 当前是 macOS ARM64，不是计划要求的独立 Linux/WSL；没有 `gcloud`，使用只读 GCS JSON API 替代；本地没有 `ninja` 或 Java runtime。 |
+| 根因 | 目前能证实的是：三份指定 SANPO session 的公开对象清单中确实没有原始 IMU 观测对象。官方“SANPO-Real 包含 IMU”的总体说明与这三个对象前缀存在未解释差异，不能继续把差异归因于本地文件名扫描。 |
+| 决策 | `P0.1=GO/完成`；`P0.3=HOLD/部分完成`；`P1=HOLD`。不运行 SANPO VIO，不下载 TUM-VI，不把 recorded pose 写成 IMU/VIO。 |
+| 下一步 | 先取得独立 Linux/WSL 实验环境和 TUM-VI room1 单文件 MD5；满足后只下载一个 512x512 room1 序列，按 Basalt 官方命令做 P1.1。若环境或 checksum 仍不可得，记录 STOP 原因并不切换算法。 |
+
+阶段文件：[`docs/phase_reports/p0_20261107/`](phase_reports/p0_20261107/)。
+
 ## 10. 相关现有文档
 
 - [项目现状与路线图](PROJECT_REVIEW_AND_ROADMAP_20261107.md)
