@@ -26,4 +26,16 @@ python docs/phase_reports/e3_surface_6813160/independent_check.py OFF/per_frame.
 
 复算程序输出检查结果，调用者必须检查结果，而非仅凭进程退出码判定通过。原始本地射线文件约 83 MB，报告未上传原图、模型权重或本机绝对路径。两次输出的实际 SHA256 记录在独立结果中。
 
-完整 E3 交付尚缺：历史 evaluator 的独立重放与版本差异解释；按会话和真值分组的原因表、代表性真实可视化、完整可公开的逐帧和射线证据、环境及命令日志、最终清单与对全部产物的独立复核。因此暂不宣告 G2 GO，也不把本次 trace 描述为算法改进。Last10m 产品优先级不受本离线诊断改变。
+完整 E3 交付尚缺：原图与地图叠加的代表性可视化、最终清单与对全部产物的独立复核（分组表、射线示例及派生证据见下方增补）。因此暂不宣告 G2 GO，也不把本次 trace 描述为算法改进。Last10m 产品优先级不受本离线诊断改变。
+
+## 增补：可供异地审查的派生证据
+
+[分组表](per_group.csv)按会话、危险代理标签、两个地图状态、融合状态及最终原因分组；[无候选射线表](no_candidate_buckets.csv)在 125 帧内按同一标签与最佳被拒射线终止原因分组。这些是互斥的逐帧分组，不是根因归因。独立核查确认分组表合计 481 帧、无候选表合计 125 帧，且 `danger_any` 与 `confirmed_clear` 没有重叠。
+
+[三个真实射线示例](ray_examples.svg)展示被拒射线和无观测的距离记录；它们不是原图、道路地图或运动授权。蓝线是原规划器的 `observed_distance_m`，不等同于物理连续可走长度；红线只覆盖搜索停止之前已扫描的连续可走段。
+
+[关闭 trace 的逐帧表](off_per_frame.csv.gz)、[开启 trace 的逐帧表](on_per_frame.csv.gz)和[射线记录](rays.jsonl.gz)均为 gzip 压缩的派生数据，不含图像或模型权重；解压后 SHA256 与 [independent_results.json](independent_results.json) 一致。先在独立目录用 `gzip -dc` 解压，再运行文中的复算程序。`group_analysis.py` 和 `render_ray_examples.py` 可从解压后的 ON 表与射线记录重新生成分组和图例。
+
+数据基于 Google Research 的 [SANPO 数据集](https://github.com/google-research-datasets/sanpo_dataset)，Waghmare 等，WACV 2025；官方说明其数据以 Creative Commons 4.0 许可发布并允许共享、改编。以上派生记录来自本次运行，保留公开数据集会话及帧标识，不上传原始视频。运行环境与脱敏日志见 [environment_and_run.json](environment_and_run.json)、[OFF 日志](replay_off.log)、[ON 日志](replay_on.log)及[实际命令](commands.md)。
+
+独立历史代码审查发现，`0d0da47` 引入 OBSERVE 下的谨慎提示，后续 `325a87e` 将提示与运动授权分开，行为与上述 4 帧差异相符。但历史 CSV 未记生成 commit，故这只是有证据支持的解释，不能证明其原始版本。候选历史版本 `2ee1f58791ea19d0660daf2dfb2ff03ee009ab40` 已在 481 帧上重跑。独立核对的 11 项字段与历史 CSV 逐帧一致；对当前 OFF 仅 4 帧 guidance 不同，其他 10 项一致，详见 [历史复算](historical_rerun_review.json)、[旧版逐帧数据](historical_rerun_per_frame.csv.gz)和[运行日志](replay_historical.log)。旧版未锁定模型快照，日志无法证明模型字节完全一致；历史 CSV 原始 commit 仍未知，不能据此断定原始生成版本或完全同输入。
