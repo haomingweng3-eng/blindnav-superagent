@@ -383,3 +383,22 @@ Depth Anything V2 官方说明：Small 模型许可 Apache-2.0；Base/Large/Gian
 ### 评分口径统一
 
 此前主观总览 4.0/10 与固定七维权重不一致。统一采用固定权重后，本轮评分 **3.7/10**，上一轮同口径 3.6/10，增加 0.1 仅来自可复现性；定位、几何、地图可用性和安全证据均未加分。后续不再将主观 4.0 与加权总分混用。
+
+
+## 13. 研发提速决策：校正四路消融，暂停低价值 12 帧叠加（2026-11-07）
+
+最新技术复核：[FOUR_WAY_ABLATION_CONFOUND_REVIEW_20261107.md](FOUR_WAY_ABLATION_CONFOUND_REVIEW_20261107.md)。
+
+发现旧 A/B/C/D 四路输入消融存在变量混杂：
+- `pc/tools/mobilio_sanpo_ab.py:466-468` 的 DAV2 scale/shift calibration mask 使用 v5 segmentation；
+- C 条件虽然地图语义 mask 用 GT，但 DAV2 标定 mask 仍是 v5；
+- A/B 的 GT depth 分支用 `gt_ref.up/h`，C/D 的 DAV2 分支用 `fit.up` / attitude 与 session camera height。
+因此旧矩阵只能描述四种代码路径，不能作为严格的 segmentation×depth 单因素因果归因。旧结果保留，不删除，但归因结论降级。
+
+**新的唯一任务：** [CORRECTED_2X2_GEOMETRY_ABLATION_20261107.md](../phase_prompts/CORRECTED_2X2_GEOMETRY_ABLATION_20261107.md)。固定 K、up、camera height、pose、地图参数、DAV2 calibration mask 和安全逻辑，只改变地图 segmentation（GT/v5）与 depth map（GT/DAV2），一次性完成 481 帧四条件对照并计算主效应/交互效应。
+
+原 12 帧 Surface causal overlay 暂停；只有校正消融仍无法定位时才恢复。不得重复 481 帧 OFF/ON trace，不做阈值扫描，不增加新模型，不下载新数据/权重。
+
+**评分口径：3.6/10**。从此前 3.7 下调 0.1，原因是发现旧四路消融存在影响因果解释的设计混杂，实验可复现性由 7 调整为 6；这不是导航能力倒退，而是证据可信度重新校准。其余技术维度不变。
+
+复用技术状态：Harvard/Mobilio 桌面参考回放已完成；DAV2 57 帧证据复用；Basalt 已选未运行；TUM VI checksum pending；Metric3D 暂缓；OpenVINS/VINS-Fusion/RTAB-Map 不引入。手机仍最后。
