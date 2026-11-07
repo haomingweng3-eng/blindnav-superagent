@@ -587,3 +587,24 @@ Mapillary Vistas、BDD100K、Cityscapes 是道路/街景语义数据，不是胸
 - E3 **REPLAY_COMPLETED / PARTIAL_INDEPENDENT_CHECK / G2 HOLD**；不等于导航提升、实际 VIO、真机安全或 G2 GO。叠加到原图、GT、深度、BEV/网格和射线的因果证据尚缺。
 - 项目指导决定当前唯一任务为 [E3 因果叠加执行提示词](phase_prompts/E3_SURFACE_CAUSAL_OVERLAY_20261107.md)，审查依据为 [E3 独立技术复核](reviews/E3_FROZEN_REPLAY_INDEPENDENT_REVIEW_20261107_1002Z.md)。不重复运行无价值的 smoke/全量 OFF-ON；冻结授权语义不变。
 - 固定权重评分已校正：同分项上次加权应为 **3.6/10**，本轮 **3.7/10**，仅复现性 +1 分项；原主观总览的 **4.0/10** 与固定权重旧分项未数学对齐，不能当成可比基线。P0–P6 目前完整通过仍为 **0/7**，P0/P2 有部分研究证据，P1 Basalt/TUM VI 尚未运行，P6 手机继续 HOLD。
+
+
+---
+
+## 12. 最新阶段状态更新（2026-11-07 21:45 +08:00）
+
+最新独立审查：[E3_REPLAY_TECHNICAL_REVIEW_20261107_2145.md](reviews/E3_REPLAY_TECHNICAL_REVIEW_20261107_2145.md)。
+
+E3 Surface 481 帧冻结离线回放已完成：OFF/ON 均成功退出，trace 记录 85,432 条射线（472×181），另有 9 帧无可用公制深度；独立复核报告的 17 项受检决策/授权字段逐帧等价。该证据只支持离线诊断旁路等价，不代表导航性能、安全或设备验证。
+
+关键失败分布：
+- `surface:no_candidate_ray`：125/481，其中 danger 108、confirmed_clear 7、other 10；不得直接放宽射线门槛。
+- confirmed_clear 最终未 CLEAR 的 121 帧中，77 帧最终原因为 `surface:non_walkable`；这是现象，不是根因。
+- danger 最终 CLEAR 17/295，必须作为危险负对照调查。
+- trace 的 RECORDED 只表示存在观测证据，不等于连续足够长的可走路径。
+
+**当前裁决：E3 replay complete；G2 causal root-cause gate HOLD。** 下一步唯一任务为 12 帧 Surface 因果叠加，见 [E3_SURFACE_CAUSAL_OVERLAY_20261107.md](phase_prompts/E3_SURFACE_CAUSAL_OVERLAY_20261107.md)。不重跑重复的 481 帧 OFF/ON，不做无假设阈值扫描，不修改安全授权。
+
+Basalt + TUM VI 仍为 PC VIO 主线但尚未运行；P1 HOLD。DAV2 57 帧旧证据复用，Metric3D 仍待权重许可/焦距/尺度/真值条件核验。手机验证仍在最后。
+
+固定评分卡：3.7/10（上一轮同口径 3.6/10，+0.1 仅来自可复现性）；其他技术维度不加分。此分数替代此前与权重不一致的主观 4.0/10。
