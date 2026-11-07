@@ -252,3 +252,60 @@
 测试层级应按风险和诊断价值选择：快速、窄范围的单元/契约测试作为基础，少量集成测试验证接口，昂贵且易脆弱的端到端测试只覆盖关键路径；不能用测试数量代替有效信心。参考：[Home Office Test Pyramid](https://engineering.homeoffice.gov.uk/standards/test-pyramid/)、[Martin Fowler Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html)、[Software Engineering at Google](https://raw.githubusercontent.com/abseil/abseil.github.io/cd13b21daa6ec74155548241241693198c1b1264/resources/swe_at_google.2.pdf)。
 
 **本政策的目标不是“少测试”，而是停止低价值重复测试，把时间转回定位、几何、地图和真实导航能力的量化改善。**
+
+
+## 10. 复用技术清单与及时提醒机制
+
+### 10.1 当前确定的复用技术（持续维护）
+
+| 技术/资源 | 在 BlindNav 中承担的角色 | 当前状态 | 采用原则 |
+|---|---|---|---|
+| **Basalt** | PC 端首选 VO/VIO 与相机-IMU 标定基线 | SELECTED / NOT_RUN | 先在 TUM VI room1、EuRoC 上复现；不是已集成的 BlindNav 定位模块 |
+| **TUM VI room1** | 手持/头戴相机 VIO 基准，图像+IMU+标定，提供 mocap 参考区间 | SELECTED / CHECKSUM_PENDING | 单序列下载校验后运行；只在有效真值区间评分 |
+| **EuRoC V1_01_easy** | 标准双目+IMU VIO 回归基准 | SELECTED / SOURCE_AND_TERMS_PENDING | 作为第二基准；无人机域不等于手机步行域 |
+| **ADVIO-09（必要时 ADVIO-20）** | 真实手机 RGB+IMU 数据格式/域差验证 | SELECTED / NOT_DOWNLOADED | 后续使用；CC BY-NC 4.0，限制非商业研究用途 |
+| **DAV2 Metric VKITTI Small** | 当前户外公制深度候选和既有基线 | EXISTING_EVIDENCE | 复用本机 57 帧结果，不重复运行同一实验；没有独立测距真值时不判定绝对准确性 |
+| **Metric3D v2 Small** | 深度、置信度、表面法线候选对照 | CANDIDATE / WEIGHT_TERMS_PENDING | 先核对权重许可、文件大小、焦距和公制尺度约定，再做小规模有 GT 对照 |
+| **Harvard-Slade-Lab Mobilio** | Surface/FillGrid/Occupancy 局部地图与导航思想参考 | REFERENCE_ADAPTED / NOT_FULL_REPRODUCTION | 核对上游源码与坐标契约；不声称复现原始 ARFoundation/ARCore 系统 |
+| **SANPO** | egocentric 场景、可行走区域、深度/位姿相关研究数据 | PARTIAL_DATA_AVAILABLE | 现有 481 帧用于离线归因；已审计 session 的原始 IMU 缺口仍未解决 |
+| **NavAble** | 盲人/低视力无障碍设施类别感知数据 | DISCOVERED / NOT_DOWNLOADED | 按需要选择类别子集；不能替代连续 VIO 或障碍物公制深度 |
+| **OpenVINS / VINS-Fusion** | Basalt 失败或存在明确缺口时的 VIO 对照 | DEFERRED | 不同时集成；先比较基准结果与许可证 |
+| **RTAB-Map / Open3D / evo** | 可选地图、点云几何和轨迹评估工具 | OPTIONAL_TOOLING | 只有当前实验出现明确需求时启用，不为增加依赖而引入 |
+
+官方项目资料确认 Basalt 包含相机/IMU/运动捕捉标定、VIO 与 mapping，支持 TUM-VI/EuRoC 的 VIO 和 KITTI 的无 IMU VO；代码 BSD-3-Clause，但第三方依赖需单独审查。见 [Basalt 官方 README](https://github.com/VladyslavUsenko/basalt) 与 [TUM 研究说明](https://www.vision.in.tum.de/research/vslam/basalt)。
+
+Depth Anything V2 官方说明：Small 模型许可 Apache-2.0；Base/Large/Giant 是 CC-BY-NC-4.0。Metric-depth 模型还需分别核实具体权重许可，不能把代码仓库许可证自动视为所有 checkpoint 的许可证。见 [Depth Anything V2 官方仓库](https://github.com/DepthAnything/Depth-Anything-V2) 和 [Metric Depth 文档](https://github.com/DepthAnything/Depth-Anything-V2/tree/main/metric_depth)。
+
+### 10.2 每次报告必须向用户复述当前复用技术
+
+每次阶段审核的结尾必须用简短表格说明：
+- 我们正在复用什么；
+- 它解决 BlindNav 哪个问题；
+- 当前状态是已运行、已选型、候选、未下载还是待验证；
+- 下一步是否继续使用或暂停。
+
+不得把 SELECTED、DISCOVERED、CHECKSUM_PENDING 写成已复现或已集成。若本轮技术选型没有变化，明确写“选型保持不变”，不要重复开展无意义的重新选型搜索。
+
+### 10.3 及时提醒规则
+
+当自动审查发现以下事项时，应在该轮结果中明确提醒用户，而不是只写在内部审查文档：
+- 新报告/新提交已经改变阶段门禁或技术选型；
+- 出现需要用户批准的下载、安装、磁盘空间、许可证或访问权限阻塞；
+- 阶段实验已经达到 GO，可以开始下一项明确工作；
+- 出现可能导致时间浪费的重复测试、重复下载或无效技术路线；
+- 发现安全授权语义变化、数据泄漏、错误分母或报告结论被反证。
+
+提醒应包含：**发生了什么、为什么现在需要关注、用户需要做什么、如果不处理会阻塞什么。** 对同一个未变化的阻塞只提醒一次；只有状态变化、临近明确阶段门禁或出现新风险时才再次提醒，不每小时重复轰炸。
+
+### 10.4 每轮固定反馈结构
+
+1. 阶段结论：GO / ADJUST / HOLD / STOP。
+2. 本轮新增技术证据和实际收益。
+3. 当前复用技术清单及状态。
+4. 技术选型建议：首选、备选、暂缓项及原因。
+5. 技术辅导：最小下一步和关键注意事项。
+6. 项目评分卡：总分、各维度分数、相对上轮变化及证据。
+7. 用户需要及时处理的事项（没有则写“无”）。
+8. 下一阶段唯一执行任务和仓库提示词链接。
+
+**提醒是为了让用户及时决策，不是用频繁通知制造研发活动。**
