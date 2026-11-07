@@ -350,3 +350,186 @@ BlindNav 有两个相关但必须分开验收的产品/研究工作流：
 ---
 
 **本计划的成功标准不是完成所有阶段，而是每个阶段都能产生可复现、可证伪的结论，并据此决定下一步是否值得投入。**
+
+
+---
+
+# 11. 数据集与技术基准完整目录（PC-first）
+
+本节把项目中提到过的数据集、算法和测试基准统一登记。目录是候选清单，不表示数据已下载、许可已批准、模型已运行或结果已复现。每次真正使用前，必须保存具体版本、下载页面、数据许可、校验和及适用限制。
+
+## 11.1 定位 / VIO / VO 基准
+
+| 数据集 | 可用模态与真值 | 对 BlindNav 的用途 | 局限与使用规则 | 优先级 |
+|---|---|---|---|---|
+| TUM VI | 双目灰度图、IMU；约 20 Hz 图像、200 Hz IMU；部分序列起止附近有 mocap pose | 手持/头戴视觉惯性基准；先用 room1 512×512 EuRoC 格式做 Basalt | 并非所有长序列都有全程 mocap 真值；只在有效 GT 区间算绝对轨迹误差。数据许可页面需随下载版本归档（当前官方信息标 CC BY 4.0） | P1 首选 |
+| EuRoC MAV | 双目图像、IMU、相机/IMU 标定、Vicon 或 Leica 参考轨迹 | 标准 VIO 构建与回归基准；V1_01_easy 优先 | 无人机运动和视角与行人手机不同；适合验证算法管线，不代表手机步行泛化。下载前核对 ETH 新下载入口、单序列大小和数据条款 | P1 |
+| ADVIO | 真实手机视频、图像时间戳、加速度计、陀螺仪、参考轨迹/标定资料 | 最接近普通手机采集的 VIO/VO 数据；先 advio-09，必要时再 advio-20 | 数据格式不是 Basalt 原生 EuRoC；必须验证时间同步、相机内参和 IMU 轴向。CC BY-NC 4.0，限许可允许的非商业研究，不作为商业产品训练/发布的默认数据 | P2 |
+| KITTI Odometry / Raw | 车载单目/双目图像；odometry 有 22 序列，其中 00–10 有 GT、11–21 用于测试；Raw 还含 GPS/IMU、Velodyne 和标定 | 视觉里程计算法外部 sanity check；可验证 VO 输出格式和轨迹评估 | 车载道路域与胸前/手持手机差异大；odometry benchmark 不是同步手机 IMU VIO 数据。灰度包约 22 GB、彩色约 65 GB，首轮不下载 | P3 |
+| TartanAir V1/V2 | 合成 RGB、深度、分割、相机 pose、IMU、LiDAR、光流等；V2 支持多相机模型 | 可控环境下验证 VIO/SLAM、深度、地图和动态环境压力测试 | 合成域；不得把合成表现当真实街道效果。V2 数据 CC BY 4.0，工具包 MIT；按单环境/轨迹下载，不整库下载 | P2 对照 |
+| TUM-VIE | 手持/头戴高分辨率立体、事件相机、IMU、部分 mocap | 若后续研究快速运动/事件视觉再使用 | 比当前需求复杂，先不引入 | P4 |
+| SANPO-Real | 胸前/眼平视角视频、可选双目、深度/分割/位姿及官方说明中的 IMU | BlindNav 目标视角和户外可行走区域研究；已有 481 帧继续做离线归因 | 当前本机已审计 session 未发现原始 IMU 对象；不得把官方总体说明推断为本地文件已齐全。继续查对象清单与下载路径 | P0 数据审计 |
+| SANPO-Synthetic | 合成 egocentric 场景、视频与多种标注 | 补充障碍物、地面、天气/场景变化和分割测试 | 合成数据域差；与真实数据分开报告 | P2 |
+| BDD100K video | 100K 行车视频；GPS/IMU 信息另有约 3.9 GB 包；图像和语义任务标注 | 可作为视频/传感器数据格式和动态场景辅助研究 | 车载域；完整视频约 1.8 TB，禁止首轮下载。数据许可不是代码仓库 BSD 许可证；商业使用受 BDD/BAIR 成员资格及单独许可约束 | P4 |
+
+官方入口：
+- [TUM VI](https://cvg.cit.tum.de/data/datasets/visual-inertial-dataset)
+- [EuRoC MAV](https://projects.asl.ethz.ch/datasets/euroc-mav/)
+- [ADVIO GitHub](https://github.com/AaltoVision/ADVIO) / [Zenodo v3](https://zenodo.org/records/1476931)
+- [KITTI Odometry](https://www.cvlibs.net/datasets/kitti/eval_odometry.php) / [KITTI Raw](https://www.cvlibs.net/datasets/kitti/raw_data.php)
+- [TartanAir](https://tartanair.org/)
+- [TUM-VIE](https://cvg.cit.tum.de/data/datasets/tumvie)
+- [SANPO](https://google-research-datasets.github.io/sanpo_dataset/)
+- [BDD100K](https://bdd-data.berkeley.edu/)
+
+## 11.2 单目深度 / 公制深度 / 几何基准
+
+| 数据集 | 主要数据与 GT | 适合验证什么 | 不适合什么 / 注意事项 | 优先级 |
+|---|---|---|---|---|
+| NYU Depth V2 | 室内 RGB-D（Kinect）；常用 Eigen test 654 张 | 室内近距离深度、平面、家具/门口等几何 | 不含 VIO 所需同步 IMU/长序列 pose；不能代表户外；使用官方 split，不混入训练 | P2 |
+| KITTI Depth / Eigen | 车载 RGB + 稀疏 LiDAR 深度 | 户外尺度、道路深度与远距离误差 | 车载域；LiDAR 投影稀疏，不能把无返回像素当作 0 深度；与 KITTI VO 的序列/协议要区分 | P3 |
+| DIODE | 室内+室外 RGB、激光扫描深度、有效掩码、表面法线 | 高质量深度、地面/平面法线、跨室内外泛化 | 全量归档可能约 84 GB；首轮只取评估子集，核对原始许可和官方 split | P2 |
+| ETH3D | 室内/室外高分辨率图像、激光扫描/高精度深度；常见深度评估子集约 423–454 张（按协议版本） | 精细几何、边界、平面、室内外尺度 | 数据许可为 CC BY-NC-SA 4.0；不能默认用于商业训练或重新分发 | P2 |
+| iBims-1 | 100 张室内 RGB 与高精度扫描深度 | 深度边界、薄物体、平面和几何结构质量 | 小型定向 benchmark，不代表场景分布；下载前确认数据条款 | P2 |
+| Hypersim | 合成室内 RGB、深度、法线、语义与相机参数 | 室内几何受控实验、法线和深度算法调试 | 合成数据，不作为真实场景最终验收；核实数据许可与使用限制 | P3 |
+| Virtual KITTI 2 | 合成驾驶 RGB、稠密深度、内外参、多天气/光照变体 | 户外深度模型压力测试、天气变化和像素深度映射 | 驾驶场景域差；官方数据许可 CC BY-NC-SA 3.0；全量 RGB+depth 约 15 GB，不首轮下载 | P3 |
+| TartanAir | 合成 RGB、深度、pose、IMU、分割、光流、LiDAR | 多视角几何、深度与时序融合的可控实验 | 合成域；与真实数据分别报告 | P2 |
+| ScanNet | 室内 RGB-D 视频、相机 pose、重建表面、实例语义；约 2.5M views / 1500+ scans | 室内局部地图、点云、表面和语义地图验证 | 需接受 ScanNet Terms of Use / 申请访问；不是手机 VIO 基准，不公开传播原始数据 | P3 |
+| TUM RGB-D | RGB-D 序列、时间戳、标定和 mocap/机器人轨迹 | 地图、RGB-D SLAM、坐标变换单元测试 | 不含手机 IMU 的标准 VIO 替代；使用官方 benchmark split | P3 |
+| SUN RGB-D | 多传感器室内 RGB-D、3D 框与语义 | 室内障碍物类别、3D 框和场景理解 | 不等于连续手机步行数据；核对数据许可 | P4 |
+| Make3D | 室外单目 RGB 与深度参考 | 远距离户外深度的分布外测试 | 数据规模较小、采集设备/域与手机不同 | P4 |
+
+官方入口：
+- [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
+- [KITTI](https://www.cvlibs.net/datasets/kitti/)
+- [DIODE](https://diode-dataset.org/)
+- [ETH3D](https://www.eth3d.net/)
+- [iBims-1](https://www.albert-janesch.de/ibims/)
+- [Hypersim](https://github.com/apple/ml-hypersim)
+- [Virtual KITTI 2](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/)
+- [TartanAir](https://tartanair.org/)
+- [ScanNet](https://www.scan-net.org/ScanNet/)
+- [TUM RGB-D](https://cvg.cit.tum.de/data/datasets/rgbd-dataset)
+
+### 深度评估协议必须统一
+
+对每个模型同时报告两套结果：
+1. **Metric / no-scale-alignment**：保留模型原始尺度，评估能否直接用于以米为单位的安全几何。
+2. **Scale-aligned**：允许按 benchmark 规定进行尺度对齐，仅用于分析相对结构能力，不能代替公制尺度验收。
+
+至少报告 AbsRel、RMSE、log-RMSE、δ1，以及有效深度像素覆盖率；按距离段（近场、2–6 m、中远场）和区域（地面、障碍物、边界）分别统计。深度模型输出的单位/尺度、焦距条件、裁剪、resize、无效值和相机内参必须写入 manifest。
+
+## 11.3 语义分割 / 道路 / 无障碍设施数据
+
+| 数据集 | 标签与场景 | BlindNav 用途 | 限制 |
+|---|---|---|---|
+| NavAble | 盲人/低视力导航相关设施类别、真实与合成图片/3D 资产 | 门按钮、扶手、电梯、过街按钮等无障碍设施识别 | 不直接提供完整手机 VIO；不能代替障碍物公制深度。数据版本、论文统计口径和使用许可逐项核实 |
+| SANPO | egocentric 户外场景、可行走/障碍相关语义和时序视频 | 最贴近 BlindNav 视角的 segmentation / path / obstacle 验证 | 优先复用已有 split；检查 IMU 文件缺口 |
+| Mapillary Vistas | 全球街景、细粒度道路/人行道/路缘/设施语义类别 | 补充城市街道语义类别和跨城市外观 | 研究版需申请/接受相应条款；数据和图片使用限制独立于代码许可。V2 镜像显示 CC BY-NC-SA 4.0，必须以官方实际下载协议为准 |
+| BDD100K | 驾驶视频、道路对象、drivable area、lane 等标注 | 车辆/行人/道路语义和天气变化辅助对照 | 车载视角；数据不是 BSD-3-Clause 代码许可证。商业使用有额外限制 |
+| Cityscapes | 欧洲城市道路、fine/coarse semantic labels、instance labels | 道路、人行道、路缘、行人、车辆语义分割基准 | 需注册并遵守非商业研究条款；禁止把原始数据或可重建数据的衍生物公开分发 |
+| Mapillary 开放贡献图像 | 街景图片，用户贡献内容 | 只用于在符合 CC BY-SA 和归属要求的前提下做外观研究 | 不把开放图像许可与 Vistas Research Edition 许可混为一谈 |
+
+官方入口：
+- [NavAble 数据集](https://huggingface.co/datasets/NavAble/NeurIPS_2026_BLV)
+- [SANPO](https://google-research-datasets.github.io/sanpo_dataset/)
+- [Mapillary Vistas](https://www.mapillary.com/dataset/vistas/)
+- [BDD100K](https://bdd-data.berkeley.edu/)
+- [Cityscapes](https://www.cityscapes-dataset.com/license/)
+- [Mapillary 开放数据许可说明](https://help.mapillary.com/hc/en-us/articles/115001770409-CC-BY-SA-license-for-open-data)
+
+### 语义数据的适用边界
+
+Mapillary Vistas、BDD100K、Cityscapes 是道路/街景语义数据，不是胸前视角 VIO 数据，也不提供可直接用于障碍物三维定位的同步深度和 IMU。它们只能作为分割预训练/类别补充或外观泛化测试。必须做标签映射，不能把 road、sidewalk、curb、terrain、obstacle 的不同定义直接合并。
+
+## 11.4 SLAM / 地图 / 三维重建软件基准
+
+| 工具 / 项目 | 适合验证 | 不应误认为 |
+|---|---|---|
+| Basalt | 第一 PC VIO 基线；EuRoC/TUM VI；可比较 VO/VIO 能力 | 已经在 BlindNav 或 Android 复现 |
+| OpenVINS | 独立 VIO 估计器、协方差、IMU 标定对照 | 现成 Android SDK |
+| VINS-Fusion | 单目+IMU/双目+IMU 研究对照 | 无需数据适配的 Basalt 替代 |
+| ORB-SLAM3 | 单目/双目/视觉惯性 SLAM、重定位和跟踪恢复 | 密集障碍物占据地图 |
+| RTAB-Map | RGB-D/stereo SLAM、回环和地图融合对照 | 普通手机无 ARCore 的即插即用方案 |
+| evo | 轨迹对齐、ATE、RPE 和结果可视化 | VIO 算法本身 |
+| Open3D | 点云、网格、ICP、几何误差和可视化 | 安全决策或实时手机定位系统 |
+| COLMAP | 离线 SfM/MVS 和相机几何 sanity check | 实时 VIO 或动态障碍物地图 |
+
+官方入口：
+- [Basalt](https://github.com/VladyslavUsenko/basalt)
+- [OpenVINS](https://github.com/rpng/open_vins)
+- [VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion)
+- [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3)
+- [RTAB-Map](https://github.com/introlab/rtabmap)
+- [evo](https://github.com/MichaelGrupp/evo)
+- [Open3D](https://www.open3d.org/)
+- [COLMAP](https://github.com/colmap/colmap)
+
+许可证原则：每个代码仓库、第三方依赖、模型权重和数据集分别审查。Basalt 代码 BSD-3-Clause；OpenVINS、VINS-Fusion、ORB-SLAM3 的仓库采用 GPL 系列许可；RTAB-Map/Open3D/COLMAP 的具体组件和依赖仍须按发布版本核实。不得用代码许可证推断数据或权重许可证。
+
+## 11.5 Last10m 入口关系专项数据
+
+当前公开数据集中，很多资源只标记 door / entrance / building 类别，并没有“用户目标商店—正确入口门”关系真值。因此，不能把一般门检测数据集包装成入口识别 benchmark。
+
+候选来源：
+- [LSVT / Large-Scale Street View Text](https://github.com/ku21fan/STR-Fewer-Labels)：街景文字识别和定位辅助；不等于店铺入口关系真值。
+- [Mapillary Vistas](https://www.mapillary.com/dataset/vistas/)：街景语义类别和道路上下文；不保证门与商店关系标注。
+- [Open Images](https://storage.googleapis.com/openimages/web/index.html)：通用对象类别；不提供完整目标商店—入口关系。
+- 当前 Last10m 三个场景、七帧 REPLAY：继续作为状态机回归用例。
+
+如果以上公开资源都没有所需关系标签，才制作最小人工标注集。每个 case 必须包含目标商店、候选门、正确入口 ID、SAME_TARGET / NEIGHBOR、目标可见性、门前地面和障碍物、视角需求；标注者分歧需保留，不能只记录模型输出。
+
+## 11.6 最小下载清单与顺序
+
+| 顺序 | 资源 | 最小选择 | 目的 | 下载前条件 |
+|---|---|---|---|---|
+| 0 | 现有本机 SANPO 481 帧 / DAV2 57 帧结果 | 不下载 | 复用已有证据 | 建立 manifest 和哈希 |
+| 1 | TUM VI | room1 512×512 单序列 | Basalt 手持 VIO 桌面基线 | 官方 URL、MD5、数据条款核实 |
+| 2 | EuRoC | V1_01_easy 单序列 | 标准双目 VIO 回归 | ETH 当前单序列下载和许可核实 |
+| 3 | ADVIO | advio-09 单组 | 真实手机格式适配 | CC BY-NC 4.0；确认非商业研究范围 |
+| 4 | 深度基准 | NYU Eigen test 小子集 + iBims-1 + ETH3D 官方评估子集 | 室内近场、边界、室内外几何 | 官方 split、许可、校验值 |
+| 5 | 深度/几何补充 | DIODE 小评估子集；必要时 TartanAir 单轨迹 | 室内外深度与可控时序几何 | 不下载 DIODE 全量（可能约 84 GB） |
+| 6 | 语义补充 | NavAble 相关类别子集；SANPO 现有 split；必要时 Mapillary/BDD/Cityscapes | 无障碍设施与道路类别 | 数据条款和商业使用限制核实 |
+| 7 | 地图基准 | ScanNet 单 scene 或 TUM RGB-D 短序列 | 离线地图/点云几何对照 | ScanNet 使用协议或 TUM 条款核实 |
+
+## 11.7 哪些数据绝不能互相替代
+
+- **单张深度图数据集不能验证 VIO。** NYU、DIODE、ETH3D、iBims-1、Hypersim 的深度评估样本通常不提供手机同步 IMU 和连续 pose。
+- **车载数据不能代表胸前手机视角。** KITTI、BDD100K、Cityscapes、Virtual KITTI 2 对道路语义/户外深度有帮助，但视角、运动、目标尺度和遮挡分布不同。
+- **合成数据不能单独证明真实泛化。** Hypersim、Virtual KITTI 2、TartanAir 必须与真实数据分开报告。
+- **稀疏 LiDAR 深度不能当稠密 GT。** 只在有效返回区域计算深度误差，并单独报告覆盖率。
+- **记录位姿不等于 IMU。** SANPO corrected pose CSV 可用于离线轨迹参考或输入代理，不能替代原始 gyro/accelerometer 测量。
+- **语义类别不等于可通行性真值。** sidewalk、road、curb、terrain、obstacle 的标签语义和 BlindNav 风险策略需要显式映射与人工核验。
+- **门框检测不等于入口关系。** Last10m 必须有 target-store-to-door 关系标注。
+- **模型的名义米制输出不等于可靠公制测量。** 必须在独立深度 GT 和正确相机内参下验证原始尺度；scale-aligned 指标单独报告。
+
+## 11.8 统一基准执行矩阵
+
+第一轮只执行粗体项目，其他项目在出现明确缺口后再启用：
+
+| 能力 | 主基准 | 第二基准 | 主要指标 |
+|---|---|---|---|
+| VIO | **TUM VI room1 + Basalt** | EuRoC V1_01_easy | ATE、RPE、跟踪率、初始化/恢复 |
+| 手机 VIO 域适应 | **ADVIO-09** | ADVIO-20 | 时间同步、尺度、ATE/RPE、格式转换有效率 |
+| 单目深度 | **现有 DAV2 57 帧结果** | NYU / iBims-1 / ETH3D | AbsRel、RMSE、δ1、有效像素率 |
+| 公制深度 | **有 GT 的 ETH3D / DIODE 子集** | KITTI depth | no-scale-alignment RMSE/AbsRel |
+| 地面/表面法线 | **DIODE / Hypersim 子集** | iBims-1 | 法线角度误差、平面拟合残差 |
+| egocentric 可行走区域 | **SANPO** | SANPO-Synthetic | IoU、boundary F1、危险区域漏分 |
+| 无障碍设施 | **NavAble** | Mapillary Vistas | per-class AP/IoU、跨域表现 |
+| 城市道路语义 | Mapillary Vistas | Cityscapes / BDD100K | 类别映射后的 mIoU；明确域差 |
+| 三维地图 | TUM RGB-D / ScanNet 单 scene | TartanAir 单轨迹 | 点云对齐误差、重影、地图一致性 |
+| Last10m | 当前 REPLAY 回归集 | 新增带关系 GT 的独立 case | 入口关系准确率、错误入口率、拒绝率 |
+
+## 11.9 本目录的反馈更新规则
+
+每个数据集/技术基准使用以下状态之一：
+- `DISCOVERED`：已找到官方来源；
+- `TERMS_CHECKED`：许可和访问条款已核对；
+- `DOWNLOADED`：已下载并校验；
+- `FORMAT_VALIDATED`：数据格式和标定通过；
+- `RUN_COMPLETED`：算法真实运行完成；
+- `REPRODUCED`：指标可重复复现；
+- `REJECTED`：因许可、格式、域差或成本原因停止。
+
+目前除 BlindNav 原有报告明确记载的实验外，新列出的资源均不得标记为 DOWNLOADED / RUN_COMPLETED / REPRODUCED。每次状态变化都需附上证据路径、日期、版本、SHA256 和运行日志。
+
