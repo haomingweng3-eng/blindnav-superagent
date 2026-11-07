@@ -353,6 +353,24 @@ BlindNav 有两个相关但必须分开验收的产品/研究工作流：
 
 阶段文件：[`docs/phase_reports/p0_20261107/`](phase_reports/p0_20261107/)。
 
+## 9.2 执行侧反馈评审（2026-11-07）
+
+执行侧反馈正确指出：A 条件也只有 29/481 授权方向，D 条件的 49/481
+覆盖不能归因于 VIO 或 DAV2 单一瓶颈；`any_miss` 不能当作危险感知召回。
+但反馈中的 Harvard A/D `23/481`、`80/481` 是 surface-layer candidate
+数量，不是当前修正回放的最终授权方向；当前冻结 CSV 的最终方向为 8/481、
+71/481，最终 UNKNOWN 为 168/481、347/481。两套分母必须分开。
+
+下一轮不增加新模型、不改 VIO、不放宽安全阈值。先做同一批 481 帧的
+E1 layer-certificate replay，固定输出 Surface、Occupancy、Fusion、最终命令
+和 GT danger 的交叉矩阵；再只选择一个证据层的诊断性改动。E2 优先检查
+Occupancy 的部分观测射线如何作为 `observation_hint` 暴露，保留 CLEAR 证书、
+STOP 和 `authorized_motion` 语义不变；E3 只有在 E2 无法解释主要瓶颈时才检查
+Surface `no_candidate_ray`。两项都必须在独立验证后才允许进入下一阶段。
+
+详细反馈与当前 CSV 的逐层矩阵见
+[`docs/phase_reports/mobilio_feedback_20261107/`](phase_reports/mobilio_feedback_20261107/)。
+
 ## 10. 相关现有文档
 
 - [项目现状与路线图](PROJECT_REVIEW_AND_ROADMAP_20261107.md)
