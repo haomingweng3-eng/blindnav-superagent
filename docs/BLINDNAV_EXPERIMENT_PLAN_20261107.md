@@ -608,3 +608,18 @@ E3 Surface 481 帧冻结离线回放已完成：OFF/ON 均成功退出，trace �
 Basalt + TUM VI 仍为 PC VIO 主线但尚未运行；P1 HOLD。DAV2 57 帧旧证据复用，Metric3D 仍待权重许可/焦距/尺度/真值条件核验。手机验证仍在最后。
 
 固定评分卡：3.7/10（上一轮同口径 3.6/10，+0.1 仅来自可复现性）；其他技术维度不加分。此分数替代此前与权重不一致的主观 4.0/10。
+
+
+---
+
+## 13. 提速与消融设计校正（2026-11-07）
+
+最新审查发现原 A/B/C/D 四路输入矩阵存在标定变量混杂，详见 [FOUR_WAY_ABLATION_CONFOUND_REVIEW_20261107.md](reviews/FOUR_WAY_ABLATION_CONFOUND_REVIEW_20261107.md)。
+
+`pc/tools/mobilio_sanpo_ab.py` 中，DAV2 scale/shift 标定使用 v5 mask；A/B 的 GT depth 使用 `gt_ref.up/h`，C/D 的 DAV2 使用 `fit.up` / attitude 和 session camera height。因此原矩阵不是严格正交的 segmentation×depth 因果实验。保留旧结果作为历史代码路径结果，但不得据此独立归因深度或分割贡献。
+
+当前唯一执行任务改为 [CORRECTED_2X2_GEOMETRY_ABLATION_20261107.md](phase_prompts/CORRECTED_2X2_GEOMETRY_ABLATION_20261107.md)：固定 pose、K、up、camera height、calibration mask、地图参数与安全逻辑，只改变地图语义 mask 和深度输入；对 481 帧一次性运行四条件，报告两个主效应及交互效应。
+
+暂停 12 帧 Surface causal overlay，除非校正消融仍无法定位。禁止重复 481 帧 OFF/ON trace、无假设阈值扫描、引入新模型、手机测试和大规模下载。
+
+项目加权分数调整为 **3.6/10**（此前 3.7，-0.1，原因是旧因果实验设计存在混杂，复现性评分从 7 调至 6；并非系统导航性能下降）。当前目标是用一次正确的对照实验决定究竟应修分割、深度/标定还是地图输入契约。
