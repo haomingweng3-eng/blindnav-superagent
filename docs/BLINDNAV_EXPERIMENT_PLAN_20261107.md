@@ -576,3 +576,14 @@ Mapillary Vistas、BDD100K、Cityscapes 是道路/街景语义数据，不是胸
 
 目前除 BlindNav 原有报告明确记载的实验外，新列出的资源均不得标记为 DOWNLOADED / RUN_COMPLETED / REPRODUCED。每次状态变化都需附上证据路径、日期、版本、SHA256 和运行日志。
 
+
+
+## 12. 状态增补：E3 全量冻结回放已完成，G2 仍 HOLD（2026-11-07 10:02 UTC）
+
+本节取代上文截至较早审查时“E3 完整 481 帧未运行”的旧状态；**不改变 P0–P6、Last10m 或任何安全门禁**。
+
+- E3 执行代码快照 `6813160c555e297b03a599eb689b8083fe4ce36a`，已提交真实 PC 离线 481 帧 × 2 臂的 OFF/ON 回放、独立核对文件、gzip 原始派生表、射线日志、历史候选版本回放和分组表；材料位于 [E3 回放目录](phase_reports/e3_surface_6813160/)。
+- 独立读取未压缩 CSV，复算 confirmed_clear 150、danger 295、other 36；最终 CLEAR 49、OBSERVE 157、UNKNOWN 275；`surface:no_candidate_ray` 125 帧中 danger 108，confirmed_clear 7；**confirmed_clear 的 77 帧 `surface:non_walkable` 是当前更大的可用性失败簇**。danger 的 17/295 被放行仍是安全代理风险，不得降低阈值来追求覆盖。
+- E3 **REPLAY_COMPLETED / PARTIAL_INDEPENDENT_CHECK / G2 HOLD**；不等于导航提升、实际 VIO、真机安全或 G2 GO。叠加到原图、GT、深度、BEV/网格和射线的因果证据尚缺。
+- 项目指导决定当前唯一任务为 [E3 因果叠加执行提示词](phase_prompts/E3_SURFACE_CAUSAL_OVERLAY_20261107.md)，审查依据为 [E3 独立技术复核](reviews/E3_FROZEN_REPLAY_INDEPENDENT_REVIEW_20261107_1002Z.md)。不重复运行无价值的 smoke/全量 OFF-ON；冻结授权语义不变。
+- 固定权重评分已校正：同分项上次加权应为 **3.6/10**，本轮 **3.7/10**，仅复现性 +1 分项；原主观总览的 **4.0/10** 与固定权重旧分项未数学对齐，不能当成可比基线。P0–P6 目前完整通过仍为 **0/7**，P0/P2 有部分研究证据，P1 Basalt/TUM VI 尚未运行，P6 手机继续 HOLD。
