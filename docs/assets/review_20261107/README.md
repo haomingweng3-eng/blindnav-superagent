@@ -7,6 +7,8 @@ review the current BlindNav state without access to the development computer.
 
 * `last10m_scenarios_20261107/audit.json` — audit of the three real LSVT
   storefront scenarios, seven frames, and target-to-door relation labels.
+* `last10m_scenarios_20261107/replay_eval.json` — separate target-lock,
+  entrance-relation, ground-evidence, and motion-authorization gate results.
 
 ## Mobilio / SANPO
 
