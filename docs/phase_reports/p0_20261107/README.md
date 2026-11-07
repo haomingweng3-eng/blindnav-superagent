@@ -13,3 +13,8 @@ and a one-sequence public VIO dataset have verified source, license, checksum,
 calibration and ground-truth availability. P0.1 is complete for the three
 SANPO prefixes; P0.2 and P0.3 remain partial because the independent environment
 and exact TUM-VI room1 file checksum are not yet available.
+
+The P0.2 host/dependency checklist is in
+`basalt_dependency_audit.md`; it records the local compiler and CMake presence,
+missing Ninja/runtime/container fallback, and the disk-space constraint without
+attempting a build.
