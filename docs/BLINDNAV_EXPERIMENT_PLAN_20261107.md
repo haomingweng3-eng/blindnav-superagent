@@ -368,6 +368,11 @@ Occupancy 的部分观测射线如何作为 `observation_hint` 暴露，保留 C
 STOP 和 `authorized_motion` 语义不变；E3 只有在 E2 无法解释主要瓶颈时才检查
 Surface `no_candidate_ray`。两项都必须在独立验证后才允许进入下一阶段。
 
+E2 已在冻结 production D CSV 上执行为诊断版：暴露 37 个部分观测 Occupancy
+hint，但授权方向仍为 49/481，危险漏放仍为 17/295，确认安全路面误停仍为
+0/150。因此 E2 是“安全不回退、可用性未改善”的结果；在独立复核前不进入
+E3，也不把 hint 当作导航能力提升。
+
 详细反馈与当前 CSV 的逐层矩阵见
 [`docs/phase_reports/mobilio_feedback_20261107/`](phase_reports/mobilio_feedback_20261107/)。
 

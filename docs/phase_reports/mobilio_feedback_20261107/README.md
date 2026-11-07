@@ -105,6 +105,28 @@ clear guidance without increasing danger forward guidance or false stops. If
 only hints increase while final guidance is unchanged, report a usable
 diagnostic improvement but do not call it navigation improvement.
 
+### E2 result on frozen production D
+
+The diagnostic evaluator is `pc/tools/mobilio_occupancy_hint_eval.py`; it reads
+the packaged production CSV and never changes the production decision. The
+machine-readable result is `e2_occupancy_hint.json`.
+
+| metric | baseline / variant |
+|---|---:|
+| frames | 481 / 481 |
+| observation hints | 0 / 37 |
+| hints on GT danger | 0 / 19 |
+| hints on confirmed-clear frames | 0 / 12 |
+| authorized motion | 49 / 49 |
+| danger forward-guidance miss | 17/295 / 17/295 |
+| confirmed-clear false STOP | 0/150 / 0/150 |
+
+This is a **diagnostic improvement only**: the variant exposes 37 partially
+observed occupancy rays, but it does not recover a single authorized direction.
+It therefore passes the safety invariants and fails the navigation-usability
+improvement criterion. An independent verifier must check this result before
+E3 is considered.
+
 ### E3 — one surface search change, only if E2 does not identify a bottleneck
 
 Use the same contract for `surface:no_candidate_ray`: retain non-walkable and
