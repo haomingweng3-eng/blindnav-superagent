@@ -365,3 +365,21 @@ Depth Anything V2 官方说明：Small 模型许可 Apache-2.0；Base/Large/Gian
 - **评分变化**：只根据新证据增减分，不根据讨论热度或文档数量变化。
 
 **审查者的职责是保护项目免于错误结论和错误投入，不是迎合反馈。**
+
+
+## 12. 最新阶段状态校正：E3 冻结回放已完成（2026-11-07 21:45 +08:00）
+
+最新审查记录：[E3_REPLAY_TECHNICAL_REVIEW_20261107_2145.md](E3_REPLAY_TECHNICAL_REVIEW_20261107_2145.md)。
+
+- 分支审查 HEAD：`bd5cea73b96109b6b367d8695b6e112fae98ff08`。
+- E3 实验代码快照：`6813160c555e297b03a599eb689b8083fe4ce36a`。
+- E3 481 帧 OFF/ON 回放均成功；472 帧各 181 条射线，9 帧无公制深度；OFF/ON 受检 17 项决策/授权字段逐帧一致。
+- `no_candidate_ray` 125 帧中 danger 108、confirmed_clear 7、other 10；不得整体视作误拒绝。
+- confirmed_clear 中 77/150 的最终主因为 `surface:non_walkable`；danger 中 17/295 最终 CLEAR。两者都需要因果证据，不能用放宽阈值处理。
+- E3 完整回放已完成；原图/GT、v5 mask、DAV2、BEV/网格、射线的 12 帧因果叠加未完成，因此 G2 仍 HOLD。
+- 下一步唯一任务：执行 [E3_SURFACE_CAUSAL_OVERLAY_20261107.md](../phase_prompts/E3_SURFACE_CAUSAL_OVERLAY_20261107.md)；不得重跑同义的 481 帧 OFF/ON，不做阈值扫描。
+- Basalt/TUM VI 仍未运行；P1 HOLD。手机/Android 仍最后。
+
+### 评分口径统一
+
+此前主观总览 4.0/10 与固定七维权重不一致。统一采用固定权重后，本轮评分 **3.7/10**，上一轮同口径 3.6/10，增加 0.1 仅来自可复现性；定位、几何、地图可用性和安全证据均未加分。后续不再将主观 4.0 与加权总分混用。
