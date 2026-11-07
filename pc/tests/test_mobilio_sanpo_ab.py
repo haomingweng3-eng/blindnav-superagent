@@ -10,6 +10,7 @@ from mobilio_sanpo_ab import (  # noqa: E402
     make_candidate_row,
     resolve_condition_depth,
 )
+from blindnav_pc.mobilio_surface import SurfaceRoute  # noqa: E402
 
 
 def test_candidate_and_baseline_keys_are_identical():
@@ -37,3 +38,18 @@ def test_candidate_row_contains_same_gt_denominators_as_baseline():
                              decision=decision)
     assert row["session"] == "s" and row["frame"] == 1
     assert row["gt_road_in_path"] is True
+
+
+def test_candidate_row_exports_surface_ray_diagnostics():
+    gt_ref = {"plane_ok": True}
+    decision = type("D", (), {"state": "UNKNOWN", "guidance": None,
+                               "reason": "surface:no_candidate_ray", "angle_rad": None})()
+    surface = SurfaceRoute("OBSERVE", 0.1, 3.0, 2, 3, 1, False, "non_walkable",
+                           termination_distance_m=3.2, last_walkable_distance_m=2.8,
+                           termination_cell=(4, 5), last_walkable_cell=(3, 5))
+    row = make_candidate_row("production", "mobilio", "s", 1, gt_ref=gt_ref,
+                             decision=decision, surface_route=surface)
+    assert row["surface_termination_distance_m"] == 3.2
+    assert row["surface_last_walkable_distance_m"] == 2.8
+    assert row["surface_termination_cell_ix"] == 4
+    assert row["surface_last_walkable_cell_iz"] == 5

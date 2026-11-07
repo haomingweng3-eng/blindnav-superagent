@@ -374,7 +374,9 @@ hint，但授权方向仍为 49/481，危险漏放仍为 17/295，确认安全�
 E3，也不把 hint 当作导航能力提升。E2 已由独立 Agent 逐行复核；E3 当前
 `NOT_EVALUABLE`，因为冻结 CSV 没有 Surface 射线截断位置和候选角度，不能
 后处理制造 Surface hint。需要先扩展离线诊断字段并重新生成 481 行，再交给
-独立验证。
+独立验证。当前 evaluator 已加入终止距离、最后可走距离和网格单元坐标的
+诊断输出，并通过单元级射线测试；完整 481 帧 E3 重放仍待具备 SANPO/模型
+输入后执行。
 
 详细反馈与当前 CSV 的逐层矩阵见
 [`docs/phase_reports/mobilio_feedback_20261107/`](phase_reports/mobilio_feedback_20261107/)。

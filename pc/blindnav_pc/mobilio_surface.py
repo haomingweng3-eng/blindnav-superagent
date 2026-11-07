@@ -86,6 +86,10 @@ class SurfaceRoute:
     candidate_count: int
     fully_observed: bool
     reason: str
+    termination_distance_m: float = 0.0
+    last_walkable_distance_m: float = 0.0
+    termination_cell: Optional[Tuple[int, int]] = None
+    last_walkable_cell: Optional[Tuple[int, int]] = None
 
 
 @dataclass
@@ -288,6 +292,10 @@ class SurfaceGrid2D:
 
     def _ray_candidate(self, pose: SurfacePose, angle_rad: float) -> SurfaceRoute:
         observed = 0.0
+        last_walkable_distance = 0.0
+        last_walkable_cell = None
+        termination_distance = 0.0
+        termination_cell = None
         unknown_total = 0
         pending_unknown = 0
         terminated = ROLE_UNKNOWN
@@ -305,6 +313,8 @@ class SurfaceGrid2D:
                     fully_observed = False
                     pending_unknown = 0
                 observed = max(observed, min(distance + self.cfg.cell_m, self.cfg.max_range_m))
+                last_walkable_distance = float(distance)
+                last_walkable_cell = key
                 continue
             if role == ROLE_UNKNOWN:
                 if distance <= self.cfg.blind_zone_m:
@@ -312,6 +322,8 @@ class SurfaceGrid2D:
                 pending_unknown += 1
                 if pending_unknown > self.cfg.max_gap_cells:
                     terminated = ROLE_UNKNOWN
+                    termination_distance = float(distance)
+                    termination_cell = key
                     break
                 continue
             if pending_unknown:
@@ -319,7 +331,11 @@ class SurfaceGrid2D:
                 fully_observed = False
                 pending_unknown = 0
             terminated = role
+            termination_distance = float(distance)
+            termination_cell = key
             break
+        if termination_cell is None and observed > 0.0:
+            termination_distance = float(min(observed, self.cfg.max_range_m))
         route_clear = (fully_observed and observed >= self.cfg.min_candidate_m
                        and terminated == ROLE_UNKNOWN)
         return SurfaceRoute(
@@ -329,6 +345,10 @@ class SurfaceGrid2D:
             candidate_count=1, fully_observed=bool(fully_observed),
             reason=("walkable" if terminated == ROLE_UNKNOWN else
                     ("hazard" if terminated == ROLE_HAZARD else "non_walkable")),
+            termination_distance_m=termination_distance,
+            last_walkable_distance_m=last_walkable_distance,
+            termination_cell=termination_cell,
+            last_walkable_cell=last_walkable_cell,
         )
 
     def raycast_route(self, pose: SurfacePose, target_angle_rad: float = 0.0) -> SurfaceRoute:
@@ -355,4 +375,8 @@ class SurfaceGrid2D:
             unknown_cells=selected.unknown_cells, terminated_role=selected.terminated_role,
             candidate_count=len(candidates), fully_observed=selected.fully_observed,
             reason=selected.reason,
+            termination_distance_m=selected.termination_distance_m,
+            last_walkable_distance_m=selected.last_walkable_distance_m,
+            termination_cell=selected.termination_cell,
+            last_walkable_cell=selected.last_walkable_cell,
         )

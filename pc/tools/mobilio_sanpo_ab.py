@@ -67,6 +67,9 @@ MOBILIO_EXTRA_FIELDS = [
     "risk_state", "observation_hint", "authorized_motion",
     "surface_angle_rad", "occupancy_angle_rad",
     "surface_failure", "surface_failure_cell", "surface_last_walkable_cell",
+    "surface_termination_distance_m", "surface_last_walkable_distance_m",
+    "surface_termination_cell_ix", "surface_termination_cell_iz",
+    "surface_last_walkable_cell_ix", "surface_last_walkable_cell_iz",
 ]
 MOBILIO_FIELDS = list(dict.fromkeys(list(rse.PER_FRAME_FIELDS) + MOBILIO_EXTRA_FIELDS))
 
@@ -124,6 +127,8 @@ def make_candidate_row(condition: str, arm: str, session: str, frame: int, *,
                        pose_mode: str = "sanpo_recorded_pose") -> dict:
     """Build the common row prefix; metric flags are added after GT fields are complete."""
     row = {field: None for field in MOBILIO_FIELDS}
+    termination_cell = getattr(surface_route, "termination_cell", None)
+    last_walkable_cell = getattr(surface_route, "last_walkable_cell", None)
     row.update({
         "condition": str(condition), "arm": str(arm), "session": str(session),
         "frame": int(frame), "effective_command": _effective_command(decision),
@@ -134,6 +139,12 @@ def make_candidate_row(condition: str, arm: str, session: str, frame: int, *,
         "surface_distance_m": getattr(surface_route, "observed_distance_m", None),
         "surface_unknown_cells": getattr(surface_route, "unknown_cells", None),
         "surface_fully_observed": getattr(surface_route, "fully_observed", None),
+        "surface_termination_distance_m": getattr(surface_route, "termination_distance_m", None),
+        "surface_last_walkable_distance_m": getattr(surface_route, "last_walkable_distance_m", None),
+        "surface_termination_cell_ix": termination_cell[0] if termination_cell else None,
+        "surface_termination_cell_iz": termination_cell[1] if termination_cell else None,
+        "surface_last_walkable_cell_ix": last_walkable_cell[0] if last_walkable_cell else None,
+        "surface_last_walkable_cell_iz": last_walkable_cell[1] if last_walkable_cell else None,
         "occupancy_state": getattr(occupancy_route, "state", None),
         "occupancy_clear_distance_m": getattr(occupancy_route, "clear_distance_m", None),
         "occupancy_blocking_cells": getattr(occupancy_route, "blocking_cells", None),

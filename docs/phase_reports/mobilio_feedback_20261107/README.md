@@ -156,3 +156,9 @@ The next valid E3 run must add those diagnostic fields to the offline evaluator
 while keeping the safety decision frozen, then regenerate the same 481 rows.
 Until that run is independently checked, no Surface hint or authorization claim
 is made.
+
+The evaluator is now instrumented to export `surface_termination_distance_m`,
+`surface_last_walkable_distance_m`, termination/last-walkable cell coordinates,
+and the existing candidate angle. Unit-level checks cover a non-walkable ray and
+the no-candidate case. The full 481-frame E3 replay is still pending because
+the required SANPO/model inputs are not available in the review artifact bundle.
