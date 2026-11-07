@@ -23,5 +23,12 @@
     "on": 0
   },
   "unit_test": "32 passed; targeted tests, not replay proof",
-  "data_terms": "https://github.com/google-research-datasets/sanpo_dataset#license--contact"
+  "data_terms": "https://github.com/google-research-datasets/sanpo_dataset#license--contact",
+  "approximate_log_file_times_utc": {
+    "off_created": "2026-11-07T09:42:45Z",
+    "off_modified": "2026-11-07T09:45:22Z",
+    "on_created": "2026-11-07T09:45:32Z",
+    "on_modified": "2026-11-07T09:48:14Z",
+    "source": "filesystem creation and modification times, not internal process timestamps"
+  }
 }

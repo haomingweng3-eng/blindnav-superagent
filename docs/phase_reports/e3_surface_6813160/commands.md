@@ -14,3 +14,12 @@ HF_HUB_OFFLINE=1 PYTHONNOUSERSITE=1 PYTHONPATH=pc:pc/tools "$PYTHON" pc/tools/mo
 ```sh
 HF_HUB_OFFLINE=1 PYTHONNOUSERSITE=1 PYTHONPATH="$OLD_TREE/pc:$OLD_TREE/pc/tools" "$PYTHON" "$OLD_TREE/pc/tools/mobilio_sanpo_ab.py" --data-root "$SANPO_REAL" --v5-checkpoint "$V5_CHECKPOINT" --out "$OLD_OUTPUT" --conditions production --max-width 640 --seed 0 --device mps --save-failures 0
 ```
+
+补充采集的实际命令（路径脱敏）：
+
+```sh
+HF_HUB_OFFLINE=1 PYTHONNOUSERSITE=1 PYTHONPATH=pc:pc/tools "$PYTHON" /tmp/e3_capture_visual.py --data-root "$SANPO_REAL" --v5-checkpoint "$V5_CHECKPOINT" --out pc/out/e3_surface_visual_e1e7615 --conditions production --max-width 640 --seed 0 --device mps --save-failures 0 --e3-frozen --trace-run-id e3_visual_e1e7615 --trace-code-commit e1e7615d8a1cead460d0774e1a6d5dc597a8d13a --trace-input-manifest docs/phase_reports/e3_input_audit_20261107/input_inventory.json
+HF_HUB_OFFLINE=1 PYTHONNOUSERSITE=1 PYTHONPATH=pc:pc/tools "$PYTHON" /tmp/e3_capture_selected.py --data-root "$SANPO_REAL" --sessions=-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10 --v5-checkpoint "$V5_CHECKPOINT" --out pc/out/e3_surface_visual_selected --conditions production --max-width 640 --limit-per-session 121 --seed 0 --device mps --save-failures 0
+```
+
+后者使用非冻结入口；第一次省略 `--limit-per-session 121` 的尝试被主动中断，日志保留，退出码 130。

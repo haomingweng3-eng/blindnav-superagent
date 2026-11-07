@@ -1,0 +1,7 @@
+arm,session,frames,danger,confirmed_clear,authorized_directions,authorized_on_confirmed_clear,any_miss,false_stop,unknown,observe,blocked,clear,hint_only,transitions,command_flips
+baseline_split_c,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,121,42,61,29,14,9,0,81,11,0,29,0,120,45
+baseline_split_c,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,184,91,76,147,52,80,0,31,6,0,147,0,183,83
+baseline_split_c,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,176,162,13,44,10,34,0,102,23,7,44,0,175,73
+mobilio,-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10,121,42,61,10,8,2,0,74,37,0,10,1,120,27
+mobilio,M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-,184,91,76,37,21,13,0,53,94,0,37,1,183,90
+mobilio,UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5,176,162,13,2,0,2,0,148,26,0,2,2,175,19
