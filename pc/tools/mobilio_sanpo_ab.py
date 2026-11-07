@@ -9,11 +9,14 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
 import sys
+import subprocess
 import time
+from pathlib import Path
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -70,8 +73,137 @@ MOBILIO_EXTRA_FIELDS = [
     "surface_termination_distance_m", "surface_last_walkable_distance_m",
     "surface_termination_cell_ix", "surface_termination_cell_iz",
     "surface_last_walkable_cell_ix", "surface_last_walkable_cell_iz",
+    "surface_failed_ray_angle_rad", "surface_failed_ray_distance_m",
+    "surface_failed_ray_termination_role", "surface_failed_ray_termination_cell",
+    "surface_failed_ray_last_walkable_cell", "surface_failed_ray_last_walkable_distance_m",
+    "surface_trace_status",
+    "run_id", "code_commit", "input_manifest_sha256", "timestamp_ms",
+    "relative_time_ms", "timestamp_source", "pose_source",
 ]
 MOBILIO_FIELDS = list(dict.fromkeys(list(rse.PER_FRAME_FIELDS) + MOBILIO_EXTRA_FIELDS))
+
+
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for block in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def validate_trace_code_state(actual_head: str, tracked_status: str, expected_head: str) -> str:
+    if len(expected_head) != 40 or actual_head != expected_head:
+        raise ValueError("trace code commit does not match HEAD")
+    if tracked_status.strip():
+        raise ValueError("tracked code contains uncommitted changes")
+    return actual_head
+
+
+def validate_loaded_model_revisions(cache_inventory: dict, actual_revisions: dict) -> bool:
+    for name, revision in actual_revisions.items():
+        if not revision or revision != cache_inventory.get(name, {}).get("revision"):
+            raise ValueError(f"loaded model revision mismatch or unavailable: {name}")
+    return True
+
+
+def validate_model_cache_files(cache_inventory: dict, resolver) -> int:
+    """Validate all recorded model/config/processor cache files by content."""
+    if not cache_inventory:
+        raise ValueError("model cache inventory is incomplete")
+    count = 0
+    for repo, entry in cache_inventory.items():
+        for item in entry.get("cache_files", []):
+            resolved = resolver(repo, item["name"], entry["revision"])
+            if not isinstance(resolved, str):
+                raise ValueError(f"model cache missing: {repo}/{item['name']}")
+            path = Path(resolved)
+            if not path.is_file() or path.stat().st_size != item["bytes"] or _file_sha256(path) != item["sha256"]:
+                raise ValueError(f"model cache mismatch: {repo}/{item['name']}")
+            count += 1
+    if not count:
+        raise ValueError("empty model cache inventory")
+    return count
+
+
+def verified_model_snapshot(cache_inventory: dict, repo: str, resolver) -> str:
+    """Return the exact snapshot directory after rejecting unlisted files."""
+    entry = cache_inventory[repo]
+    expected_names = {item["name"] for item in entry["cache_files"]}
+    if not expected_names or any(Path(name).name != name for name in expected_names):
+        raise ValueError(f"invalid snapshot inventory: {repo}")
+    paths = [resolver(repo, name, entry["revision"]) for name in sorted(expected_names)]
+    if any(not isinstance(path, str) for path in paths):
+        raise ValueError(f"snapshot missing: {repo}")
+    parents = {Path(path).parent for path in paths}
+    if len(parents) != 1:
+        raise ValueError(f"snapshot files are not in one directory: {repo}")
+    snapshot = parents.pop()
+    actual_names = {path.name for path in snapshot.iterdir()}
+    if actual_names != expected_names:
+        raise ValueError(f"snapshot file set differs from inventory: {repo}")
+    return str(snapshot)
+
+
+def validate_trace_inventory(manifest: dict, data_root, checkpoint) -> int:
+    """Validate listed data and v5 weights; does not validate HF model caches."""
+    if manifest.get("schema") != "e3-input-inventory/1" or manifest.get("missing"):
+        raise ValueError("invalid or incomplete input inventory")
+    root = Path(data_root).resolve()
+    files = manifest.get("files")
+    if not isinstance(files, list) or not files:
+        raise ValueError("empty input inventory")
+    seen = set()
+    for entry in files:
+        rel = entry["path"]
+        path = (root / rel).resolve()
+        if not path.is_relative_to(root):
+            raise ValueError(f"path outside data root: {rel}")
+        if path in seen:
+            raise ValueError(f"duplicate input: {rel}")
+        seen.add(path)
+        if not path.is_file() or path.stat().st_size != entry["bytes"] or _file_sha256(path) != entry["sha256"]:
+            raise ValueError(f"input mismatch: {rel}")
+    if not checkpoint or _file_sha256(Path(checkpoint)) != manifest.get("v5_sha256"):
+        raise ValueError("v5 checkpoint mismatch")
+    return len(files)
+
+
+def validate_trace_frame_coverage(manifest: dict, session_frames: dict, camera: str) -> int:
+    """Require inventory to match the evaluator's available frame/file set."""
+    expected = set()
+    count = 0
+    for sid, frames in session_frames.items():
+        if len(frames) != len(set(frames)):
+            raise ValueError(f"duplicate frame keys: {sid}")
+        expected.add(f"{sid}/description.json")
+        expected.add(f"{sid}/{camera}/fixed_camera_poses.csv")
+        for frame in frames:
+            count += 1
+            base = f"{sid}/{camera}/left"
+            expected.add(f"{base}/video_frames/{frame:06d}.png")
+            expected.add(f"{base}/segmentation_masks/{frame:06d}.png")
+            expected.add(f"{base}/depth_maps/{frame:06d}.float16.gz")
+    if count != manifest.get("frame_keys"):
+        raise ValueError("runtime frame count differs from inventory")
+    actual = {entry["path"] for entry in manifest["files"]}
+    if actual != expected:
+        raise ValueError(f"runtime file set differs from inventory: missing={len(expected-actual)}, extra={len(actual-expected)}")
+    return count
+
+
+def validate_frozen_frame_keys(csv_path, session_frames: dict, expected_sha256: str) -> int:
+    """Compare exact runtime frame keys against a hash-pinned historical CSV."""
+    path = Path(csv_path)
+    if _file_sha256(path) != expected_sha256:
+        raise ValueError("frozen CSV hash mismatch")
+    with path.open(newline="", encoding="utf-8") as fh:
+        rows = [r for r in csv.DictReader(fh)
+                if r.get("condition") == "production" and r.get("arm") == "mobilio"]
+    frozen = [(r["session"], int(r["frame"])) for r in rows]
+    actual = [(sid, int(frame)) for sid, frames in session_frames.items() for frame in frames]
+    if len(frozen) != len(set(frozen)) or len(actual) != len(set(actual)) or frozen != actual:
+        raise ValueError("runtime frame keys or order differ from frozen CSV")
+    return len(frozen)
 
 
 @dataclass(frozen=True)
@@ -286,7 +418,8 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                      cfg: Config, conditions: Sequence[str],
                      limit_per_session: int = 0,
                      visual_cases: Optional[List[dict]] = None,
-                     visual_max: int = 0, video_writer=None) -> List[dict]:
+                     visual_max: int = 0, video_writer=None, ray_trace_sink=None,
+                     ray_trace_metadata=None) -> List[dict]:
     """Evaluate both arms on one session with shared frame/model/depth products."""
     sid = os.path.basename(session.dir.rstrip("/"))
     indices = session.available_frames()
@@ -356,6 +489,13 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                 raise ValueError(f"unknown condition {condition!r}")
 
             if (not resolved.ok or resolved.depth_m is None or up is None or cls is None):
+                if ray_trace_sink is not None:
+                    ray_trace_sink.write(json.dumps({**(ray_trace_metadata or {}), "session": sid, "frame": int(frame), "timestamp_ms": None,
+                        "relative_time_ms": inp.t_ms, "timestamp_source": "frame_index_over_fps",
+                        "condition": condition, "arm": CANDIDATE_ARM,
+                        "pose_source": "sanpo_recorded_pose", "depth_source": resolved.source,
+                        "trace_status": "NO_METRIC_DEPTH" if calib_reason == "no_metric_depth" else "NO_GEOMETRY",
+                        "rays": []}) + "\n")
                 pair = _no_geometry_rows(
                     condition, sid, frame, gt_ref=gt_ref, calib_ok=resolved.ok,
                     calib_reason=calib_reason, depth_source=resolved.source,
@@ -363,7 +503,8 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                 for row in pair:
                     row.update({"yaw_err_deg": math.degrees(yaw_err),
                                 "rotation_only": False, "depth_confidence": resolved.confidence,
-                                "calib_reason": calib_reason})
+                                "calib_reason": calib_reason,
+                                "surface_trace_status": "NO_METRIC_DEPTH" if calib_reason == "no_metric_depth" else "NO_GEOMETRY"})
                 if (visual_cases is not None and len(visual_cases) < visual_max
                         and k == 0):
                     for row in pair:
@@ -474,6 +615,16 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
             occupancy_grid.update_body_points(
                 points_body[obstacle_mask], map_pose, int(frame), visible)
             surface_route = surface_grid.raycast_route(map_pose, target_angle)
+            trace_status = "NOT_RECORDED"
+            if ray_trace_sink is not None:
+                trace = surface_grid.trace_rays(map_pose, target_angle)
+                trace_status = "RECORDED" if any(r["observed_cell_count"] for r in trace) else "NO_OBSERVATION"
+                ray_trace_sink.write(json.dumps({**(ray_trace_metadata or {}), "session": sid, "frame": int(frame), "timestamp_ms": None,
+                    "relative_time_ms": inp.t_ms, "timestamp_source": "frame_index_over_fps",
+                    "condition": condition, "arm": CANDIDATE_ARM,
+                    "trace_status": trace_status,
+                    "pose_source": "sanpo_recorded_pose", "depth_source": resolved.source,
+                    "rays": trace}) + "\n")
             occupancy_route = occupancy_grid.raycast_clearance(map_pose, target_angle)
             candidate_decision = fuse(surface_route, occupancy_route)
             candidate_row = _candidate_row(
@@ -486,6 +637,7 @@ def evaluate_session(session: SanpoSession, model, device: Optional[str], depth_
                                   "calib_reason": calib_reason})
             candidate_row["surface_angle_rad"] = surface_route.angle_rad
             candidate_row["occupancy_angle_rad"] = occupancy_route.angle_rad
+            candidate_row["surface_trace_status"] = trace_status
             surface_snapshot = surface_grid.snapshot(map_pose)
             occupancy_snapshot = occupancy_grid.snapshot(map_pose)
             if visual_cases is not None and len(visual_cases) < visual_max:
@@ -633,17 +785,73 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--video-out", default=None,
                         help="optional MP4 path for a frame-aligned SANPO A/B replay")
+    parser.add_argument("--ray-trace-out", default=None,
+                        help="optional offline JSONL ray diagnostics; does not affect decisions")
+    parser.add_argument("--e3-frozen", action="store_true",
+                        help="apply identical frozen-input preflight with or without ray tracing")
+    parser.add_argument("--trace-run-id", default=None)
+    parser.add_argument("--trace-code-commit", default=None,
+                        help="base commit; separately record any uncommitted diff")
+    parser.add_argument("--trace-input-manifest", default=None,
+                        help="path to frozen input manifest; SHA256 is recorded in trace")
     return parser.parse_args(argv)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parse_args(argv)
+    if args.ray_trace_out and not args.e3_frozen:
+        print("BLOCKED_TRACE_METADATA: --e3-frozen is required", file=sys.stderr)
+        return 2
+    if args.e3_frozen and not all((args.trace_run_id, args.trace_code_commit, args.trace_input_manifest)):
+        print("BLOCKED_TRACE_METADATA: --trace-run-id, --trace-code-commit and --trace-input-manifest are required", file=sys.stderr)
+        return 2
+    if args.e3_frozen:
+        try:
+            repo_root = Path(_PC_DIR).parent
+            head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_root, text=True).strip()
+            status = subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=no"],
+                                             cwd=repo_root, text=True)
+            validate_trace_code_state(head, status, args.trace_code_commit)
+        except (OSError, subprocess.CalledProcessError, ValueError) as exc:
+            print(f"BLOCKED_TRACE_CODE_STATE: {exc}", file=sys.stderr)
+            return 2
+    trace_manifest_sha256 = None
+    if args.e3_frozen:
+        try:
+            with open(args.trace_input_manifest, "rb") as manifest_file:
+                manifest_bytes = manifest_file.read()
+                trace_manifest_sha256 = hashlib.sha256(manifest_bytes).hexdigest()
+            if trace_manifest_sha256 != "2b4997b6c3e561e62a046fb812edbd31de2ad231596da0ab9219755f2a20e37c":
+                raise ValueError("frozen input manifest hash mismatch")
+            inventory = json.loads(manifest_bytes)
+            validate_trace_inventory(inventory, args.data_root, args.v5_checkpoint)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            print(f"BLOCKED_TRACE_MANIFEST: {exc}", file=sys.stderr)
+            return 2
     np.random.seed(int(args.seed))
     data_root = os.path.abspath(args.data_root)
     if not os.path.isdir(data_root):
         print(f"BLOCKED_MISSING_DATA: {data_root}", file=sys.stderr)
         return 2
     conditions = list(args.conditions)
+    if args.e3_frozen and (conditions not in (["production"], ["D_v5_dav2"]) or args.limit_per_session):
+        print("BLOCKED_TRACE_CONDITION: frozen E3 requires production D and all frames", file=sys.stderr)
+        return 2
+    if args.e3_frozen and (args.max_width != 640 or args.seed != 0 or args.video_out):
+        print("BLOCKED_TRACE_CONFIG: frozen E3 requires width 640, seed 0, and no video output", file=sys.stderr)
+        return 2
+    if args.e3_frozen and args.device not in ("cpu", "mps"):
+        print("BLOCKED_TRACE_CONFIG: explicitly select --device cpu or mps", file=sys.stderr)
+        return 2
+    if args.e3_frozen and args.ray_trace_out:
+        trace_path = Path(args.ray_trace_out).resolve()
+        output_root = Path(args.out).resolve()
+        if not trace_path.is_relative_to(output_root):
+            print("BLOCKED_TRACE_OUTPUT: trace must be inside the new output directory", file=sys.stderr)
+            return 2
+    if args.e3_frozen and os.path.exists(os.path.abspath(args.out)):
+        print("BLOCKED_TRACE_OUTPUT_EXISTS: choose a new output directory", file=sys.stderr)
+        return 2
     needs_checkpoint = any(c in conditions for c in ("production", "B_v5_gt", "C_gt_dav2", "D_v5_dav2", "harvard_D"))
     if needs_checkpoint and not args.v5_checkpoint:
         print("BLOCKED_MISSING_CHECKPOINT: --v5-checkpoint is required for production", file=sys.stderr)
@@ -653,12 +861,72 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if not sessions:
         print(f"BLOCKED_MISSING_DATA: no sessions under {data_root}", file=sys.stderr)
         return 2
+    if args.e3_frozen and len(sessions) != len(set(sessions)):
+        print("BLOCKED_TRACE_FRAME_SET: duplicate session IDs", file=sys.stderr)
+        return 2
+
+    session_objects = {}
+    if args.e3_frozen:
+        try:
+            for sid in sessions:
+                session = SanpoSession(os.path.join(data_root, sid), args.camera,
+                                       max_width=args.max_width)
+                if os.path.basename(session.pose_file) != "fixed_camera_poses.csv":
+                    raise ValueError(f"corrected pose missing: {sid}")
+                session_objects[sid] = session
+            session_frames = {sid: (session.available_frames()[:args.limit_per_session]
+                                    if args.limit_per_session else session.available_frames())
+                              for sid, session in session_objects.items()}
+            validate_trace_frame_coverage(inventory, session_frames, args.camera)
+            frozen_csv = Path(_PC_DIR).parent / "docs/assets/review_20261107/mobilio_feedback_20261107/production_per_frame.csv"
+            validate_frozen_frame_keys(frozen_csv, session_frames,
+                "60b4b0c6a2e6f843e14f5650a12dd83ea1d5fcaf58d0ce84584ba91f414a069f")
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"BLOCKED_TRACE_FRAME_SET: {exc}", file=sys.stderr)
+            return 2
 
     model = device = depth_estimator = None
+    model_snapshots = {}
+    if args.e3_frozen:
+        try:
+            if os.environ.get("HF_HUB_OFFLINE") != "1":
+                raise ValueError("HF_HUB_OFFLINE=1 required for frozen model cache")
+            cache = inventory.get("model_cache_inventory", {})
+            required = {"nvidia/segformer-b0-finetuned-cityscapes-1024-1024",
+                        "depth-anything/Depth-Anything-V2-Small-hf"}
+            if set(cache) != required:
+                raise ValueError("model cache inventory is incomplete")
+            from huggingface_hub import try_to_load_from_cache
+            validate_model_cache_files(cache, lambda repo, name, revision:
+                                       try_to_load_from_cache(repo, name, revision=revision))
+            for repo in required:
+                model_snapshots[repo] = verified_model_snapshot(
+                    cache, repo, lambda name, filename, revision:
+                    try_to_load_from_cache(name, filename, revision=revision))
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            print(f"BLOCKED_TRACE_MODEL_CACHE: {exc}", file=sys.stderr)
+            return 2
     if needs_checkpoint:
-        model, device = load_v5(args.v5_checkpoint, args.device)
+        seg_id = "nvidia/segformer-b0-finetuned-cityscapes-1024-1024"
+        depth_id = "depth-anything/Depth-Anything-V2-Small-hf"
+        seg_revision = inventory["model_cache_inventory"][seg_id]["revision"] if args.e3_frozen else None
+        depth_revision = inventory["model_cache_inventory"][depth_id]["revision"] if args.e3_frozen else None
+        model, device = load_v5(args.v5_checkpoint, args.device, revision=seg_revision,
+                                expected_model_id=seg_id if args.e3_frozen else None,
+                                local_snapshot=model_snapshots.get(seg_id))
         from blindnav_pc.depth import DepthEstimator
-        depth_estimator = DepthEstimator(device=device)
+        depth_estimator = DepthEstimator(device=device, revision=depth_revision,
+                                         local_snapshot=model_snapshots.get(depth_id))
+        if args.e3_frozen:
+            try:
+                if (Path(model.config._name_or_path) != Path(model_snapshots[seg_id]) or
+                        Path(depth_estimator.model.config._name_or_path) != Path(model_snapshots[depth_id])):
+                    raise ValueError("loaded model path differs from verified snapshot")
+                validate_model_cache_files(cache, lambda repo, name, revision:
+                                           try_to_load_from_cache(repo, name, revision=revision))
+            except (OSError, ValueError, AttributeError) as exc:
+                print(f"BLOCKED_TRACE_MODEL_SOURCE: {exc}", file=sys.stderr)
+                return 2
 
     cfg = Config()
     all_rows: List[dict] = []
@@ -668,10 +936,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     visual_cases: List[dict] = []
     visual_max = max(2, int(args.save_failures) * 2)
     video_writer = None
+    ray_trace_sink = None
+    if args.ray_trace_out:
+        os.makedirs(os.path.dirname(os.path.abspath(args.ray_trace_out)), exist_ok=True)
+        ray_trace_sink = open(args.ray_trace_out, "x", encoding="utf-8")
     started = time.time()
     for sid in sessions:
-        session = SanpoSession(os.path.join(data_root, sid), args.camera,
-                               max_width=args.max_width)
+        session = session_objects.get(sid) or SanpoSession(os.path.join(data_root, sid), args.camera,
+                                                           max_width=args.max_width)
         if args.video_out and video_writer is None:
             import cv2
             video_path = os.path.abspath(args.video_out)
@@ -684,9 +956,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         session_rows = evaluate_session(session, model, device, depth_estimator, cfg,
                                          conditions, args.limit_per_session,
                                          visual_cases=visual_cases, visual_max=visual_max,
-                                         video_writer=video_writer)
+                                         video_writer=video_writer, ray_trace_sink=ray_trace_sink,
+                                         ray_trace_metadata={"run_id": args.trace_run_id,
+                                             "code_commit": args.trace_code_commit,
+                                             "input_manifest_sha256": trace_manifest_sha256})
         if not session_rows:
             continue
+        for row in session_rows:
+            row.update({"run_id": args.trace_run_id, "code_commit": args.trace_code_commit,
+                        "input_manifest_sha256": trace_manifest_sha256, "timestamp_ms": None,
+                        "relative_time_ms": int(row["frame"]) * 1000.0 / session.fps,
+                        "timestamp_source": "frame_index_over_fps",
+                        "pose_source": "sanpo_recorded_pose"})
         all_rows.extend(session_rows)
         unique_keys = candidate_frame_keys(session_rows)
         expected_per_frame = len(conditions) * 2
@@ -704,6 +985,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if not all_rows:
         print("BLOCKED_NO_FRAMES: no frames were evaluated", file=sys.stderr)
         return 2
+    if ray_trace_sink is not None:
+        ray_trace_sink.close()
     for condition in conditions:
         condition_rows = [row for row in all_rows if row["condition"] == condition]
         baseline_keys = candidate_frame_keys([r for r in condition_rows if r["arm"] == BASELINE_ARM])
@@ -730,6 +1013,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "v5_checkpoint": os.path.abspath(args.v5_checkpoint) if args.v5_checkpoint else None,
         "max_width": int(args.max_width), "limit_per_session": int(args.limit_per_session),
         "seed": int(args.seed), "pose_mode": "sanpo_recorded_pose_offline_vio_proxy",
+        "e3_frozen": bool(args.e3_frozen), "trace_enabled": bool(args.ray_trace_out),
+        "trace_run_id": args.trace_run_id, "trace_code_commit": args.trace_code_commit,
+        "trace_input_manifest_sha256": trace_manifest_sha256, "device": device,
         "depth_sources": {"production": "dav2_calibrated", "annotated": "sanpo_gt"},
         "grid": {"surface_cell_m": 0.20, "surface_extent_m": 15.0,
                  "blind_zone_m": 2.2, "occupancy_cell_m": 0.10,

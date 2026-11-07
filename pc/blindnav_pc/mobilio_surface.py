@@ -351,6 +351,103 @@ class SurfaceGrid2D:
             last_walkable_cell=last_walkable_cell,
         )
 
+    def trace_rays(self, pose: SurfacePose, target_angle_rad: float = 0.0) -> list:
+        """Collect read-only ray evidence; never feeds the navigation decision."""
+        half = math.radians(self.cfg.scan_half_angle_deg)
+        step = math.radians(self.cfg.scan_step_deg)
+        n = int(round(2 * half / step))
+        records = []
+        for ray_id in range(n + 1):
+            angle = float(target_angle_rad - half + ray_id * step)
+            route = self._ray_candidate(pose, angle)
+            counts = {role: 0 for role in _KNOWN_ROLES}
+            pending = 0
+            continuous_start = continuous_end = None
+            longest = 0.0
+            termination_reason = "MAX_RANGE"
+            terminal_cell = None
+            termination_distance = self.cfg.max_range_m
+            last_walkable = None
+            last_walkable_distance = None
+            seen = set()
+            observed_cell_count = 0
+            zero_length_cells = 0
+            positive_length_unknown_cells = 0
+            termination_cell_zero_length = None
+            ray_cells = list(self._ray_cells(pose, angle))
+            for cell_index, (ix, iz, distance) in enumerate(ray_cells):
+                if (ix, iz) in seen:
+                    continue
+                seen.add((ix, iz))
+                observed_cell_count += int(self.cell_evidence(ix, iz) > 0)
+                role = self.cell_role(ix, iz)
+                exit_distance = (ray_cells[cell_index + 1][2]
+                                 if cell_index + 1 < len(ray_cells)
+                                 else self.cfg.max_range_m)
+                zero_length = exit_distance - distance <= 1e-9
+                zero_length_cells += int(zero_length)
+                positive_length_unknown_cells += int(role == ROLE_UNKNOWN and not zero_length)
+                counts[role] += 1
+                if role == ROLE_WALKABLE:
+                    if not zero_length:
+                        if continuous_start is None:
+                            continuous_start = distance
+                        continuous_end = exit_distance
+                        longest = max(longest, continuous_end - continuous_start)
+                    last_walkable = [ix, iz]
+                    last_walkable_distance = distance
+                    pending = 0
+                elif role == ROLE_UNKNOWN:
+                    if not zero_length:
+                        continuous_start = continuous_end = None
+                    if distance <= self.cfg.blind_zone_m:
+                        continue
+                    pending += 1
+                    if pending > self.cfg.max_gap_cells:
+                        termination_reason = "UNKNOWN_GAP"
+                        terminal_cell, termination_distance = [ix, iz], distance
+                        termination_cell_zero_length = zero_length
+                        break
+                else:
+                    termination_reason = "HAZARD" if role == ROLE_HAZARD else "NON_WALKABLE"
+                    terminal_cell, termination_distance = [ix, iz], distance
+                    termination_cell_zero_length = zero_length
+                    break
+            records.append({
+                "ray_id": ray_id, "angle_rad": angle, "angle_frame": "body_relative_yaw_positive_right",
+                "observed_distance_m": route.observed_distance_m,
+                "fully_observed": route.fully_observed, "unknown_cells": route.unknown_cells,
+                "continuous_walkable_length_m": longest,
+                "termination_distance_m": termination_distance, "termination_cell": terminal_cell,
+                "last_walkable_distance_m": last_walkable_distance, "last_walkable_cell": last_walkable,
+                "termination_reason": termination_reason,
+                "termination_cell_zero_length": termination_cell_zero_length,
+                "zero_length_cells": zero_length_cells,
+                "positive_length_unknown_cells": positive_length_unknown_cells,
+                "zero_length_tolerance_m": 1e-9,
+                "observation_source": None, "evidence_age": None,
+                "observation_source_unavailable_reason": "per_cell_source_not_recorded",
+                "evidence_age_unavailable_reason": "per_cell_age_not_exported",
+                "terminal_role": role if terminal_cell is not None else None,
+                "total_cells": len(seen), "walkable_cells": counts[ROLE_WALKABLE],
+                "observed_cell_count": observed_cell_count,
+                "unknown_cell_count": counts[ROLE_UNKNOWN], "hazard_cells": counts[ROLE_HAZARD],
+                "non_walkable_cells": counts[ROLE_NON_WALKABLE], "pending_unknown_run": pending,
+                "passes_length_filter": route.observed_distance_m >= self.cfg.min_candidate_m,
+                "selected_by_original_algorithm": False, "best_rejected_diagnostic": False,
+            })
+        selected = self.raycast_route(pose, target_angle_rad)
+        for item in records:
+            item["selected_by_original_algorithm"] = (selected.angle_rad is not None and
+                                                       item["angle_rad"] == selected.angle_rad)
+        rejected = [r for r in records if not r["passes_length_filter"]
+                    and r["continuous_walkable_length_m"] > 1e-9]
+        if rejected:
+            best = min(rejected, key=lambda r: (-r["continuous_walkable_length_m"],
+                       abs(self._angle_diff(r["angle_rad"], target_angle_rad)), r["angle_rad"]))
+            best["best_rejected_diagnostic"] = True
+        return records
+
     def raycast_route(self, pose: SurfacePose, target_angle_rad: float = 0.0) -> SurfaceRoute:
         """Search target +/-90 degrees and choose the longest safe observed ray."""
         half = math.radians(float(self.cfg.scan_half_angle_deg))
@@ -375,8 +472,8 @@ class SurfaceGrid2D:
             unknown_cells=selected.unknown_cells, terminated_role=selected.terminated_role,
             candidate_count=len(candidates), fully_observed=selected.fully_observed,
             reason=selected.reason,
-            termination_distance_m=selected.termination_distance_m,
-            last_walkable_distance_m=selected.last_walkable_distance_m,
-            termination_cell=selected.termination_cell,
-            last_walkable_cell=selected.last_walkable_cell,
+            termination_distance_m=getattr(selected, "termination_distance_m", 0.0),
+            last_walkable_distance_m=getattr(selected, "last_walkable_distance_m", 0.0),
+            termination_cell=getattr(selected, "termination_cell", None),
+            last_walkable_cell=getattr(selected, "last_walkable_cell", None),
         )

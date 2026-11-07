@@ -17,7 +17,8 @@ _FORBIDDEN = ("base", "large", "giant")
 
 class DepthEstimator:
     def __init__(self, model_id: str = DEFAULT_MODEL_ID, device: str = "cpu",
-                 input_size: Optional[int] = None):
+                 input_size: Optional[int] = None, *, revision: Optional[str] = None,
+                 local_snapshot: Optional[str] = None):
         """input_size: shorter-side resolution fed to the network (multiple of 14); smaller = faster."""
         if any(w in model_id.lower() for w in _FORBIDDEN) and os.environ.get("BLINDNAV_ALLOW_NONSMALL_DEPTH") != "1":
             raise ValueError(
@@ -30,8 +31,11 @@ class DepthEstimator:
         self._torch = torch
         self.device = device
         self.input_size = input_size
-        self.processor = AutoImageProcessor.from_pretrained(model_id)
-        self.model = AutoModelForDepthEstimation.from_pretrained(model_id).to(device).eval()
+        source = local_snapshot or model_id
+        self.processor = AutoImageProcessor.from_pretrained(source, revision=revision,
+                                                             local_files_only=bool(local_snapshot))
+        self.model = AutoModelForDepthEstimation.from_pretrained(source, revision=revision,
+                                                                 local_files_only=bool(local_snapshot)).to(device).eval()
 
     def predict(self, frame_bgr: np.ndarray) -> np.ndarray:
         """float32 HxW inverse-depth-like map (larger = nearer), bilinear-resized to the frame size."""
