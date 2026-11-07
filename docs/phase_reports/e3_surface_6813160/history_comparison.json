@@ -1,0 +1,153 @@
+{
+  "off_sha256": "102d793377b0f925a31d643d808a338e7f0e91d11fdf418ead0a0ed210dc334a",
+  "historical_sha256": "60b4b0c6a2e6f843e14f5650a12dd83ea1d5fcaf58d0ce84584ba91f414a069f",
+  "off_rows": 962,
+  "history_production_rows": 962,
+  "off_duplicate_keys": 0,
+  "history_duplicate_keys": 0,
+  "keys_equal": true,
+  "arms": {
+    "baseline_split_c": {
+      "off": {
+        "frames": 481,
+        "danger": 295,
+        "confirmed_clear": 150,
+        "any_miss": 123,
+        "false_stop": 0,
+        "warning_on_danger": 172,
+        "states": {
+          "UNKNOWN": 214,
+          "CLEAR": 220,
+          "OBSERVE": 40,
+          "BLOCKED": 7
+        }
+      },
+      "historical": {
+        "frames": 481,
+        "danger": 295,
+        "confirmed_clear": 150,
+        "any_miss": 123,
+        "false_stop": 0,
+        "warning_on_danger": 172,
+        "states": {
+          "UNKNOWN": 214,
+          "CLEAR": 220,
+          "OBSERVE": 40,
+          "BLOCKED": 7
+        }
+      },
+      "field_differences": {
+        "surface_state": 0,
+        "occupancy_state": 0,
+        "safety_state": 0,
+        "effective_command": 0,
+        "guidance": 0,
+        "reason": 0,
+        "forward_guidance": 0,
+        "warning": 0,
+        "danger_any": 0,
+        "confirmed_clear": 0,
+        "any_miss": 0,
+        "true_false_stop": 0
+      },
+      "examples": []
+    },
+    "mobilio": {
+      "off": {
+        "frames": 481,
+        "danger": 295,
+        "confirmed_clear": 150,
+        "any_miss": 17,
+        "false_stop": 0,
+        "warning_on_danger": 278,
+        "states": {
+          "UNKNOWN": 275,
+          "OBSERVE": 157,
+          "CLEAR": 49
+        }
+      },
+      "historical": {
+        "frames": 481,
+        "danger": 295,
+        "confirmed_clear": 150,
+        "any_miss": 17,
+        "false_stop": 0,
+        "warning_on_danger": 278,
+        "states": {
+          "UNKNOWN": 275,
+          "OBSERVE": 157,
+          "CLEAR": 49
+        }
+      },
+      "field_differences": {
+        "surface_state": 0,
+        "occupancy_state": 0,
+        "safety_state": 0,
+        "effective_command": 0,
+        "guidance": 4,
+        "reason": 0,
+        "forward_guidance": 0,
+        "warning": 0,
+        "danger_any": 0,
+        "confirmed_clear": 0,
+        "any_miss": 0,
+        "true_false_stop": 0
+      },
+      "examples": [
+        {
+          "key": [
+            "mobilio",
+            "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+            "820"
+          ],
+          "fields": {
+            "guidance": [
+              "",
+              "RIGHT"
+            ]
+          }
+        },
+        {
+          "key": [
+            "mobilio",
+            "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+            "805"
+          ],
+          "fields": {
+            "guidance": [
+              "",
+              "STRAIGHT"
+            ]
+          }
+        },
+        {
+          "key": [
+            "mobilio",
+            "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+            "890"
+          ],
+          "fields": {
+            "guidance": [
+              "",
+              "LEFT"
+            ]
+          }
+        },
+        {
+          "key": [
+            "mobilio",
+            "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+            "120"
+          ],
+          "fields": {
+            "guidance": [
+              "",
+              "RIGHT"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "note": "Counts are offline proxy labels. Historical file is not current run. UNKNOWN is not explicit warning."
+}

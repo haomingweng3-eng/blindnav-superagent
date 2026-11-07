@@ -1,0 +1,63 @@
+{
+  "sha256": {
+    "pc/out/e3_surface_6813160_off/per_frame.csv": "102d793377b0f925a31d643d808a338e7f0e91d11fdf418ead0a0ed210dc334a",
+    "pc/out/e3_surface_6813160_on/per_frame.csv": "28fa1679e84aa9f35893c9f51b898c59c9bfa0d45101d452078cde9a262ac529",
+    "pc/out/e3_surface_6813160_on/rays.jsonl": "9dbcf498f244ac3ef49ac060de1e0dd3d6f495d94eb751e74dd243a384ce97a7",
+    "docs/phase_reports/e3_input_audit_20261107/input_inventory.json": "2b4997b6c3e561e62a046fb812edbd31de2ad231596da0ab9219755f2a20e37c"
+  },
+  "off_rows": 962,
+  "on_rows": 962,
+  "frame_keys_equal": true,
+  "frame_order_equal": true,
+  "missing_fields": [],
+  "differences": {},
+  "difference_examples": [],
+  "trace_rows": 481,
+  "trace_duplicate_keys": 0,
+  "trace_key_coverage_equal": true,
+  "trace_status": {
+    "NO_METRIC_DEPTH": 9,
+    "RECORDED": 398,
+    "NO_OBSERVATION": 74
+  },
+  "ray_counts": {
+    "0": 9,
+    "181": 472
+  },
+  "trace_commit_manifest_pairs": [
+    {
+      "commit": "6813160c555e297b03a599eb689b8083fe4ce36a",
+      "manifest": "2b4997b6c3e561e62a046fb812edbd31de2ad231596da0ab9219755f2a20e37c",
+      "count": 481
+    }
+  ],
+  "trace_manifest_matches_inventory": true,
+  "on_metrics": {
+    "baseline_split_c": {
+      "n": 481,
+      "danger": 295,
+      "confirmed_clear": 150,
+      "any_miss": 123,
+      "true_false_stop": 0,
+      "states": {
+        "UNKNOWN": 214,
+        "CLEAR": 220,
+        "OBSERVE": 40,
+        "BLOCKED": 7
+      }
+    },
+    "mobilio": {
+      "n": 481,
+      "danger": 295,
+      "confirmed_clear": 150,
+      "any_miss": 17,
+      "true_false_stop": 0,
+      "states": {
+        "UNKNOWN": 275,
+        "OBSERVE": 157,
+        "CLEAR": 49
+      }
+    }
+  },
+  "note": "Counts are proxy labels; UNKNOWN is not a warning; no direction accuracy or TTS validation."
+}
