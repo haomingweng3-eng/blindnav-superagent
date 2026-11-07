@@ -11,7 +11,7 @@ terms were not independently checked in this phase.
 | Harvard Mobilio source | <https://github.com/Harvard-Slade-Lab/Mobilio> | MIT; recorded in `docs/MOBILIO_MIT_NOTICE.md` | reference port kept isolated from production safety logic |
 | Basalt code | <https://github.com/VladyslavUsenko/basalt> | BSD 3-Clause; verified from upstream README; third-party dependencies still require review | candidate P1 desktop VIO tool |
 | ADVIO dataset | <https://github.com/AaltoVision/ADVIO> | CC BY-NC 4.0; verified from upstream README | research-only fallback; no commercial redistribution |
-| TUM-VI dataset | <https://www.tum-vi.com/> | Pending exact dataset terms before download | do not download yet |
+| TUM-VI dataset | <https://cvg.cit.tum.de/data/datasets/visual-inertial-dataset> | CC BY 4.0 for data; verified on official TUM page. Exact room1 file checksum remains pending until metadata is retrieved | do not download yet |
 | EuRoC MAV dataset | <https://projects.asl.ethz.ch/datasets/euroc-mav/> | Pending exact dataset terms before download | do not download yet |
 | Metric/depth checkpoints | project-specific URLs | Pending per-weight terms and hashes | no new weights downloaded in P0 |
 

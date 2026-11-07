@@ -1,0 +1,63 @@
+{
+  "schema": "sanpo-gcs-object-audit/1",
+  "bucket": "gresearch",
+  "api": "https://storage.googleapis.com/storage/v1/b/gresearch/o",
+  "query": "recursive prefix listing, maxResults=1000, all page tokens; local name filter imu|gyro|accelerometer|sensor",
+  "sessions": [
+    {
+      "session_id": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+      "prefix": "sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/",
+      "object_count": 5462,
+      "imu_name_matches": [],
+      "fixed_camera_poses": [
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/fixed_camera_poses.csv",
+          "size": "95050",
+          "md5Hash": "wSoEyDGepWntkH5Z6XgulQ=="
+        },
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_head/fixed_camera_poses.csv",
+          "size": "96029",
+          "md5Hash": "OXOn3cykUClG0WpYKACHyg=="
+        }
+      ]
+    },
+    {
+      "session_id": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-",
+      "prefix": "sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/",
+      "object_count": 8286,
+      "imu_name_matches": [],
+      "fixed_camera_poses": [
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/fixed_camera_poses.csv",
+          "size": "146948",
+          "md5Hash": "3akxk6EqStEovD2R3/gBLw=="
+        },
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_head/fixed_camera_poses.csv",
+          "size": "145961",
+          "md5Hash": "eBnVCzgsMIxgInHtBdxFLQ=="
+        }
+      ]
+    },
+    {
+      "session_id": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5",
+      "prefix": "sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/",
+      "object_count": 7986,
+      "imu_name_matches": [],
+      "fixed_camera_poses": [
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/fixed_camera_poses.csv",
+          "size": "139829",
+          "md5Hash": "6ZVPu6igAxY6fGTtXad67A=="
+        },
+        {
+          "name": "sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_head/fixed_camera_poses.csv",
+          "size": "142103",
+          "md5Hash": "2NybQa2vn1ai5BAP5H6bHw=="
+        }
+      ]
+    }
+  ],
+  "conclusion": "NO_IMU_NAMED_OBJECTS_IN_THREE_SESSION_PREFIXES"
+}

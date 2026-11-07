@@ -25,11 +25,23 @@ data and that corrected camera poses are in `fixed_camera_poses.csv`. This
 checkout has not resolved whether the missing files are a selective-download
 issue, an object-path issue, or a difference between the downloaded session
 subset and the full release. A live GCS inventory could not be performed in
-this phase because `gcloud` is not installed.
+this phase because `gcloud` is not installed. A read-only GCS JSON API audit
+was then performed instead. It recursively enumerated the three session
+prefixes and applied a case-insensitive `imu|gyro|accelerometer|sensor` name
+filter across every page.
+
+The remote audit found 5,462, 8,286, and 7,986 objects respectively, zero
+matching IMU/sensor object names in every session, and both chest/head
+`fixed_camera_poses.csv` objects in every session. The complete machine-readable
+record, including object counts and pose object MD5 values, is
+`sanpo_gcs_object_audit.json` in this directory.
 
 ## Decision
 
 Do not run SANPO RGB+IMU VIO and do not label recorded pose as VIO. P1 may use
 TUM-VI/EuRoC only after their source, license, checksum and one-sequence
 download are recorded. SANPO VIO remains `NOT_EVALUABLE` until an actual IMU
-CSV/JSON stream is found and timestamp/calibration checks pass.
+CSV/JSON stream is found and timestamp/calibration checks pass. P0.1 is now
+complete for these three prefixes; P0 as a whole remains partial until the
+independent Linux/WSL environment and the P0.3 TUM-VI source/MD5/license audit
+are complete.

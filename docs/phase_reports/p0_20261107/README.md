@@ -10,4 +10,6 @@ run.
 
 The next gate is P1 only after an independent Linux/WSL experiment environment
 and a one-sequence public VIO dataset have verified source, license, checksum,
-calibration and ground-truth availability.
+calibration and ground-truth availability. P0.1 is complete for the three
+SANPO prefixes; P0.2 and P0.3 remain partial because the independent environment
+and exact TUM-VI room1 file checksum are not yet available.
