@@ -50,5 +50,39 @@ python pc/tools/last10m_scenario_audit.py \
 
 The Android presentation entry point is
 `com.blindnav.app.shadow.Last10mDemoActivity`. The current M1 environment does
-not have a Java runtime, so the Gradle Android test task is not executable in
-this checkout; the asset/schema audit is independent and passed.
+not have the local `app/libs/sherpa-onnx.aar` dependency, so the Gradle Android
+test task is still blocked in this checkout. The asset/schema audit and the
+pure-Python replay gate audit are independent of that missing binary.
+
+## Replay gate audit
+
+The replay gate audit is deliberately stricter than a door-box count. It keeps
+target lock, target-to-door relation, ground evidence, and motion authorization
+as separate metrics. An unlabeled frame is refusal context, not a wrong
+entrance; `REPLAY` evidence never becomes a claim about live phone perception.
+
+Frozen result for the seven real LSVT replay frames:
+
+| metric | result |
+|---|---:|
+| target lock | 6/7 |
+| relation-evaluable frames | 5 |
+| `SAME_TARGET` entrance | 4/5 |
+| neighboring entrance rejected | 1 |
+| wrong entrance | 0 |
+| obstruction evidence | 2/7 |
+| clear ground evidence | 0/7 |
+| motion authorized | 0/7 |
+
+The zero authorization count is expected for this fixture: every candidate
+frame has unresolved or obstructed ground evidence. It is a safety-gate result,
+not a usability success. The machine-readable per-frame output is committed at
+`docs/assets/review_20261107/last10m_scenarios_20261107/replay_eval.json`.
+
+Reproduce it with:
+
+```bash
+PYTHONPATH=pc python3 -m blindnav_pc.last10m_replay_eval \
+  --scenarios app/src/main/assets/demo/last10m/scenarios.json \
+  --out docs/assets/review_20261107/last10m_scenarios_20261107/replay_eval.json
+```

@@ -1,0 +1,101 @@
+{
+  "schema": "last10m-replay-eval/1",
+  "provenance": "REPLAY",
+  "scenarios": 3,
+  "frames": 7,
+  "target_lock": {
+    "correct": 6,
+    "total": 7
+  },
+  "entrance_relation": {
+    "evaluated": 5,
+    "correct_same_target": 4,
+    "neighbor_rejected": 1,
+    "wrong_entrance": 0,
+    "unlabeled_refusal_context": 2,
+    "multiple_same_target": 0
+  },
+  "ground": {
+    "obstructed": 2,
+    "clear_confirmed": 0,
+    "visible_unresolved": 4,
+    "not_visible": 1
+  },
+  "motion_authorization": {
+    "authorized": 0,
+    "total": 7,
+    "rule": "SAME_TARGET plus CLEAR_CONFIRMED ground evidence"
+  },
+  "frames_detail": [
+    {
+      "scenario_id": "s1_arrival",
+      "frame": "wide_view",
+      "image": "s1_arrival_wide_view.jpg",
+      "target_locked": true,
+      "relation": "CORRECT_SAME_TARGET",
+      "ground": "VISIBLE_UNRESOLVED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s1_arrival",
+      "frame": "nearer_view",
+      "image": "s1_arrival_nearer_view.jpg",
+      "target_locked": true,
+      "relation": "CORRECT_SAME_TARGET",
+      "ground": "NOT_VISIBLE",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s1_arrival",
+      "frame": "door_and_ground",
+      "image": "s1_arrival_door_and_ground.jpg",
+      "target_locked": true,
+      "relation": "CORRECT_SAME_TARGET",
+      "ground": "VISIBLE_UNRESOLVED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s2_neighbor",
+      "frame": "wide_storefront",
+      "image": "s2_neighbor_wide_storefront.jpg",
+      "target_locked": true,
+      "relation": "UNLABELED_REFUSAL_CONTEXT",
+      "ground": "VISIBLE_UNRESOLVED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s2_neighbor",
+      "frame": "same_view",
+      "image": "s2_neighbor_same_view.jpg",
+      "target_locked": true,
+      "relation": "NEIGHBOR_REJECTED",
+      "ground": "VISIBLE_UNRESOLVED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s3_hazard",
+      "frame": "full_with_railing",
+      "image": "s3_hazard_full_with_railing.jpg",
+      "target_locked": true,
+      "relation": "CORRECT_SAME_TARGET",
+      "ground": "OBSTRUCTED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    },
+    {
+      "scenario_id": "s3_hazard",
+      "frame": "ground_view",
+      "image": "s3_hazard_ground_view.jpg",
+      "target_locked": false,
+      "relation": "UNLABELED_REFUSAL_CONTEXT",
+      "ground": "OBSTRUCTED",
+      "motion_authorized": false,
+      "provenance": "REPLAY"
+    }
+  ]
+}
