@@ -149,3 +149,39 @@
 5. 是否值得继续 Harvard/Mobilio，还是应替换某个输入模块？
 
 本实验是当前唯一任务。完成前不启动原 12 帧 overlay、不运行 Basalt、不引入 Metric3D、不启动手机验证。
+
+
+## 十、实现细节补充（避免再次产生实验混杂）
+
+### 10.1 现有旧矩阵哪些仍可用
+
+旧 A/B（同为 GT-depth 分支）和 C/D（同为 DAV2-depth 分支）中的 segmentation 简单效应仍可作为对应 depth 条件下的受控比较，但必须确认相同帧、同一其他变量。旧 A/C、B/D 的 depth 比较被 up/camera-height 约定混杂，interaction 也不可作纯因果解释。不要把所有旧数据作废，也不要继续把旧 depth effect 当作独立结论。
+
+### 10.2 Stateful GroundCalibrator 的调用次数
+
+`GroundCalibrator` 是 stateful（有 EMA、失败复用和 stale 计数）。**每个 session/frame 只能按时间顺序更新一次**，不得为 C、D 两个条件分别调用两次，否则 C/D 会拿到不同的历史状态。
+
+推荐执行顺序：
+1. 对每个 frame，使用固定 v5 calibration mask、固定 K、固定 recorded up、固定相机高度约定，对 DAV2 的 q 计算一次 `GroundFit`。
+2. 将该同一帧的 `GroundFit` 和 `depth_m` 对象共享给 C、D。
+3. A、B 使用对应的 GT metric depth，但地图投影时强制使用与 C、D 相同的固定 up vector 和 camera height。
+4. 四条件各自维护独立但初始状态相同的 Surface/Occupancy map；不能共享地图状态，也不能把前一条件的地图写入下一条件。
+5. 记录每帧 `calibration_mask_sha256`、`up_vector`、`camera_height_m`、`K_sha256`、`pose` 和 `ground_fit`；C/D 的 fit hash 必须逐帧一致。
+
+注意：若 DAV2 的 `GroundCalibrator.update` 会因 visual-plane fallback 改变最终 up，必须显式固定/记录其选择，并确保 map projection 的 up 不随 depth condition 改变。不要把 GT plane 的 up/height 混入 GT-depth 条件，而 DAV2 分支用预测 plane。若现有 API 无法把“深度尺度拟合所需 up”与“地图投影 up”分离，先做最小接口拆分及单测，不改生产安全逻辑。
+
+### 10.3 指标解释
+
+除总计外，必须按三个 SANPO session 分别报告。最新 E3 数据中 Mobilio session 1 授权 10/121、UNKNOWN 74；session 2 授权 37/184、UNKNOWN 53；session 3 授权 2/176、UNKNOWN 148。Session 3 的 danger proxy 占 162/176，场景构成与其他 session 不同，不能把它直接解释成某个模块普遍失效。报告需要提供每个 session 内的成对 A/B/C/D 效应。
+
+若某 session 的 confirmed_clear 或 danger 样本数太少，给原始计数，不做不稳定的百分比排名。
+
+### 10.4 正确的因子比较
+
+- A vs B：GT depth 下的 segmentation simple effect；
+- C vs D：DAV2 depth 下的 segmentation simple effect；
+- A vs C：GT segmentation 下的 depth simple effect；
+- B vs D：v5 segmentation 下的 depth simple effect；
+- interaction：difference-in-differences。
+
+只有在固定 K/up/height/pose/map config、校准 mask 及其时间状态后，才可以解释四个比较。旧数据仅支持前两个 segmentation 对比的有限分析；旧 depth 对比和 interaction 标记 NOT_IDENTIFIED。
