@@ -1,0 +1,27 @@
+{
+  "source_commit": "dc7be379f0a1f3aa1ff88234051afd10e5971d3d",
+  "metrics_source": "docs/phase_reports/e3_surface_6813160/per_session.csv",
+  "metrics_method": "Independently summed six retrieved per-session CSV rows. Not new inference and not a full per-frame re-evaluation.",
+  "totals": {
+    "baseline_split_c": {"frames":481,"danger_proxy":295,"confirmed_clear_proxy":150,"authorized":220,"authorized_on_clear_proxy":76,"authorized_on_danger_proxy":123,"unknown":214,"observe":40,"blocked":7},
+    "mobilio": {"frames":481,"danger_proxy":295,"confirmed_clear_proxy":150,"authorized":49,"authorized_on_clear_proxy":29,"authorized_on_danger_proxy":17,"unknown":275,"observe":157,"blocked":0}
+  },
+  "straight_evidence": {"source":"pc/out/blindroad_shadowwalk/summary.md","frames":200,"inputs":"GT walkable masks, flat-plane depth, synthetic poses","verdict":"Logical test, not trained model straight-direction accuracy"},
+  "direction_contract": {
+    "source":"pc/blindnav_pc/mobilio_fusion.py",
+    "verified_git_blob":"1a4a63ef1286e8619634ed7129d5999ac25cac85",
+    "execution":"Executed exact fuse function; replaced only relative dependency imports with route/state stand-ins. Three synthetic input cases, not a map or model run.",
+    "status":"DIRECTION_CERTIFICATE_GAP_REPRODUCED",
+    "cases":[
+      {"surface_clear_angle_deg":-30,"occupancy_clear_angle_deg":30,"result_state":"CLEAR","result_guidance":"LEFT","result_angle_deg":-30},
+      {"surface_clear_angle_deg":0,"occupancy_clear_angle_deg":30,"result_state":"CLEAR","result_guidance":"STRAIGHT","result_angle_deg":0},
+      {"surface_clear_angle_deg":0,"occupancy_clear_angle_deg":0,"result_state":"CLEAR","result_guidance":"STRAIGHT","result_angle_deg":0}
+    ],
+    "limitations":"Does not prove collisions or explain 17 real danger-proxy authorizations. Different angles might both be clear; selected-direction certification is absent. Actual affected frame count NOT_EVALUATED."
+  },
+  "capability_verdict":{"straight_accuracy":"NOT_EVALUABLE from aggregate authorization counts","obstacle_detection_recall":"NOT_EVALUABLE from UNKNOWN-inclusive proxy warnings","successful_avoidance":"NOT_EVALUABLE without direction/path and closed-loop evidence","android_same_pipeline":"NOT_VERIFIED"},
+  "score":3.6,
+  "no_new_training":true,
+  "no_new_model_inference":true,
+  "no_production_algorithm_changed":true
+}
