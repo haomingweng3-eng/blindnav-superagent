@@ -94,3 +94,24 @@ Basalt + TUM VI 保留为独立定位基准，不是修复当前 recorded-pose �
 **没有在该环境加载真实 SANPO/v5/DAV2，也没有运行全流水线集成测试或新的 481 帧实验。**
 原仓库源码接口已核对；真实数据运行如发现集成错误，应修具体调用而不是重新换路线。
 项目分数仍维持原口径 3.6/10；不能因为新脚本或合成测试加导航能力分。
+
+
+---
+
+## 2026-11-08 独立静态审查补充（唯一下一任务仍是本文件）
+
+审查报告：[`CONTROLLED_2X2_CODE_REVIEW_20261108_0926Z.md`](../reviews/CONTROLLED_2X2_CODE_REVIEW_20261108_0926Z.md)。
+
+**运行前新增最小代码版本锁**（新审查文档 commit 会使 HEAD 与原功能提交不同，故只锁本实验入口 blob，不要求 HEAD 等于 `0142d19`）：
+
+```bash
+EXPECTED_EXPERIMENT_BLOB=e4914d023f1c73a9e873d7220894ceb1ca65e4c4
+ACTUAL_EXPERIMENT_BLOB="$(git rev-parse HEAD:pc/tools/controlled_2x2_replay.py)"
+test "$ACTUAL_EXPERIMENT_BLOB" = "$EXPECTED_EXPERIMENT_BLOB" || { echo BLOCKED_EXPERIMENT_CODE_CHANGED; exit 2; }
+git rev-parse HEAD
+git status --porcelain --untracked-files=no
+```
+
+执行前确保隔离工作区的已跟踪文件没有未提交修改；实验入口本身已有后续内置检查。不要重复单测或 OFF/ON；新增文档不触发 smoke。
+
+历史 D 的 parity 必须逐帧检查；若 `historical_D_parity.json` 有差异，不以汇总数字相近视为通过。当前入口已经实现，任务是**运行一次真实 481 帧，交回五个结果文件及退出码、命令日志**，不是再写新入口。11 个测试通过系先前执行说明的记录，本次代码审查并未独立重跑。
