@@ -1,0 +1,15 @@
+{
+  "status": "TASK_HANDOFF_NOT_PUSHED",
+  "validation": "6 synthetic CSV contract tests passed; no historical dataset audit or model replay executed in this turn",
+  "source_ref_checked": "6327cd985200af2aab8e29496a87e5b7526615be",
+  "files": {
+    "EXECUTE_NEXT.md": "852352d3bdc8ff49219a45f5e12e34125f966bf8744bf0fc65e70ceb62ce174c",
+    "audit_route_pairs.py": "4852bb30763d3b2cf8280dd4534d808448cfbe134ea552d1cc21ccd20c8cc52c",
+    "candidates/README.txt": "59314f93146ada91d88c32a67c10c640386a9d7a797a736588800b9844924618",
+    "candidates/reuse_findings.json": "075eb06e234e3b5c34326b3add091828c581db1470ada325e7493565ce98fc04",
+    "candidates/surface_age_incremental.patch": "935d7e2031084dbb063b89350aaef433c52771d35310d578e9863ac0f1e27d4a",
+    "candidates/verify_reuse_findings.py": "5ed3ef0b57fbe321e734f6fd1724b1b1a0a95376a8b12e8cfcf3fb2cce33d37c",
+    "synthetic_contract_tests.log": "9c0b08f5d5e5d40050b46f4f0b42b8707629aeb6410322c407b02a1270507c1b",
+    "test_audit_route_pairs.py": "756e78b3e52f4e25a24b59edaaa7fc7528527731bd28024a2955719ff9a98298"
+  }
+}

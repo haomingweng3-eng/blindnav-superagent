@@ -1,0 +1,11 @@
+test_bad_enum_rejected (test_audit_route_pairs.Contracts.test_bad_enum_rejected) ... ok
+test_circular_and_missing (test_audit_route_pairs.Contracts.test_circular_and_missing) ... ok
+test_duplicate_rejected (test_audit_route_pairs.Contracts.test_duplicate_rejected) ... ok
+test_overlap_rejected (test_audit_route_pairs.Contracts.test_overlap_rejected) ... ok
+test_unknown_not_authorized (test_audit_route_pairs.Contracts.test_unknown_not_authorized) ... ok
+test_wrong_count_rejected (test_audit_route_pairs.Contracts.test_wrong_count_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.010s
+
+OK

@@ -1,0 +1,64 @@
+{
+  "source_commit": "6327cd985200af2aab8e29496a87e5b7526615be",
+  "scope": "Published grouped CSV arithmetic + synthetic test of retrieved ageing method; NO model/real-data replay",
+  "confirmed_clear_final_states": {
+    "CLEAR": 29,
+    "OBSERVE": 80,
+    "UNKNOWN": 41
+  },
+  "unknown_by_proxy_label": {
+    "confirmed_clear": 41,
+    "danger": 205,
+    "other": 29
+  },
+  "confirmed_clear_final_reasons": {
+    "surface_walkable_CLEAR": 29,
+    "surface_non_walkable": 77,
+    "occupancy_clearance_unknown": 27,
+    "surface_no_candidate_ray": 7,
+    "no_metric_depth": 7,
+    "occupancy_unconfirmed_body": 1,
+    "surface_walkable_OBSERVE": 2
+  },
+  "ageing_case": {
+    "decay": 0.9,
+    "last_observed_frame": 0,
+    "original": [
+      {
+        "frame": 5,
+        "score": 0.5904900000000001
+      },
+      {
+        "frame": 10,
+        "score": 0.20589113209464907
+      },
+      {
+        "frame": 15,
+        "score": 0.04239115827521623
+      },
+      {
+        "frame": 20,
+        "score": null
+      }
+    ],
+    "incremental_candidate": [
+      {
+        "frame": 5,
+        "score": 0.5904900000000001
+      },
+      {
+        "frame": 10,
+        "score": 0.3486784401000001
+      },
+      {
+        "frame": 15,
+        "score": 0.20589113209464907
+      },
+      {
+        "frame": 20,
+        "score": null
+      }
+    ],
+    "limitation": "Uniform score decay may leave a cell role unchanged until expiry; it can affect later competing observations. Impact on the real 481-frame metrics is NOT_MEASURED. Candidate not applied to production."
+  }
+}
