@@ -1,0 +1,35 @@
+{
+  "record_type": "RETROSPECTIVE_EXECUTION_LINKAGE",
+  "recorded_at_utc": "2026-11-09T10:05:37.359631+00:00",
+  "started_utc": null,
+  "started_utc_note": "Not captured by the original inline invocation; not reconstructed.",
+  "working_directory": "/workspace/scratch/09dfb5545ec7/blindnav-superagent",
+  "environment_assignments": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "command_argv": [
+    "/workspace/scratch/09dfb5545ec7/blindnav-runtime/bin/python",
+    "-u",
+    "-"
+  ],
+  "stdin_source": "precompute_stdin.py",
+  "stdin_sha256": "bd549200e6d6fc9bbc1eb74c04a6782a23cd50e277db80ab1e1081d27f5c81f5",
+  "original_shell_form": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 /workspace/scratch/09dfb5545ec7/blindnav-runtime/bin/python -u - (stdin supplied by a quoted PY here-document)",
+  "exit_code_observed": 0,
+  "exit_code_evidence": "exec session 31507 completed with exit_code=0; tool output retained 36 per-frame inference records.",
+  "raw_stdout_file": null,
+  "stdout_note": "The original invocation printed to tool output; no dedicated raw stdout file was captured. per_frame_inference.json was written during the run and is not reconstructed stdout.",
+  "source_snapshot": "harness_source_used.py",
+  "source_snapshot_sha256": "5c10e3880f5cfec5aad9dd6d14130136c1d7d31483f6155a8222ff9528a6767b",
+  "source_snapshot_note": "Copied from the prereview harness preserved before review edits. This hash was recorded retrospectively, not at process launch.",
+  "original_metadata_sha256": "5e0b54d2e92cb307628907b7e66c137069776fb8154ea5274c16a2165c1e8668",
+  "original_per_frame_sha256": "acb3e81990b54ddd60da4bb6c9c43165eff10d19c7cf72823e46745512a8bd98",
+  "runtime_versions_observed_retrospectively": {
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.1",
+    "huggingface-hub": "2.4.0",
+    "numpy": "2.3.5",
+    "opencv-python-headless": "5.0.0.93"
+  }
+}

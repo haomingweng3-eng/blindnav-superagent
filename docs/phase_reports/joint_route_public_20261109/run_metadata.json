@@ -1,0 +1,810 @@
+{
+  "tool": "pc/tools/joint_route_candidate_eval.py",
+  "argv": [
+    "pc/tools/joint_route_candidate_eval.py",
+    "--data-root",
+    "/workspace/scratch/09dfb5545ec7/blindnav_data/sanpo-real",
+    "--conditions",
+    "public_gt_reference",
+    "public_gt_calibration_dav2",
+    "--out",
+    "pc/out/joint_route_public_20261109_checked",
+    "--expected-frames",
+    "36",
+    "--device",
+    "cpu",
+    "--torch-threads",
+    "4",
+    "--depth-snapshot",
+    "/workspace/scratch/09dfb5545ec7/blindnav_models/dav2_5426e4f",
+    "--depth-revision",
+    "5426e4f0f36572d16453bbda7a8389317b1bef99",
+    "--inference-cache",
+    "/workspace/scratch/09dfb5545ec7/blindnav_data/dav2_cache",
+    "--inference-source-report",
+    "pc/out/joint_route_public_depth_precompute_20261109/run_metadata.json"
+  ],
+  "started_utc": "2026-11-09T10:04:54.266064+00:00",
+  "status": "COMPLETED",
+  "base_commit": "b0a23bf7731c02ca557e29a235a729137e1f8a10",
+  "worktree_status": "?? pc/blindnav_pc/mobilio_joint_route.py\n?? pc/tests/test_mobilio_joint_route.py\n?? pc/tools/fetch_frozen_depth_model.py\n?? pc/tools/fetch_frozen_sanpo_subset.py\n?? pc/tools/joint_route_candidate_eval.py",
+  "conditions": [
+    "public_gt_reference",
+    "public_gt_calibration_dav2"
+  ],
+  "arms": [
+    "original_mobilio",
+    "joint_route_candidate"
+  ],
+  "seed": 0,
+  "torch_threads": 4,
+  "scope": "offline public-data map-contract comparison; not production or phone validation",
+  "oracle_inputs": {
+    "public_gt_reference": [
+      "gt_semantics",
+      "gt_depth",
+      "gt_fitted_ground_plane",
+      "recorded_pose",
+      "target_direction_from_recorded_trajectory"
+    ],
+    "public_gt_calibration_dav2": [
+      "gt_semantics",
+      "gt_walkable_calibration_mask",
+      "recorded_pose_gravity_and_position",
+      "target_direction_from_recorded_trajectory"
+    ]
+  },
+  "map_state_independent": true,
+  "full_volume_visibility_certified": false,
+  "notes": [
+    "GT hazard/clear labels are frame proxies, not collision or straight-line accuracy.",
+    "GT proxies refer to the recorded-trajectory target corridor, not either selected route.",
+    "Target direction uses a noncausal +/-4m TLS fit on READY recorded poses in this 36-frame subset.",
+    "Subset target directions differ from a full 481-frame trajectory; historical totals are not a baseline.",
+    "NOT_READY frames remain in totals but do not calibrate, update/query maps or receive GT route-proxy labels.",
+    "Ground visibility does not establish observed free space at every body height.",
+    "Existing surface decay and all map-update semantics are unchanged."
+  ],
+  "frame_keys": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ]
+  },
+  "frames": 36,
+  "pose_ready_frame_keys": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ]
+  },
+  "pose_ready_frames": 33,
+  "pose_not_ready_frames": 3,
+  "session_geometry": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+      "K": [
+        [
+          572.2962028985507,
+          0.0,
+          328.9416231884058
+        ],
+        [
+          0.0,
+          572.2962028985507,
+          190.04391304347828
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dav2_calibration_height_m": 1.35,
+      "dav2_height_source": "existing SANPO loader camera-height prior",
+      "reference_height_source": "GT fitted ground plane; effective values in per-frame rows",
+      "pose_file": "fixed_camera_poses.csv"
+    },
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+      "K": [
+        [
+          572.2962028985507,
+          0.0,
+          328.9416231884058
+        ],
+        [
+          0.0,
+          572.2962028985507,
+          190.04391304347828
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dav2_calibration_height_m": 1.35,
+      "dav2_height_source": "existing SANPO loader camera-height prior",
+      "reference_height_source": "GT fitted ground plane; effective values in per-frame rows",
+      "pose_file": "fixed_camera_poses.csv"
+    },
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+      "K": [
+        [
+          573.5470144927536,
+          0.0,
+          328.93695652173915
+        ],
+        [
+          0.0,
+          573.5470144927536,
+          190.042
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dav2_calibration_height_m": 1.35,
+      "dav2_height_source": "existing SANPO loader camera-height prior",
+      "reference_height_source": "GT fitted ground plane; effective values in per-frame rows",
+      "pose_file": "fixed_camera_poses.csv"
+    }
+  },
+  "input_inventory_sha256": "b2d6a19dbc6af8b1ac65ee29bb81589059bf4980c6722ac5bfa55e52c0aa6633",
+  "depth_model_inventory": [
+    {
+      "path": "config.json",
+      "size": 950,
+      "sha256": "c56698d3643dde1f83ea2212759e6b31a22b8f827246a36dd007ee8a22b3ff75"
+    },
+    {
+      "path": "download_manifest.json",
+      "size": 1200,
+      "sha256": "75703f6c99f3d23676262d1102e66fd9a5363cbba3acf4220201ac116fa0a42f"
+    },
+    {
+      "path": "model.safetensors",
+      "size": 99173660,
+      "sha256": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "size": 775,
+      "sha256": "d41175c0d889477ca8fc67191e540faef14baf6275157b3fdecf78469e6bbf84"
+    }
+  ],
+  "depth_revision": "5426e4f0f36572d16453bbda7a8389317b1bef99",
+  "depth_input_size_override": null,
+  "max_width": 640,
+  "code_sha256": {
+    "pc/tools/joint_route_candidate_eval.py": "40dfd551695cd72e698fdb366bb3498404627a3b3b238b6cd1aa76493ff99ba8",
+    "pc/tools/mobilio_sanpo_ab.py": "007ec1f9eec66e104d466ad741c802f46baa524ebee7b68bef3c138f49e6d8fb",
+    "pc/tools/responsibility_split_eval.py": "375509766fff0482e29a3ab5ee7faeb08bea9b9e621155b015e2cde39af3335a",
+    "pc/tools/corridor_truth_eval.py": "27f56fb52505e713453b9ebdd91a8df22efab167c1ac2d3270ec870bb2a31322",
+    "pc/blindnav_pc/mobilio_joint_route.py": "20a46447634c9e4eb87bca57e3fe22b210dc124b4f1c8c3eb982ccfbe5da9be3",
+    "pc/blindnav_pc/mobilio_surface.py": "c5f91c5539b7cb6a2f5228de150fa0c9e2c40ebfa75265029158b932d4623f48",
+    "pc/blindnav_pc/mobilio_occupancy.py": "70d24165cd553cdabaa11efe98f9211da7835281f48b99554fcf57a8f262d3a4",
+    "pc/blindnav_pc/mobilio_fusion.py": "5c712267631ad00f9ebbaa13f25f2888e1a40f05d98c489a29aabdf13b62e8e7",
+    "pc/blindnav_pc/ground.py": "7a77c10c11b641bddd2e682f19202f3b990fcb537e72ba9ee6817aecda70cf8f",
+    "pc/blindnav_pc/depth.py": "a236fe14d4ec77392dffe103e6b7bc8ed8af33ef8103b67d58bac0fb68fa88ea",
+    "pc/eval/sanpo.py": "bdbf28e1faaa6c01ae8aec2e648d6d5dc04ac6ba231ffa65588cb7b2ef2666e2"
+  },
+  "upstream_fresh_inference_stage": {
+    "metadata_path": "/workspace/scratch/09dfb5545ec7/blindnav-superagent/pc/out/joint_route_public_depth_precompute_20261109/run_metadata.json",
+    "metadata_sha256": "5e0b54d2e92cb307628907b7e66c137069776fb8154ea5274c16a2165c1e8668",
+    "per_frame_path": "/workspace/scratch/09dfb5545ec7/blindnav-superagent/pc/out/joint_route_public_depth_precompute_20261109/per_frame_inference.json",
+    "per_frame_sha256": "acb3e81990b54ddd60da4bb6c9c43165eff10d19c7cf72823e46745512a8bd98",
+    "fresh_inference_calls": 36,
+    "elapsed_seconds": 28.638520110999934,
+    "model_load_seconds": 4.307323449000023,
+    "source_frame_count": 36,
+    "matched_input_signatures": 36
+  },
+  "base_config_template": {
+    "ground": {
+      "camera_height_m": 1.2,
+      "roi_top_frac": 0.55,
+      "erode_px": 5,
+      "max_samples": 2500,
+      "up_dot_eps": 0.02,
+      "max_ground_depth_m": 12.0,
+      "min_ground_depth_m": 0.3,
+      "ransac_iters": 120,
+      "rel_tol": 0.08,
+      "abs_tol": 0.01,
+      "min_pixels": 150,
+      "min_confidence": 0.45,
+      "min_q_spread": 0.02,
+      "reuse_frames": 10,
+      "ema": 0.5,
+      "max_depth_m": 15.0,
+      "seed": 0,
+      "enable_visual_up": true,
+      "max_gravity_tilt_deg": 5.0,
+      "prefer_visual_up_deg": 10.0,
+      "plane_tol_m": 0.03,
+      "plane_rel_tol": 0.02,
+      "plane_ransac_iters": 150
+    },
+    "bev": {
+      "lateral_half_m": 1.5,
+      "forward_m": 4.0,
+      "cell_m": 0.1,
+      "decay": 0.9,
+      "decay_no_ego": 0.3,
+      "footprint_half_m": 0.25,
+      "footprint_len_m": 0.35,
+      "ground_tol_m": 0.15,
+      "obstacle_min_m": 0.15,
+      "obstacle_max_m": 2.0,
+      "drop_m": -0.25,
+      "pixel_stride": 4,
+      "min_points": 2,
+      "occ_thr": 0.5,
+      "free_thr": 0.5,
+      "free_clears_occ": 0.5,
+      "free_clears_occ_ego": 0.2,
+      "non_walkable_ground_is_occupied": true
+    },
+    "planner": {
+      "heading_max_deg": 35.0,
+      "heading_step_deg": 5.0,
+      "corridor_len_m": 1.5,
+      "body_width_m": 0.5,
+      "margin_m": 0.15,
+      "widen_max_deg": 60.0,
+      "widen_min_progress_m": 1.0,
+      "alpha": 1.0,
+      "beta": 0.5,
+      "gamma": 0.6,
+      "delta": 0.8,
+      "passable_clear_m": 1.5,
+      "near_unknown_ignore_m": 0.6,
+      "unknown_block_m": 0.5,
+      "ray_step_m": 0.05,
+      "free_width_at_m": 1.5,
+      "side_deg": 7.5
+    },
+    "policy": {
+      "stop_persist_ms": 300,
+      "stop_hold_ms": 800,
+      "side_frames": 3,
+      "side_dwell_ms": 400,
+      "center_frames": 2,
+      "lost_ms": 500,
+      "observe_to_stop_ms": 2000,
+      "imminent_dist_m": 0.7
+    },
+    "camera": {
+      "fov_deg": 70.0,
+      "pitch_deg": 15.0,
+      "roll_deg": 0.0
+    },
+    "ego": {
+      "step_length_m": 0.7,
+      "max_dt_ms": 1500.0,
+      "max_dyaw_deg": 60.0,
+      "use_steps": true
+    },
+    "behavior": {
+      "lookahead_m": 1.5,
+      "pass_len_m": 1.3,
+      "pass_timeout_ms": 4500.0,
+      "recenter_thr_m": 0.25,
+      "recenter_done_m": 0.1,
+      "heading_done_deg": 6.0,
+      "center_free_frames": 3,
+      "recenter_max_deg": 20.0,
+      "recenter_timeout_ms": 8000.0
+    },
+    "safety": {
+      "input_timeout_ms": 500.0,
+      "min_confidence": 0.45,
+      "max_residual": 0.08,
+      "max_attitude_visual_deg": 15.0,
+      "min_corridor_coverage": 0.3,
+      "corridor_len_m": 2.0,
+      "corridor_half_width_m": 0.5,
+      "unknown_recovery_frames": 3
+    },
+    "layers": {
+      "ground_band_m": 0.05,
+      "low_max_m": 0.15,
+      "body_max_m": 0.8,
+      "head_max_m": 2.0,
+      "min_points": 2,
+      "min_ground_points": 2,
+      "corridor_len_m": 2.0,
+      "corridor_half_width_m": 0.5,
+      "low_block_cells": 3,
+      "low_block_width_m": 0.3,
+      "drop_depth_m": 0.2,
+      "depth_jump_m": 0.15,
+      "plane_tol_m": 0.08,
+      "drop_edge_gap_m": 0.8,
+      "drop_confirm_frames": 3,
+      "drop_hold_frames": 2,
+      "edge_probe_m": 1.0,
+      "edge_unknown_frames": 1,
+      "max_edge_depth_m": 6.0
+    }
+  },
+  "effective_config_by_session": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+      "ground": {
+        "camera_height_m": 1.35,
+        "roi_top_frac": 0.55,
+        "erode_px": 5,
+        "max_samples": 2500,
+        "up_dot_eps": 0.02,
+        "max_ground_depth_m": 12.0,
+        "min_ground_depth_m": 0.3,
+        "ransac_iters": 120,
+        "rel_tol": 0.08,
+        "abs_tol": 0.01,
+        "min_pixels": 150,
+        "min_confidence": 0.45,
+        "min_q_spread": 0.02,
+        "reuse_frames": 10,
+        "ema": 0.5,
+        "max_depth_m": 15.0,
+        "seed": 0,
+        "enable_visual_up": true,
+        "max_gravity_tilt_deg": 5.0,
+        "prefer_visual_up_deg": 10.0,
+        "plane_tol_m": 0.03,
+        "plane_rel_tol": 0.02,
+        "plane_ransac_iters": 150
+      },
+      "bev": {
+        "lateral_half_m": 1.5,
+        "forward_m": 4.0,
+        "cell_m": 0.1,
+        "decay": 0.9,
+        "decay_no_ego": 0.3,
+        "footprint_half_m": 0.25,
+        "footprint_len_m": 0.35,
+        "ground_tol_m": 0.15,
+        "obstacle_min_m": 0.15,
+        "obstacle_max_m": 2.0,
+        "drop_m": -0.25,
+        "pixel_stride": 4,
+        "min_points": 2,
+        "occ_thr": 0.5,
+        "free_thr": 0.5,
+        "free_clears_occ": 0.5,
+        "free_clears_occ_ego": 0.2,
+        "non_walkable_ground_is_occupied": true
+      },
+      "planner": {
+        "heading_max_deg": 35.0,
+        "heading_step_deg": 5.0,
+        "corridor_len_m": 1.5,
+        "body_width_m": 0.5,
+        "margin_m": 0.15,
+        "widen_max_deg": 60.0,
+        "widen_min_progress_m": 1.0,
+        "alpha": 1.0,
+        "beta": 0.5,
+        "gamma": 0.6,
+        "delta": 0.8,
+        "passable_clear_m": 1.5,
+        "near_unknown_ignore_m": 0.6,
+        "unknown_block_m": 0.5,
+        "ray_step_m": 0.05,
+        "free_width_at_m": 1.5,
+        "side_deg": 7.5
+      },
+      "policy": {
+        "stop_persist_ms": 300,
+        "stop_hold_ms": 800,
+        "side_frames": 3,
+        "side_dwell_ms": 400,
+        "center_frames": 2,
+        "lost_ms": 500,
+        "observe_to_stop_ms": 2000,
+        "imminent_dist_m": 0.7
+      },
+      "camera": {
+        "fov_deg": 70.0,
+        "pitch_deg": 15.0,
+        "roll_deg": 0.0
+      },
+      "ego": {
+        "step_length_m": 0.7,
+        "max_dt_ms": 1500.0,
+        "max_dyaw_deg": 60.0,
+        "use_steps": true
+      },
+      "behavior": {
+        "lookahead_m": 1.5,
+        "pass_len_m": 1.3,
+        "pass_timeout_ms": 4500.0,
+        "recenter_thr_m": 0.25,
+        "recenter_done_m": 0.1,
+        "heading_done_deg": 6.0,
+        "center_free_frames": 3,
+        "recenter_max_deg": 20.0,
+        "recenter_timeout_ms": 8000.0
+      },
+      "safety": {
+        "input_timeout_ms": 500.0,
+        "min_confidence": 0.45,
+        "max_residual": 0.08,
+        "max_attitude_visual_deg": 15.0,
+        "min_corridor_coverage": 0.3,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "unknown_recovery_frames": 3
+      },
+      "layers": {
+        "ground_band_m": 0.05,
+        "low_max_m": 0.15,
+        "body_max_m": 0.8,
+        "head_max_m": 2.0,
+        "min_points": 2,
+        "min_ground_points": 2,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "low_block_cells": 3,
+        "low_block_width_m": 0.3,
+        "drop_depth_m": 0.2,
+        "depth_jump_m": 0.15,
+        "plane_tol_m": 0.08,
+        "drop_edge_gap_m": 0.8,
+        "drop_confirm_frames": 3,
+        "drop_hold_frames": 2,
+        "edge_probe_m": 1.0,
+        "edge_unknown_frames": 1,
+        "max_edge_depth_m": 6.0
+      }
+    },
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+      "ground": {
+        "camera_height_m": 1.35,
+        "roi_top_frac": 0.55,
+        "erode_px": 5,
+        "max_samples": 2500,
+        "up_dot_eps": 0.02,
+        "max_ground_depth_m": 12.0,
+        "min_ground_depth_m": 0.3,
+        "ransac_iters": 120,
+        "rel_tol": 0.08,
+        "abs_tol": 0.01,
+        "min_pixels": 150,
+        "min_confidence": 0.45,
+        "min_q_spread": 0.02,
+        "reuse_frames": 10,
+        "ema": 0.5,
+        "max_depth_m": 15.0,
+        "seed": 0,
+        "enable_visual_up": true,
+        "max_gravity_tilt_deg": 5.0,
+        "prefer_visual_up_deg": 10.0,
+        "plane_tol_m": 0.03,
+        "plane_rel_tol": 0.02,
+        "plane_ransac_iters": 150
+      },
+      "bev": {
+        "lateral_half_m": 1.5,
+        "forward_m": 4.0,
+        "cell_m": 0.1,
+        "decay": 0.9,
+        "decay_no_ego": 0.3,
+        "footprint_half_m": 0.25,
+        "footprint_len_m": 0.35,
+        "ground_tol_m": 0.15,
+        "obstacle_min_m": 0.15,
+        "obstacle_max_m": 2.0,
+        "drop_m": -0.25,
+        "pixel_stride": 4,
+        "min_points": 2,
+        "occ_thr": 0.5,
+        "free_thr": 0.5,
+        "free_clears_occ": 0.5,
+        "free_clears_occ_ego": 0.2,
+        "non_walkable_ground_is_occupied": true
+      },
+      "planner": {
+        "heading_max_deg": 35.0,
+        "heading_step_deg": 5.0,
+        "corridor_len_m": 1.5,
+        "body_width_m": 0.5,
+        "margin_m": 0.15,
+        "widen_max_deg": 60.0,
+        "widen_min_progress_m": 1.0,
+        "alpha": 1.0,
+        "beta": 0.5,
+        "gamma": 0.6,
+        "delta": 0.8,
+        "passable_clear_m": 1.5,
+        "near_unknown_ignore_m": 0.6,
+        "unknown_block_m": 0.5,
+        "ray_step_m": 0.05,
+        "free_width_at_m": 1.5,
+        "side_deg": 7.5
+      },
+      "policy": {
+        "stop_persist_ms": 300,
+        "stop_hold_ms": 800,
+        "side_frames": 3,
+        "side_dwell_ms": 400,
+        "center_frames": 2,
+        "lost_ms": 500,
+        "observe_to_stop_ms": 2000,
+        "imminent_dist_m": 0.7
+      },
+      "camera": {
+        "fov_deg": 70.0,
+        "pitch_deg": 15.0,
+        "roll_deg": 0.0
+      },
+      "ego": {
+        "step_length_m": 0.7,
+        "max_dt_ms": 1500.0,
+        "max_dyaw_deg": 60.0,
+        "use_steps": true
+      },
+      "behavior": {
+        "lookahead_m": 1.5,
+        "pass_len_m": 1.3,
+        "pass_timeout_ms": 4500.0,
+        "recenter_thr_m": 0.25,
+        "recenter_done_m": 0.1,
+        "heading_done_deg": 6.0,
+        "center_free_frames": 3,
+        "recenter_max_deg": 20.0,
+        "recenter_timeout_ms": 8000.0
+      },
+      "safety": {
+        "input_timeout_ms": 500.0,
+        "min_confidence": 0.45,
+        "max_residual": 0.08,
+        "max_attitude_visual_deg": 15.0,
+        "min_corridor_coverage": 0.3,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "unknown_recovery_frames": 3
+      },
+      "layers": {
+        "ground_band_m": 0.05,
+        "low_max_m": 0.15,
+        "body_max_m": 0.8,
+        "head_max_m": 2.0,
+        "min_points": 2,
+        "min_ground_points": 2,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "low_block_cells": 3,
+        "low_block_width_m": 0.3,
+        "drop_depth_m": 0.2,
+        "depth_jump_m": 0.15,
+        "plane_tol_m": 0.08,
+        "drop_edge_gap_m": 0.8,
+        "drop_confirm_frames": 3,
+        "drop_hold_frames": 2,
+        "edge_probe_m": 1.0,
+        "edge_unknown_frames": 1,
+        "max_edge_depth_m": 6.0
+      }
+    },
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+      "ground": {
+        "camera_height_m": 1.35,
+        "roi_top_frac": 0.55,
+        "erode_px": 5,
+        "max_samples": 2500,
+        "up_dot_eps": 0.02,
+        "max_ground_depth_m": 12.0,
+        "min_ground_depth_m": 0.3,
+        "ransac_iters": 120,
+        "rel_tol": 0.08,
+        "abs_tol": 0.01,
+        "min_pixels": 150,
+        "min_confidence": 0.45,
+        "min_q_spread": 0.02,
+        "reuse_frames": 10,
+        "ema": 0.5,
+        "max_depth_m": 15.0,
+        "seed": 0,
+        "enable_visual_up": true,
+        "max_gravity_tilt_deg": 5.0,
+        "prefer_visual_up_deg": 10.0,
+        "plane_tol_m": 0.03,
+        "plane_rel_tol": 0.02,
+        "plane_ransac_iters": 150
+      },
+      "bev": {
+        "lateral_half_m": 1.5,
+        "forward_m": 4.0,
+        "cell_m": 0.1,
+        "decay": 0.9,
+        "decay_no_ego": 0.3,
+        "footprint_half_m": 0.25,
+        "footprint_len_m": 0.35,
+        "ground_tol_m": 0.15,
+        "obstacle_min_m": 0.15,
+        "obstacle_max_m": 2.0,
+        "drop_m": -0.25,
+        "pixel_stride": 4,
+        "min_points": 2,
+        "occ_thr": 0.5,
+        "free_thr": 0.5,
+        "free_clears_occ": 0.5,
+        "free_clears_occ_ego": 0.2,
+        "non_walkable_ground_is_occupied": true
+      },
+      "planner": {
+        "heading_max_deg": 35.0,
+        "heading_step_deg": 5.0,
+        "corridor_len_m": 1.5,
+        "body_width_m": 0.5,
+        "margin_m": 0.15,
+        "widen_max_deg": 60.0,
+        "widen_min_progress_m": 1.0,
+        "alpha": 1.0,
+        "beta": 0.5,
+        "gamma": 0.6,
+        "delta": 0.8,
+        "passable_clear_m": 1.5,
+        "near_unknown_ignore_m": 0.6,
+        "unknown_block_m": 0.5,
+        "ray_step_m": 0.05,
+        "free_width_at_m": 1.5,
+        "side_deg": 7.5
+      },
+      "policy": {
+        "stop_persist_ms": 300,
+        "stop_hold_ms": 800,
+        "side_frames": 3,
+        "side_dwell_ms": 400,
+        "center_frames": 2,
+        "lost_ms": 500,
+        "observe_to_stop_ms": 2000,
+        "imminent_dist_m": 0.7
+      },
+      "camera": {
+        "fov_deg": 70.0,
+        "pitch_deg": 15.0,
+        "roll_deg": 0.0
+      },
+      "ego": {
+        "step_length_m": 0.7,
+        "max_dt_ms": 1500.0,
+        "max_dyaw_deg": 60.0,
+        "use_steps": true
+      },
+      "behavior": {
+        "lookahead_m": 1.5,
+        "pass_len_m": 1.3,
+        "pass_timeout_ms": 4500.0,
+        "recenter_thr_m": 0.25,
+        "recenter_done_m": 0.1,
+        "heading_done_deg": 6.0,
+        "center_free_frames": 3,
+        "recenter_max_deg": 20.0,
+        "recenter_timeout_ms": 8000.0
+      },
+      "safety": {
+        "input_timeout_ms": 500.0,
+        "min_confidence": 0.45,
+        "max_residual": 0.08,
+        "max_attitude_visual_deg": 15.0,
+        "min_corridor_coverage": 0.3,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "unknown_recovery_frames": 3
+      },
+      "layers": {
+        "ground_band_m": 0.05,
+        "low_max_m": 0.15,
+        "body_max_m": 0.8,
+        "head_max_m": 2.0,
+        "min_points": 2,
+        "min_ground_points": 2,
+        "corridor_len_m": 2.0,
+        "corridor_half_width_m": 0.5,
+        "low_block_cells": 3,
+        "low_block_width_m": 0.3,
+        "drop_depth_m": 0.2,
+        "depth_jump_m": 0.15,
+        "plane_tol_m": 0.08,
+        "drop_edge_gap_m": 0.8,
+        "drop_confirm_frames": 3,
+        "drop_hold_frames": 2,
+        "edge_probe_m": 1.0,
+        "edge_unknown_frames": 1,
+        "max_edge_depth_m": 6.0
+      }
+    }
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 67.4171900350002,
+  "finished_utc": "2026-11-09T10:06:01.683253+00:00",
+  "dav2_fresh_inference_calls": 0,
+  "dav2_verified_cache_hits": 36,
+  "dav2_model_load_seconds": 0.0,
+  "dav2_inference_seconds_per_frame": [],
+  "shared_inference_manifest_sha256": "f51b22ebf8ac2424d7ac12bfa3b30e9ae4bddb16d5846f7c651b6b2c3b0d4ae3",
+  "cache_validation": [
+    "input/model signature",
+    "shape",
+    "finite values",
+    "q content and cache-file hashes recorded on read",
+    "upstream fresh-inference signatures when source report supplied"
+  ]
+}

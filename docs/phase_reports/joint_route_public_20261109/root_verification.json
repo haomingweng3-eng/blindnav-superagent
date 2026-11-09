@@ -1,0 +1,32 @@
+{
+  "performed_by": "root independent artifact audit",
+  "base_commit": "b0a23bf7731c02ca557e29a235a729137e1f8a10",
+  "status": "PASS",
+  "input_files_rehashed": 114,
+  "code_files_rehashed": 11,
+  "cached_real_depth_files_and_arrays_rehashed": 36,
+  "paired_rows": 72,
+  "arm_rows": 144,
+  "source_files_unchanged": [
+    "pc/tools/mobilio_sanpo_ab.py",
+    "pc/blindnav_pc/mobilio_fusion.py",
+    "pc/blindnav_pc/mobilio_surface.py",
+    "pc/blindnav_pc/mobilio_occupancy.py",
+    "pc/blindnav_pc/ground.py",
+    "pc/eval/sanpo.py"
+  ],
+  "checks": [
+    "all recorded code hashes match final sources",
+    "all public data byte counts and hashes match",
+    "all 36 depth arrays finite and match recorded q hashes",
+    "all 36 cache file hashes and upstream inference signatures match",
+    "each pair has two distinct arms with same shared input and target",
+    "all NOT_READY rows UNKNOWN, no calibration and no target",
+    "all base production/evaluator modules listed remain byte-identical"
+  ],
+  "unit_contract_test_command": "python -m pytest -q pc/tests/test_mobilio_joint_route.py pc/tests/test_mobilio_fusion.py",
+  "unit_contract_tests_observed_exit_code": 0,
+  "unit_contract_tests_observed_passed": 17,
+  "unit_contract_test_scope": "14 constructed map cases plus 3 existing fusion tests; not model or walking performance",
+  "route_certificates_uncompressed_sha256": "4ade7da8e0c029d5a0ae775e97313794bea9bf8da148faac417f9031b8acdbe7"
+}

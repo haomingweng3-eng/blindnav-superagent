@@ -1,0 +1,106 @@
+{
+  "scope": "component execution and offline map-contract comparison; no navigation acceptance",
+  "fresh_model_frames": 36,
+  "valid_recorded_pose_frames": 33,
+  "not_ready_frames_retained": 3,
+  "timing": {
+    "model_only_median_s": 0.4613371664999022,
+    "model_only_p95_s": 0.608689889499999,
+    "model_only_min_s": 0.313149113999998,
+    "model_only_max_s": 0.6237852169999769,
+    "model_only_sum_s": 16.49948026399943
+  },
+  "conditions": {
+    "public_gt_reference": {
+      "new_state_counts": {
+        "UNKNOWN": 26,
+        "OBSERVE": 7,
+        "BLOCKED": 3
+      },
+      "new_reason_counts": {
+        "recorded_pose_not_ready": 3,
+        "no_jointly_observed_body_path:swept_ground_unknown": 23,
+        "unconfirmed_body_occupancy": 7,
+        "confirmed_body_occupancy": 3
+      },
+      "path_search_frames": 23,
+      "each_candidate_contains_unknown_ground_and_occupancy": 23,
+      "diagnostic_paths_missing_at_start": 23,
+      "selected_diagnostic_path_ground_unknown_cell_sum": 737,
+      "selected_diagnostic_path_ground_unknown_near_sum": 725,
+      "selected_diagnostic_path_occupancy_unknown_column_sum": 2987,
+      "selected_diagnostic_path_occupancy_unknown_near_sum": 2987,
+      "calibration_failures": []
+    },
+    "public_gt_calibration_dav2": {
+      "new_state_counts": {
+        "UNKNOWN": 30,
+        "OBSERVE": 6
+      },
+      "new_reason_counts": {
+        "recorded_pose_not_ready": 3,
+        "no_metric_depth_or_ground_plane": 7,
+        "no_jointly_observed_body_path:swept_ground_unknown": 20,
+        "unconfirmed_body_occupancy": 6
+      },
+      "path_search_frames": 20,
+      "each_candidate_contains_unknown_ground_and_occupancy": 20,
+      "diagnostic_paths_missing_at_start": 20,
+      "selected_diagnostic_path_ground_unknown_cell_sum": 1086,
+      "selected_diagnostic_path_ground_unknown_near_sum": 1044,
+      "selected_diagnostic_path_occupancy_unknown_column_sum": 3540,
+      "selected_diagnostic_path_occupancy_unknown_near_sum": 3540,
+      "calibration_failures": [
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 5,
+          "reason": "low_confidence+stale",
+          "confidence": "0.29047",
+          "ground_pixels": "2456"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 10,
+          "reason": "low_confidence+stale",
+          "confidence": "0.34739",
+          "ground_pixels": "2500"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 15,
+          "reason": "low_confidence+stale",
+          "confidence": "0.28144",
+          "ground_pixels": "2481"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 20,
+          "reason": "low_confidence+stale",
+          "confidence": "0.3046",
+          "ground_pixels": "2401"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 25,
+          "reason": "low_confidence+stale",
+          "confidence": "0.32658",
+          "ground_pixels": "2491"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 30,
+          "reason": "low_confidence+stale",
+          "confidence": "0.32756",
+          "ground_pixels": "2385"
+        },
+        {
+          "session": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10",
+          "frame": 35,
+          "reason": "low_confidence+stale",
+          "confidence": "0.33499",
+          "ground_pixels": "2418"
+        }
+      ]
+    }
+  }
+}

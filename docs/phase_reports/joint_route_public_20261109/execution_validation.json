@@ -1,0 +1,25 @@
+{
+  "record_type": "POST_RUN_VALIDATION",
+  "recorded_at_utc": "2026-11-09T10:07:04.731335+00:00",
+  "comparison_status": "COMPLETED",
+  "exit_code": 0,
+  "frames": 36,
+  "paired_decisions": 72,
+  "arm_rows": 144,
+  "pose_ready": 33,
+  "pose_not_ready": 3,
+  "checks": {
+    "all_not_ready_rows_unknown_no_target_no_calibration": "PASS",
+    "no_fit_or_map_query_for_not_ready_certificates": "PASS",
+    "dav2_effective_height_1_35_m": "PASS",
+    "both_arms_shared_resolved_geometry_hash": "PASS; recorded per frame",
+    "complete_mutable_map_state_equality_before_queries": "PASS; asserted at runtime",
+    "complete_mutable_map_state_unchanged_after_queries": "PASS; asserted at runtime",
+    "cached_input_signatures_match_fresh_stage_36_of_36": "PASS",
+    "q_content_and_cache_file_hashes_present_36_of_36": "PASS"
+  },
+  "run_metadata_sha256": "93397f2c9bb51506dfcf800d35e094887c9e428b621289db95039f3b030f3955",
+  "raw_stdout_log": "run.log",
+  "raw_stdout_log_sha256": "a0f144c513b746fe767c00340d91525e2c0175850af682caf32cfe568c8d9545",
+  "shared_inference_manifest_sha256": "f51b22ebf8ac2424d7ac12bfa3b30e9ae4bddb16d5846f7c651b6b2c3b0d4ae3"
+}

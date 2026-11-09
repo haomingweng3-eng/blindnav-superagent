@@ -1,0 +1,23 @@
+{
+  "scope": "EXISTING_CSV_AUDIT_ONLY",
+  "totals": {
+    "frames": 481,
+    "authorized": 49,
+    "finite_angle_pairs": 49,
+    "missing_angle_pairs": 0,
+    "different_angle_pairs": 45,
+    "auth_without_clear": 0,
+    "danger_proxy": 295,
+    "clear_proxy": 150,
+    "authorized_on_danger_proxy": 17,
+    "authorized_on_clear_proxy": 29,
+    "different_on_danger_proxy": 16,
+    "different_on_clear_proxy": 27
+  },
+  "equality_tolerance_deg": 1e-06,
+  "interpretation": "Angle disagreement is NOT a collision or wrong-turn label. Equal angles do NOT certify body clearance or observed free space.",
+  "actual_affected_or_unsafe_frames": "NOT_EVALUATED",
+  "new_model_inference": false,
+  "input_sha256": "1ee10bf3033ed2c5923b3092c5c4e7a5c703d26c800fabf01ae1c56426e6357e",
+  "source_name": "on_per_frame.csv.gz"
+}

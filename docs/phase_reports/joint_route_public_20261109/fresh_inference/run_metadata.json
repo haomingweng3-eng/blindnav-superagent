@@ -1,0 +1,34 @@
+{
+  "status": "COMPLETED",
+  "frames": 36,
+  "elapsed_seconds": 28.638520110999934,
+  "model_load_seconds": 4.307323449000023,
+  "fresh_inference_calls": 36,
+  "verified_cache_hits": 0,
+  "model_inventory": [
+    {
+      "path": "config.json",
+      "size": 950,
+      "sha256": "c56698d3643dde1f83ea2212759e6b31a22b8f827246a36dd007ee8a22b3ff75"
+    },
+    {
+      "path": "download_manifest.json",
+      "size": 1200,
+      "sha256": "75703f6c99f3d23676262d1102e66fd9a5363cbba3acf4220201ac116fa0a42f"
+    },
+    {
+      "path": "model.safetensors",
+      "size": 99173660,
+      "sha256": "3152477ce0d8d6978d76b995120de97cb5b928701fd0f817769f59e249a16b70"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "size": 775,
+      "sha256": "d41175c0d889477ca8fc67191e540faef14baf6275157b3fdecf78469e6bbf84"
+    }
+  ],
+  "torch_threads": 4,
+  "depth_input_size_override": null,
+  "data_kind": "SANPO-real public RGB",
+  "semantics_used_for_this_precompute": false
+}
