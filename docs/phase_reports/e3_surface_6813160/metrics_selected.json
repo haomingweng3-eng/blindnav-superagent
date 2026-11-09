@@ -1,0 +1,45 @@
+{
+  "definitions": {
+    "authorized_directions": "authorized_motion in STRAIGHT/LEFT/RIGHT, not observation_hint",
+    "authorized_on_confirmed_clear": "authorized direction on proxy confirmed_clear; direction correctness not evaluated",
+    "any_miss": "proxy danger frame with direction command; turn safety not evaluated",
+    "false_stop": "STOP on confirmed_clear",
+    "command_flips": "effective_command changes between consecutive processed annotated frames in each session; not continuous-video rate",
+    "hint_only": "observation_hint present with no authorized motion",
+    "danger_warning": "NOT_EVALUABLE: warnings in legacy metrics include UNKNOWN; no unambiguous risk-specific alert evaluation"
+  },
+  "arms": {
+    "baseline_split_c": {
+      "frames": 481,
+      "danger": 295,
+      "confirmed_clear": 150,
+      "authorized_directions": 220,
+      "authorized_on_confirmed_clear": 76,
+      "any_miss": 123,
+      "false_stop": 0,
+      "unknown": 214,
+      "observe": 40,
+      "blocked": 7,
+      "clear": 220,
+      "hint_only": 0,
+      "transitions": 478,
+      "command_flips": 201
+    },
+    "mobilio": {
+      "frames": 481,
+      "danger": 295,
+      "confirmed_clear": 150,
+      "authorized_directions": 49,
+      "authorized_on_confirmed_clear": 29,
+      "any_miss": 17,
+      "false_stop": 0,
+      "unknown": 275,
+      "observe": 157,
+      "blocked": 0,
+      "clear": 49,
+      "hint_only": 4,
+      "transitions": 478,
+      "command_flips": 136
+    }
+  }
+}

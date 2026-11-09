@@ -1,0 +1,17 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "device": "cpu",
+  "cpu_count": 9,
+  "torch_threads": 4,
+  "packages": {
+    "torch": "2.15.0+cpu",
+    "transformers": "5.22.1",
+    "numpy": "2.3.5",
+    "opencv-python-headless": "5.0.0.93",
+    "huggingface_hub": "2.4.0",
+    "safetensors": "0.8.0",
+    "pytest": "9.2.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "annotated": {
+    "baseline_correct_straight_to_candidate_unknown_or_stop": 1,
+    "baseline_correct_warning_to_candidate_miss": 34,
+    "baseline_guidance_on_clear": 89,
+    "baseline_warning_on_danger": 295,
+    "candidate_guidance_on_clear": 11,
+    "candidate_unknown_on_danger": 27,
+    "candidate_warning_on_danger": 261,
+    "confirmed_clear_frames": 150,
+    "danger_frames": 295,
+    "paired_frames": 481
+  },
+  "production": {
+    "baseline_correct_straight_to_candidate_unknown_or_stop": 11,
+    "baseline_correct_warning_to_candidate_miss": 55,
+    "baseline_guidance_on_clear": 50,
+    "baseline_warning_on_danger": 70,
+    "baseline_wrong_straight_to_candidate_unknown": 37,
+    "baseline_wrong_straight_to_candidate_warning": 41,
+    "candidate_guidance_on_clear": 22,
+    "candidate_unknown_on_danger": 205,
+    "candidate_warning_on_danger": 75,
+    "confirmed_clear_frames": 150,
+    "danger_frames": 295,
+    "paired_frames": 481
+  }
+}

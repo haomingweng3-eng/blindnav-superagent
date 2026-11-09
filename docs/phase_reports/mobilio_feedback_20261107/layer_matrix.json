@@ -1,0 +1,567 @@
+{
+  "conditions": {
+    "four_way:A_gt_gt": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 6,
+        "OBSERVE": 402,
+        "RIGHT": 1,
+        "STOP": 13,
+        "STRAIGHT": 22,
+        "UNKNOWN": 37
+      },
+      "frames": 481,
+      "fused_authorized": 29,
+      "fused_safety_state_counts": {
+        "BLOCKED": 13,
+        "CLEAR": 29,
+        "OBSERVE": 402,
+        "UNKNOWN": 37
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 29,
+        "CLEAR/OBSERVE": 0,
+        "OBSERVE/BLOCKED": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 29,
+        "CLEAR/OBSERVE": 12,
+        "OBSERVE/BLOCKED": 13,
+        "OBSERVE/CLEAR": 292,
+        "OBSERVE/OBSERVE": 98,
+        "OBSERVE/UNKNOWN": 11,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 17
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 10,
+        "CLEAR/OBSERVE": 11,
+        "OBSERVE/BLOCKED": 12,
+        "OBSERVE/CLEAR": 143,
+        "OBSERVE/OBSERVE": 92,
+        "OBSERVE/UNKNOWN": 7,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 11
+      },
+      "occupancy_clear": 321,
+      "occupancy_state_counts": {
+        "BLOCKED": 13,
+        "CLEAR": 321,
+        "OBSERVE": 119,
+        "UNKNOWN": 28
+      },
+      "reasons": {
+        "occupancy:confirmed_body_occupancy": 13,
+        "occupancy:no_fully_observed_clearance": 3,
+        "occupancy:no_observed_clearance": 8,
+        "occupancy:unconfirmed_body_occupancy": 12,
+        "surface:hazard": 51,
+        "surface:no_candidate_ray": 26,
+        "surface:non_walkable": 339,
+        "surface:walkable": 29
+      },
+      "surface_clear": 41,
+      "surface_state_counts": {
+        "CLEAR": 41,
+        "OBSERVE": 414,
+        "UNKNOWN": 26
+      },
+      "unknown": 37
+    },
+    "four_way:B_v5_gt": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 2,
+        "OBSERVE": 395,
+        "STOP": 10,
+        "STRAIGHT": 13,
+        "UNKNOWN": 61
+      },
+      "frames": 481,
+      "fused_authorized": 15,
+      "fused_safety_state_counts": {
+        "BLOCKED": 10,
+        "CLEAR": 15,
+        "OBSERVE": 395,
+        "UNKNOWN": 61
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 15,
+        "CLEAR/OBSERVE": 0,
+        "OBSERVE/BLOCKED": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 15,
+        "CLEAR/OBSERVE": 6,
+        "OBSERVE/BLOCKED": 10,
+        "OBSERVE/CLEAR": 288,
+        "OBSERVE/OBSERVE": 101,
+        "OBSERVE/UNKNOWN": 15,
+        "UNKNOWN/CLEAR": 24,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 13
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 8,
+        "CLEAR/OBSERVE": 6,
+        "OBSERVE/BLOCKED": 9,
+        "OBSERVE/CLEAR": 145,
+        "OBSERVE/OBSERVE": 98,
+        "OBSERVE/UNKNOWN": 10,
+        "UNKNOWN/CLEAR": 3,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 7
+      },
+      "occupancy_clear": 327,
+      "occupancy_state_counts": {
+        "BLOCKED": 10,
+        "CLEAR": 327,
+        "OBSERVE": 116,
+        "UNKNOWN": 28
+      },
+      "reasons": {
+        "occupancy:confirmed_body_occupancy": 10,
+        "occupancy:no_fully_observed_clearance": 4,
+        "occupancy:no_observed_clearance": 11,
+        "occupancy:unconfirmed_body_occupancy": 6,
+        "surface:no_candidate_ray": 46,
+        "surface:non_walkable": 389,
+        "surface:walkable": 15
+      },
+      "surface_clear": 21,
+      "surface_state_counts": {
+        "CLEAR": 21,
+        "OBSERVE": 414,
+        "UNKNOWN": 46
+      },
+      "unknown": 61
+    },
+    "four_way:C_gt_dav2": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 11,
+        "OBSERVE": 148,
+        "RIGHT": 1,
+        "STRAIGHT": 45,
+        "UNKNOWN": 276
+      },
+      "frames": 481,
+      "fused_authorized": 57,
+      "fused_safety_state_counts": {
+        "CLEAR": 57,
+        "OBSERVE": 148,
+        "UNKNOWN": 276
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 57,
+        "CLEAR/OBSERVE": 0,
+        "CLEAR/UNKNOWN": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 57,
+        "CLEAR/OBSERVE": 3,
+        "CLEAR/UNKNOWN": 34,
+        "OBSERVE/CLEAR": 127,
+        "OBSERVE/OBSERVE": 18,
+        "OBSERVE/UNKNOWN": 100,
+        "UNKNOWN/CLEAR": 2,
+        "UNKNOWN/OBSERVE": 13,
+        "UNKNOWN/UNKNOWN": 127
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 18,
+        "CLEAR/OBSERVE": 3,
+        "CLEAR/UNKNOWN": 17,
+        "OBSERVE/CLEAR": 53,
+        "OBSERVE/OBSERVE": 16,
+        "OBSERVE/UNKNOWN": 67,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 13,
+        "UNKNOWN/UNKNOWN": 108
+      },
+      "occupancy_clear": 186,
+      "occupancy_state_counts": {
+        "CLEAR": 186,
+        "OBSERVE": 34,
+        "UNKNOWN": 261
+      },
+      "reasons": {
+        "no_metric_depth": 9,
+        "occupancy:no_fully_observed_clearance": 41,
+        "occupancy:no_observed_clearance": 93,
+        "occupancy:unconfirmed_body_occupancy": 3,
+        "surface:hazard": 26,
+        "surface:no_candidate_ray": 133,
+        "surface:non_walkable": 111,
+        "surface:walkable": 65
+      },
+      "surface_clear": 94,
+      "surface_state_counts": {
+        "CLEAR": 94,
+        "OBSERVE": 245,
+        "UNKNOWN": 142
+      },
+      "unknown": 276
+    },
+    "four_way:D_v5_dav2": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 6,
+        "OBSERVE": 157,
+        "RIGHT": 3,
+        "STRAIGHT": 40,
+        "UNKNOWN": 275
+      },
+      "frames": 481,
+      "fused_authorized": 49,
+      "fused_safety_state_counts": {
+        "CLEAR": 49,
+        "OBSERVE": 157,
+        "UNKNOWN": 275
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 49,
+        "CLEAR/OBSERVE": 0,
+        "CLEAR/UNKNOWN": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 49,
+        "CLEAR/OBSERVE": 4,
+        "CLEAR/UNKNOWN": 26,
+        "OBSERVE/CLEAR": 130,
+        "OBSERVE/OBSERVE": 23,
+        "OBSERVE/UNKNOWN": 115,
+        "UNKNOWN/CLEAR": 1,
+        "UNKNOWN/OBSERVE": 8,
+        "UNKNOWN/UNKNOWN": 125
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 17,
+        "CLEAR/OBSERVE": 3,
+        "CLEAR/UNKNOWN": 16,
+        "OBSERVE/CLEAR": 55,
+        "OBSERVE/OBSERVE": 15,
+        "OBSERVE/UNKNOWN": 79,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 7,
+        "UNKNOWN/UNKNOWN": 103
+      },
+      "occupancy_clear": 180,
+      "occupancy_state_counts": {
+        "CLEAR": 180,
+        "OBSERVE": 35,
+        "UNKNOWN": 266
+      },
+      "reasons": {
+        "no_metric_depth": 9,
+        "occupancy:no_fully_observed_clearance": 44,
+        "occupancy:no_observed_clearance": 97,
+        "occupancy:unconfirmed_body_occupancy": 4,
+        "surface:no_candidate_ray": 125,
+        "surface:non_walkable": 148,
+        "surface:walkable": 54
+      },
+      "surface_clear": 79,
+      "surface_state_counts": {
+        "CLEAR": 79,
+        "OBSERVE": 268,
+        "UNKNOWN": 134
+      },
+      "unknown": 275
+    },
+    "harvard_fixed:harvard_A": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "RIGHT": 8,
+        "STOP": 305,
+        "UNKNOWN": 168
+      },
+      "frames": 481,
+      "fused_authorized": 8,
+      "fused_safety_state_counts": {
+        "BLOCKED": 305,
+        "CLEAR": 8,
+        "UNKNOWN": 168
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/BLOCKED": 0,
+        "CLEAR/CLEAR": 8,
+        "UNKNOWN/BLOCKED": 0,
+        "UNKNOWN/CLEAR": 0
+      },
+      "matrix_counts": {
+        "CLEAR/BLOCKED": 15,
+        "CLEAR/CLEAR": 8,
+        "UNKNOWN/BLOCKED": 290,
+        "UNKNOWN/CLEAR": 168
+      },
+      "matrix_danger_frames": {
+        "CLEAR/BLOCKED": 6,
+        "CLEAR/CLEAR": 0,
+        "UNKNOWN/BLOCKED": 235,
+        "UNKNOWN/CLEAR": 54
+      },
+      "occupancy_clear": 176,
+      "occupancy_state_counts": {
+        "BLOCKED": 305,
+        "CLEAR": 176
+      },
+      "reasons": {
+        "harvard_reference": 481
+      },
+      "surface_clear": 23,
+      "surface_state_counts": {
+        "CLEAR": 23,
+        "UNKNOWN": 458
+      },
+      "unknown": 168
+    },
+    "harvard_fixed:harvard_D": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "RIGHT": 58,
+        "STOP": 63,
+        "STRAIGHT": 13,
+        "UNKNOWN": 347
+      },
+      "frames": 481,
+      "fused_authorized": 71,
+      "fused_safety_state_counts": {
+        "BLOCKED": 63,
+        "CLEAR": 71,
+        "UNKNOWN": 347
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/BLOCKED": 0,
+        "CLEAR/CLEAR": 71,
+        "UNKNOWN/BLOCKED": 0,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/BLOCKED": 9,
+        "CLEAR/CLEAR": 71,
+        "UNKNOWN/BLOCKED": 54,
+        "UNKNOWN/CLEAR": 338,
+        "UNKNOWN/UNKNOWN": 9
+      },
+      "matrix_danger_frames": {
+        "CLEAR/BLOCKED": 1,
+        "CLEAR/CLEAR": 39,
+        "UNKNOWN/BLOCKED": 40,
+        "UNKNOWN/CLEAR": 213,
+        "UNKNOWN/UNKNOWN": 2
+      },
+      "occupancy_clear": 409,
+      "occupancy_state_counts": {
+        "BLOCKED": 63,
+        "CLEAR": 409,
+        "UNKNOWN": 9
+      },
+      "reasons": {
+        "harvard_reference": 472,
+        "no_metric_depth": 9
+      },
+      "surface_clear": 80,
+      "surface_state_counts": {
+        "CLEAR": 80,
+        "UNKNOWN": 401
+      },
+      "unknown": 347
+    },
+    "production:annotated": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 6,
+        "OBSERVE": 402,
+        "RIGHT": 1,
+        "STOP": 13,
+        "STRAIGHT": 22,
+        "UNKNOWN": 37
+      },
+      "frames": 481,
+      "fused_authorized": 29,
+      "fused_safety_state_counts": {
+        "BLOCKED": 13,
+        "CLEAR": 29,
+        "OBSERVE": 402,
+        "UNKNOWN": 37
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 29,
+        "CLEAR/OBSERVE": 0,
+        "OBSERVE/BLOCKED": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 29,
+        "CLEAR/OBSERVE": 12,
+        "OBSERVE/BLOCKED": 13,
+        "OBSERVE/CLEAR": 292,
+        "OBSERVE/OBSERVE": 98,
+        "OBSERVE/UNKNOWN": 11,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 17
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 10,
+        "CLEAR/OBSERVE": 11,
+        "OBSERVE/BLOCKED": 12,
+        "OBSERVE/CLEAR": 143,
+        "OBSERVE/OBSERVE": 92,
+        "OBSERVE/UNKNOWN": 7,
+        "UNKNOWN/OBSERVE": 9,
+        "UNKNOWN/UNKNOWN": 11
+      },
+      "occupancy_clear": 321,
+      "occupancy_state_counts": {
+        "BLOCKED": 13,
+        "CLEAR": 321,
+        "OBSERVE": 119,
+        "UNKNOWN": 28
+      },
+      "reasons": {
+        "occupancy:confirmed_body_occupancy": 13,
+        "occupancy:no_fully_observed_clearance": 3,
+        "occupancy:no_observed_clearance": 8,
+        "occupancy:unconfirmed_body_occupancy": 12,
+        "surface:hazard": 51,
+        "surface:no_candidate_ray": 26,
+        "surface:non_walkable": 339,
+        "surface:walkable": 29
+      },
+      "surface_clear": 41,
+      "surface_state_counts": {
+        "CLEAR": 41,
+        "OBSERVE": 414,
+        "UNKNOWN": 26
+      },
+      "unknown": 37
+    },
+    "production:production": {
+      "any_danger": 295,
+      "confirmed_clear": 150,
+      "effective_command_counts": {
+        "LEFT": 6,
+        "OBSERVE": 157,
+        "RIGHT": 3,
+        "STRAIGHT": 40,
+        "UNKNOWN": 275
+      },
+      "frames": 481,
+      "fused_authorized": 49,
+      "fused_safety_state_counts": {
+        "CLEAR": 49,
+        "OBSERVE": 157,
+        "UNKNOWN": 275
+      },
+      "matrix_authorized_frames": {
+        "CLEAR/CLEAR": 49,
+        "CLEAR/OBSERVE": 0,
+        "CLEAR/UNKNOWN": 0,
+        "OBSERVE/CLEAR": 0,
+        "OBSERVE/OBSERVE": 0,
+        "OBSERVE/UNKNOWN": 0,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 0,
+        "UNKNOWN/UNKNOWN": 0
+      },
+      "matrix_counts": {
+        "CLEAR/CLEAR": 49,
+        "CLEAR/OBSERVE": 4,
+        "CLEAR/UNKNOWN": 26,
+        "OBSERVE/CLEAR": 130,
+        "OBSERVE/OBSERVE": 23,
+        "OBSERVE/UNKNOWN": 115,
+        "UNKNOWN/CLEAR": 1,
+        "UNKNOWN/OBSERVE": 8,
+        "UNKNOWN/UNKNOWN": 125
+      },
+      "matrix_danger_frames": {
+        "CLEAR/CLEAR": 17,
+        "CLEAR/OBSERVE": 3,
+        "CLEAR/UNKNOWN": 16,
+        "OBSERVE/CLEAR": 55,
+        "OBSERVE/OBSERVE": 15,
+        "OBSERVE/UNKNOWN": 79,
+        "UNKNOWN/CLEAR": 0,
+        "UNKNOWN/OBSERVE": 7,
+        "UNKNOWN/UNKNOWN": 103
+      },
+      "occupancy_clear": 180,
+      "occupancy_state_counts": {
+        "CLEAR": 180,
+        "OBSERVE": 35,
+        "UNKNOWN": 266
+      },
+      "reasons": {
+        "no_metric_depth": 9,
+        "occupancy:no_fully_observed_clearance": 44,
+        "occupancy:no_observed_clearance": 97,
+        "occupancy:unconfirmed_body_occupancy": 4,
+        "surface:no_candidate_ray": 125,
+        "surface:non_walkable": 148,
+        "surface:walkable": 54
+      },
+      "surface_clear": 79,
+      "surface_state_counts": {
+        "CLEAR": 79,
+        "OBSERVE": 268,
+        "UNKNOWN": 134
+      },
+      "unknown": 275
+    }
+  },
+  "schema": "mobilio-layer-audit/1",
+  "sources": {
+    "four_way": {
+      "bytes": 2405902,
+      "path": "pc/out/mobilio_four_way_20261106/per_frame.csv",
+      "sha256": "0d452e45debb6c0645af6a961e5d9d346063d72806382e14d639266ffbc8095b"
+    },
+    "harvard_fixed": {
+      "bytes": 1167206,
+      "path": "pc/out/mobilio_harvard_reference_fixed_20261107/per_frame.csv",
+      "sha256": "cf82889df37422e84a55c8f1114a8f229d200891116f7ce28dc21746d193e7a7"
+    },
+    "production": {
+      "bytes": 1143996,
+      "path": "pc/out/mobilio_sanpo_ab_20261106/per_frame.csv",
+      "sha256": "60b4b0c6a2e6f843e14f5650a12dd83ea1d5fcaf58d0ce84584ba91f414a069f"
+    }
+  }
+}

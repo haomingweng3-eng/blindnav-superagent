@@ -1,0 +1,19 @@
+--- a/pc/blindnav_pc/mobilio_surface.py
++++ b/pc/blindnav_pc/mobilio_surface.py
+@@ -4,9 +4,12 @@
+             return
+         for key, cell in tuple(self._cells.items()):
+             if key in touched_set or cell.last_frame < 0:
+                 continue
+-            delta = max(0, int(frame_id) - int(cell.last_frame))
+-            if delta:
+-                cell.decay(self.cfg.evidence_decay ** delta)
+-            if not cell.scores or delta > self.cfg.stale_after_frames:
++            # Decay only time not already accounted for by the previous update.
++            # Expiry still depends on time since the LAST OBSERVATION.
++            age = max(0, int(frame_id) - int(cell.last_frame))
++            elapsed = max(0, int(frame_id) - max(int(cell.last_frame), self._last_frame))
++            if elapsed:
++                cell.decay(self.cfg.evidence_decay ** elapsed)
++            if not cell.scores or age > self.cfg.stale_after_frames:
+                 del self._cells[key]

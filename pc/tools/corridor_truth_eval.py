@@ -196,15 +196,19 @@ def uncertain_band(walk: np.ndarray, boundary_label: np.ndarray, depth_m: np.nda
 # ---------------------------------------------------------------------------
 # v5 checkpoint loading / inference (same preprocessing as the existing eval scripts)
 # ---------------------------------------------------------------------------
-def load_v5(checkpoint: str, device: Optional[str] = None):
+def load_v5(checkpoint: str, device: Optional[str] = None, *, revision: Optional[str] = None,
+            expected_model_id: Optional[str] = None, local_snapshot: Optional[str] = None):
     import torch
     from transformers.models.segformer import SegformerForSemanticSegmentation
     dev = device or ("mps" if torch.backends.mps.is_available() else "cpu")
     ckpt = torch.load(checkpoint, map_location="cpu")
     if "state_dict" not in ckpt:
         raise SystemExit(f"unexpected v5 checkpoint format in {checkpoint!r}: no state_dict")
+    model_id = ckpt.get("model", "nvidia/segformer-b0-finetuned-cityscapes-1024-1024")
+    if expected_model_id is not None and model_id != expected_model_id:
+        raise ValueError("v5 checkpoint model ID differs from frozen inventory")
     model = SegformerForSemanticSegmentation.from_pretrained(
-        ckpt.get("model", "nvidia/segformer-b0-finetuned-cityscapes-1024-1024"),
+        local_snapshot or model_id, revision=revision, local_files_only=bool(local_snapshot),
         num_labels=5, ignore_mismatched_sizes=True).to(dev).eval()
     model.load_state_dict(ckpt["state_dict"])
     return model, dev

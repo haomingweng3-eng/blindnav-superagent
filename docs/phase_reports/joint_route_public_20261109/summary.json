@@ -1,0 +1,638 @@
+{
+  "frames": 36,
+  "conditions": {
+    "public_gt_reference": {
+      "original_mobilio": {
+        "overall": {
+          "frames": 36,
+          "pose_ready_frames": 33,
+          "pose_not_ready_frames": 3,
+          "states": {
+            "UNKNOWN": 4,
+            "OBSERVE": 26,
+            "CLEAR": 3,
+            "BLOCKED": 3
+          },
+          "calibrated_frames": 33,
+          "authorized_all": {
+            "numerator": 3,
+            "denominator": 36,
+            "rate": 0.08333333333333333
+          },
+          "authorized_on_pose_ready": {
+            "numerator": 3,
+            "denominator": 33,
+            "rate": 0.09090909090909091
+          },
+          "authorized_on_clear_proxy": {
+            "numerator": 1,
+            "denominator": 9,
+            "rate": 0.1111111111111111
+          },
+          "authorized_on_danger_proxy": {
+            "numerator": 0,
+            "denominator": 16,
+            "rate": 0.0
+          },
+          "observation_hints": 0,
+          "reason_counts": {
+            "recorded_pose_not_ready": 3,
+            "surface:non_walkable": 17,
+            "surface:hazard": 9,
+            "surface:walkable": 3,
+            "occupancy:no_observed_clearance": 1,
+            "occupancy:confirmed_body_occupancy": 3
+          }
+        },
+        "sessions": {
+          "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 1,
+              "OBSERVE": 10,
+              "CLEAR": 1
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 1,
+              "denominator": 12,
+              "rate": 0.08333333333333333
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 1,
+              "denominator": 11,
+              "rate": 0.09090909090909091
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 1,
+              "denominator": 7,
+              "rate": 0.14285714285714285
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 4,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "surface:non_walkable": 1,
+              "surface:hazard": 9,
+              "surface:walkable": 1
+            }
+          },
+          "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 1,
+              "OBSERVE": 9,
+              "CLEAR": 2
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 2,
+              "denominator": 12,
+              "rate": 0.16666666666666666
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 2,
+              "denominator": 11,
+              "rate": 0.18181818181818182
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "surface:non_walkable": 9,
+              "surface:walkable": 2
+            }
+          },
+          "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 2,
+              "OBSERVE": 7,
+              "BLOCKED": 3
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "occupancy:no_observed_clearance": 1,
+              "surface:non_walkable": 7,
+              "occupancy:confirmed_body_occupancy": 3
+            }
+          }
+        }
+      },
+      "joint_route_candidate": {
+        "overall": {
+          "frames": 36,
+          "pose_ready_frames": 33,
+          "pose_not_ready_frames": 3,
+          "states": {
+            "UNKNOWN": 26,
+            "OBSERVE": 7,
+            "BLOCKED": 3
+          },
+          "calibrated_frames": 33,
+          "authorized_all": {
+            "numerator": 0,
+            "denominator": 36,
+            "rate": 0.0
+          },
+          "authorized_on_pose_ready": {
+            "numerator": 0,
+            "denominator": 33,
+            "rate": 0.0
+          },
+          "authorized_on_clear_proxy": {
+            "numerator": 0,
+            "denominator": 9,
+            "rate": 0.0
+          },
+          "authorized_on_danger_proxy": {
+            "numerator": 0,
+            "denominator": 16,
+            "rate": 0.0
+          },
+          "observation_hints": 0,
+          "reason_counts": {
+            "recorded_pose_not_ready": 3,
+            "no_jointly_observed_body_path:swept_ground_unknown": 23,
+            "unconfirmed_body_occupancy": 7,
+            "confirmed_body_occupancy": 3
+          }
+        },
+        "sessions": {
+          "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 12
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 7,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 4,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_jointly_observed_body_path:swept_ground_unknown": 11
+            }
+          },
+          "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 12
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_jointly_observed_body_path:swept_ground_unknown": 11
+            }
+          },
+          "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 2,
+              "OBSERVE": 7,
+              "BLOCKED": 3
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_jointly_observed_body_path:swept_ground_unknown": 1,
+              "unconfirmed_body_occupancy": 7,
+              "confirmed_body_occupancy": 3
+            }
+          }
+        }
+      }
+    },
+    "public_gt_calibration_dav2": {
+      "original_mobilio": {
+        "overall": {
+          "frames": 36,
+          "pose_ready_frames": 33,
+          "pose_not_ready_frames": 3,
+          "states": {
+            "UNKNOWN": 25,
+            "OBSERVE": 11
+          },
+          "calibrated_frames": 26,
+          "authorized_all": {
+            "numerator": 0,
+            "denominator": 36,
+            "rate": 0.0
+          },
+          "authorized_on_pose_ready": {
+            "numerator": 0,
+            "denominator": 33,
+            "rate": 0.0
+          },
+          "authorized_on_clear_proxy": {
+            "numerator": 0,
+            "denominator": 9,
+            "rate": 0.0
+          },
+          "authorized_on_danger_proxy": {
+            "numerator": 0,
+            "denominator": 16,
+            "rate": 0.0
+          },
+          "observation_hints": 0,
+          "reason_counts": {
+            "recorded_pose_not_ready": 3,
+            "no_metric_depth_or_ground_plane": 7,
+            "surface:no_candidate_ray": 4,
+            "occupancy:no_observed_clearance": 8,
+            "surface:non_walkable": 9,
+            "occupancy:no_fully_observed_clearance": 3,
+            "surface:walkable": 1,
+            "surface:hazard": 1
+          }
+        },
+        "sessions": {
+          "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 11,
+              "OBSERVE": 1
+            },
+            "calibrated_frames": 4,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 7,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 4,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_metric_depth_or_ground_plane": 7,
+              "surface:no_candidate_ray": 1,
+              "occupancy:no_observed_clearance": 2,
+              "surface:non_walkable": 1
+            }
+          },
+          "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 8,
+              "OBSERVE": 4
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "surface:no_candidate_ray": 1,
+              "occupancy:no_observed_clearance": 3,
+              "surface:non_walkable": 4,
+              "occupancy:no_fully_observed_clearance": 3
+            }
+          },
+          "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 6,
+              "OBSERVE": 6
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "surface:no_candidate_ray": 2,
+              "occupancy:no_observed_clearance": 3,
+              "surface:non_walkable": 4,
+              "surface:walkable": 1,
+              "surface:hazard": 1
+            }
+          }
+        }
+      },
+      "joint_route_candidate": {
+        "overall": {
+          "frames": 36,
+          "pose_ready_frames": 33,
+          "pose_not_ready_frames": 3,
+          "states": {
+            "UNKNOWN": 30,
+            "OBSERVE": 6
+          },
+          "calibrated_frames": 26,
+          "authorized_all": {
+            "numerator": 0,
+            "denominator": 36,
+            "rate": 0.0
+          },
+          "authorized_on_pose_ready": {
+            "numerator": 0,
+            "denominator": 33,
+            "rate": 0.0
+          },
+          "authorized_on_clear_proxy": {
+            "numerator": 0,
+            "denominator": 9,
+            "rate": 0.0
+          },
+          "authorized_on_danger_proxy": {
+            "numerator": 0,
+            "denominator": 16,
+            "rate": 0.0
+          },
+          "observation_hints": 0,
+          "reason_counts": {
+            "recorded_pose_not_ready": 3,
+            "no_metric_depth_or_ground_plane": 7,
+            "no_jointly_observed_body_path:swept_ground_unknown": 20,
+            "unconfirmed_body_occupancy": 6
+          }
+        },
+        "sessions": {
+          "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 12
+            },
+            "calibrated_frames": 4,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 7,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 4,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_metric_depth_or_ground_plane": 7,
+              "no_jointly_observed_body_path:swept_ground_unknown": 4
+            }
+          },
+          "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 12
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 2,
+              "rate": 0.0
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 1,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_jointly_observed_body_path:swept_ground_unknown": 11
+            }
+          },
+          "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": {
+            "frames": 12,
+            "pose_ready_frames": 11,
+            "pose_not_ready_frames": 1,
+            "states": {
+              "UNKNOWN": 6,
+              "OBSERVE": 6
+            },
+            "calibrated_frames": 11,
+            "authorized_all": {
+              "numerator": 0,
+              "denominator": 12,
+              "rate": 0.0
+            },
+            "authorized_on_pose_ready": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "authorized_on_clear_proxy": {
+              "numerator": 0,
+              "denominator": 0,
+              "rate": null
+            },
+            "authorized_on_danger_proxy": {
+              "numerator": 0,
+              "denominator": 11,
+              "rate": 0.0
+            },
+            "observation_hints": 0,
+            "reason_counts": {
+              "recorded_pose_not_ready": 1,
+              "no_jointly_observed_body_path:swept_ground_unknown": 5,
+              "unconfirmed_body_occupancy": 6
+            }
+          }
+        }
+      }
+    }
+  },
+  "scope": "offline public-data map-contract comparison; not production or phone validation",
+  "proxy_warning": "GT hazard/clear labels are frame proxies, not collision or straight-line accuracy.",
+  "interpretation_notes": [
+    "GT hazard/clear labels are frame proxies, not collision or straight-line accuracy.",
+    "GT proxies refer to the recorded-trajectory target corridor, not either selected route.",
+    "Target direction uses a noncausal +/-4m TLS fit on READY recorded poses in this 36-frame subset.",
+    "Subset target directions differ from a full 481-frame trajectory; historical totals are not a baseline.",
+    "NOT_READY frames remain in totals but do not calibrate, update/query maps or receive GT route-proxy labels.",
+    "Ground visibility does not establish observed free space at every body height.",
+    "Existing surface decay and all map-update semantics are unchanged."
+  ],
+  "pose_ready_frames": 33,
+  "pose_not_ready_frames": 3,
+  "changed_frames_by_condition": {
+    "public_gt_reference": 33,
+    "public_gt_calibration_dav2": 26
+  }
+}

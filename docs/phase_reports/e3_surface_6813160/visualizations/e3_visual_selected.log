@@ -1,0 +1,33 @@
+W1107 18:07:21.459000 37516 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+[transformers] You passed `num_labels=5` which is incompatible to the `id2label` map of length `19`.
+
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 208/208 [00:00<00:00, 36918.25it/s]
+[transformers] [1mSegformerForSemanticSegmentation LOAD REPORT[0m from: nvidia/segformer-b0-finetuned-cityscapes-1024-1024
+Key                           | Status   |
+------------------------------+----------+----------------------------------------------------------------------------------------------------
+decode_head.classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([19, 256, 1, 1]) vs model:torch.Size([5, 256, 1, 1])
+decode_head.classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([19]) vs model:torch.Size([5])
+
+Notes:
+- MISMATCH:	ckpt weights were loaded, but they did not match the original empty weight shapes.
+
+Loading weights:   0%|          | 0/287 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 287/287 [00:00<00:00, 6995.54it/s]
+Traceback (most recent call last):
+  File "/tmp/e3_capture_selected.py", line 25, in <module>
+    sys.exit(m.main())
+             ^^^^^^^^
+  File "${LOCAL_USER_HOME}/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/tools/mobilio_sanpo_ab.py", line 956, in main
+    session_rows = evaluate_session(session, model, device, depth_estimator, cfg,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/e3_capture_selected.py", line 15, in evalwrap
+    return old_eval(session,*args,**kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${LOCAL_USER_HOME}/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/tools/mobilio_sanpo_ab.py", line 449, in evaluate_session
+    gt = session.gt(frame)
+         ^^^^^^^^^^^^^^^^^
+  File "${LOCAL_USER_HOME}/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/eval/sanpo.py", line 132, in gt
+    m = cv2.imread(os.path.join(self.ldir, "segmentation_masks", f"{i:06d}.png"), cv2.IMREAD_UNCHANGED)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

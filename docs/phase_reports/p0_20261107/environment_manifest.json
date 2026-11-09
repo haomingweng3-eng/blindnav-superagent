@@ -1,0 +1,36 @@
+{
+  "schema": "blindnav-p0-environment/1",
+  "generated_utc": "2026-11-07",
+  "host": {
+    "os": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.14.7",
+    "java": "The operation couldn’t be completed. Unable to locate a Java Runtime. Please visit http://www.java.com for information on installing Java. ",
+    "cmake": "cmake version 4.4.3",
+    "ninja": "UNAVAILABLE",
+    "gcloud": "UNAVAILABLE",
+    "git_sha": "cf6a44678bb3100a020ad309ac3cb78d8d9beb45",
+    "branch": "agent/corridor-obstacle-split-ad0888814215"
+  },
+  "policy": {
+    "isolated_linux_or_wsl": false,
+    "current_environment": "macOS ARM64 development checkout",
+    "large_downloads": "not performed",
+    "phone_vio": "not scheduled before SANPO IMU gap is resolved"
+  },
+  "available_tools": {
+    "python3": true,
+    "cmake": true,
+    "ninja": false,
+    "gcloud": false,
+    "git": true,
+    "java_runtime": false,
+    "java_command": true
+  },
+  "blocking_conditions": [
+    "This checkout is macOS, not the independent Linux/WSL environment required by P0/P1.",
+    "No gcloud executable is available, so a live GCS object listing was not performed.",
+    "Android build remains blocked by the missing local app/libs/sherpa-onnx.aar binary."
+  ],
+  "result": "P0_PARTIAL_NOT_PASSED"
+}

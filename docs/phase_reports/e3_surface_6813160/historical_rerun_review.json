@@ -1,0 +1,82 @@
+{
+  "sha256": {
+    "rerun": "9232121509d14452c228cbe5f234c3c6a09e0d668d21a463b91bd3df66c595a9",
+    "history": "60b4b0c6a2e6f843e14f5650a12dd83ea1d5fcaf58d0ce84584ba91f414a069f",
+    "off": "102d793377b0f925a31d643d808a338e7f0e91d11fdf418ead0a0ed210dc334a"
+  },
+  "comparisons": {
+    "history": {
+      "keys_equal": true,
+      "fields_differing_rows": {
+        "surface_state": 0,
+        "occupancy_state": 0,
+        "safety_state": 0,
+        "effective_command": 0,
+        "guidance": 0,
+        "reason": 0,
+        "forward_guidance": 0,
+        "danger_any": 0,
+        "confirmed_clear": 0,
+        "any_miss": 0,
+        "true_false_stop": 0
+      },
+      "missing_fields": []
+    },
+    "off": {
+      "keys_equal": true,
+      "fields_differing_rows": {
+        "surface_state": 0,
+        "occupancy_state": 0,
+        "safety_state": 0,
+        "effective_command": 0,
+        "guidance": 4,
+        "reason": 0,
+        "forward_guidance": 0,
+        "danger_any": 0,
+        "confirmed_clear": 0,
+        "any_miss": 0,
+        "true_false_stop": 0
+      },
+      "missing_fields": []
+    }
+  },
+  "denominators": {
+    "rerun": {
+      "baseline_split_c": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      },
+      "mobilio": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      }
+    },
+    "history": {
+      "baseline_split_c": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      },
+      "mobilio": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      }
+    },
+    "off": {
+      "baseline_split_c": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      },
+      "mobilio": {
+        "n": 481,
+        "danger": 295,
+        "confirmed_clear": 150
+      }
+    }
+  },
+  "limitations": "旧 evaluator 未锁定模型快照；日志未证明加载字节与清单一致，历史 CSV 原始生成版本未知。"
+}

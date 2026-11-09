@@ -1,0 +1,34 @@
+{
+  "code_commit": "6813160c555e297b03a599eb689b8083fe4ce36a",
+  "input_manifest_sha256": "2b4997b6c3e561e62a046fb812edbd31de2ad231596da0ab9219755f2a20e37c",
+  "date_local": "2026-11-07",
+  "python": "3.12.14",
+  "platform": "macOS-26.4.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "packages": {
+    "numpy": "2.5.4",
+    "torch": "2.15.0",
+    "transformers": "5.22.1",
+    "huggingface_hub": "2.4.0",
+    "opencv-python": "NOT_FOUND",
+    "pytest": "9.2.0"
+  },
+  "device": "mps",
+  "seed": 0,
+  "max_width": 640,
+  "pose_source": "SANPO fixed_camera_poses.csv, offline proxy",
+  "logs": "Local home paths redacted to ${LOCAL_USER_HOME}; terminal line breaks and trailing whitespace normalized.",
+  "exit_codes": {
+    "off": 0,
+    "on": 0
+  },
+  "unit_test": "32 passed; targeted tests, not replay proof",
+  "data_terms": "https://github.com/google-research-datasets/sanpo_dataset#license--contact",
+  "approximate_log_file_times_utc": {
+    "off_created": "2026-11-07T09:42:45Z",
+    "off_modified": "2026-11-07T09:45:22Z",
+    "on_created": "2026-11-07T09:45:32Z",
+    "on_modified": "2026-11-07T09:48:14Z",
+    "source": "filesystem creation and modification times, not internal process timestamps"
+  }
+}

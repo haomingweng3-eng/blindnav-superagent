@@ -1,0 +1,22 @@
+W1107 17:45:38.407000 34456 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+[transformers] You passed `num_labels=5` which is incompatible to the `id2label` map of length `19`.
+
+Loading weights:   0%|          | 0/208 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 208/208 [00:00<00:00, 38568.31it/s]
+[transformers] [1mSegformerForSemanticSegmentation LOAD REPORT[0m from: ${LOCAL_USER_HOME}/.cache/huggingface/hub/models--nvidia--segformer-b0-finetuned-cityscapes-1024-1024/snapshots/21b3847fae21ddee674abd31129307b6a1235bd9
+Key                           | Status   |
+------------------------------+----------+----------------------------------------------------------------------------------------------------
+decode_head.classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([19, 256, 1, 1]) vs model:torch.Size([5, 256, 1, 1])
+decode_head.classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([19]) vs model:torch.Size([5])
+
+Notes:
+- MISMATCH:	ckpt weights were loaded, but they did not match the original empty weight shapes.
+
+Loading weights:   0%|          | 0/287 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 287/287 [00:00<00:00, 12823.34it/s]
+[-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10] frames=121 elapsed=36s
+[M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-] frames=184 elapsed=100s
+[UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5] frames=176 elapsed=154s
+wrote 962 rows to ${LOCAL_USER_HOME}/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/out/e3_surface_6813160_on
+
+exit_code=0

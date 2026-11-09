@@ -1,0 +1,28 @@
+{
+  "arm": "mobilio",
+  "condition": "production",
+  "provenance": "DESKTOP_REAL_DATA_REPLAY",
+  "result": {
+    "authorized_motion_frames": 49,
+    "authorized_motion_unchanged": true,
+    "confirmed_clear_false_stops": {
+      "denominator": 150,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "danger_forward_guidance_misses": {
+      "denominator": 295,
+      "numerator": 17,
+      "rate": 0.0576271186440678
+    },
+    "frames": 481,
+    "hint_contract": "observation_hint only; UNKNOWN remains UNKNOWN; no CLEAR, STOP, authorized_motion, or directional TTS is produced",
+    "hint_frames": 37,
+    "hint_on_confirmed_clear": 12,
+    "hint_on_danger": 19,
+    "hint_reasons": {
+      "occupancy:no_fully_observed_clearance": 37
+    }
+  },
+  "schema": "mobilio-occupancy-hint-eval/1"
+}

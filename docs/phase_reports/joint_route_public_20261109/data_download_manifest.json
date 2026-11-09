@@ -1,0 +1,1089 @@
+{
+  "schema": "blindnav-public-slice-download/1",
+  "source_commit": "b0a23bf7731c02ca557e29a235a729137e1f8a10",
+  "source_inventory": "/workspace/scratch/09dfb5545ec7/blindnav-superagent/docs/phase_reports/e3_input_audit_20261107/input_inventory.json",
+  "source_inventory_sha256": "2b4997b6c3e561e62a046fb812edbd31de2ad231596da0ab9219755f2a20e37c",
+  "data_root": "/workspace/scratch/09dfb5545ec7/blindnav_data/sanpo-real",
+  "source_frame_count": 481,
+  "selected_frame_count": 36,
+  "selected_frames": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ],
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55
+    ]
+  },
+  "selection_rule": "first N inventoried RGB frames per selected session, with matching depth and segmentation",
+  "complete_frozen_production_replay": false,
+  "ground_truth_and_recorded_pose_available": true,
+  "raw_imu_available": false,
+  "expected_bytes": 150723611,
+  "verified_files": 114,
+  "failed_files": 0,
+  "elapsed_seconds": 73.681,
+  "files": [
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/fixed_camera_poses.csv",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/fixed_camera_poses.csv",
+      "expected_bytes": 95050,
+      "expected_sha256": "4c4fe93acc366e121f8d8966bea656455255f8ebd82b3fd5415f55ca73ceadf6",
+      "status": "downloaded_verified",
+      "bytes": 95050,
+      "sha256": "4c4fe93acc366e121f8d8966bea656455255f8ebd82b3fd5415f55ca73ceadf6"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000000.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000000.float16.gz",
+      "expected_bytes": 533048,
+      "expected_sha256": "0da05ce6ab792411a51e2dcb1bf4ea7103f905ea5a32ca2fa7702f2854ba07d1",
+      "status": "downloaded_verified",
+      "bytes": 533048,
+      "sha256": "0da05ce6ab792411a51e2dcb1bf4ea7103f905ea5a32ca2fa7702f2854ba07d1"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000005.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000005.float16.gz",
+      "expected_bytes": 560047,
+      "expected_sha256": "da6383fb93cc56d43e818f8576ece41dee6028c29d049668e461976f1b6b021d",
+      "status": "downloaded_verified",
+      "bytes": 560047,
+      "sha256": "da6383fb93cc56d43e818f8576ece41dee6028c29d049668e461976f1b6b021d"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000010.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000010.float16.gz",
+      "expected_bytes": 421502,
+      "expected_sha256": "c6d94473f4faf2f9dfa1c83c0a315a2fe09af1919cff891c9382a73c55181be0",
+      "status": "downloaded_verified",
+      "bytes": 421502,
+      "sha256": "c6d94473f4faf2f9dfa1c83c0a315a2fe09af1919cff891c9382a73c55181be0"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000015.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000015.float16.gz",
+      "expected_bytes": 508192,
+      "expected_sha256": "518ac378c144f4ac1d2d46c33c540e1f5b039d35bc36de47d60e0389708ca97b",
+      "status": "downloaded_verified",
+      "bytes": 508192,
+      "sha256": "518ac378c144f4ac1d2d46c33c540e1f5b039d35bc36de47d60e0389708ca97b"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000020.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000020.float16.gz",
+      "expected_bytes": 548745,
+      "expected_sha256": "543ec21bb6baae174669b30792041535e605580916592e302c71637205a40a11",
+      "status": "downloaded_verified",
+      "bytes": 548745,
+      "sha256": "543ec21bb6baae174669b30792041535e605580916592e302c71637205a40a11"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000025.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000025.float16.gz",
+      "expected_bytes": 500944,
+      "expected_sha256": "6f154cc06ed73e3c3aef53d59f7e207b2d690371f1c6bfa93c247a1fd21bbc82",
+      "status": "downloaded_verified",
+      "bytes": 500944,
+      "sha256": "6f154cc06ed73e3c3aef53d59f7e207b2d690371f1c6bfa93c247a1fd21bbc82"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000030.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000030.float16.gz",
+      "expected_bytes": 578383,
+      "expected_sha256": "3d3ec2cd90d56f5aa7909f737913e4bc8e2bd144a477267ba81e687a49be4e4e",
+      "status": "downloaded_verified",
+      "bytes": 578383,
+      "sha256": "3d3ec2cd90d56f5aa7909f737913e4bc8e2bd144a477267ba81e687a49be4e4e"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000035.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000035.float16.gz",
+      "expected_bytes": 581765,
+      "expected_sha256": "88f6004c51827811b2430a55bc6d2fd8b138a15d73a7114425d814b60e502dfe",
+      "status": "downloaded_verified",
+      "bytes": 581765,
+      "sha256": "88f6004c51827811b2430a55bc6d2fd8b138a15d73a7114425d814b60e502dfe"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000040.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000040.float16.gz",
+      "expected_bytes": 519251,
+      "expected_sha256": "819e87a6a3502fc7a7b08dbe9f2f86daf226315ebe340453fbdca31cc6b38478",
+      "status": "downloaded_verified",
+      "bytes": 519251,
+      "sha256": "819e87a6a3502fc7a7b08dbe9f2f86daf226315ebe340453fbdca31cc6b38478"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000045.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000045.float16.gz",
+      "expected_bytes": 535095,
+      "expected_sha256": "8b34bf1bac20fe7d0e41c324726de5e4e4740c894b5664f40282b4aebcfaf88b",
+      "status": "downloaded_verified",
+      "bytes": 535095,
+      "sha256": "8b34bf1bac20fe7d0e41c324726de5e4e4740c894b5664f40282b4aebcfaf88b"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000050.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000050.float16.gz",
+      "expected_bytes": 577996,
+      "expected_sha256": "6aebe400602afc52b3d7abc86e3d5a5b2c5af86cab18f5ad5f0edf443118db6c",
+      "status": "downloaded_verified",
+      "bytes": 577996,
+      "sha256": "6aebe400602afc52b3d7abc86e3d5a5b2c5af86cab18f5ad5f0edf443118db6c"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000055.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/depth_maps/000055.float16.gz",
+      "expected_bytes": 462206,
+      "expected_sha256": "caeb9b1ab015f3c760af62f5189e930d2c2f920890f1555bb4896940147317b9",
+      "status": "downloaded_verified",
+      "bytes": 462206,
+      "sha256": "caeb9b1ab015f3c760af62f5189e930d2c2f920890f1555bb4896940147317b9"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000000.png",
+      "expected_bytes": 19980,
+      "expected_sha256": "e911a726bcbb40667f667b1073adca0d0ab51d4d4054dd51cdac1604aa7e4ad6",
+      "status": "downloaded_verified",
+      "bytes": 19980,
+      "sha256": "e911a726bcbb40667f667b1073adca0d0ab51d4d4054dd51cdac1604aa7e4ad6"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000005.png",
+      "expected_bytes": 18972,
+      "expected_sha256": "f88b60f2b224118230b1054d5f96657367d3a0bb3e1973d516828e657f6bd5c4",
+      "status": "downloaded_verified",
+      "bytes": 18972,
+      "sha256": "f88b60f2b224118230b1054d5f96657367d3a0bb3e1973d516828e657f6bd5c4"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000010.png",
+      "expected_bytes": 17528,
+      "expected_sha256": "cc6c0b8d96c77aabbe964a67144aa3f0a637105a49c6eb603affadd0a47e52b0",
+      "status": "downloaded_verified",
+      "bytes": 17528,
+      "sha256": "cc6c0b8d96c77aabbe964a67144aa3f0a637105a49c6eb603affadd0a47e52b0"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000015.png",
+      "expected_bytes": 17083,
+      "expected_sha256": "2e3b1c311b40bd5d5f400ef4f9a090c80165870aad15e84f09842907977bccf4",
+      "status": "downloaded_verified",
+      "bytes": 17083,
+      "sha256": "2e3b1c311b40bd5d5f400ef4f9a090c80165870aad15e84f09842907977bccf4"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000020.png",
+      "expected_bytes": 17663,
+      "expected_sha256": "9bd6543424df48605c7e63b407525b52a44eb0f4cb87c343f3d56eb27ec76809",
+      "status": "downloaded_verified",
+      "bytes": 17663,
+      "sha256": "9bd6543424df48605c7e63b407525b52a44eb0f4cb87c343f3d56eb27ec76809"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000025.png",
+      "expected_bytes": 16183,
+      "expected_sha256": "df5b565acbcbf0320084c5e7a6871ba1ab46f16dfe8ab76b30bff2c1ff9c02a7",
+      "status": "downloaded_verified",
+      "bytes": 16183,
+      "sha256": "df5b565acbcbf0320084c5e7a6871ba1ab46f16dfe8ab76b30bff2c1ff9c02a7"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000030.png",
+      "expected_bytes": 17313,
+      "expected_sha256": "98fa7bceb3d4835d4c98b51f820e9ce89b5e208f0da92cffe99da49ab5278a58",
+      "status": "downloaded_verified",
+      "bytes": 17313,
+      "sha256": "98fa7bceb3d4835d4c98b51f820e9ce89b5e208f0da92cffe99da49ab5278a58"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000035.png",
+      "expected_bytes": 16801,
+      "expected_sha256": "f1c101b28791dc5a850105d030dbe57e938dc986d7865461c653fd5b4c720017",
+      "status": "downloaded_verified",
+      "bytes": 16801,
+      "sha256": "f1c101b28791dc5a850105d030dbe57e938dc986d7865461c653fd5b4c720017"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000040.png",
+      "expected_bytes": 17466,
+      "expected_sha256": "f92249359056261929abd14075669e6376ef8cbf707706b6c9d2f6056a223248",
+      "status": "downloaded_verified",
+      "bytes": 17466,
+      "sha256": "f92249359056261929abd14075669e6376ef8cbf707706b6c9d2f6056a223248"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000045.png",
+      "expected_bytes": 18348,
+      "expected_sha256": "e7f0f7541f98e2a219cf8e16bbdf3facb32856abc471cacc45d5af3bbe44b661",
+      "status": "downloaded_verified",
+      "bytes": 18348,
+      "sha256": "e7f0f7541f98e2a219cf8e16bbdf3facb32856abc471cacc45d5af3bbe44b661"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000050.png",
+      "expected_bytes": 17449,
+      "expected_sha256": "08e01be768544e49c9ca7ae74ad278d23eca50e5199012789934a73cd9f472b3",
+      "status": "downloaded_verified",
+      "bytes": 17449,
+      "sha256": "08e01be768544e49c9ca7ae74ad278d23eca50e5199012789934a73cd9f472b3"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/segmentation_masks/000055.png",
+      "expected_bytes": 18278,
+      "expected_sha256": "86330228bd2e86a39534955747013493374efc3934dc1803900e6f63fb4c0b2a",
+      "status": "downloaded_verified",
+      "bytes": 18278,
+      "sha256": "86330228bd2e86a39534955747013493374efc3934dc1803900e6f63fb4c0b2a"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000000.png",
+      "expected_bytes": 3279060,
+      "expected_sha256": "a624ae3120cb25d05a0fcc965862488c03701534900401ba631b13dea26536ee",
+      "status": "downloaded_verified",
+      "bytes": 3279060,
+      "sha256": "a624ae3120cb25d05a0fcc965862488c03701534900401ba631b13dea26536ee"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000005.png",
+      "expected_bytes": 3244887,
+      "expected_sha256": "cbd1176856bd26167d93d3c535bc43b3a09ff5b587bd94ef852b438bcf04b69b",
+      "status": "downloaded_verified",
+      "bytes": 3244887,
+      "sha256": "cbd1176856bd26167d93d3c535bc43b3a09ff5b587bd94ef852b438bcf04b69b"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000010.png",
+      "expected_bytes": 3238245,
+      "expected_sha256": "f7dcbc9803f3d8fc0218a258f6c39cbf60f5309d8dae9107359ca229085ba879",
+      "status": "downloaded_verified",
+      "bytes": 3238245,
+      "sha256": "f7dcbc9803f3d8fc0218a258f6c39cbf60f5309d8dae9107359ca229085ba879"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000015.png",
+      "expected_bytes": 3400531,
+      "expected_sha256": "3092a3895155914d603a5c6df03f69eccbbadad5d8656b57bd0fad30b1983fb0",
+      "status": "downloaded_verified",
+      "bytes": 3400531,
+      "sha256": "3092a3895155914d603a5c6df03f69eccbbadad5d8656b57bd0fad30b1983fb0"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000020.png",
+      "expected_bytes": 3481609,
+      "expected_sha256": "7cab604a968ac054bcbfc4a74706e5447f535143a02524e049324f67b63176da",
+      "status": "downloaded_verified",
+      "bytes": 3481609,
+      "sha256": "7cab604a968ac054bcbfc4a74706e5447f535143a02524e049324f67b63176da"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000025.png",
+      "expected_bytes": 3532464,
+      "expected_sha256": "fba50f38e711090e41ce72b795ef09cd788b32a641b40cf646260094e5ac5992",
+      "status": "downloaded_verified",
+      "bytes": 3532464,
+      "sha256": "fba50f38e711090e41ce72b795ef09cd788b32a641b40cf646260094e5ac5992"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000030.png",
+      "expected_bytes": 3675190,
+      "expected_sha256": "c87470282164330195a8b38acb38a2b8ee4eb0b031cbd37527c05fd173154df9",
+      "status": "downloaded_verified",
+      "bytes": 3675190,
+      "sha256": "c87470282164330195a8b38acb38a2b8ee4eb0b031cbd37527c05fd173154df9"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000035.png",
+      "expected_bytes": 3535185,
+      "expected_sha256": "582f274caf90de5bed75e6e229c351a875987585a4f10730a20e1f1b90f87bb2",
+      "status": "downloaded_verified",
+      "bytes": 3535185,
+      "sha256": "582f274caf90de5bed75e6e229c351a875987585a4f10730a20e1f1b90f87bb2"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000040.png",
+      "expected_bytes": 3586683,
+      "expected_sha256": "459a68655d4b9b73e32d717fce2c39566d519a8fe2171540bb1a1897dafdc7f8",
+      "status": "downloaded_verified",
+      "bytes": 3586683,
+      "sha256": "459a68655d4b9b73e32d717fce2c39566d519a8fe2171540bb1a1897dafdc7f8"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000045.png",
+      "expected_bytes": 3642273,
+      "expected_sha256": "76f3c5179d83dadf9cc8d935295568f4cb9c95392afdf17974b5d01b0700b427",
+      "status": "downloaded_verified",
+      "bytes": 3642273,
+      "sha256": "76f3c5179d83dadf9cc8d935295568f4cb9c95392afdf17974b5d01b0700b427"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000050.png",
+      "expected_bytes": 3566577,
+      "expected_sha256": "d1825b86b79b0551225058bd22a8fc4f003fda4d456388f9b19bff35e5b512e3",
+      "status": "downloaded_verified",
+      "bytes": 3566577,
+      "sha256": "d1825b86b79b0551225058bd22a8fc4f003fda4d456388f9b19bff35e5b512e3"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/camera_chest/left/video_frames/000055.png",
+      "expected_bytes": 3606399,
+      "expected_sha256": "25bb43eaa7c04dff15a0f5566a4c932e063501c297756a6ce9e3dc1027e2c34d",
+      "status": "downloaded_verified",
+      "bytes": 3606399,
+      "sha256": "25bb43eaa7c04dff15a0f5566a4c932e063501c297756a6ce9e3dc1027e2c34d"
+    },
+    {
+      "path": "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/description.json",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10/description.json",
+      "expected_bytes": 5603,
+      "expected_sha256": "f0699b5ae5373aae835bbb84ec683b8974d51dba9fe8ba2bc07305d346394f2f",
+      "status": "downloaded_verified",
+      "bytes": 5603,
+      "sha256": "f0699b5ae5373aae835bbb84ec683b8974d51dba9fe8ba2bc07305d346394f2f"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/fixed_camera_poses.csv",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/fixed_camera_poses.csv",
+      "expected_bytes": 146948,
+      "expected_sha256": "0603a50ff75813d23b4f6623858172c331f9d045077d26919f47a92167c6a7b3",
+      "status": "downloaded_verified",
+      "bytes": 146948,
+      "sha256": "0603a50ff75813d23b4f6623858172c331f9d045077d26919f47a92167c6a7b3"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000000.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000000.float16.gz",
+      "expected_bytes": 658610,
+      "expected_sha256": "b29d42eccd9e07aeb139da8fb06c8859627a38931e6597ecfaa1db9902a73519",
+      "status": "downloaded_verified",
+      "bytes": 658610,
+      "sha256": "b29d42eccd9e07aeb139da8fb06c8859627a38931e6597ecfaa1db9902a73519"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000005.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000005.float16.gz",
+      "expected_bytes": 664972,
+      "expected_sha256": "d5319f7c6b184811e65aff5c48923be848b4c44ddf59e79ec5cca46535ce9a6b",
+      "status": "downloaded_verified",
+      "bytes": 664972,
+      "sha256": "d5319f7c6b184811e65aff5c48923be848b4c44ddf59e79ec5cca46535ce9a6b"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000010.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000010.float16.gz",
+      "expected_bytes": 682243,
+      "expected_sha256": "1f41314f72e4ee467b24003ed455e583a2ebd8ffd56a495720c97db3d81f8e35",
+      "status": "downloaded_verified",
+      "bytes": 682243,
+      "sha256": "1f41314f72e4ee467b24003ed455e583a2ebd8ffd56a495720c97db3d81f8e35"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000015.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000015.float16.gz",
+      "expected_bytes": 677701,
+      "expected_sha256": "db64a7fdbba1cab47f4cddea47112cdaf97788a45eaac419cb63cfce020f4180",
+      "status": "downloaded_verified",
+      "bytes": 677701,
+      "sha256": "db64a7fdbba1cab47f4cddea47112cdaf97788a45eaac419cb63cfce020f4180"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000020.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000020.float16.gz",
+      "expected_bytes": 662808,
+      "expected_sha256": "3baca811054457e90a5dfc178f4b6478fbd6e8f67cd3624313cbcbe305641258",
+      "status": "downloaded_verified",
+      "bytes": 662808,
+      "sha256": "3baca811054457e90a5dfc178f4b6478fbd6e8f67cd3624313cbcbe305641258"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000025.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000025.float16.gz",
+      "expected_bytes": 651330,
+      "expected_sha256": "b02d74bb1307b377d48e8c3cd753e55b0ed58cdf10442999a4f3c90b95ed1dc3",
+      "status": "downloaded_verified",
+      "bytes": 651330,
+      "sha256": "b02d74bb1307b377d48e8c3cd753e55b0ed58cdf10442999a4f3c90b95ed1dc3"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000030.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000030.float16.gz",
+      "expected_bytes": 633598,
+      "expected_sha256": "b128ae81adf6e2c8ea20f8b5a8e027b41cd61b99d91d900833ef4f165566ac60",
+      "status": "downloaded_verified",
+      "bytes": 633598,
+      "sha256": "b128ae81adf6e2c8ea20f8b5a8e027b41cd61b99d91d900833ef4f165566ac60"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000035.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000035.float16.gz",
+      "expected_bytes": 649759,
+      "expected_sha256": "b2e517d38167132e4540f7a91bb7579cbe4b6b0dce15f12f392d0013f310fefc",
+      "status": "downloaded_verified",
+      "bytes": 649759,
+      "sha256": "b2e517d38167132e4540f7a91bb7579cbe4b6b0dce15f12f392d0013f310fefc"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000040.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000040.float16.gz",
+      "expected_bytes": 657409,
+      "expected_sha256": "76ff564d4e4eb84b059577311c40ea30fbf429fb813a77ec969b9f92237ad8da",
+      "status": "downloaded_verified",
+      "bytes": 657409,
+      "sha256": "76ff564d4e4eb84b059577311c40ea30fbf429fb813a77ec969b9f92237ad8da"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000045.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000045.float16.gz",
+      "expected_bytes": 627038,
+      "expected_sha256": "49ef07615b5315ea1551c8009a64df9fadd33a75c97bb23675a49abd7f6fe2f3",
+      "status": "downloaded_verified",
+      "bytes": 627038,
+      "sha256": "49ef07615b5315ea1551c8009a64df9fadd33a75c97bb23675a49abd7f6fe2f3"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000050.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000050.float16.gz",
+      "expected_bytes": 616579,
+      "expected_sha256": "73ea6a02628353bbb74a79c7e1aeee9298bc6cada689e1fb6ae9b953c6cc79d5",
+      "status": "downloaded_verified",
+      "bytes": 616579,
+      "sha256": "73ea6a02628353bbb74a79c7e1aeee9298bc6cada689e1fb6ae9b953c6cc79d5"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000055.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/depth_maps/000055.float16.gz",
+      "expected_bytes": 618931,
+      "expected_sha256": "344a2c60a699d6d422be2eccee27c0309791cecdfc4f3da0bfd852ba2da7a46c",
+      "status": "downloaded_verified",
+      "bytes": 618931,
+      "sha256": "344a2c60a699d6d422be2eccee27c0309791cecdfc4f3da0bfd852ba2da7a46c"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000000.png",
+      "expected_bytes": 17524,
+      "expected_sha256": "a272ce337d4cd6841e100226c5671014043906330253c19a46c88cf379eee217",
+      "status": "downloaded_verified",
+      "bytes": 17524,
+      "sha256": "a272ce337d4cd6841e100226c5671014043906330253c19a46c88cf379eee217"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000005.png",
+      "expected_bytes": 17804,
+      "expected_sha256": "5394f0046b74e9c48dae3972a238df0a38ad6c06f126ab9d0e71ee414bdabd35",
+      "status": "downloaded_verified",
+      "bytes": 17804,
+      "sha256": "5394f0046b74e9c48dae3972a238df0a38ad6c06f126ab9d0e71ee414bdabd35"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000010.png",
+      "expected_bytes": 17446,
+      "expected_sha256": "12dd9596b8cd71f6d72fb8573791b350dc2256da7b94db607cde8e0df45f9a03",
+      "status": "downloaded_verified",
+      "bytes": 17446,
+      "sha256": "12dd9596b8cd71f6d72fb8573791b350dc2256da7b94db607cde8e0df45f9a03"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000015.png",
+      "expected_bytes": 17675,
+      "expected_sha256": "57d97e2b9da9ca0af3c787d22419b9592ff83ded5e12531397f035b671ed3d7a",
+      "status": "downloaded_verified",
+      "bytes": 17675,
+      "sha256": "57d97e2b9da9ca0af3c787d22419b9592ff83ded5e12531397f035b671ed3d7a"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000020.png",
+      "expected_bytes": 17962,
+      "expected_sha256": "a9ac120c6b20dd897ac48d3faa8122964d00679405e8f80430ac80dfc44a00c5",
+      "status": "downloaded_verified",
+      "bytes": 17962,
+      "sha256": "a9ac120c6b20dd897ac48d3faa8122964d00679405e8f80430ac80dfc44a00c5"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000025.png",
+      "expected_bytes": 17726,
+      "expected_sha256": "aec0b4ed3883744370c6290d3ad136c490f8d9cae049fdee8f98c25e99a72116",
+      "status": "downloaded_verified",
+      "bytes": 17726,
+      "sha256": "aec0b4ed3883744370c6290d3ad136c490f8d9cae049fdee8f98c25e99a72116"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000030.png",
+      "expected_bytes": 17043,
+      "expected_sha256": "e50b6eb38fb5bf6ecbe288bbe07ba9f42ddfcf4c089a2825100ac8b762c1d66f",
+      "status": "downloaded_verified",
+      "bytes": 17043,
+      "sha256": "e50b6eb38fb5bf6ecbe288bbe07ba9f42ddfcf4c089a2825100ac8b762c1d66f"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000035.png",
+      "expected_bytes": 17212,
+      "expected_sha256": "ab2389ee246b361614c4b9244073cdb1f9d1c46855f1101c918a3067a5472fb5",
+      "status": "downloaded_verified",
+      "bytes": 17212,
+      "sha256": "ab2389ee246b361614c4b9244073cdb1f9d1c46855f1101c918a3067a5472fb5"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000040.png",
+      "expected_bytes": 17246,
+      "expected_sha256": "acf85fa157a0d41de58cc9e7568355de80ce65f987899bfc7772710b3cebdd29",
+      "status": "downloaded_verified",
+      "bytes": 17246,
+      "sha256": "acf85fa157a0d41de58cc9e7568355de80ce65f987899bfc7772710b3cebdd29"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000045.png",
+      "expected_bytes": 16504,
+      "expected_sha256": "da5874e4730cfbbfe1ae48e788d8acc59300c0b55c3c2770e7361ae2e497d6d1",
+      "status": "downloaded_verified",
+      "bytes": 16504,
+      "sha256": "da5874e4730cfbbfe1ae48e788d8acc59300c0b55c3c2770e7361ae2e497d6d1"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000050.png",
+      "expected_bytes": 16466,
+      "expected_sha256": "7da1194073a9c8beb7062e03a0c432e260d096730df8f5cebade5bd7e3319dc4",
+      "status": "downloaded_verified",
+      "bytes": 16466,
+      "sha256": "7da1194073a9c8beb7062e03a0c432e260d096730df8f5cebade5bd7e3319dc4"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/segmentation_masks/000055.png",
+      "expected_bytes": 16461,
+      "expected_sha256": "e1c6e8e7d84293ac53cde22aa84b2994043992537c8388e4f022441c8730e5bc",
+      "status": "downloaded_verified",
+      "bytes": 16461,
+      "sha256": "e1c6e8e7d84293ac53cde22aa84b2994043992537c8388e4f022441c8730e5bc"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000000.png",
+      "expected_bytes": 3820031,
+      "expected_sha256": "b19765743f5e1acb6952df4eaf83d98270359564786121c981089fc407060ad0",
+      "status": "downloaded_verified",
+      "bytes": 3820031,
+      "sha256": "b19765743f5e1acb6952df4eaf83d98270359564786121c981089fc407060ad0"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000005.png",
+      "expected_bytes": 3704590,
+      "expected_sha256": "be2a9d886751e24ed9821a41751e64c2be621dd5ac7fe87bc72d94168f160d16",
+      "status": "downloaded_verified",
+      "bytes": 3704590,
+      "sha256": "be2a9d886751e24ed9821a41751e64c2be621dd5ac7fe87bc72d94168f160d16"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000010.png",
+      "expected_bytes": 3892967,
+      "expected_sha256": "da12a6e23bc36d4c0898dbc23e9cebcb0317d523ab0dca9daf37a42f83cd0fcf",
+      "status": "downloaded_verified",
+      "bytes": 3892967,
+      "sha256": "da12a6e23bc36d4c0898dbc23e9cebcb0317d523ab0dca9daf37a42f83cd0fcf"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000015.png",
+      "expected_bytes": 3826201,
+      "expected_sha256": "008be624ef70c5f9d61fb001629939b4d570281c835f9ce8a94dab49b733126b",
+      "status": "downloaded_verified",
+      "bytes": 3826201,
+      "sha256": "008be624ef70c5f9d61fb001629939b4d570281c835f9ce8a94dab49b733126b"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000020.png",
+      "expected_bytes": 3669198,
+      "expected_sha256": "ab3fef41ae1a6d1000cdf2a0242776904989344ecb0ac72cce1d85bc1ded46a1",
+      "status": "downloaded_verified",
+      "bytes": 3669198,
+      "sha256": "ab3fef41ae1a6d1000cdf2a0242776904989344ecb0ac72cce1d85bc1ded46a1"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000025.png",
+      "expected_bytes": 3767174,
+      "expected_sha256": "18bae6dfde066cd8b891834db866cf48208920c392d48d15745c9090cd5e7ef1",
+      "status": "downloaded_verified",
+      "bytes": 3767174,
+      "sha256": "18bae6dfde066cd8b891834db866cf48208920c392d48d15745c9090cd5e7ef1"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000030.png",
+      "expected_bytes": 3729319,
+      "expected_sha256": "8d5c52d994b7b30e15661a7107514e2ec1cbfe865bc861554d9b6b9f2ad6c556",
+      "status": "downloaded_verified",
+      "bytes": 3729319,
+      "sha256": "8d5c52d994b7b30e15661a7107514e2ec1cbfe865bc861554d9b6b9f2ad6c556"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000035.png",
+      "expected_bytes": 3713923,
+      "expected_sha256": "082eca520373b8aaa165fde1d771e5cc431ef0790dd673484e28398d959ffac0",
+      "status": "downloaded_verified",
+      "bytes": 3713923,
+      "sha256": "082eca520373b8aaa165fde1d771e5cc431ef0790dd673484e28398d959ffac0"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000040.png",
+      "expected_bytes": 3799313,
+      "expected_sha256": "a85fa7aaa80a5802bc5400bda92f5aa1523b7562a3bf388508e16ebecc461c74",
+      "status": "downloaded_verified",
+      "bytes": 3799313,
+      "sha256": "a85fa7aaa80a5802bc5400bda92f5aa1523b7562a3bf388508e16ebecc461c74"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000045.png",
+      "expected_bytes": 3647746,
+      "expected_sha256": "89ee5278ac24f4019072da19999834270adb6bb83efb0af20c9bfcb779016266",
+      "status": "downloaded_verified",
+      "bytes": 3647746,
+      "sha256": "89ee5278ac24f4019072da19999834270adb6bb83efb0af20c9bfcb779016266"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000050.png",
+      "expected_bytes": 3602961,
+      "expected_sha256": "d6b8c672ead523b0de13022f7dbaf8084e6ced5ddb438be2d5ebf05e47f759ae",
+      "status": "downloaded_verified",
+      "bytes": 3602961,
+      "sha256": "d6b8c672ead523b0de13022f7dbaf8084e6ced5ddb438be2d5ebf05e47f759ae"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/camera_chest/left/video_frames/000055.png",
+      "expected_bytes": 3604818,
+      "expected_sha256": "94247028077a41dd6542ac98a41000315a3c60637e01f1fd44fdab8de94af5b6",
+      "status": "downloaded_verified",
+      "bytes": 3604818,
+      "sha256": "94247028077a41dd6542ac98a41000315a3c60637e01f1fd44fdab8de94af5b6"
+    },
+    {
+      "path": "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/description.json",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-/description.json",
+      "expected_bytes": 5541,
+      "expected_sha256": "f87aa620455fbc3090e96fabe3821d91ab18e3f60dc99486dcd0a23e3ef7234f",
+      "status": "downloaded_verified",
+      "bytes": 5541,
+      "sha256": "f87aa620455fbc3090e96fabe3821d91ab18e3f60dc99486dcd0a23e3ef7234f"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/fixed_camera_poses.csv",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/fixed_camera_poses.csv",
+      "expected_bytes": 139829,
+      "expected_sha256": "6025c49fcadac7f64e9060ab9a1af742e23a4fcee8b631dfa967c3448ca38f24",
+      "status": "downloaded_verified",
+      "bytes": 139829,
+      "sha256": "6025c49fcadac7f64e9060ab9a1af742e23a4fcee8b631dfa967c3448ca38f24"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000000.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000000.float16.gz",
+      "expected_bytes": 589526,
+      "expected_sha256": "8d34a75d561b2680b9022631c8667ef1de1c17f289bc8a86af25eecfbfd58420",
+      "status": "downloaded_verified",
+      "bytes": 589526,
+      "sha256": "8d34a75d561b2680b9022631c8667ef1de1c17f289bc8a86af25eecfbfd58420"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000005.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000005.float16.gz",
+      "expected_bytes": 586312,
+      "expected_sha256": "b6ef126131681b86609726f86bece7fd34d4d815dfc3f4219725b781de6cd784",
+      "status": "downloaded_verified",
+      "bytes": 586312,
+      "sha256": "b6ef126131681b86609726f86bece7fd34d4d815dfc3f4219725b781de6cd784"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000010.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000010.float16.gz",
+      "expected_bytes": 580771,
+      "expected_sha256": "3ebc0ea9426ba14a7041c5a1a9bf03483b4eb3223c0527a5802d5f4adaf517ef",
+      "status": "downloaded_verified",
+      "bytes": 580771,
+      "sha256": "3ebc0ea9426ba14a7041c5a1a9bf03483b4eb3223c0527a5802d5f4adaf517ef"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000015.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000015.float16.gz",
+      "expected_bytes": 556496,
+      "expected_sha256": "ead6049c8934f2e397b32a4b0db4c37595587648190a6dd630b0050424d58057",
+      "status": "downloaded_verified",
+      "bytes": 556496,
+      "sha256": "ead6049c8934f2e397b32a4b0db4c37595587648190a6dd630b0050424d58057"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000020.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000020.float16.gz",
+      "expected_bytes": 505775,
+      "expected_sha256": "2bd7faf16743921d8a98e5c78f5ce52ed0dd403161c3752d4053cd3d22fb62e4",
+      "status": "downloaded_verified",
+      "bytes": 505775,
+      "sha256": "2bd7faf16743921d8a98e5c78f5ce52ed0dd403161c3752d4053cd3d22fb62e4"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000025.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000025.float16.gz",
+      "expected_bytes": 521462,
+      "expected_sha256": "912ad3399f5426dfb37878036450368f82e33ef0b3a9fc1d7d0f607effb93f57",
+      "status": "downloaded_verified",
+      "bytes": 521462,
+      "sha256": "912ad3399f5426dfb37878036450368f82e33ef0b3a9fc1d7d0f607effb93f57"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000030.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000030.float16.gz",
+      "expected_bytes": 496475,
+      "expected_sha256": "eaafc6e11d85b38ebf9f731e6b041c9024831a4dc55f1fcf6a7e4bc76aa0b789",
+      "status": "downloaded_verified",
+      "bytes": 496475,
+      "sha256": "eaafc6e11d85b38ebf9f731e6b041c9024831a4dc55f1fcf6a7e4bc76aa0b789"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000035.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000035.float16.gz",
+      "expected_bytes": 495767,
+      "expected_sha256": "debf830bac5952f27c55e101388e0701a6a26ca7fd0e4751b1b2d8c36cbcf081",
+      "status": "downloaded_verified",
+      "bytes": 495767,
+      "sha256": "debf830bac5952f27c55e101388e0701a6a26ca7fd0e4751b1b2d8c36cbcf081"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000040.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000040.float16.gz",
+      "expected_bytes": 526376,
+      "expected_sha256": "f17b24d262d567ad946f0b2c783afa2f6c2213a94ca262ae70d4375d861c06fb",
+      "status": "downloaded_verified",
+      "bytes": 526376,
+      "sha256": "f17b24d262d567ad946f0b2c783afa2f6c2213a94ca262ae70d4375d861c06fb"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000045.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000045.float16.gz",
+      "expected_bytes": 540164,
+      "expected_sha256": "3d000a134ad971aa4d8336c8c078bbafbe0995c7505c912a435b3eb1aff60b58",
+      "status": "downloaded_verified",
+      "bytes": 540164,
+      "sha256": "3d000a134ad971aa4d8336c8c078bbafbe0995c7505c912a435b3eb1aff60b58"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000050.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000050.float16.gz",
+      "expected_bytes": 586592,
+      "expected_sha256": "11d52a6b061f98efa0329071edf6a13302660dcbc2f6d28e0331a794974e8de8",
+      "status": "downloaded_verified",
+      "bytes": 586592,
+      "sha256": "11d52a6b061f98efa0329071edf6a13302660dcbc2f6d28e0331a794974e8de8"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000055.float16.gz",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/depth_maps/000055.float16.gz",
+      "expected_bytes": 581805,
+      "expected_sha256": "8384077ee7a9edc0cf5311cd233104e50f06bbda2e0ca617fd14b4a2b2f741d8",
+      "status": "downloaded_verified",
+      "bytes": 581805,
+      "sha256": "8384077ee7a9edc0cf5311cd233104e50f06bbda2e0ca617fd14b4a2b2f741d8"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000000.png",
+      "expected_bytes": 19457,
+      "expected_sha256": "420bce0f4ed67d75653f1c71a80d59d25b4a2429a15d064a1904f1f62e3d0405",
+      "status": "downloaded_verified",
+      "bytes": 19457,
+      "sha256": "420bce0f4ed67d75653f1c71a80d59d25b4a2429a15d064a1904f1f62e3d0405"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000005.png",
+      "expected_bytes": 19122,
+      "expected_sha256": "683dc87b79b4d7ddbf58ef6476c4443060d265e0a94d7b31d36919b9220f1aa2",
+      "status": "downloaded_verified",
+      "bytes": 19122,
+      "sha256": "683dc87b79b4d7ddbf58ef6476c4443060d265e0a94d7b31d36919b9220f1aa2"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000010.png",
+      "expected_bytes": 19288,
+      "expected_sha256": "e033ce4fdbbc6cc59d0b29e908b509256c9d7c5e746fbd69a21faa3c693f55a2",
+      "status": "downloaded_verified",
+      "bytes": 19288,
+      "sha256": "e033ce4fdbbc6cc59d0b29e908b509256c9d7c5e746fbd69a21faa3c693f55a2"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000015.png",
+      "expected_bytes": 18979,
+      "expected_sha256": "e65d00612c11f6758e89e054f3acf44cb9a0d3e6ccc7fb0f0e1f6d43cb749e71",
+      "status": "downloaded_verified",
+      "bytes": 18979,
+      "sha256": "e65d00612c11f6758e89e054f3acf44cb9a0d3e6ccc7fb0f0e1f6d43cb749e71"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000020.png",
+      "expected_bytes": 18997,
+      "expected_sha256": "6a0add31626fb5a4c25f7a5e05d9cd45cc8bf5eb32541418aced70932dcba164",
+      "status": "downloaded_verified",
+      "bytes": 18997,
+      "sha256": "6a0add31626fb5a4c25f7a5e05d9cd45cc8bf5eb32541418aced70932dcba164"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000025.png",
+      "expected_bytes": 18484,
+      "expected_sha256": "11765b2add7eb770e7e37a4330d036a1f3164ffe235a7aaf71003eaa7c8a23d1",
+      "status": "downloaded_verified",
+      "bytes": 18484,
+      "sha256": "11765b2add7eb770e7e37a4330d036a1f3164ffe235a7aaf71003eaa7c8a23d1"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000030.png",
+      "expected_bytes": 20569,
+      "expected_sha256": "b57b80c475f96d4f8f556eae5dc84ba2b8cb6d30efec573e6d3c94b9b5c5e996",
+      "status": "downloaded_verified",
+      "bytes": 20569,
+      "sha256": "b57b80c475f96d4f8f556eae5dc84ba2b8cb6d30efec573e6d3c94b9b5c5e996"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000035.png",
+      "expected_bytes": 19363,
+      "expected_sha256": "a7b61a9f89dff67c74e256cd71c88e6681cf620d44ab35e8078eda073bbdc05d",
+      "status": "downloaded_verified",
+      "bytes": 19363,
+      "sha256": "a7b61a9f89dff67c74e256cd71c88e6681cf620d44ab35e8078eda073bbdc05d"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000040.png",
+      "expected_bytes": 18995,
+      "expected_sha256": "94c28571710b5824fe16b54d3274e5a364a331d99a5f7cf13f531eafea98204e",
+      "status": "downloaded_verified",
+      "bytes": 18995,
+      "sha256": "94c28571710b5824fe16b54d3274e5a364a331d99a5f7cf13f531eafea98204e"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000045.png",
+      "expected_bytes": 19056,
+      "expected_sha256": "54c46add65f83d98cd063df8eaeb335d1bab3badfe1f93095a09b73049d05c1a",
+      "status": "downloaded_verified",
+      "bytes": 19056,
+      "sha256": "54c46add65f83d98cd063df8eaeb335d1bab3badfe1f93095a09b73049d05c1a"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000050.png",
+      "expected_bytes": 19749,
+      "expected_sha256": "ccb97816d4340f4b36eeecd6d3efdd16e52afd1194fccb5ab14877f1273e9841",
+      "status": "downloaded_verified",
+      "bytes": 19749,
+      "sha256": "ccb97816d4340f4b36eeecd6d3efdd16e52afd1194fccb5ab14877f1273e9841"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/segmentation_masks/000055.png",
+      "expected_bytes": 19290,
+      "expected_sha256": "dad8293218e767f1a606bac17ad07a818874b1ffcaac70205c6b1cf3dd949a7c",
+      "status": "downloaded_verified",
+      "bytes": 19290,
+      "sha256": "dad8293218e767f1a606bac17ad07a818874b1ffcaac70205c6b1cf3dd949a7c"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000000.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000000.png",
+      "expected_bytes": 3531208,
+      "expected_sha256": "5407607b84aab81a06cb938f79dd4f01358018203db6d483d107abe69ac5d108",
+      "status": "downloaded_verified",
+      "bytes": 3531208,
+      "sha256": "5407607b84aab81a06cb938f79dd4f01358018203db6d483d107abe69ac5d108"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000005.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000005.png",
+      "expected_bytes": 3442128,
+      "expected_sha256": "478ba20bd9b906925ed2afea8099c64bb79e542a64f11acaccd600d0aa5c3537",
+      "status": "downloaded_verified",
+      "bytes": 3442128,
+      "sha256": "478ba20bd9b906925ed2afea8099c64bb79e542a64f11acaccd600d0aa5c3537"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000010.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000010.png",
+      "expected_bytes": 3660607,
+      "expected_sha256": "8132fcec596029a3c180d6847bb7ec4f72d84512853fa177d4f95e5db28413e6",
+      "status": "downloaded_verified",
+      "bytes": 3660607,
+      "sha256": "8132fcec596029a3c180d6847bb7ec4f72d84512853fa177d4f95e5db28413e6"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000015.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000015.png",
+      "expected_bytes": 3477145,
+      "expected_sha256": "1b0a378452e79247d6c5e979a4984d7b46a5a2a6b9240a88a4a067875f91046e",
+      "status": "downloaded_verified",
+      "bytes": 3477145,
+      "sha256": "1b0a378452e79247d6c5e979a4984d7b46a5a2a6b9240a88a4a067875f91046e"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000020.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000020.png",
+      "expected_bytes": 3539054,
+      "expected_sha256": "0922aa8c4a764123fc57499f175885169d7e12dc4ade582fe1955e96d8f3d379",
+      "status": "downloaded_verified",
+      "bytes": 3539054,
+      "sha256": "0922aa8c4a764123fc57499f175885169d7e12dc4ade582fe1955e96d8f3d379"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000025.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000025.png",
+      "expected_bytes": 3164553,
+      "expected_sha256": "21e3e3b5a14d2fa3180f283ae16a1f4fcf86e59d02173509889b7125c30d350d",
+      "status": "downloaded_verified",
+      "bytes": 3164553,
+      "sha256": "21e3e3b5a14d2fa3180f283ae16a1f4fcf86e59d02173509889b7125c30d350d"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000030.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000030.png",
+      "expected_bytes": 3488414,
+      "expected_sha256": "017d615eace2b0a01af8a15b4cdd31c283aee013614e441efea6e65b2d4e13d2",
+      "status": "downloaded_verified",
+      "bytes": 3488414,
+      "sha256": "017d615eace2b0a01af8a15b4cdd31c283aee013614e441efea6e65b2d4e13d2"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000035.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000035.png",
+      "expected_bytes": 3169741,
+      "expected_sha256": "7a328f6dc3e37091cfe9890886465c3043bd55fc7a04f066e3b6c0704edd2c96",
+      "status": "downloaded_verified",
+      "bytes": 3169741,
+      "sha256": "7a328f6dc3e37091cfe9890886465c3043bd55fc7a04f066e3b6c0704edd2c96"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000040.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000040.png",
+      "expected_bytes": 3557515,
+      "expected_sha256": "be40d1198d6a26b7b3df87eb6435587bc60aaf68d26894a6f0c4a066c7811f06",
+      "status": "downloaded_verified",
+      "bytes": 3557515,
+      "sha256": "be40d1198d6a26b7b3df87eb6435587bc60aaf68d26894a6f0c4a066c7811f06"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000045.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000045.png",
+      "expected_bytes": 3769454,
+      "expected_sha256": "e5d7791973cf7adc1db2ccf8f546c2a62cbaa184d984761e1f51937e469d3644",
+      "status": "downloaded_verified",
+      "bytes": 3769454,
+      "sha256": "e5d7791973cf7adc1db2ccf8f546c2a62cbaa184d984761e1f51937e469d3644"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000050.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000050.png",
+      "expected_bytes": 3772992,
+      "expected_sha256": "83138aed676f9e4c9897a127229764d43e873d4a6a78294ff69bb734d3e7361a",
+      "status": "downloaded_verified",
+      "bytes": 3772992,
+      "sha256": "83138aed676f9e4c9897a127229764d43e873d4a6a78294ff69bb734d3e7361a"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000055.png",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/camera_chest/left/video_frames/000055.png",
+      "expected_bytes": 3837702,
+      "expected_sha256": "755afdeee137a8456793527fe8a7870624628ea2c7700ebb19f69fea6a8b4645",
+      "status": "downloaded_verified",
+      "bytes": 3837702,
+      "sha256": "755afdeee137a8456793527fe8a7870624628ea2c7700ebb19f69fea6a8b4645"
+    },
+    {
+      "path": "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/description.json",
+      "source_url": "https://storage.googleapis.com/gresearch/sanpo_dataset/v0/sanpo-real/UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5/description.json",
+      "expected_bytes": 5628,
+      "expected_sha256": "7862f28cf98213131bf6f9bf40c02da1c0195a9d955bec88646f6711732679dc",
+      "status": "downloaded_verified",
+      "bytes": 5628,
+      "sha256": "7862f28cf98213131bf6f9bf40c02da1c0195a9d955bec88646f6711732679dc"
+    }
+  ]
+}

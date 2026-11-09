@@ -1,0 +1,53 @@
+{
+  "tool": "pc/tools/mobilio_sanpo_ab.py",
+  "frames": 481,
+  "sessions": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": 121,
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": 184,
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": 176
+  },
+  "session_fps": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": 15.0,
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": 15.0,
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": 15.0
+  },
+  "session_dt_s": {
+    "-PqSDmiEe2pXjmYHgxh4YEBsj0T5LU10": 0.3333333333333333,
+    "M5UIabsltWCYg1D9LCXLoNPO3bMUo_5-": 0.3333333333333333,
+    "UGNwBEZMxhzlzXVyl8XUfflcvjGwdpA5": 0.3333333333333333
+  },
+  "conditions": [
+    "A_gt_gt",
+    "B_v5_gt",
+    "C_gt_dav2",
+    "D_v5_dav2"
+  ],
+  "arms": [
+    "baseline_split_c",
+    "mobilio"
+  ],
+  "arm_description": {
+    "baseline_split_c": "frozen c000 spatial Path Keeper + Obstacle Guardian + Safety Coordinator",
+    "mobilio": "persistent 0.20 m SurfaceGrid2D + 0.10 m OccupancyGrid3D + monotone fusion"
+  },
+  "data_root": "/Users/mima0000/.dsh/state/superagent/work/corridor-obstacle-split-ad0888814215/pc/data/sanpo_real/sanpo-real",
+  "v5_checkpoint": "/Users/mima0000/blindnav-real-eval/models/segformer_sanpo_b0_v5.pt",
+  "max_width": 640,
+  "limit_per_session": 0,
+  "seed": 0,
+  "pose_mode": "sanpo_recorded_pose_offline_vio_proxy",
+  "depth_sources": {
+    "production": "dav2_calibrated",
+    "annotated": "sanpo_gt"
+  },
+  "grid": {
+    "surface_cell_m": 0.2,
+    "surface_extent_m": 15.0,
+    "blind_zone_m": 2.2,
+    "occupancy_cell_m": 0.1,
+    "occupancy_horizon_m": 4.0,
+    "occupancy_min_height_m": 0.15
+  },
+  "evidence_level": "DESKTOP_REAL_DATA",
+  "production_gt_isolation": "GT is used only after production decisions for scoring"
+}
