@@ -108,6 +108,16 @@ def _cmd_sim(a) -> int:
     return 0 if ok else 1
 
 
+def _cmd_demo(a) -> int:
+    from .product_demo import run_demo
+    report = run_demo(a.out, fps=a.fps, hold=a.hold)
+    hints = [row["hint"] for row in report["frames"] if row["phase"] == "corridor"]
+    print(f"受控演示完成 frames={report['n_frames']} corridor={hints}")
+    print(f"视频 {report['video']}")
+    print(f"说明 {os.path.join(a.out, 'summary.md')}")
+    return 0
+
+
 def _cmd_metrics(a) -> int:
     from .metrics import compute_metrics, format_report, load_labels_csv, read_jsonl
     m = compute_metrics(read_jsonl(a.log), load_labels_csv(a.labels) if a.labels else None)
@@ -150,6 +160,11 @@ def build_parser() -> argparse.ArgumentParser:
                         "oracle=只看当前帧；none=无自运动输入")
     s.add_argument("--blind", type=float, default=0.6, help="相机近场盲区(m)")
     s.set_defaults(fn=_cmd_sim)
+    d = sub.add_parser("demo", help="受控演示：虚拟走廊 + 最后 10 米门候选 + 三态灯，不下载数据")
+    d.add_argument("--out", default="out/product_demo")
+    d.add_argument("--fps", type=int, default=4)
+    d.add_argument("--hold", type=int, default=4, help="每个逻辑帧在视频里重复的次数")
+    d.set_defaults(fn=_cmd_demo)
     m = sub.add_parser("metrics", help="从日志计算 误停率/漏停率/指令翻转次数/延迟")
     m.add_argument("log"), m.add_argument("--labels"), m.add_argument("--json", action="store_true")
     m.set_defaults(fn=_cmd_metrics)
