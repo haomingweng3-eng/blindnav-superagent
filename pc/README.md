@@ -95,6 +95,17 @@ ImVisible 标签映射：`mode` 0=red、1/2=green、3/4=uncertain。
 
 边界与真机门槛见 `../docs/REAL_DEVICE_PROTOCOL.md`：受控 demo，不是独立安全导航。
 
+### 一条命令跑完产品演示
+
+不下载模型，也不需要 Entrances / ImVisible。走廊提示、门候选和灯色都走现有 stub：人偏了就修正，地面不够或离开走廊就停下，最后 10 米最多 3 个门，缺距离就拒答，灯只有红 / 绿 / 不确定。
+
+```bash
+cd pc
+python -m blindnav_pc demo --out out/product_demo
+```
+
+目录里有 `summary.md`、`demo.json`、`frames/` 和 `demo.avi`。这是有安全员的低速受控演示，不代表路缘或近场门槛已经通过。
+
 ### 输入文件格式
 - `camera.json`：`{"fx":..,"fy":..,"cx":..,"cy":..,"width":1920,"height":1080}`（`width/height` 可选，与视频尺寸不同时自动缩放）。缺省按水平 FOV 70° 估计。
 - `imu.csv`：表头 `t_ms,gx,gy,gz`，**重力方向（指向下）在相机坐标系**（OpenCV：x 右、y 下、z 前）下的向量，按最近时间戳取值，额外列忽略。
